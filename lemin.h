@@ -3,5 +3,7 @@
 
 #include <unistd.h> 
 #include <stdio.h>
+#include "libft/libft.h"
+#include <fcntl.h>
 
 #endif
