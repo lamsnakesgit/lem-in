@@ -29,6 +29,13 @@ unsigned int	amount_ants(int fd)
 		return (0);
 	return (1);
 }
+/*
+** if 1 line is ants_nums;
+** if not - or order or comment above ants -> display ERROR?
+** read next_line -> either "name_c-x_c-y" or "##start"/"##end"/"#"comment;
+** then links: "name-1_name-2"
+*/
+
 int				val_in(int fd)
 //char **av)
 {
@@ -38,9 +45,10 @@ int				val_in(int fd)
 	{
 		while (get_next_line(fd, &line) > 0)
 		{
-			;
+			if (line && line[0] == '#');
 		}
 	}
+	return (1);
 }
 
 int 			main(int ac, char **av)
