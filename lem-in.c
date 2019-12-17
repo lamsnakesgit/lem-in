@@ -6,7 +6,7 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:13 by ddratini          #+#    #+#             */
-/*   Updated: 2019/12/17 18:00:15 by ddratini         ###   ########.fr       */
+/*   Updated: 2019/12/17 19:43:24 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,33 @@ int				comstend(char *line)
 	else
 		return (1);
 }
-char				*room_save(char *line)
+t_rooms				*valroom_fill1(t_rooms *r, char **roomcor)
 {
-	char	**roomcor;
-	int 	i;
+	
+}
+int					val_cord(char **roomcor)//ps related neg int?
+{
 	int		j;
+
+	j = -1;
+	while (roomcor[1][++j])
+	{
+		if (j == 10)
+		if (!ft_isdigit(roomcor[1][j]) && ft_cleanmem(roomcor))
+			return (ft_err());//0?
+	}
+	j = -1;
+	while (roomcor[2][++j])
+		if (!ft_isdigit(roomcor[2][j]) && ft_cleanmem(roomcor))
+			return (ft_err());
+	return (1);
+}
+/*
+**send line ->check val inters->check coords; save r_name/room in linst;return->link1?
+*/
+t_rooms				*valroom_save(char *line)
+{	char	**roomcor;
+	int 	i;
 
 	i = 0;
 	roomcor = ft_strsplit(line, ' ');
@@ -92,44 +114,81 @@ char				*room_save(char *line)
 		++i;
 	if (i == 3)
 	{
-		j = -1;
-		while (roomcor[1][++j])
-			if (!ft_isdigit(roomcor[1][j]))
-				return (ft_err());
-		j = -1;
-		while (roomcor[2][++j])
-			if (!ft_isdigit(roomcor[2][j]))
-				return (ft_err());
+		if (val_cord(roomcor))
+			return (roomcor[0]);
+		else
+			return (0);
 	}
+	ft_cleanmem(roomcor);
+	return (NULL);
 }
-char				*check_room(char *line, int fd)
-{//lineforma: "##start" "##end" "#comm" "nam1 cx cy"
-	int		ret;
+/*t_rooms				*r_fill(t_rooms *r, char **roomcor)
+{
+	if (!roomcor)
+	{
+		;
+	}
+}*/
+/*
+**lineforma: "##start" "##end" "#comm" "nam1 cx cy"
 //if not comm-s -> saveline-checked; somee var to kkeep countrun on rooms->then link follow
-	while (get_next_line(fd, line) > 0)
+			{//usual nemeroom w coords two//if (ft_strchr(line, ' '))//this maybe a room; save
+*/
+char				*roomlinkblock(char *line, int fd)
+{
+	int		ret;
+	char	*r_name;
+	char	**roomcor;
+	int 	i;
+	t_list	*rr;
+	t_rooms	*r;
+
+	i = 0;
+	r = r_fill(r, 0);
+	while (get_next_line(fd, line) > 0 && ++i)
 	{
 		if ((ret = comstend(line)) == 0 || ret == -1 || ret == -2)
 			continue ;
 	/*	else if (ret == -1 || ret == -2)
-		{	save 1/end		
+		{	save 1/end
 		}*/
 		else
-		{//usual nemeroom w coords two//if (ft_strchr(line, ' '))//this maybe a room; save
-			room_save(line);
+		{
+			if (!(roomcor = valroom_save(line)))
+				return (NULL);//thereis no room; or fault
+			else
+				valroom_fill1(r, roomcor);
 		}
 	}
 	return (line);
 }
-
+/*
+**{//extra dop otd for chech_room w own w gnl
+** //first--check_roomspresence_validif
+**next llevvell
+block w rooms next links when 1 ends snptherstarts
+	{
+	}
+*/
 int				val_in(int fd)
-//char **av)
 {
 	char *line;
 
 	if (amount_ants(fd) > 0)
-	{//extra dop otd for chech_room w own w gnl
-		//first--check_roomspresence_validif
-			check_room(line, fd);
+		roomlinkblock(line, fd);
+	return (1);
+}
+
+int				iscomment(char *line)
+{
+	if (line[0] == '#')
+	{
+		if (line[1] != '#' && line[1])
+			return (0);
+		if (ft_strcmp(line + 2, "start"))
+			return (-1);
+		if (ft_strcmp(line + 2, "end"))
+			return (-2);
 	}
 	return (1);
 }

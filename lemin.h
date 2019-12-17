@@ -6,13 +6,13 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:18 by ddratini          #+#    #+#             */
-/*   Updated: 2019/12/17 17:08:02 by ddratini         ###   ########.fr       */
+/*   Updated: 2019/12/17 19:44:55 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEMIN_H
 #define LEMIN_H
-
+// 2147483647 - 2147483647?
 #include <unistd.h> 
 #include <stdio.h>
 #include "libft/libft.h"
@@ -29,6 +29,22 @@
 - [ ]   format: Name1-name2 
 - 0 ants? 0 room?
 ** save during : line after n_A/start/end; until links-block s -1 start -2 end
+if not comm/and -> check_r_save -> split = 3; 1/2 arrs[] = digitssole
+when system call could not work?
+##start
+##end -->?
+coords r strong ly strictli ints-> digits.10.max
+level when rooms closed-finished?func bool
+problems of rooms % links
+rooms: ##st-nline
+next line has to be? room_name1!
+ ##end-nline #com - possible
+	name x y
+links: #com -> possible
+	n1-n2//at least 1line
+	also all rooms has to have links-be connectesd?
+isroom funs - after ##commnds
+duplicates??? rnames n coords????bonusesparteoos EOYEO
 */
 typedef struct s_rooms
 {
@@ -47,5 +63,6 @@ typedef	struct s_lemin
 	long	nant;
 	t_
 }      			 t_lemin;
+int				iscomment(char *line);
 
 #endif
