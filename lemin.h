@@ -65,6 +65,11 @@ typedef struct s_rooms
 	long	nant;
 	t_
 }      			 t_lemin;*/
+typedef struct s_llrc
+{
+	char	*linkd;
+	t_list	*br;//roomnames;coords;addptrs
+}				t_llrc;
 int				iscomment(char *line);
 
 #endif

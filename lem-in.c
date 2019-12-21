@@ -86,19 +86,19 @@ int				comstend(char *line)
 	return (-34);
 }
 /*t_rooms				*/
-t_list              *valroom_fill1(t_list *br, t_rooms *r, char **roomcor)
+t_list              *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor)
 {
-	if (!br)
+	if (!br || !*br)
 	{
-		br = ft_lstnew((const void *)roomcor, (size_t)sizeof(roomcor));
-		br->content = (void *)roomcor;
-        return (br);
+		*br = ft_lstnew((const void *)roomcor, (size_t)sizeof(roomcor));
+		(*br)->content = (void *)roomcor;
+        return (*br);
 	}
 	else
 	{
 	//	br = br->next;
-		ft_lstadd(&br, ft_lstnew((const void *)roomcor, (size_t)sizeof(roomcor)));//br);
-		return (br);
+		ft_lstadd(br, ft_lstnew((const void *)roomcor, (size_t)sizeof(roomcor)));//br);
+		return (*br);
 	}
     return (0);
 }
@@ -166,7 +166,16 @@ t_rooms				*r_fill(t_rooms *r, char **roomcor)
 	check if linksblck? how->nextstep?
 	!' ' -> no rooms-coors
 */
-char				*roomlinkblock(char *line, int fd)
+/*
+ ** line - contains no room/!' '/'-'/ mb linked roomsnames
+ ** we now have to check rooms presence in all linkes
+ ** duplicate names?
+ */
+char 				*linkval(char *line, int fd)
+{
+	return (0);
+}
+char				*roomlinkblock(char *line, t_llrc llrc, int fd)//until linkblock;ret line w links n str w
 {
 	int		ret;//char	*r_name;
 	char	**roomcor;
@@ -175,6 +184,7 @@ char				*roomlinkblock(char *line, int fd)
 	t_list  *rl;
 
 	i = 0;//r = r_fill(r, 0);
+	rl = 0;
 	while (get_next_line(fd, &line) > 0 && ++i)
 	{
 		if ((ret = comstend(line)) == 0 || ret == -1 || ret == -2)
@@ -185,12 +195,12 @@ char				*roomlinkblock(char *line, int fd)
 		else
 		{
 			if (!ft_strchr(line, ' ') && ft_strchr(line, '-'))
-				return (line);
+				return(line);//line == 0 ? return (0) : return (llrc);//.linkd = line);
 			if (!(roomcor = valrmc_s(line)))
 				return (NULL);//thereis no room; or fault
 			//if (ft_strchr))
 			else
-				valroom_fill1(rl, r, roomcor);
+				valroom_fill1(&rl, /*r,*/ roomcor);
 		}
 	}
 	return (line);
@@ -202,12 +212,13 @@ char				*roomlinkblock(char *line, int fd)
 
 int				val_in(int fd)
 {
-	char *line;
-	char *linkd;
+	char	*line;
+	char	*linkd;
+	t_llrc	llrc;
 
 	if (amount_ants(fd) > 0)
 	{
-		linkd = roomlinkblock(line, fd);
+		linkd = roomlinkblock(line, llrc, fd);
 		if (linkd)
 			linkval(linkd, fd);
 	}
