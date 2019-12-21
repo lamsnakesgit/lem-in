@@ -6,7 +6,7 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:13 by ddratini          #+#    #+#             */
-/*   Updated: 2019/12/21 15:30:14 by ddratini         ###   ########.fr       */
+/*   Updated: 2019/12/21 18:13:54 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,16 +156,7 @@ t_rooms				*r_fill(t_rooms *r, char **roomcor)
 	}
 	return (r);
 }
-/*
-**lineforma: "##start" "##end" "#comm" "nam1 cx cy"
-//if not comm-s -> saveline-checked; somee var to kkeep countrun on rooms->then link follow
-			{//usual nemeroom w coords two//if (ft_strchr(line, ' '))//this maybe a room; save
-	add counter of st & en in cylcle; check st-|end end-|st
-	save rooms; after val-r-x-y; in lists ptr to 1 placeh mem/2d-arrs
-	if valrmcor->ssave links
-	check if linksblck? how->nextstep?
-	!' ' -> no rooms-coors
-*/
+
 /*
  ** line - contains no room/!' '/'-'/ mb linked roomsnames
  ** we now have to check rooms presence in all linkes
@@ -175,32 +166,50 @@ char 				*linkval(char *line, int fd)
 {
 	return (0);
 }
-char				*roomlinkblock(char *line, t_llrc llrc, int fd)//until linkblock;ret line w links n str w
+/*
+**lineforma: "##start" "##end" "#comm" "nam1 cx cy"
+//if not comm-s -> saveline-checked; somee var to kkeep countrun on rooms->then link follow
+			{//usual nemeroom w coords two//if (ft_strchr(line, ' '))//this maybe a room; save
+	add counter of st & en in cylcle; check st-|end end-|st
+	save rooms; after val-r-x-y; in lists ptr to 1 placeh mem/2d-arrs
+	if valrmcor->ssave links
+	check if linksblck? how->nextstep?
+	!' ' -> no rooms-coors
+ 	i guess create seprt roomspace for s/e;ret=line+strct w roomptr
+*/
+
+char 				*rmorlink(char *line)
+{
+	char	**roomcor;
+	t_list  *rl;
+	t_llrc	llrc;
+
+	rl = 0;
+	if (!ft_strchr(line, ' ') && ft_strchr(line, '-'))
+		return(line);//line == 0 ? return (0) : return (llrc);//.linkd = line);
+	if (!(roomcor = valrmc_s(line)))
+		return (NULL);//thereis no room; or fault
+	//if (ft_strchr))
+	else
+		llrc.br = valroom_fill1(&rl, /*r,*/ roomcor);
+	return 0;
+}
+char				*roomlinkblock(char *line, t_llrc llrc, int fd)
 {
 	int		ret;//char	*r_name;
-	char	**roomcor;
-	int 	i;//t_list	*rr;
-	t_rooms	*r;
-	t_list  *rl;
+	int 	i;//t_list	*rr;//	t_rooms	*r;
 
 	i = 0;//r = r_fill(r, 0);
-	rl = 0;
 	while (get_next_line(fd, &line) > 0 && ++i)
-	{
+	{//comms are skipped all throughout thw block
 		if ((ret = comstend(line)) == 0 || ret == -1 || ret == -2)
 			continue ;
 	/*	else if (ret == -1 || ret == -2)
 		{	save 1/end
 		}*/
-		else
+		else//non hashesa /after st/e check e/st
 		{
-			if (!ft_strchr(line, ' ') && ft_strchr(line, '-'))
-				return(line);//line == 0 ? return (0) : return (llrc);//.linkd = line);
-			if (!(roomcor = valrmc_s(line)))
-				return (NULL);//thereis no room; or fault
-			//if (ft_strchr))
-			else
-				valroom_fill1(&rl, /*r,*/ roomcor);
+			rmorlink(line);
 		}
 	}
 	return (line);
