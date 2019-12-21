@@ -177,12 +177,15 @@ char 				*linkval(char *line, int fd)
 	!' ' -> no rooms-coors
  	i guess create seprt roomspace for s/e;ret=line+strct w roomptr
 */
-
-char 				*rmorlink(char *line)
+/*
+** comms -skipped;counted;nost/e->fail;no after s/e/-?F;if rm if link
+**
+*/
+char 				*rmorlink(char *line, t_llrc *llrc)
 {
 	char	**roomcor;
 	t_list  *rl;
-	t_llrc	llrc;
+//	t_llrc	llrc;
 
 	rl = 0;
 	if (!ft_strchr(line, ' ') && ft_strchr(line, '-'))
@@ -191,13 +194,14 @@ char 				*rmorlink(char *line)
 		return (NULL);//thereis no room; or fault
 	//if (ft_strchr))
 	else
-		llrc.br = valroom_fill1(&rl, /*r,*/ roomcor);
+		llrc->br = valroom_fill1(&rl, /*r,*/ roomcor);//vrf; llrc->br = rl;
 	return 0;
 }
 char				*roomlinkblock(char *line, t_llrc llrc, int fd)
 {
 	int		ret;//char	*r_name;
 	int 	i;//t_list	*rr;//	t_rooms	*r;
+	char 	*li;
 
 	i = 0;//r = r_fill(r, 0);
 	while (get_next_line(fd, &line) > 0 && ++i)
@@ -209,7 +213,9 @@ char				*roomlinkblock(char *line, t_llrc llrc, int fd)
 		}*/
 		else//non hashesa /after st/e check e/st
 		{
-			rmorlink(line);
+			llrc.linkd = rmorlink(line, &llrc);
+			if (llrc.linkd)//li)
+				return (li);//
 		}
 	}
 	return (line);
