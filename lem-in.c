@@ -6,7 +6,7 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:13 by ddratini          #+#    #+#             */
-/*   Updated: 2019/12/17 19:43:24 by ddratini         ###   ########.fr       */
+/*   Updated: 2019/12/21 15:30:14 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,14 @@ unsigned int	amount_ants(int fd)
 		if (ft_atoi(line) == 0)// < 1
 		{
 			free(line);
-			ft_err();
+			return (0);//(ft_err());
 		}
 		else
-			ft_putendl(line);
-		free(line);
+		{
+		    ft_putendl(line);
+		    free(line);
+        //    return (0);
+        }
 	}
 	else//free ?
 		return (0);
@@ -50,9 +53,8 @@ t_list			*ft_create_rooms(char *line)
 	return (0);
 }
 /*
-** if 1 line is ants_nums;
-** * if not - or order or comment above ants -> display ERROR?
-** * read next_line -> either "name_c-x_c-y" or "##start"/"##end"/"#"comment;
+** if not - or order or comment above ants -> display ERROR?
+** read next_line -> either "name_c-x_c-y" or "##start"/"##end"/"#"comment;
 ** if at least one space contained -> rooms mb; else -> check_##/start/end/commet#
 ** * then links: "name-1_name-2"
 ** //maybe written null in line?
@@ -74,16 +76,33 @@ int				comstend(char *line)
 			return (-1);
 		if (!ft_strcmp(line + 2, "end"))
 			return (-2);
+		else
+			return (-3);//commnd?
 	}
 	else if (line[0] == '#')
 		return (0);
 	else
 		return (1);
+	return (-34);
 }
-t_rooms				*valroom_fill1(t_rooms *r, char **roomcor)
+/*t_rooms				*/
+t_list              *valroom_fill1(t_list *br, t_rooms *r, char **roomcor)
 {
-	
+	if (!br)
+	{
+		br = ft_lstnew((const void *)roomcor, (size_t)sizeof(roomcor));
+		br->content = (void *)roomcor;
+        return (br);
+	}
+	else
+	{
+	//	br = br->next;
+		ft_lstadd(&br, ft_lstnew((const void *)roomcor, (size_t)sizeof(roomcor)));//br);
+		return (br);
+	}
+    return (0);
 }
+
 int					val_cord(char **roomcor)//ps related neg int?
 {
 	int		j;
@@ -104,7 +123,8 @@ int					val_cord(char **roomcor)//ps related neg int?
 /*
 **send line ->check val inters->check coords; save r_name/room in linst;return->link1?
 */
-t_rooms				*valroom_save(char *line)
+/*t_rooms				*/
+char				**valrmc_s(char *line)
 {	char	**roomcor;
 	int 	i;
 
@@ -115,37 +135,47 @@ t_rooms				*valroom_save(char *line)
 	if (i == 3)
 	{
 		if (val_cord(roomcor))
-			return (roomcor[0]);
+			return (roomcor);//[0]);
 		else
+		{
+			ft_cleanmem(roomcor);
 			return (0);
+		}
 	}
 	ft_cleanmem(roomcor);
 	return (NULL);
 }
-/*t_rooms				*r_fill(t_rooms *r, char **roomcor)
+t_rooms				*r_fill(t_rooms *r, char **roomcor)
 {
-	if (!roomcor)
+	if (!r)//!roomcor)
 	{
-		;
+	//	r = ()
+		r->name_r = roomcor[0];
+		r->x = ft_atoi(roomcor[1]);
+		r->y = ft_atoi(roomcor[2]);
 	}
-}*/
+	return (r);
+}
 /*
 **lineforma: "##start" "##end" "#comm" "nam1 cx cy"
 //if not comm-s -> saveline-checked; somee var to kkeep countrun on rooms->then link follow
 			{//usual nemeroom w coords two//if (ft_strchr(line, ' '))//this maybe a room; save
+	add counter of st & en in cylcle; check st-|end end-|st
+	save rooms; after val-r-x-y; in lists ptr to 1 placeh mem/2d-arrs
+	if valrmcor->ssave links
+	check if linksblck? how->nextstep?
+	!' ' -> no rooms-coors
 */
 char				*roomlinkblock(char *line, int fd)
 {
-	int		ret;
-	char	*r_name;
+	int		ret;//char	*r_name;
 	char	**roomcor;
-	int 	i;
-	t_list	*rr;
+	int 	i;//t_list	*rr;
 	t_rooms	*r;
+	t_list  *rl;
 
-	i = 0;
-	r = r_fill(r, 0);
-	while (get_next_line(fd, line) > 0 && ++i)
+	i = 0;//r = r_fill(r, 0);
+	while (get_next_line(fd, &line) > 0 && ++i)
 	{
 		if ((ret = comstend(line)) == 0 || ret == -1 || ret == -2)
 			continue ;
@@ -154,28 +184,35 @@ char				*roomlinkblock(char *line, int fd)
 		}*/
 		else
 		{
-			if (!(roomcor = valroom_save(line)))
+			if (!ft_strchr(line, ' ') && ft_strchr(line, '-'))
+				return (line);
+			if (!(roomcor = valrmc_s(line)))
 				return (NULL);//thereis no room; or fault
+			//if (ft_strchr))
 			else
-				valroom_fill1(r, roomcor);
+				valroom_fill1(rl, r, roomcor);
 		}
 	}
 	return (line);
 }
 /*
 **{//extra dop otd for chech_room w own w gnl
-** //first--check_roomspresence_validif
-**next llevvell
-block w rooms next links when 1 ends snptherstarts
-	{
-	}
+** //--check_roomspresence_validif
 */
+
 int				val_in(int fd)
 {
 	char *line;
+	char *linkd;
 
 	if (amount_ants(fd) > 0)
-		roomlinkblock(line, fd);
+	{
+		linkd = roomlinkblock(line, fd);
+		if (linkd)
+			linkval(linkd, fd);
+	}
+	else
+		ft_err();
 	return (1);
 }
 
@@ -198,27 +235,27 @@ int 			main(int ac, char **av)
 	int fd;
 
 	fd = open(av[1], O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42", O_RDONLY);
+		   //maps_lemin/maps/map42", O_RDONLY);
 	if (ac > 1)// && fd > 0)//6)
 		val_in(fd);//(ac, av);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:18 by ddratini          #+#    #+#             */
-/*   Updated: 2019/12/17 19:44:55 by ddratini         ###   ########.fr       */
+/*   Updated: 2019/12/21 15:09:44 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ links: #com -> possible
 	also all rooms has to have links-be connectesd?
 isroom funs - after ##commnds
 duplicates??? rnames n coords????bonusesparteoos EOYEO
+no end/start -> ERRROR
+	perfval: roomblock-slice till linksblock
 */
 typedef struct s_rooms
 {
@@ -58,11 +60,11 @@ typedef struct s_rooms
 */	
 }				t_rooms;
 //struct that contains ptr to list /arr w rooms & ptr to lins??
-typedef	struct s_lemin
+/*typedef	struct s_lemin
 {
 	long	nant;
 	t_
-}      			 t_lemin;
+}      			 t_lemin;*/
 int				iscomment(char *line);
 
 #endif
