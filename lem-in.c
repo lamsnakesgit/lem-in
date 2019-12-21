@@ -181,13 +181,13 @@ char 				*linkval(char *line, int fd)
 ** comms -skipped;counted;nost/e->fail;no after s/e/-?F;if rm if link
 **
 */
-char 				*rmorlink(char *line, t_llrc *llrc)
+char 				*rmorlink(char *line, t_llrc *llrc, t_list *rl)
 {
 	char	**roomcor;
-	t_list  *rl;
+//	t_list  *rl;
 //	t_llrc	llrc;
 
-	rl = 0;
+//	rl = 0;
 	if (!ft_strchr(line, ' ') && ft_strchr(line, '-'))
 		return(line);//line == 0 ? return (0) : return (llrc);//.linkd = line);
 	if (!(roomcor = valrmc_s(line)))
@@ -202,7 +202,9 @@ char				*roomlinkblock(char *line, t_llrc llrc, int fd)
 	int		ret;//char	*r_name;
 	int 	i;//t_list	*rr;//	t_rooms	*r;
 	char 	*li;
+	t_list	*rl;
 
+	rl = 0;
 	i = 0;//r = r_fill(r, 0);
 	while (get_next_line(fd, &line) > 0 && ++i)
 	{//comms are skipped all throughout thw block
@@ -213,7 +215,7 @@ char				*roomlinkblock(char *line, t_llrc llrc, int fd)
 		}*/
 		else//non hashesa /after st/e check e/st
 		{
-			llrc.linkd = rmorlink(line, &llrc);
+			llrc.linkd = rmorlink(line, &llrc, &rl);
 			if (llrc.linkd)//li)
 				return (li);//
 		}
