@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:13 by ddratini          #+#    #+#             */
-/*   Updated: 2019/12/24 19:56:00 by marvin           ###   ########.fr       */
+/*   Updated: 2019/12/24 20:01:20 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,7 +220,8 @@ int					stcheck(char **line, t_llrc *lrc, int cm, int fd)
 		else if (re == 1)
 		{
 			rmorlink (*line, lrc, lrc->br);//orsavesep t_rm
-			savemarg(*line, lrc, cm);//nonfree?
+			savemarg(*line, lrc, cm);//nonfree?/ret?
+			return 1;
 		}//cont aft -1/-2 exit?
 	}
 }
@@ -272,10 +273,11 @@ char				*roomlinkblock(char **line, t_llrc llrc, int fd)
 	{//comms are skipped all throughout thw block
 		if ((ret = comstend(*line))==0||ret==-3||ret==-1||ret==-2)
 			free(*line);//continue ;//free//repetiton of st/e/else?
-		if (ret == -1)//save1/rol/cycle.iscom
-			stcheck(line, &llrc, ret, fd);//ret-check
-		else if (ret == -2)
-			stcheck(line, &llrc, ret, fd);
+		if (ret == -1 ||ret == -2)/*)//save1/rol/cycle.iscom*/
+			if (!stcheck(line, &llrc, ret, fd))//ret-check
+				return (0);//fre?
+	//	else if (ret == -2)
+	//		stcheck(line, &llrc, ret, fd);
 	/*	else if (ret == -1 || ret == -2)
 		{	save 1/end
 		}*/
