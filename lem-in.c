@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:13 by ddratini          #+#    #+#             */
-/*   Updated: 2019/12/24 19:05:08 by marvin           ###   ########.fr       */
+/*   Updated: 2019/12/24 19:56:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,12 +175,53 @@ char 				*linkval(char **line, t_llrc **llrc, int fd)
 	}
 	return (0);
 }
-int					stcheck(char **line, t_llrc *lrc, int ret, int fd)
+int					savemarg(char *line, t_llrc *lrc, int cm)
 {
-	if (ret == -1)
-	{
-		free (line);
+	t_rooms *x;
+	char	**roomcor;
+	int		i;
 
+	i = 0;//lastcalfunck
+	roomcor = ft_strsplit(line, ' ');
+	while (roomcor[i])
+		++i;
+//	if (i == 3)
+	x->name_r = roomcor[0];
+	x->x = roomcor[1];
+	x->y = roomcor[2];//malloc??x//rfil!!!
+	if (cm == -1)
+		lrc->fr = x;
+	if (cm == -2)
+		lrc->er =x;
+	return -11;
+}
+int					stcheck(char **line, t_llrc *lrc, int cm, int fd)
+{
+	int re;
+
+	if (cm == -2)
+		++lrc->end;
+	if (cm == -1)
+		++lrc->st;
+	if (lrc->st > 1 || lrc->end > 1)
+		return 0;
+	while (get_next_line(fd, line) > 0)
+	{
+		if ((re=comstend(*line))!=1)//== -2|| re == -1||re==-3||re==0)
+		{
+			free(*line);
+		/*	if (re == -1 && (cm == -1 || cm == -2))
+				return 0;
+			else if (re == -2 && (cm == -2 || cm == -1))
+				return 0;*/
+			if (re ==-2||re==-1)
+				return 0;
+		}
+		else if (re == 1)
+		{
+			rmorlink (*line, lrc, lrc->br);//orsavesep t_rm
+			savemarg(*line, lrc, cm);//nonfree?
+		}//cont aft -1/-2 exit?
 	}
 }
 /*
@@ -232,25 +273,24 @@ char				*roomlinkblock(char **line, t_llrc llrc, int fd)
 		if ((ret = comstend(*line))==0||ret==-3||ret==-1||ret==-2)
 			free(*line);//continue ;//free//repetiton of st/e/else?
 		if (ret == -1)//save1/rol/cycle.iscom
-			stcheck(line, &llrc, ret, fd);//ret
+			stcheck(line, &llrc, ret, fd);//ret-check
 		else if (ret == -2)
 			stcheck(line, &llrc, ret, fd);
 	/*	else if (ret == -1 || ret == -2)
 		{	save 1/end
 		}*/
 		if (ret == 1)//else//non hashesa /after st/e
-		{
-	//	/*	llrc.linkd =*/ rmorlink(*line, &llrc,&(llrc.br));
+		{//	/*	llrc.linkd =*/ rmorlink(*line, &llrc,&(llrc.br));
 			//&rl);//okrm->skip
 		//	if (line)//(llrc.linkd)//li)//hr->funlink?;?stopplace4rmsN0
 			if ((rm = rmorlink(*line, &llrc, &(llrc.br))) == 2)	
 				return (*line);//if no rms->lnks(li);//
+			free(*line);//mltpl tims prb
 			if (rm == 0)
 				return (0);
 		}
-		free(*line);//mltpl tims prb
 	}
-	return (0);//(*line);ERR
+	return (0);//(*line);ERRvalrmonly
 }
 /*
 **{//extra dop otd for chech_room w own w gnl
@@ -267,6 +307,8 @@ int				val_in(int fd)
 	{
 		llrc.br = 0;//rl=0?
 		linkd = roomlinkblock(&line, &llrc, fd);
+		if (!llrc.rmi || llrc.end != 1 || llrc.st != 1)
+			return (ft_err());
 		if (linkd)//if freed? send rmlis+line+fd//st-end/line
 			linkval(&linkd, &llrc, fd);
 		else
