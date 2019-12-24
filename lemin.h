@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lemin.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:18 by ddratini          #+#    #+#             */
-/*   Updated: 2019/12/21 15:09:44 by ddratini         ###   ########.fr       */
+/*   Updated: 2019/12/24 14:50:40 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,16 @@ links: #com -> possible
 	n1-n2//at least 1line
 	also all rooms has to have links-be connectesd?
 isroom funs - after ##commnds
-duplicates??? rnames n coords????bonusesparteoos EOYEO
-no end/start -> ERRROR
-	perfval: roomblock-slice till linksblock
+VAL-PRCSS: duplicates??? rnames n coords????bonusesparteoos EOYEO
+not/ebough link-etc
+strct -ptrsonrmsc - lines;
+allso common strct for all_tlstrms;rmcrs;st/end-separate ls/strcs;
+when create arr-rms;etc?
+rromlinkblock: line ** /to save whn apprch links/etc;ret-link-rm/cr
+but free?ptr->strinl;
+or zero-strct w lr-line; ptr
+2 s/e? in links?
+se-savesep-allstrct
 */
 typedef struct s_rooms
 {
@@ -67,9 +74,9 @@ typedef struct s_rooms
 }      			 t_lemin;*/
 typedef struct s_llrc
 {
-	char	*linkd;
-	t_list	*br;//roomnames;coords;addptrs
-}				t_llrc;
+       char    *linkd;
+       t_list  *br;//roomnames;coords;addptrs
+}                              t_llrc;
 int				iscomment(char *line);
 
 #endif

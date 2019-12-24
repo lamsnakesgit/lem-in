@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem-in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:13 by ddratini          #+#    #+#             */
-/*   Updated: 2019/12/21 18:13:54 by ddratini         ###   ########.fr       */
+/*   Updated: 2019/12/23 19:50:10 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,8 @@ char 				*rmorlink(char *line, t_llrc *llrc, t_list *rl)
 //	t_llrc	llrc;
 
 //	rl = 0;
-	if (!ft_strchr(line, ' ') && ft_strchr(line, '-'))
+	if (!ft_strchr(line, ' '))//btwr-name-1
+// && ft_strchr(line, '-'))//lol/KO
 		return(line);//line == 0 ? return (0) : return (llrc);//.linkd = line);
 	if (!(roomcor = valrmc_s(line)))
 		return (NULL);//thereis no room; or fault
@@ -208,16 +209,20 @@ char				*roomlinkblock(char *line, t_llrc llrc, int fd)
 	i = 0;//r = r_fill(r, 0);
 	while (get_next_line(fd, &line) > 0 && ++i)
 	{//comms are skipped all throughout thw block
-		if ((ret = comstend(line)) == 0 || ret == -1 || ret == -2)
-			continue ;
+		if ((ret = comstend(line)) == 0 ||ret==-3)
+		// ret == -1 || ret == -2)
+			continue ;//free//repetiton of st/e/else?
+		if (ret == -1)//save1/rol/cycle.iscom
 	/*	else if (ret == -1 || ret == -2)
 		{	save 1/end
 		}*/
 		else//non hashesa /after st/e check e/st
-		{
-			llrc.linkd = rmorlink(line, &llrc, &rl);
-			if (llrc.linkd)//li)
+		{///oh rol-> mb link->sendline; inval-rmc???ret
+		//ret if links->?in here->save-vallink
+			llrc.linkd = rmorlink(line, &llrc, &rl);//okrm->skip
+			if (llrc.linkd)//li)//hr->funlink?;?stopplace4rmsN0
 				return (li);//
+			free(line)//mltpl tims prb
 		}
 	}
 	return (line);
