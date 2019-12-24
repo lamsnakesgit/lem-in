@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:18 by ddratini          #+#    #+#             */
-/*   Updated: 2019/12/24 14:50:40 by marvin           ###   ########.fr       */
+/*   Updated: 2019/12/24 17:21:07 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ but free?ptr->strinl;
 or zero-strct w lr-line; ptr
 2 s/e? in links?
 se-savesep-allstrct
+whet top stop on link-s?
 */
 typedef struct s_rooms
 {
@@ -76,6 +77,12 @@ typedef struct s_llrc
 {
        char    *linkd;
        t_list  *br;//roomnames;coords;addptrs
+	   int		st;
+	   int		end;
+	   int		rmi;
+	   t_rooms	*fr;
+	   t_rooms	*er;
+	   t_rooms	*arrrm;
 }                              t_llrc;
 int				iscomment(char *line);
 

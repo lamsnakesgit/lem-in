@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:13 by ddratini          #+#    #+#             */
-/*   Updated: 2019/12/23 19:50:10 by marvin           ###   ########.fr       */
+/*   Updated: 2019/12/24 17:43:58 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ char				**valrmc_s(char *line)
 		++i;
 	if (i == 3)
 	{
-		if (val_cord(roomcor))
+		if (roomcor[0][0] != 'L' && val_cord(roomcor))
 			return (roomcor);//[0]);
 		else
 		{
@@ -181,51 +181,55 @@ char 				*linkval(char *line, int fd)
 ** comms -skipped;counted;nost/e->fail;no after s/e/-?F;if rm if link
 **
 */
-char 				*rmorlink(char *line, t_llrc *llrc, t_list *rl)
+/*char 				*/
+int					rmorlink(char *line, t_llrc *llrc, t_list *rl)
 {
 	char	**roomcor;
-//	t_list  *rl;
-//	t_llrc	llrc;
 
-//	rl = 0;
 	if (!ft_strchr(line, ' '))//btwr-name-1
 // && ft_strchr(line, '-'))//lol/KO
-		return(line);//line == 0 ? return (0) : return (llrc);//.linkd = line);
+	{
+	//oi	free (line);//0?
+	//	return(line);//line == 0 ? return (0) : return (llrc);//.linkd = line);
+		return 2;
+	}
 	if (!(roomcor = valrmc_s(line)))
 		return (NULL);//thereis no room; or fault
 	//if (ft_strchr))
 	else
 		llrc->br = valroom_fill1(&rl, /*r,*/ roomcor);//vrf; llrc->br = rl;
-	return 0;
+	return 10;
 }
-char				*roomlinkblock(char *line, t_llrc llrc, int fd)
+char				*roomlinkblock(char **line, t_llrc llrc, int fd)
 {
 	int		ret;//char	*r_name;
-	int 	i;//t_list	*rr;//	t_rooms	*r;
-	char 	*li;
-	t_list	*rl;
+	int 	i;//t_list *rr;//t_rooms *r;char *li;
 
-	rl = 0;
 	i = 0;//r = r_fill(r, 0);
-	while (get_next_line(fd, &line) > 0 && ++i)
+	while (get_next_line(fd, line) > 0 && ++i)
 	{//comms are skipped all throughout thw block
-		if ((ret = comstend(line)) == 0 ||ret==-3)
+		if ((ret = comstend(*line)) == 0 ||ret==-3)
 		// ret == -1 || ret == -2)
-			continue ;//free//repetiton of st/e/else?
-		if (ret == -1)//save1/rol/cycle.iscom
+			free(*line);//continue ;//free//repetiton of st/e/else?
+		/*if (ret == -1)//save1/rol/cycle.iscom
+			stcheck();//ret
+		else if (ret == -2)
+			stcheck();*/
 	/*	else if (ret == -1 || ret == -2)
 		{	save 1/end
 		}*/
 		else//non hashesa /after st/e check e/st
 		{///oh rol-> mb link->sendline; inval-rmc???ret
 		//ret if links->?in here->save-vallink
-			llrc.linkd = rmorlink(line, &llrc, &rl);//okrm->skip
-			if (llrc.linkd)//li)//hr->funlink?;?stopplace4rmsN0
-				return (li);//
-			free(line)//mltpl tims prb
+		/*	llrc.linkd =*/ rmorlink(*line, &llrc,&(llrc.br));
+			//&rl);//okrm->skip
+		//	if (line)//(llrc.linkd)//li)//hr->funlink?;?stopplace4rmsN0
+			if (rmorlink(*line, &llrc, &(llrc.br)))	
+				return (*line)//if no rms->lnks(li);//
 		}
+		free(*line);//mltpl tims prb
 	}
-	return (line);
+	return (*line);
 }
 /*
 **{//extra dop otd for chech_room w own w gnl
@@ -240,8 +244,9 @@ int				val_in(int fd)
 
 	if (amount_ants(fd) > 0)
 	{
-		linkd = roomlinkblock(line, llrc, fd);
-		if (linkd)
+		llrc.br = 0;//rl=0?
+		linkd = roomlinkblock(&line, &llrc, fd);
+		if (linkd)//if freed? send rmlis+line+fd//st-end
 			linkval(linkd, fd);
 	}
 	else
