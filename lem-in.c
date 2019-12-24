@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:13 by ddratini          #+#    #+#             */
-/*   Updated: 2019/12/24 17:43:58 by marvin           ###   ########.fr       */
+/*   Updated: 2019/12/24 19:05:08 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,9 +162,26 @@ t_rooms				*r_fill(t_rooms *r, char **roomcor)
  ** we now have to check rooms presence in all linkes
  ** duplicate names?
  */
-char 				*linkval(char *line, int fd)
+char 				*linkval(char **line, t_llrc **llrc, int fd)
 {
+	int ret;
+
+	while (get_next_line(fd, line) > 0)
+	{
+		if ((ret = comstend(*line))==0||ret==-3)
+			free (*line);
+		else if (ret == -2 || ret == -1)
+			return (0);
+	}
 	return (0);
+}
+int					stcheck(char **line, t_llrc *lrc, int ret, int fd)
+{
+	if (ret == -1)
+	{
+		free (line);
+
+	}
 }
 /*
 **lineforma: "##start" "##end" "#comm" "nam1 cx cy"
@@ -179,9 +196,9 @@ char 				*linkval(char *line, int fd)
 */
 /*
 ** comms -skipped;counted;nost/e->fail;no after s/e/-?F;if rm if link
-**
+** //mb link->sendline; inval-rmc???ret
+**		//ret if links->?in here->save-vallink
 */
-/*char 				*/
 int					rmorlink(char *line, t_llrc *llrc, t_list *rl)
 {
 	char	**roomcor;
@@ -193,43 +210,47 @@ int					rmorlink(char *line, t_llrc *llrc, t_list *rl)
 	//	return(line);//line == 0 ? return (0) : return (llrc);//.linkd = line);
 		return 2;
 	}
-	if (!(roomcor = valrmc_s(line)))
+	if (!(roomcor = valrmc_s(line)))//STOP
 		return (NULL);//thereis no room; or fault
 	//if (ft_strchr))
 	else
+	{
 		llrc->br = valroom_fill1(&rl, /*r,*/ roomcor);//vrf; llrc->br = rl;
+		llrc->rmi++;
+	}
 	return 10;
 }
 char				*roomlinkblock(char **line, t_llrc llrc, int fd)
 {
-	int		ret;//char	*r_name;
-	int 	i;//t_list *rr;//t_rooms *r;char *li;
+	int		ret;
+	int 	i;
+	int		rm;
 
 	i = 0;//r = r_fill(r, 0);
 	while (get_next_line(fd, line) > 0 && ++i)
 	{//comms are skipped all throughout thw block
-		if ((ret = comstend(*line)) == 0 ||ret==-3)
-		// ret == -1 || ret == -2)
+		if ((ret = comstend(*line))==0||ret==-3||ret==-1||ret==-2)
 			free(*line);//continue ;//free//repetiton of st/e/else?
-		/*if (ret == -1)//save1/rol/cycle.iscom
-			stcheck();//ret
+		if (ret == -1)//save1/rol/cycle.iscom
+			stcheck(line, &llrc, ret, fd);//ret
 		else if (ret == -2)
-			stcheck();*/
+			stcheck(line, &llrc, ret, fd);
 	/*	else if (ret == -1 || ret == -2)
 		{	save 1/end
 		}*/
-		else//non hashesa /after st/e check e/st
-		{///oh rol-> mb link->sendline; inval-rmc???ret
-		//ret if links->?in here->save-vallink
-		/*	llrc.linkd =*/ rmorlink(*line, &llrc,&(llrc.br));
+		if (ret == 1)//else//non hashesa /after st/e
+		{
+	//	/*	llrc.linkd =*/ rmorlink(*line, &llrc,&(llrc.br));
 			//&rl);//okrm->skip
 		//	if (line)//(llrc.linkd)//li)//hr->funlink?;?stopplace4rmsN0
-			if (rmorlink(*line, &llrc, &(llrc.br)))	
-				return (*line)//if no rms->lnks(li);//
+			if ((rm = rmorlink(*line, &llrc, &(llrc.br))) == 2)	
+				return (*line);//if no rms->lnks(li);//
+			if (rm == 0)
+				return (0);
 		}
 		free(*line);//mltpl tims prb
 	}
-	return (*line);
+	return (0);//(*line);ERR
 }
 /*
 **{//extra dop otd for chech_room w own w gnl
@@ -246,8 +267,10 @@ int				val_in(int fd)
 	{
 		llrc.br = 0;//rl=0?
 		linkd = roomlinkblock(&line, &llrc, fd);
-		if (linkd)//if freed? send rmlis+line+fd//st-end
-			linkval(linkd, fd);
+		if (linkd)//if freed? send rmlis+line+fd//st-end/line
+			linkval(&linkd, &llrc, fd);
+		else
+			ft_err();
 	}
 	else
 		ft_err();
