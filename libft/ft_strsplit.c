@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 18:55:30 by ddratini          #+#    #+#             */
-/*   Updated: 2019/04/24 15:41:58 by ddratini         ###   ########.fr       */
+/*   Updated: 2019/12/25 20:00:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char				**ft_strsplit(char const *s, char c)
 			i++;
 		if (i > ffound)
 			split[n++] = ft_strndup(s + ffound, i - ffound);
-		if (!(ft_strndup(s + ffound, i - ffound)))
+		if (!split[n-1])//(!(ft_strndup(s + ffound, i - ffound)))
 			return ((char **)ft_cleanmem(split));
 	}
 	split[n] = 0;

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:13 by ddratini          #+#    #+#             */
-/*   Updated: 2019/12/25 16:11:51 by marvin           ###   ########.fr       */
+/*   Updated: 2019/12/25 19:48:27 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ int					val_cord(char **roomcor)//ps related neg int?
 }
 /*
 **send line ->check val inters->check coords; save r_name/room in linst;return->link1?
+** delete- if nonval rmcor
 */
 /*t_rooms				*/
 char				**valrmc_s(char *line)
@@ -129,19 +130,12 @@ char				**valrmc_s(char *line)
 	int 	i;
 
 	i = 0;
-	roomcor = ft_strsplit(line, ' ');
+	if (!(roomcor = ft_strsplit(line, ' ')))
+		return 0;
 	while (roomcor[i] && roomcor)
 		++i;
-	if (i == 3)
-	{
-		if (roomcor[0][0] != 'L' && val_cord(roomcor))
-			return (roomcor);//[0]);
-		else
-		{
-			ft_cleanmem(roomcor);
-			return (0);
-		}
-	}
+	if (i == 3 && roomcor[0][0] != 'L' && val_cord(roomcor))
+		return (roomcor);
 	ft_cleanmem(roomcor);
 	return (NULL);
 }
@@ -180,8 +174,13 @@ int					savemarg(char *line, t_llrc *lrc, int cm)
 	t_rooms *x;
 	char	**roomcor;
 	int		i;
+	char 	**ok;
 
 	i = 0;//lastcalfunck
+	ok = lrc->br->content;//???
+	printf("%s\n%s\n%s\n", ok[0], ok[1], ok[3]);
+	x->name_r = lrc->br->content;
+//	x->x = lrc->br->content[1];
 	roomcor = ft_strsplit(line, ' ');//dont we ned to pnt-1lst?
 	while (roomcor[i])
 		++i;
@@ -205,22 +204,19 @@ int					stcheck(char **line, t_llrc *lrc, int cm, int fd)
 		return 0;
 	while (get_next_line(fd, line) > 0)
 	{
-		if ((re=comstend(*line))!=1)//== -2|| re == -1||re==-3||re==0)
+		if ((re=comstend(*line))!=1)
 		{
 			free(*line);
-		/*	if (re == -1 && (cm == -1 || cm == -2))
-				return 0;
-			else if (re == -2 && (cm == -2 || cm == -1))
-				return 0;*/
 			if (re ==-2||re==-1)
 				return 0;
 		}
 		else if (re == 1)
-		{
-		if ((rvl=rmorlink(*line, lrc, lrc->br))==2||!rvl)
-		//orsavesep t_rm
-			return 0;
+		{//freelst?
+			if ((rvl=rmorlink(*line, lrc, lrc->br))==2||!rvl)
+			//orsavesep t_rm
+				return 0;
 			savemarg(*line, lrc, cm);//nonfree?/ret?
+			free (*line);
 			return 1;
 		}//cont aft -1/-2 exit?
 	}
@@ -245,10 +241,8 @@ int					rmorlink(char *line, t_llrc *llrc, t_list *rl)
 {
 	char	**roomcor;
 
-	if (!ft_strchr(line, ' '))//btwr-name-1
-// && ft_strchr(line, '-'))//lol/KO
-	{
-	//oi	free (line);//0?
+	if (!ft_strchr(line, ' '))//btwr-name-1//lol/KO
+	{//oi	free (line);//0?
 	//	return(line);//line == 0 ? return (0) : return (llrc);//.linkd = line);
 		return 2;
 	}
@@ -276,13 +270,13 @@ char				*roomlinkblock(char **line, t_llrc *llrc, int fd)
 		if (ret == -1 ||ret == -2)/*)//save1/rol/cycle.iscom*/
 			if (!stcheck(line, llrc, ret, fd))//ret-check
 				return (0);//fre?
-		if (ret == 1)//else//non hashesa /after st/e
-		{//	/*	llrc.linkd =*/ rmorlink(*line, &llrc,&(llrc.br));
-			//&rl);//okrm->skip
+		if (ret == 1)
+		{///*llrc.linkd =*/ rmorlink(*line, &llrc,&(llrc.br));
+			//&rl);
 		//	if (line)//(llrc.linkd)//li)//hr->funlink?;?stopplace4rmsN0
 			if ((rm = rmorlink(*line, llrc, (llrc->br))) == 2)	
 				return (*line);//if no rms->lnks(li);//
-			free(*line);//mltpl tims prb
+			free(*line);
 			if (rm == 0)
 				return (0);
 		}
@@ -303,9 +297,9 @@ int				val_in(int fd)
 	if (amount_ants(fd) > 0)
 	{
 		llrc.br = 0;//rl=0?
-		linkd = roomlinkblock(&line, &llrc, fd);
+		linkd = roomlinkblock(&line, &llrc, fd);//dupls?
 		if (!llrc.rmi || llrc.end != 1 || llrc.st != 1)
-			return (ft_err());
+			return (ft_err());//freel-ifl//free s/e
 		if (linkd)//if freed? send rmlis+line+fd//st-end/line
 			linkval(&linkd, &llrc, fd);
 		else
