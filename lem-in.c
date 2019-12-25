@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:13 by ddratini          #+#    #+#             */
-/*   Updated: 2019/12/25 19:48:27 by marvin           ###   ########.fr       */
+/*   Updated: 2019/12/25 20:13:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -297,6 +297,9 @@ int				val_in(int fd)
 	if (amount_ants(fd) > 0)
 	{
 		llrc.br = 0;//rl=0?
+		llrc.end = 0;
+		llrc.st = 0;
+		llrc.linkd = 0;
 		linkd = roomlinkblock(&line, &llrc, fd);//dupls?
 		if (!llrc.rmi || llrc.end != 1 || llrc.st != 1)
 			return (ft_err());//freel-ifl//free s/e
@@ -329,7 +332,7 @@ int 			main(int ac, char **av)
 	int fd;
 
 	fd = open(av[1], O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42", O_RDONLY);
 		   //maps_lemin/maps/map42", O_RDONLY);
 	if (ac > 1)// && fd > 0)//6)
 		val_in(fd);//(ac, av);
