@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:18 by ddratini          #+#    #+#             */
-/*   Updated: 2019/12/24 17:21:07 by marvin           ###   ########.fr       */
+/*   Updated: 2019/12/25 16:08:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_llrc
 	   t_rooms	*er;
 	   t_rooms	*arrrm;
 }                              t_llrc;
-int				iscomment(char *line);
+int			iscomment(char *line);
+int			rmorlink(char *line, t_llrc *llrc, t_list *rl);//0ptr-check
 
 #endif
