@@ -220,6 +220,7 @@ int					stcheck(char **line, t_llrc *lrc, int cm, int fd)
 			return 1;
 		}//cont aft -1/-2 exit?
 	}
+	return 0;
 }
 /*
 **lineforma: "##start" "##end" "#comm" "nam1 cx cy"
@@ -237,7 +238,7 @@ int					stcheck(char **line, t_llrc *lrc, int cm, int fd)
 ** //mb link->sendline; inval-rmc???ret
 **		//ret if links->?in here->save-vallink
 */
-int					rmorlink(char *line, t_llrc *llrc, t_list *rl)
+int				/*remotes/origin/valst-p26?*/	rmorlink(char *line, t_llrc *llrc, t_list *rl)
 {
 	char	**roomcor;
 
