@@ -25,10 +25,11 @@ int				ft_err(void)
 unsigned int	amount_ants(int fd)
 {
 	char *line;
+	int 	nant;
 
 	if (get_next_line(fd, &line) > 0)
 	{
-		if (ft_atoi(line) == 0)// < 1
+		if ((nant = ft_atoi(line)) == 0)// < 1
 		{
 			free(line);
 			return (0);//(ft_err());
@@ -42,7 +43,7 @@ unsigned int	amount_ants(int fd)
 	}
 	else//free ?
 		return (0);
-	return (1);
+	return (nant);
 }
 /*char			**ft_split_room(char *line, char c)
 {
@@ -177,17 +178,16 @@ int					savemarg(char *line, t_llrc *lrc, int cm)
 	char 	**ok;
 
 	i = 0;//lastcalfunck
-	ok = lrc->br->content;//???
-	printf("%s\n%s\n%s\n", ok[0], ok[1], ok[3]);
-	x->name_r = lrc->br->content;
+	ok = lrc->br->content;//???	//ok = (char**)lrc->br->content;
+//	printf("%s\n%s\n%s\n", ok[0], ok[1], ok[2]);
+//	x->name_r = lrc->br->content;//-
+//	x->name_r = ((char*)lrc->br->content)[0];//-
+	x->name_r = ok[0];
+	x->x = ft_atoi(ok[1]);
+	x->y = ft_atoi(ok[2]);
 //	x->x = lrc->br->content[1];
-	roomcor = ft_strsplit(line, ' ');//dont we ned to pnt-1lst?
-	while (roomcor[i])
-		++i;
-//	if (i == 3)
-	x->name_r = roomcor[0];
-	x->x = ft_atoi(roomcor[1]);
-	x->y = ft_atoi(roomcor[2]);//malloc??x//rfil!!!
+//	roomcor = ft_strsplit(line, ' ');//dont we ned to pnt-1lst?
+//	x->y = ft_atoi(roomcor[2]);//malloc??x//rfil!!!
 	if (cm == -1)
 		lrc->fr = x;
 	if (cm == -2)
@@ -335,6 +335,7 @@ int 			main(int ac, char **av)
 	fd = open(av[1], O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42", O_RDONLY);
 		   //maps_lemin/maps/map42", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42", O_RDONLY);
 	if (ac > 1)// && fd > 0)//6)
 		val_in(fd);//(ac, av);
 //
