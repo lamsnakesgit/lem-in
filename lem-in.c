@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:13 by ddratini          #+#    #+#             */
-/*   Updated: 2019/12/25 20:13:55 by marvin           ###   ########.fr       */
+/*   Updated: 2019/12/26 18:19:02 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,10 +176,12 @@ int					savemarg(char *line, t_llrc *lrc, int cm)
 	char	**roomcor;
 	int		i;
 	char 	**ok;
-
 	i = 0;//lastcalfunck
-	ok = lrc->br->content;//???	//ok = (char**)lrc->br->content;
-//	printf("%s\n%s\n%s\n", ok[0], ok[1], ok[2]);
+	ok = (char**)lrc->br->content;//???	//ok = (char**)lrc->br->content;
+	printf("%s\n%s\n%s\n", ok[0], ok[1], ok[2]);
+	//x->x = 0;
+	x = (t_rooms*)malloc(sizeof(t_rooms));
+	x->name_r = 0; x->x = 0-1; x->y = -1;
 //	x->name_r = lrc->br->content;//-
 //	x->name_r = ((char*)lrc->br->content)[0];//-
 	x->name_r = ok[0];
@@ -191,7 +193,7 @@ int					savemarg(char *line, t_llrc *lrc, int cm)
 	if (cm == -1)
 		lrc->fr = x;
 	if (cm == -2)
-		lrc->er =x;
+		lrc->er = x;
 	return -11;
 }
 int					stcheck(char **line, t_llrc *lrc, int cm, int fd)
@@ -238,7 +240,7 @@ int					stcheck(char **line, t_llrc *lrc, int cm, int fd)
 ** //mb link->sendline; inval-rmc???ret
 **		//ret if links->?in here->save-vallink
 */
-int				/*remotes/origin/valst-p26?*/	rmorlink(char *line, t_llrc *llrc, t_list *rl)
+int				rmorlink(char *line, t_llrc *llrc, t_list *rl)
 {
 	char	**roomcor;
 
@@ -252,7 +254,7 @@ int				/*remotes/origin/valst-p26?*/	rmorlink(char *line, t_llrc *llrc, t_list *
 	//if (ft_strchr))
 	else
 	{
-		llrc->br = valroom_fill1(&rl, /*r,*/ roomcor);//vrf; llrc->br = rl;
+		llrc->br = valroom_fill1(/*&rl*/(&llrc->br), /*r,*/ roomcor);//vrf; llrc->br = rl;
 		llrc->rmi++;
 	}
 	return 10;
@@ -284,6 +286,18 @@ char				*roomlinkblock(char **line, t_llrc *llrc, int fd)
 	}
 	return (0);//(*line);ERRvalrmonly
 }
+t_llrc 			nullst(t_llrc llrc)
+{
+	llrc.end = 0;
+	llrc.st = 0;
+	llrc.rmi = 0;
+	llrc.linkd = 0;
+	llrc.br = 0;//rl=0?
+	llrc.fr = 0;
+	llrc.er = 0;
+	llrc.arrrm = 0;
+	return (llrc);
+}
 /*
 **{//extra dop otd for chech_room w own w gnl
 ** //--check_roomspresence_validif
@@ -297,10 +311,7 @@ int				val_in(int fd)
 
 	if (amount_ants(fd) > 0)
 	{
-		llrc.br = 0;//rl=0?
-		llrc.end = 0;
-		llrc.st = 0;
-		llrc.linkd = 0;
+		llrc = nullst(llrc);
 		linkd = roomlinkblock(&line, &llrc, fd);//dupls?
 		if (!llrc.rmi || llrc.end != 1 || llrc.st != 1)
 			return (ft_err());//freel-ifl//free s/e
@@ -335,7 +346,7 @@ int 			main(int ac, char **av)
 	fd = open(av[1], O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42", O_RDONLY);
 		   //maps_lemin/maps/map42", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map_42", O_RDONLY);
 	if (ac > 1)// && fd > 0)//6)
 		val_in(fd);//(ac, av);
 //
