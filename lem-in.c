@@ -99,6 +99,7 @@ t_list              *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor)
 	{
 	//	br = br->next;
 		ft_lstadd(br, ft_lstnew((const void *)roomcor, (size_t)sizeof(roomcor)));//br);
+	//	(*br)->content = (void *)roomcor;//!
 		return (*br);
 	}
     return (0);
@@ -196,6 +197,7 @@ int					savemarg(char *line, t_llrc *lrc, int cm)
 		lrc->er = x;
 	return -11;
 }
+
 int					stcheck(char **line, t_llrc *lrc, int cm, int fd)
 {
 	int re;
@@ -282,6 +284,7 @@ char				*roomlinkblock(char **line, t_llrc *llrc, int fd)
 			free(*line);
 			if (rm == 0)
 				return (0);
+			printf("%s\n|% s\n% s\n", llrc->br->content[0]);//, (llrc->br->content)[1], (llrc->br->content)[2]);
 		}
 	}
 	return (0);//(*line);ERRvalrmonly
@@ -347,7 +350,8 @@ int 			main(int ac, char **av)
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42", O_RDONLY);
 		   //maps_lemin/maps/map42", O_RDONLY);
 	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map_42", O_RDONLY);
-	if (ac > 1)// && fd > 0)//6)
+	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42", O_RDONLY);
+	//if (ac > 1)// && fd > 0)//6)
 		val_in(fd);//(ac, av);
 //
 //
