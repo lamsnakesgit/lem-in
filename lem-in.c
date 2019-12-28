@@ -127,13 +127,14 @@ int					val_cord(char **roomcor)//ps related neg int?
 */
 /*t_rooms				*/
 char				**valrmc_s(char *line)
-{	char	**roomcor;
+{
+	char	**roomcor;
 	int 	i;
 
 	i = 0;
 	if (!(roomcor = ft_strsplit(line, ' ')))
 		return 0;
-	while (roomcor[i] && roomcor)
+	while (roomcor[i])// && roomcor)//uncod jump
 		++i;
 	if (i == 3 && roomcor[0][0] != 'L' && val_cord(roomcor))
 		return (roomcor);
@@ -157,6 +158,9 @@ t_rooms				*r_fill(t_rooms *r, char **roomcor)
  ** we now have to check rooms presence in all linkes
  ** duplicate names?
  */
+/*
+** linkval: first - check1st line
+*/
 char 				*linkval(char **line, t_llrc *llrc, int fd)
 {
 	int ret;
@@ -177,13 +181,12 @@ int					savemarg(char *line, t_llrc *lrc, int cm)
 	int		i;
 	char 	**ok;
 	i = 0;//lastcalfunck
+
 	ok = (char**)lrc->br->content;//???	//ok = (char**)lrc->br->content;
-	printf("%s\n%s\n%s\n", ok[0], ok[1], ok[2]);
+//	printf("%s\n%s\n%s\n", ok[0], ok[1], ok[2]);
 	//x->x = 0;
 	x = (t_rooms*)malloc(sizeof(t_rooms));
 	x->name_r = 0; x->x = 0-1; x->y = -1;
-//	x->name_r = lrc->br->content;//-
-//	x->name_r = ((char*)lrc->br->content)[0];//-
 	x->name_r = ok[0];
 	x->x = ft_atoi(ok[1]);
 	x->y = ft_atoi(ok[2]);
@@ -225,6 +228,23 @@ int					stcheck(char **line, t_llrc *lrc, int cm, int fd)
 	}
 	return 0;
 }
+int                 duplicheck(char **roomcor, t_llrc *lrc)
+{
+	t_list *tmp;
+
+	tmp = lrc->br;
+	//while (lrc->br)
+	while (tmp)
+	{//char * void*[0]*
+	//	if (!(ft_strcmp(((char**)(lrc->br->content))[0], roomcor[0])))
+		if (!(ft_strcmp(((char**)(tmp->content))[0], roomcor[0])))
+			return (0);
+//		if (ft_strcmp((((char**)(lrc->br->content))[1]), roomcor[1])//coorXY
+	//	lrc->br = lrc->br->next;
+		tmp= tmp->next;
+	}
+	return (1);
+}
 /*
 **lineforma: "##start" "##end" "#comm" "nam1 cx cy"
 //if not comm-s -> saveline-checked; somee var to kkeep countrun on rooms->then link follow
@@ -253,8 +273,11 @@ int				rmorlink(char *line, t_llrc *lrc, t_list *rl)
 	if (!(roomcor = valrmc_s(line)))//STOP
 		return (0);//(NULL);//thereis no room; or fault
 	//if (ft_strchr))
-	else
+	else//check DUPS
 	{
+		if (lrc->br)
+			if (!duplicheck(roomcor, lrc))
+				return -2;
 		lrc->br = valroom_fill1(/*&rl*/(&lrc->br), /*r,*/ roomcor);//vrf; llrc->br = rl;
 		lrc->rmi++;
 	}
@@ -267,6 +290,7 @@ char				*roomlinkblock(char **line, t_llrc *lrc, int fd)
 	int 	i;
 	int		rm;
 	char    **ok;//*->**
+	int r = 0;
 
 	i = 0;//r = r_fill(r, 0);
 	while (get_next_line(fd, line) > 0 && ++i)
@@ -277,41 +301,14 @@ char				*roomlinkblock(char **line, t_llrc *lrc, int fd)
 			if (!stcheck(line, lrc, ret, fd))//ret-check
 				return (0);//fre?
 		if (ret == 1)
-		{//	(llrc.linkd)//li)//hr->funlink?;?stopplace4rmsN0
+		{
 			if ((rm = rmorlink(*line, lrc, (lrc->br))) == 2)
 				return (*line);//if no rms->lnks(li);//
 			free(*line);
-			if (rm == 0)
+			if (rm == 0 || rm == -2)
 				return (0);
 			ok = (char**)lrc->br->content;
-			i = 0;
-			int r = 0;
-/*LAST*///	printf("%s\n|%s\n|%s\n", lrc->br->content[0], (lrc->br->content)[1], (lrc->br->content)[2]);
-/*castEach**/	printf("%s\n|%s\n|%s\n", ((char**)lrc->br->content)[0], ((char**)(lrc->br->content))[1], ((char**)(lrc->br->content))[2]);
-			printf("ISEFLAS");
-			while (ok[r])
-			{
-				i = 0;
-				printf("%s\n", ok[r]);//works
-			//	while (ok[r][i])
-			//	{
-			//		printf("%c\n", ok[r][i]);
-			//		++i;
-			//	}
-				++r;
-			}//works
-		/*	while (*ok)
-			{
-				printf("$%s|\n", *ok);
-				++ok;
-			}*/ //works
-			printf("%c \\\\\n", ok[0][0]);//works
-			printf("%s\n", *ok);//works
-			printf("%s\n|", ok[0]);//lrc->br->content[0]);//, (llrc->br->content)[1], (llrc->br->content)[2]);
-/*SGVF*/	//printf("%s\n|% s\n% s\n", ok[0]);//lrc->br->content[0]);//, (llrc->br->content)[1], (llrc->br->content)[2]);
-/* wrks */	printf("-%s\n", ok[0]);//lrc->br->content[0]);//, (llrc->br->content)[1], (llrc->br->content)[2]);
-/*SGVF*/	printf("%s\n|%% s%% s", ok[0]);//lrc->br->content[0]);//, (llrc->br->content)[1], (llrc->br->content)[2]);
-		//	printf("%s\n|% s\n% s\n", lrc->br->content[0]);//, (llrc->br->content)[1], (llrc->br->content)[2]);
+		//	printf("%s\n|%s\n|%s\n", ((char**)lrc->br->content)[0], ((char**)(lrc->br->content))[1], ((char**)(lrc->br->content))[2]);
 		}
 	}
 	return (0);//(*line);ERRvalrmonly
@@ -380,6 +377,7 @@ int 			main(int ac, char **av)
 		   //maps_lemin/maps/map42", O_RDONLY);
 	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map_42", O_RDONLY);
 	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42-dup", O_RDONLY);
 	//if (ac > 1)// && fd > 0)//6)
 		val_in(fd);//(ac, av);
 //
