@@ -286,7 +286,8 @@ char				*roomlinkblock(char **line, t_llrc *lrc, int fd)
 			ok = (char**)lrc->br->content;
 			i = 0;
 			int r = 0;
-/*LAST*/	printf("%s\n|%s\n|%s\n", lrc->br->content[0], (lrc->br->content)[1], (lrc->br->content)[2]);
+/*LAST*///	printf("%s\n|%s\n|%s\n", lrc->br->content[0], (lrc->br->content)[1], (lrc->br->content)[2]);
+/*castEach**/	printf("%s\n|%s\n|%s\n", ((char**)lrc->br->content)[0], ((char**)(lrc->br->content))[1], ((char**)(lrc->br->content))[2]);
 			printf("ISEFLAS");
 			while (ok[r])
 			{
