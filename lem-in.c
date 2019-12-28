@@ -50,7 +50,7 @@ unsigned int	amount_ants(int fd)
 	int i;
 }*/
 t_list			*ft_create_rooms(char *line)
-{
+{   line+=0;
 	return (0);
 }
 /*
@@ -88,6 +88,9 @@ int				comstend(char *line)
 
 t_list              *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor)
 {
+	char **rmc;
+
+	rmc = roomcor;//
 	if (!br || !*br)
 	{
 		*br = ft_lstnew((const void *)roomcor, (size_t)sizeof(roomcor));
@@ -97,7 +100,8 @@ t_list              *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor)
 	else
 	{
 	//	br = br->next;
-		ft_lstadd(br, ft_lstnew((const void *)roomcor, (size_t)sizeof(roomcor)));//br);
+		ft_lstadd(br, ft_lstnew((const void *)rmc, (size_t)sizeof(rmc)));
+		//br);
 		(*br)->content = (void *)roomcor;//!
 		return (*br);
 	}
@@ -174,10 +178,10 @@ char 				*linkval(char **line, t_llrc *llrc, int fd)
 	}
 	return (0);
 }
-int					savemarg(char *line, t_llrc *lrc, int cm)
+
+int					savemarg(t_llrc *lrc, int cm)//char *line,
 {
-	t_rooms *x;
-	char	**roomcor;
+	t_rooms *x;//	char	**roomcor;
 	int		i;
 	char 	**ok;
 	i = 0;//lastcalfunck
@@ -186,6 +190,8 @@ int					savemarg(char *line, t_llrc *lrc, int cm)
 //	printf("%s\n%s\n%s\n", ok[0], ok[1], ok[2]);
 	//x->x = 0;
 	x = (t_rooms*)malloc(sizeof(t_rooms));
+	if (!x)
+		return 0;
 	x->name_r = 0; x->x = 0-1; x->y = -1;
 	x->name_r = ok[0];
 	x->x = ft_atoi(ok[1]);
@@ -218,10 +224,10 @@ int					stcheck(char **line, t_llrc *lrc, int cm, int fd)
 		}
 		else if (re == 1)
 		{//freelst?
-			if ((rvl=rmorlink(*line, lrc, lrc->br))==2||!rvl)
-			//orsavesep t_rm
+			if ((rvl=rmorlink(*line, lrc))==2||!rvl)//orsavesep t_rm
 				return 0;
-			savemarg(*line, lrc, cm);//nonfree?/ret?
+			if (savemarg(lrc, cm) == 0)//*line,
+				return 0000;//nonfree?/ret?
 			free (*line);
 			return 1;
 		}//cont aft -1/-2 exit?
@@ -265,7 +271,7 @@ int                 duplicheck(char **roomcor, t_llrc *lrc)
 ** //mb link->sendline; inval-rmc???ret
 **		//ret if links->?in here->save-vallink
 */
-int				rmorlink(char *line, t_llrc *lrc, t_list *rl)
+int				rmorlink(char *line, t_llrc *lrc)//, t_list *rl)
 {
 	char	**roomcor;
 
@@ -294,7 +300,6 @@ char				*roomlinkblock(char **line, t_llrc *lrc, int fd)
 	int 	i;
 	int		rm;
 	char    **ok;//*->**
-	int r = 0;
 
 	i = 0;//r = r_fill(r, 0);
 	while (get_next_line(fd, line) > 0 && ++i)
@@ -306,7 +311,7 @@ char				*roomlinkblock(char **line, t_llrc *lrc, int fd)
 				return (0);//fre?
 		if (ret == 1)
 		{
-			if ((rm = rmorlink(*line, lrc, (lrc->br))) == 2)
+			if ((rm = rmorlink(*line, lrc)/*, (lrc->br))*/) == 2)
 				return (*line);//if no rms->lnks(li);//
 			free(*line);
 			if (rm == 0 || rm == -2)
@@ -344,6 +349,7 @@ int				val_in(int fd)
 
 	if (amount_ants(fd) > 0)
 	{
+		llrc.br =0;//uninit||init somethin?
 		llrc = nullst(llrc);
 		linkd = roomlinkblock(&line, &llrc, fd);//dupls?
 		if (!llrc.rmi || llrc.end != 1 || llrc.st != 1)
@@ -376,6 +382,7 @@ int 			main(int ac, char **av)
 {
 	int fd;
 
+	ac += 0;
 	fd = open(av[1], O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42", O_RDONLY);
 		   //maps_lemin/maps/map42", O_RDONLY);
