@@ -66,6 +66,7 @@ t_list			*ft_create_rooms(char *line)
 ** else check_r-coords & save in lst
 ** - room that has no link?
 */
+
 int				comstend(char *line)
 {
 	ft_putendl(line);//or after
@@ -82,11 +83,9 @@ int				comstend(char *line)
 	}
 	else if (line[0] == '#')
 		return (0);
-	else
-		return (1);
-	return (-34);
+	return (1);
 }
-/*t_rooms				*/
+
 t_list              *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor)
 {
 	if (!br || !*br)
@@ -99,7 +98,7 @@ t_list              *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor)
 	{
 	//	br = br->next;
 		ft_lstadd(br, ft_lstnew((const void *)roomcor, (size_t)sizeof(roomcor)));//br);
-	//	(*br)->content = (void *)roomcor;//!
+		(*br)->content = (void *)roomcor;//!
 		return (*br);
 	}
     return (0);
@@ -242,7 +241,7 @@ int					stcheck(char **line, t_llrc *lrc, int cm, int fd)
 ** //mb link->sendline; inval-rmc???ret
 **		//ret if links->?in here->save-vallink
 */
-int				rmorlink(char *line, t_llrc *llrc, t_list *rl)
+int				rmorlink(char *line, t_llrc *lrc, t_list *rl)
 {
 	char	**roomcor;
 
@@ -256,39 +255,67 @@ int				rmorlink(char *line, t_llrc *llrc, t_list *rl)
 	//if (ft_strchr))
 	else
 	{
-		llrc->br = valroom_fill1(/*&rl*/(&llrc->br), /*r,*/ roomcor);//vrf; llrc->br = rl;
-		llrc->rmi++;
+		lrc->br = valroom_fill1(/*&rl*/(&lrc->br), /*r,*/ roomcor);//vrf; llrc->br = rl;
+		lrc->rmi++;
 	}
 	return 10;
 }
-char				*roomlinkblock(char **line, t_llrc *llrc, int fd)
+
+char				*roomlinkblock(char **line, t_llrc *lrc, int fd)
 {
 	int		ret;
 	int 	i;
 	int		rm;
+	char    **ok;//*->**
 
 	i = 0;//r = r_fill(r, 0);
 	while (get_next_line(fd, line) > 0 && ++i)
-	{//comms are skipped all throughout thw block
+	{
 		if ((ret = comstend(*line))==0||ret==-3||ret==-1||ret==-2)
 			free(*line);//repetiton of st/e/else?
 		if (ret == -1 ||ret == -2)/*)//save1/rol/cycle.iscom*/
-			if (!stcheck(line, llrc, ret, fd))//ret-check
+			if (!stcheck(line, lrc, ret, fd))//ret-check
 				return (0);//fre?
 		if (ret == 1)
-		{///*llrc.linkd =*/ rmorlink(*line, &llrc,&(llrc.br));
-			//&rl);
-		//	if (line)//(llrc.linkd)//li)//hr->funlink?;?stopplace4rmsN0
-			if ((rm = rmorlink(*line, llrc, (llrc->br))) == 2)	
+		{//	(llrc.linkd)//li)//hr->funlink?;?stopplace4rmsN0
+			if ((rm = rmorlink(*line, lrc, (lrc->br))) == 2)
 				return (*line);//if no rms->lnks(li);//
 			free(*line);
 			if (rm == 0)
 				return (0);
-			printf("%s\n|% s\n% s\n", llrc->br->content[0]);//, (llrc->br->content)[1], (llrc->br->content)[2]);
+			ok = (char**)lrc->br->content;
+			i = 0;
+			int r = 0;
+/*LAST*/	printf("%s\n|%s\n|%s\n", lrc->br->content[0], (lrc->br->content)[1], (lrc->br->content)[2]);
+			printf("ISEFLAS");
+			while (ok[r])
+			{
+				i = 0;
+				printf("%s\n", ok[r]);//works
+			//	while (ok[r][i])
+			//	{
+			//		printf("%c\n", ok[r][i]);
+			//		++i;
+			//	}
+				++r;
+			}//works
+		/*	while (*ok)
+			{
+				printf("$%s|\n", *ok);
+				++ok;
+			}*/ //works
+			printf("%c \\\\\n", ok[0][0]);//works
+			printf("%s\n", *ok);//works
+			printf("%s\n|", ok[0]);//lrc->br->content[0]);//, (llrc->br->content)[1], (llrc->br->content)[2]);
+/*SGVF*/	//printf("%s\n|% s\n% s\n", ok[0]);//lrc->br->content[0]);//, (llrc->br->content)[1], (llrc->br->content)[2]);
+/* wrks */	printf("-%s\n", ok[0]);//lrc->br->content[0]);//, (llrc->br->content)[1], (llrc->br->content)[2]);
+/*SGVF*/	printf("%s\n|%% s%% s", ok[0]);//lrc->br->content[0]);//, (llrc->br->content)[1], (llrc->br->content)[2]);
+		//	printf("%s\n|% s\n% s\n", lrc->br->content[0]);//, (llrc->br->content)[1], (llrc->br->content)[2]);
 		}
 	}
 	return (0);//(*line);ERRvalrmonly
 }
+
 t_llrc 			nullst(t_llrc llrc)
 {
 	llrc.end = 0;
@@ -301,6 +328,7 @@ t_llrc 			nullst(t_llrc llrc)
 	llrc.arrrm = 0;
 	return (llrc);
 }
+
 /*
 **{//extra dop otd for chech_room w own w gnl
 ** //--check_roomspresence_validif
