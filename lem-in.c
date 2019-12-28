@@ -228,8 +228,9 @@ int					stcheck(char **line, t_llrc *lrc, int cm, int fd)
 	}
 	return 0;
 }
+
 int                 duplicheck(char **roomcor, t_llrc *lrc)
-{
+{//if all val recd-> atoi cors n check
 	t_list *tmp;
 
 	tmp = lrc->br;
@@ -239,7 +240,10 @@ int                 duplicheck(char **roomcor, t_llrc *lrc)
 	//	if (!(ft_strcmp(((char**)(lrc->br->content))[0], roomcor[0])))
 		if (!(ft_strcmp(((char**)(tmp->content))[0], roomcor[0])))
 			return (0);
-//		if (ft_strcmp((((char**)(lrc->br->content))[1]), roomcor[1])//coorXY
+		if (!(ft_strcmp((((char**)(lrc->br->content))[1]), roomcor[1])))//coorXYi
+			return 0;
+		if (!(ft_strcmp((((char**)(lrc->br->content))[2]), roomcor[2])))//coorXYi
+			return 0;
 	//	lrc->br = lrc->br->next;
 		tmp= tmp->next;
 	}
