@@ -13,7 +13,7 @@
 #include "lemin.h"
 /*
 ** amount of ants - ints?
-** unsigned int	
+** unsigned int
 */
 
 int				ft_err(void)
@@ -169,16 +169,29 @@ t_rooms				*r_fill(t_rooms *r, char **roomcor)
 int                 corr_link(char **line, t_llrc *llrc)
 {
 	int i;
+	int st;
+	int e;
 
-	return 0;
+	if (!ft_strchr(*line, '-') || ft_strrchr(*line, '-'))
+		return 0;
+	i = 0;
+	while (*line[i] && *line[i] != '-')
+		++i;
+	e = i;
+	ft_strsub(*line, 0, i);
+//	if (ft_strcmp(*line + ))
+	st = i + 1;
+	while (*line[i])
+		++i;
+	ft_strsub(*line, st, i);
 }
 
 char 				*linkval(char **line, t_llrc *lrc, int fd)
 {
 	int ret;
 
-	if (*line)
-		free(*line);//?
+	corr_link(*line);
+	free(*line);
 	while (get_next_line(fd, line) > 0)
 	{
 	//	if ((ret = comstend(*line))==0||ret==-3)
@@ -197,9 +210,7 @@ int					savemarg(t_llrc *lrc, int cm)//char *line,
 	char 	**ok;
 	i = 0;//lastcalfunck
 
-	ok = (char**)lrc->br->content;//???	//ok = (char**)lrc->br->content;
-//	printf("%s\n%s\n%s\n", ok[0], ok[1], ok[2]);
-	//x->x = 0;
+	ok = (char**)lrc->br->content;//ok = (char**)lrc->br->content;//x->x = 0;
 	x = (t_rooms*)malloc(sizeof(t_rooms));
 	if (!x)
 		return 0;
@@ -207,7 +218,6 @@ int					savemarg(t_llrc *lrc, int cm)//char *line,
 	x->name_r = ok[0];
 	x->x = ft_atoi(ok[1]);
 	x->y = ft_atoi(ok[2]);
-//	x->x = lrc->br->content[1];
 //	roomcor = ft_strsplit(line, ' ');//dont we ned to pnt-1lst?
 //	x->y = ft_atoi(roomcor[2]);//malloc??x//rfil!!!
 	if (cm == -1)
