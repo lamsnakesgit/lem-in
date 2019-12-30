@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:13 by ddratini          #+#    #+#             */
-/*   Updated: 2019/12/26 18:19:02 by ddratini         ###   ########.fr       */
+/*   Updated: 2019/12/30 17:30:42 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,15 +165,26 @@ t_rooms				*r_fill(t_rooms *r, char **roomcor)
 /*
 ** linkval: first - check1st line
 */
-char 				*linkval(char **line, t_llrc *llrc, int fd)
+
+int                 corr_link(char **line, t_llrc *llrc)
+{
+	int i;
+
+	return 0;
+}
+
+char 				*linkval(char **line, t_llrc *lrc, int fd)
 {
 	int ret;
 
+	if (*line)
+		free(*line);//?
 	while (get_next_line(fd, line) > 0)
 	{
-		if ((ret = comstend(*line))==0||ret==-3)
-			free (*line);
-		else if (ret == -2 || ret == -1)
+	//	if ((ret = comstend(*line))==0||ret==-3)
+	//		free (*line);
+	//	else
+			if (ret == -2 || ret == -1)
 			return (0);
 	}
 	return (0);
@@ -238,6 +249,7 @@ int					stcheck(char **line, t_llrc *lrc, int cm, int fd)
 int                 duplicheck(char **roomcor, t_llrc *lrc)
 {//if all val recd-> atoi cors n check
 	t_list *tmp;
+	int     cmp;
 
 	tmp = lrc->br;
 	//while (lrc->br)
@@ -246,9 +258,8 @@ int                 duplicheck(char **roomcor, t_llrc *lrc)
 	//	if (!(ft_strcmp(((char**)(lrc->br->content))[0], roomcor[0])))
 		if (!(ft_strcmp(((char**)(tmp->content))[0], roomcor[0])))
 			return (0);
-		if (!(ft_strcmp((((char**)(lrc->br->content))[1]), roomcor[1])))//coorXYi
-			return 0;
-		if (!(ft_strcmp((((char**)(lrc->br->content))[2]), roomcor[2])))//coorXYi
+		cmp = ft_strcmp((((char**)(tmp->content))[1]), roomcor[1]);
+		if (!(ft_strcmp((((char**)(tmp->content))[2]), roomcor[2])) && !cmp)
 			return 0;
 	//	lrc->br = lrc->br->next;
 		tmp= tmp->next;
@@ -336,6 +347,25 @@ t_llrc 			nullst(t_llrc llrc)
 	return (llrc);
 }
 
+void            turninarr(t_llrc *llrc)
+{
+	int     i;
+	t_list  *tmp;
+
+	llrc->arrrm = (t_rooms *)malloc(sizeof(t_rooms) * (llrc->rmi - 1));
+	if (llrc->arrrm == 0)
+		return ;
+	tmp = llrc->br;
+	i = 0;
+	while (tmp)//i < llrc->rmi
+	{
+		llrc->arrrm[i].name_r = ((char**)tmp->content)[0];//llrc->br->content)[0];
+		llrc->arrrm[i].x = ft_atoi(((char **)tmp->content)[1]);//llrc->br->content)[1]);
+		llrc->arrrm[i].y = ft_atoi(((char **)tmp->content)[2]);//llrc->br->content)[2]);
+		tmp = tmp->next;
+		++i;
+	}
+}
 /*
 **{//extra dop otd for chech_room w own w gnl
 ** //--check_roomspresence_validif
@@ -347,18 +377,16 @@ int				val_in(int fd)
 	char	*linkd;
 	t_llrc	llrc;
 
-	if (amount_ants(fd) > 0)
-	{
-		llrc.br =0;//uninit||init somethin?
-		llrc = nullst(llrc);
-		linkd = roomlinkblock(&line, &llrc, fd);//dupls?
-		if (!llrc.rmi || llrc.end != 1 || llrc.st != 1)
-			return (ft_err());//freel-ifl//free s/e
-		if (linkd)//if freed? send rmlis+line+fd//st-end/line
-			linkval(&linkd, &llrc, fd);
-		else
-			ft_err();
-	}
+	if ((llrc.ants = amount_ants(fd)) < 1)//> 0)
+		return (ft_err());
+	llrc.br =0;//uninit||init somethin?
+	llrc = nullst(llrc);
+	linkd = roomlinkblock(&line, &llrc, fd);//dupls?
+	if (!llrc.rmi || llrc.end != 1 || llrc.st != 1)
+		return (ft_err());//freel-ifl//free s/e
+	turninarr(&llrc);
+	if (linkd)//if freed? send rmlis+line+fd//st-end/line
+		linkval(&linkd, &llrc, fd);
 	else
 		ft_err();
 	return (1);
@@ -388,7 +416,7 @@ int 			main(int ac, char **av)
 		   //maps_lemin/maps/map42", O_RDONLY);
 	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map_42", O_RDONLY);
 	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42-dup", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42-dup", O_RDONLY);
 	//if (ac > 1)// && fd > 0)//6)
 		val_in(fd);//(ac, av);
 //
