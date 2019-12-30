@@ -82,7 +82,7 @@ typedef struct s_llrc
 	   int		rmi;
 	   t_rooms	*fr;
 	   t_rooms	*er;
-	   t_rooms	*arrrm;
+	   t_rooms	**arrrm;
 	   int      ants;
 }                              t_llrc;
 int			iscomment(char *line);

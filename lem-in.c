@@ -184,13 +184,14 @@ int                 corr_link(char **line, t_llrc *llrc)
 	while (*line[i])
 		++i;
 	ft_strsub(*line, st, i);
+	return 1;
 }
 
 char 				*linkval(char **line, t_llrc *lrc, int fd)
 {
 	int ret;
 
-	corr_link(*line);
+	corr_link(/**/line, lrc);
 	free(*line);
 	while (get_next_line(fd, line) > 0)
 	{
@@ -362,16 +363,17 @@ void            turninarr(t_llrc *llrc)
 	int     i;
 	t_list  *tmp;
 
-	llrc->arrrm = (t_rooms *)malloc(sizeof(t_rooms) * (llrc->rmi - 1));
+	//llrc->arrrm = (t_rooms *)malloc(sizeof(t_rooms));// * (llrc->rmi - 1));
+	llrc->arrrm = (t_rooms **)malloc(sizeof(t_rooms *) * (llrc->rmi));
 	if (llrc->arrrm == 0)
 		return ;
 	tmp = llrc->br;
 	i = 0;
 	while (tmp)//i < llrc->rmi
 	{
-		llrc->arrrm[i].name_r = ((char**)tmp->content)[0];//llrc->br->content)[0];
-		llrc->arrrm[i].x = ft_atoi(((char **)tmp->content)[1]);//llrc->br->content)[1]);
-		llrc->arrrm[i].y = ft_atoi(((char **)tmp->content)[2]);//llrc->br->content)[2]);
+		llrc->arrrm[i]->name_r = ((char**)tmp->content)[0];//llrc->br->content)[0];
+		llrc->arrrm[i]->x = ft_atoi(((char **)tmp->content)[1]);//llrc->br->content)[1]);
+		llrc->arrrm[i]->y = ft_atoi(((char **)tmp->content)[2]);//llrc->br->content)[2]);
 		tmp = tmp->next;
 		++i;
 	}
