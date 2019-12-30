@@ -83,8 +83,9 @@ typedef struct s_llrc
 	   t_rooms	*fr;
 	   t_rooms	*er;
 	   t_rooms	*arrrm;
+	   int      ants;
 }                              t_llrc;
 int			iscomment(char *line);
-int			rmorlink(char *line, t_llrc *llrc, t_list *rl);//0ptr-check
+int			rmorlink(char *line, t_llrc *llrc);//, t_list *rl);//0ptr-check
 
 #endif

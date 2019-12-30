@@ -22,6 +22,7 @@
 typedef struct		s_list
 {
 	/*void*/char*			*content;
+//	void            *content;
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
