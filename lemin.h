@@ -58,6 +58,7 @@ whet top stop on link-s?
 */
 typedef struct s_rooms
 {
+	t_list  *rm;
 	char	*name_r;
 	int		x;
 	int		y;

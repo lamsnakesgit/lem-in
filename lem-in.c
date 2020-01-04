@@ -157,6 +157,19 @@ t_rooms				*r_fill(t_rooms *r, char **roomcor)
 	return (r);
 }
 
+int                 ispresent(t_llrc *llrc, char *rs)
+{
+	t_list  *tmp;
+
+	tmp = llrc->br;
+	while (tmp)
+	{
+		if (ft_strcmp(*tmp->content, rs) == 0)
+			return 1;
+		tmp = tmp->next;
+	}
+	return 0;
+}
 /*
  ** line - contains no room/!' '/'-'/ mb linked roomsnames
  ** we now have to check rooms presence in all linkes
@@ -164,13 +177,14 @@ t_rooms				*r_fill(t_rooms *r, char **roomcor)
  */
 /*
 ** linkval: first - check1st line
+ * rm presence /path to itself
 */
 
-int                 corr_link(char **line, t_llrc *llrc)
+int                 corr_link(char **line, t_llrc *llrc)//checkmarginindxs
 {
 	int i;
-	int st;
 	int e;
+	char *rs;
 
 	if (!ft_strchr(*line, '-') || ft_strrchr(*line, ' '))
 		return 0;
@@ -178,12 +192,18 @@ int                 corr_link(char **line, t_llrc *llrc)
 	while ((*line)[i] && (*line)[i] != '-')
 		++i;
 	e = i;
-//	if (ft_strcmp(ft_strsub(*line, 0, i), llrc->arrrm);
+	if (!(rs = ft_strsub(*line, 0, i)))
+		return 0;
+	if (!ispresent(llrc, rs))
+		return 0;
+	free (rs);
 //	if (ft_strcmp(*line + ))
-	st = i + 1;
+	++e;
 	while ((*line)[i])
 		++i;
-	ft_strsub(*line, st, i);
+	rs = ft_strsub(*line, e, i);
+	if (!ispresent(llrc, rs))
+		return 0;
 	return 1;
 }
 
@@ -191,17 +211,20 @@ char 				*linkval(char **line, t_llrc *lrc, int fd)
 {
 	int ret;
 
-	corr_link(/**/line, lrc);
+	if (!corr_link(/**/line, lrc))
+		return 0;
 	free(*line);
 	while (get_next_line(fd, line) > 0)
 	{
 		if ((ret = comstend(*line))==0||ret==-3)
 			free (*line);
-		else
-			if (ret == -2 || ret == -1)
+		else if (ret == -2 || ret == -1)
 			return (0);
+		else
+			if (!corr_link(line, lrc))
+				return 0;
 	}
-	return (0);
+	return (*line);
 }
 
 int					savemarg(t_llrc *lrc, int cm)//char *line,
@@ -402,7 +425,10 @@ int				val_in(int fd)
 		return (ft_err());//freel-ifl//free s/e
 	turninarr(&llrc);
 	if (linkd)//if freed? send rmlis+line+fd//st-end/line
-		linkval(&linkd, &llrc, fd);
+	{
+		if (!linkval(&linkd, &llrc, fd))
+			return (ft_err());
+	}
 	else
 		ft_err();
 	return (1);
@@ -433,6 +459,7 @@ int 			main(int ac, char **av)
 	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map_42", O_RDONLY);
 	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42-dup", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/maps/map", O_RDONLY);
 	//if (ac > 1)// && fd > 0)//6)
 		val_in(fd);//(ac, av);
 //
