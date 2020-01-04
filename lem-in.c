@@ -195,9 +195,9 @@ char 				*linkval(char **line, t_llrc *lrc, int fd)
 	free(*line);
 	while (get_next_line(fd, line) > 0)
 	{
-	//	if ((ret = comstend(*line))==0||ret==-3)
-	//		free (*line);
-	//	else
+		if ((ret = comstend(*line))==0||ret==-3)
+			free (*line);
+		else
 			if (ret == -2 || ret == -1)
 			return (0);
 	}
@@ -371,10 +371,12 @@ void            turninarr(t_llrc *llrc)
 	i = 0;
 	while (tmp)//i < llrc->rmi
 	{
-		llrc->arrrm[i]->name_r = ((char**)tmp->content)[0];//llrc->br->content)[0];
-		llrc->arrrm[i]->x = ft_atoi(((char **)tmp->content)[1]);//llrc->br->content)[1]);
-		llrc->arrrm[i]->y = ft_atoi(((char **)tmp->content)[2]);//llrc->br->content)[2]);
+		llrc->arrrm[i] = (t_rooms *)malloc(sizeof(t_rooms));
+		(llrc->arrrm)[i]->name_r = ((char**)tmp->content)[0];
+		llrc->arrrm[i]->x = ft_atoi(((char **)tmp->content)[1]);
+		llrc->arrrm[i]->y = ft_atoi(((char **)tmp->content)[2]);
 		tmp = tmp->next;
+		printf("||%s||%d\n", llrc->arrrm[i]->name_r, (llrc->arrrm)[i]->x);
 		++i;
 	}
 }
