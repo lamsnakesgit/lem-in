@@ -172,16 +172,16 @@ int                 corr_link(char **line, t_llrc *llrc)
 	int st;
 	int e;
 
-	if (!ft_strchr(*line, '-') || ft_strrchr(*line, '-'))
+	if (!ft_strchr(*line, '-') || ft_strrchr(*line, ' '))
 		return 0;
 	i = 0;
-	while (*line[i] && *line[i] != '-')
+	while ((*line)[i] && (*line)[i] != '-')
 		++i;
 	e = i;
-	ft_strsub(*line, 0, i);
+//	if (ft_strcmp(ft_strsub(*line, 0, i), llrc->arrrm);
 //	if (ft_strcmp(*line + ))
 	st = i + 1;
-	while (*line[i])
+	while ((*line)[i])
 		++i;
 	ft_strsub(*line, st, i);
 	return 1;
@@ -372,6 +372,8 @@ void            turninarr(t_llrc *llrc)
 	while (tmp)//i < llrc->rmi
 	{
 		llrc->arrrm[i] = (t_rooms *)malloc(sizeof(t_rooms));
+	//	llrc->arrrm[i] = tmp;
+		llrc->arrrm[i]->rm = tmp;
 		(llrc->arrrm)[i]->name_r = ((char**)tmp->content)[0];
 		llrc->arrrm[i]->x = ft_atoi(((char **)tmp->content)[1]);
 		llrc->arrrm[i]->y = ft_atoi(((char **)tmp->content)[2]);
