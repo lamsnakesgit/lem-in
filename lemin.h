@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lemin.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:18 by ddratini          #+#    #+#             */
-/*   Updated: 2019/12/25 16:08:15 by marvin           ###   ########.fr       */
+/*   Updated: 2020/01/06 16:18:49 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,11 @@ whet top stop on link-s?
 */
 typedef struct s_rooms
 {
-	t_list  *rm;
-	char	*name_r;
-	int		x;
-	int		y;
+	t_list          *rm;
+	char	        *name_r;
+	int		        x;
+	int		        y;
+	struct s_rooms  *ln;
 //	t_ 		links;
 /*	struct s_rooms *next;
 	{
@@ -88,5 +89,26 @@ typedef struct s_llrc
 }                              t_llrc;
 int			iscomment(char *line);
 int			rmorlink(char *line, t_llrc *llrc);//, t_list *rl);//0ptr-check
+
+int			comstend(char *line);
+
+char 		*linkval(char **line, t_llrc *lrc, int fd);
+int         corr_link(char **line, t_llrc *llrc);//checkmarginindxs
+int         ispresent(t_llrc *llrc, char *rs);
+
+int			comstend(char *line);
+t_list      *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor);
+int			val_cord(char **roomcor);//ps related neg int?
+char		**valrmc_s(char *line);
+int			savemarg(t_llrc *lrc, int cm);//char *line,
+int			stcheck(char **line, t_llrc *lrc, int cm, int fd);
+int         duplicheck(char **roomcor, t_llrc *lrc);
+char		*roomlinkblock(char **line, t_llrc *lrc, int fd);
+void        turninarr(t_llrc *llrc);
+
+int				ft_err(void);
+unsigned int	amount_ants(int fd);
+
+
 
 #endif
