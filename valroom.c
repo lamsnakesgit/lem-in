@@ -134,4 +134,20 @@ void            turninarr(t_llrc *llrc)
 //		printf("||%s||%d\n", llrc->arrrm[i]->name_r, (llrc->arrrm)[i]->x);
 		++i;
 	}
+	llrc->arrrm[i] = 0;
 }
+/*
+void 			sort_room(t_llrc *llrc)
+{
+	t_rooms	**tmp;
+	int 	i;
+	int 	cnt;
+
+	i = 1;
+	cnt = llrc->rmi;
+	tmp = llrc->arrrm;
+	while ((*tmp) && i < cnt)
+	{
+		ft_strcmp(llrc->arrrm[i]->name_r, llrc->arrrm[i - 1]->name_r)
+	}
+}*/

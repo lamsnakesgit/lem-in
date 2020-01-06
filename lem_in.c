@@ -111,6 +111,7 @@ int 			main(int ac, char **av)
 	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42-dup", O_RDONLY);
 	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/maps/map", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map_l", O_RDONLY);
 	//if (ac > 1)// && fd > 0)//6)
 		val_in(fd);//(ac, av);
 //

@@ -67,7 +67,8 @@ typedef struct s_rooms
 /*	struct s_rooms *next;
 	{
 	};
-*/	
+*/
+	struct s_rooms  *next;
 }				t_rooms;
 //struct that contains ptr to list /arr w rooms & ptr to lins??
 /*typedef	struct s_lemin
@@ -96,15 +97,15 @@ char 		*linkval(char **line, t_llrc *lrc, int fd);
 int         corr_link(char **line, t_llrc *llrc);//checkmarginindxs
 int         ispresent(t_llrc *llrc, char *rs);
 
-int			comstend(char *line);
-t_list      *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor);
-int			val_cord(char **roomcor);//ps related neg int?
-char		**valrmc_s(char *line);
-int			savemarg(t_llrc *lrc, int cm);//char *line,
-int			stcheck(char **line, t_llrc *lrc, int cm, int fd);
-int         duplicheck(char **roomcor, t_llrc *lrc);
-char		*roomlinkblock(char **line, t_llrc *lrc, int fd);
-void        turninarr(t_llrc *llrc);
+int			    comstend(char *line);
+t_list          *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor);
+int			    val_cord(char **roomcor);//ps related neg int?
+char		    **valrmc_s(char *line);
+int			    savemarg(t_llrc *lrc, int cm);//char *line,
+int			    stcheck(char **line, t_llrc *lrc, int cm, int fd);
+int             duplicheck(char **roomcor, t_llrc *lrc);
+char		    *roomlinkblock(char **line, t_llrc *lrc, int fd);
+void            turninarr(t_llrc *llrc);
 
 int				ft_err(void);
 unsigned int	amount_ants(int fd);

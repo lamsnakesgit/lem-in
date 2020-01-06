@@ -14,20 +14,32 @@
 
 /*
 ** present rooms are saved into list w link
+**
 */
+
 int                 ispresent(t_llrc *llrc, char *rs)
 {
-	t_list  *tmp;
+//	t_list  *tmp;
+	t_rooms	**tmp;
+	int 	i;
 
-	tmp = llrc->br;
-	while (tmp)
+	//tmp = llrc->br;
+	tmp = llrc->arrrm;
+	i = 0;
+	while (tmp[i])//((*tmp)[i])
 	{
-		if (ft_strcmp(*tmp->content, rs) == 0)
-			return 1;
-		tmp = tmp->next;
+	//	if (ft_strcmp((*tmp)[i]->content, rs) == 0)
+	//	if (ft_strcmp((*tmp)[i].name_r, rs) == 0)
+		if (ft_strcmp(tmp[i]->name_r, rs) == 0)
+		{
+			return i;
+		}
+		++i;
+	//	tmp = tmp->next;
 	}
-	return 0;
+	return (-1);
 }
+
 /*
  ** line - contains no room/!' '/'-'/ mb linked roomsnames
  ** we now have to check rooms presence in all linkes
@@ -43,6 +55,7 @@ int                 corr_link(char **line, t_llrc *llrc)//checkmarginindxs
 	int i;
 	int e;
 	char *rs;
+	int rn;
 
 	if (!ft_strchr(*line, '-') || ft_strrchr(*line, ' '))
 		return 0;
@@ -52,7 +65,7 @@ int                 corr_link(char **line, t_llrc *llrc)//checkmarginindxs
 	e = i;
 	if (!(rs = ft_strsub(*line, 0, i)))
 		return 0;
-	if (!ispresent(llrc, rs))
+	if ((rn = ispresent(llrc, rs)) < 0)
 		return 0;
 	free (rs);
 //	if (ft_strcmp(*line + ))
@@ -60,7 +73,7 @@ int                 corr_link(char **line, t_llrc *llrc)//checkmarginindxs
 	while ((*line)[i])
 		++i;
 	rs = ft_strsub(*line, e, i);
-	if (!ispresent(llrc, rs))
+	if ((rn = ispresent(llrc, rs)) < 0)
 		return 0;
 	return 1;
 }
