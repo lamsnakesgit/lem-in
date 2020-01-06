@@ -56,13 +56,15 @@ or zero-strct w lr-line; ptr
 se-savesep-allstrct
 whet top stop on link-s?
 */
+
 typedef struct s_rooms
 {
 	t_list          *rm;
 	char	        *name_r;
 	int		        x;
 	int		        y;
-	struct s_rooms  *ln;
+//	struct s_rooms  *ln;
+	t_list          *ln;
 //	t_ 		links;
 /*	struct s_rooms *next;
 	{
@@ -76,6 +78,11 @@ typedef struct s_rooms
 	long	nant;
 	t_
 }      			 t_lemin;*/
+typedef struct s_link
+{
+	t_rooms         *rm;
+	struct  s_link  *next;
+}               t_link;
 typedef struct s_llrc
 {
        char    *linkd;
@@ -94,7 +101,7 @@ int			rmorlink(char *line, t_llrc *llrc);//, t_list *rl);//0ptr-check
 int			comstend(char *line);
 
 char 		*linkval(char **line, t_llrc *lrc, int fd);
-int         corr_link(char **line, t_llrc *llrc);//checkmarginindxs
+int         corr_link(char **line, t_llrc *llrc, int *rn);//checkmarginindxs
 int         ispresent(t_llrc *llrc, char *rs);
 
 int			    comstend(char *line);

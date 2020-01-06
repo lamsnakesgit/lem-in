@@ -14,7 +14,7 @@
 
 /*
 ** present rooms are saved into list w link
-**
+** when & where save link to linked room s? when both linked rms are ok
 */
 
 int                 ispresent(t_llrc *llrc, char *rs)
@@ -50,12 +50,11 @@ int                 ispresent(t_llrc *llrc, char *rs)
  * rm presence /path to itself
 */
 
-int                 corr_link(char **line, t_llrc *llrc)//checkmarginindxs
+int                 corr_link(char **line, t_llrc *llrc, int *rn)//checkmarginindxs
 {
 	int i;
 	int e;
 	char *rs;
-	int rn;
 
 	if (!ft_strchr(*line, '-') || ft_strrchr(*line, ' '))
 		return 0;
@@ -65,7 +64,7 @@ int                 corr_link(char **line, t_llrc *llrc)//checkmarginindxs
 	e = i;
 	if (!(rs = ft_strsub(*line, 0, i)))
 		return 0;
-	if ((rn = ispresent(llrc, rs)) < 0)
+	if ((rn[0] = ispresent(llrc, rs)) < 0)
 		return 0;
 	free (rs);
 //	if (ft_strcmp(*line + ))
@@ -73,17 +72,73 @@ int                 corr_link(char **line, t_llrc *llrc)//checkmarginindxs
 	while ((*line)[i])
 		++i;
 	rs = ft_strsub(*line, e, i);
-	if ((rn = ispresent(llrc, rs)) < 0)
+	if ((rn[1] = ispresent(llrc, rs)) < 0)
 		return 0;
 	return 1;
+}
+
+t_list				*ft_rlink(/*(t_link **bg*/ t_list **bg, t_rooms *rm)//t_link *new)
+{
+	if (!bg ||!*bg)
+	{
+		*bg = ft_lstnew((const void *)rm, (size_t)(sizeof(rm)));
+		(*bg)->content = (void *)rm;
+		return (*bg);
+	}
+	else
+	{
+		ft_lstadd(bg, ft_lstnew((const void *)rm, (size_t)(sizeof(rm))));
+		(*bg)->content = (void *)rm;
+		return (*bg);
+	}
+}
+void				savelink(t_llrc *llrc, int *rn)
+{
+/*	t_rooms	**tmp;
+	t_rooms *t0;
+	t_rooms **t1;
+*/	t_link	*ln;
+
+/*	tmp = llrc->arrrm;
+	t0 = llrc->arrrm[rn[0]];
+	t1 = llrc->arrrm[rn[1]];
+*/
+/*	while (tmp[rn[0]]->ln)
+		tmp[rn[0]]->ln = tmp[rn[0]]->ln->next;
+	while (tmp[rn[1]]->ln)
+		tmp[rn[1]]->ln = tmp[rn[1]]->ln->next;
+	llrc->arrrm[rn[0]]->ln = llrc->arrrm[rn[1]];
+	llrc->arrrm[rn[0]]->ln->next = 0;
+	llrc->arrrm[rn[1]]->ln = llrc->arrrm[rn[0]];
+	llrc->arrrm[rn[1]]->ln->next = 0;*/
+/*	if (tmp[rn[0]]->ln)
+	{
+		ft_lstadd(tmp[rn[0]]->ln, tmp[rn[1]]->ln);
+	}
+	else
+	{
+		ft_lstnew()
+	}
+*/
+/*
+	tmp[rn[0]]->ln = llrc->arrrm[rn[1]];
+	tmp[rn[0]]->ln->next = 0;
+	tmp[rn[1]]->ln = llrc->arrrm[rn[0]];
+	tmp[rn[1]]->ln->next = 0;*/
+/*	while (llrc->arrrm[rn[0]]->ln)
+		ft_rlink(&(llrc->arrrm[rn[0]]->ln, llrc->arrrm[rn[1]]))*/
+	llrc->arrrm[rn[0]]->ln = ft_rlink(&(llrc->arrrm[rn[0]]->ln), llrc->arrrm[rn[1]]);
+	llrc->arrrm[rn[1]]->ln = ft_rlink(&(llrc->arrrm[rn[1]]->ln), llrc->arrrm[rn[0]]);
 }
 
 char 				*linkval(char **line, t_llrc *lrc, int fd)
 {
 	int ret;
+	int rn[2];
 
-	if (!corr_link(/**/line, lrc))
+	if (!corr_link(/**/line, lrc, rn))
 		return 0;
+	savelink(lrc, rn);
 	free(*line);
 	while (get_next_line(fd, line) > 0)
 	{
@@ -92,8 +147,11 @@ char 				*linkval(char **line, t_llrc *lrc, int fd)
 		else if (ret == -2 || ret == -1)
 			return (0);
 		else
-		if (!corr_link(line, lrc))
-			return 0;
+		{
+			if (!corr_link(line, lrc, rn))
+				return 0;
+			savelink(lrc, rn);
+		}
 	}
 	return (*line);
 }

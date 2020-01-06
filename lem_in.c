@@ -61,23 +61,25 @@ t_llrc 			nullst(t_llrc llrc)
 ** //--check_roomspresence_validif
 */
 
-int				val_in(int fd)
+int				val_in(int fd, t_llrc *llrc)
 {
 	char	*line;
 	char	*linkd;
-	t_llrc	llrc;
+//	t_llrc	llrc;
 
-	if ((llrc.ants = amount_ants(fd)) < 1)//> 0)
+//	llrc = *lrc;
+	if ((llrc->ants = amount_ants(fd)) < 1)//> 0)
 		return (ft_err());
-	llrc.br =0;//uninit||init somethin?
-	llrc = nullst(llrc);
-	linkd = roomlinkblock(&line, &llrc, fd);//dupls?
-	if (!llrc.rmi || llrc.end != 1 || llrc.st != 1)
+	llrc->br =0;//uninit||init somethin?
+	*llrc = nullst(*llrc);
+	linkd = roomlinkblock(&line, llrc, fd);//dupls?
+	if (!llrc->rmi || llrc->end != 1 || llrc->st != 1)
 		return (ft_err());//freel-ifl//free s/e
-	turninarr(&llrc);
+	turninarr(llrc);//(&llrc);
 	if (linkd)//if freed? send rmlis+line+fd//st-end/line
 	{
-		if (!linkval(&linkd, &llrc, fd))
+		//if (!linkval(&linkd, &llrc, fd))
+		if (!linkval(&linkd, llrc, fd))
 			return (ft_err());
 	}
 	else
@@ -102,6 +104,7 @@ int				iscomment(char *line)
 int 			main(int ac, char **av)
 {
 	int fd;
+	t_llrc llrc;
 
 	ac += 0;
 	fd = open(av[1], O_RDONLY);
@@ -113,11 +116,8 @@ int 			main(int ac, char **av)
 	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/maps/map", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map_l", O_RDONLY);
 	//if (ac > 1)// && fd > 0)//6)
-		val_in(fd);//(ac, av);
-//
-//
-//
-//
+		val_in(fd, &llrc);//(ac, av);
+//	printl();
 //
 //
 //

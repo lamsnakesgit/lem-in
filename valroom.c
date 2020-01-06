@@ -130,6 +130,7 @@ void            turninarr(t_llrc *llrc)
 		(llrc->arrrm)[i]->name_r = ((char**)tmp->content)[0];
 		llrc->arrrm[i]->x = ft_atoi(((char **)tmp->content)[1]);
 		llrc->arrrm[i]->y = ft_atoi(((char **)tmp->content)[2]);
+		llrc->arrrm[i]->ln = 0;
 		tmp = tmp->next;
 //		printf("||%s||%d\n", llrc->arrrm[i]->name_r, (llrc->arrrm)[i]->x);
 		++i;
