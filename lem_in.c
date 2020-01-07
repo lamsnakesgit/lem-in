@@ -26,10 +26,10 @@ int				ft_err(void)
 {
 	int i;
 }*/
-t_list			*ft_create_rooms(char *line)
+/*t_list			*ft_create_rooms(char *line)
 {   line+=0;
 	return (0);
-}
+}*/
 
 t_rooms				*r_fill(t_rooms *r, char **roomcor)
 {
@@ -86,7 +86,7 @@ int				val_in(int fd, t_llrc *llrc)
 		ft_err();
 	return (1);
 }
-
+/*
 int				iscomment(char *line)
 {
 	if (line[0] == '#')
@@ -97,9 +97,11 @@ int				iscomment(char *line)
 			return (-1);
 		if (ft_strcmp(line + 2, "end"))
 			return (-2);
+		else
+			return -3;//
 	}
 	return (1);
-}
+}*/
 
 int 			main(int ac, char **av)
 {
@@ -117,11 +119,8 @@ int 			main(int ac, char **av)
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map_l", O_RDONLY);
 	//if (ac > 1)// && fd > 0)//6)
 		val_in(fd, &llrc);//(ac, av);
+	alg(&llrc);
 //	printl();
-//
-//
-//
-//
 //
 //
 //

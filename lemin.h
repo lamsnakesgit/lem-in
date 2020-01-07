@@ -95,14 +95,14 @@ typedef struct s_llrc
 	   t_rooms	**arrrm;
 	   int      ants;
 }                              t_llrc;
-int			iscomment(char *line);
-int			rmorlink(char *line, t_llrc *llrc);//, t_list *rl);//0ptr-check
+int				iscomment(char *line);
+int				rmorlink(char *line, t_llrc *llrc);//, t_list *rl);//0ptr-check
 
-int			comstend(char *line);
+int				comstend(char *line);
 
-char 		*linkval(char **line, t_llrc *lrc, int fd);
-int         corr_link(char **line, t_llrc *llrc, int *rn);//checkmarginindxs
-int         ispresent(t_llrc *llrc, char *rs);
+char 			*linkval(char **line, t_llrc *lrc, int fd);
+int         	corr_link(char **line, t_llrc *llrc, int *rn);//checkmarginindxs
+int         	ispresent(t_llrc *llrc, char *rs);
 
 int			    comstend(char *line);
 t_list          *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor);
@@ -116,6 +116,10 @@ void            turninarr(t_llrc *llrc);
 
 int				ft_err(void);
 unsigned int	amount_ants(int fd);
+
+void 			print_l(t_llrc *lrc);
+
+int				alg(t_llrc *llrc);
 
 
 

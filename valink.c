@@ -94,11 +94,8 @@ t_list				*ft_rlink(/*(t_link **bg*/ t_list **bg, t_rooms *rm)//t_link *new)
 }
 void				savelink(t_llrc *llrc, int *rn)
 {
-/*	t_rooms	**tmp;
-	t_rooms *t0;
-	t_rooms **t1;
+/*	t_rooms	**tmp; t_rooms *t0; t_rooms **t1;
 */	t_link	*ln;
-
 /*	tmp = llrc->arrrm;
 	t0 = llrc->arrrm[rn[0]];
 	t1 = llrc->arrrm[rn[1]];
@@ -153,5 +150,6 @@ char 				*linkval(char **line, t_llrc *lrc, int fd)
 			savelink(lrc, rn);
 		}
 	}
+//	print_l(lrc);
 	return (*line);
 }
