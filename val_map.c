@@ -132,7 +132,7 @@ char				*roomlinkblock(char **line, t_llrc *lrc, int fd)
 	char    **ok;//*->**
 
 	i = 0;//r = r_fill(r, 0);
-	while (get_next_line(fd, line) > 0 && ++i)
+	while (get_next_line(fd, line) > 0 && ++i)//f returns line=*
 	{
 		if ((ret = comstend(*line))==0||ret==-3||ret==-1||ret==-2)
 			free(*line);//repetiton of st/e/else?

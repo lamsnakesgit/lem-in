@@ -121,6 +121,8 @@ void 			print_l(t_llrc *lrc);
 
 int				alg(t_llrc *llrc);
 
+int				lines(char *buf);
+char			**processmap(int fd);
 
 
 #endif

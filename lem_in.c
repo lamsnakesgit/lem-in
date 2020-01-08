@@ -68,6 +68,7 @@ int				val_in(int fd, t_llrc *llrc)
 //	t_llrc	llrc;
 
 //	llrc = *lrc;
+	processmap(fd);
 	if ((llrc->ants = amount_ants(fd)) < 1)//> 0)
 		return (ft_err());
 	llrc->br =0;//uninit||init somethin?
@@ -116,18 +117,14 @@ int 			main(int ac, char **av)
 	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42-dup", O_RDONLY);
 	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/maps/map", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map_l", O_RDONLY);
-	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/maps_lemin/maps/map100k-m", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map_l", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/maps_lemin/maps/map20k-m", O_RDONLY);
 	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/maps_lemin/maps/map38c", O_RDONLY);
-//	fd = open("")
+	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/MAPGN", O_RDONLY);
 	//if (ac > 1)// && fd > 0)//6)
 		val_in(fd, &llrc);//(ac, av);
 	alg(&llrc);
 //	printl();
-//
-//
-//
-//
 //
 //
 //
