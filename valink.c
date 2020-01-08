@@ -94,51 +94,18 @@ t_list				*ft_rlink(/*(t_link **bg*/ t_list **bg, t_rooms *rm)//t_link *new)
 }
 void				savelink(t_llrc *llrc, int *rn)
 {
-/*	t_rooms	**tmp; t_rooms *t0; t_rooms **t1;
-*/	t_link	*ln;
-/*	tmp = llrc->arrrm;
-	t0 = llrc->arrrm[rn[0]];
-	t1 = llrc->arrrm[rn[1]];
-*/
-/*	while (tmp[rn[0]]->ln)
-		tmp[rn[0]]->ln = tmp[rn[0]]->ln->next;
-	while (tmp[rn[1]]->ln)
-		tmp[rn[1]]->ln = tmp[rn[1]]->ln->next;
-	llrc->arrrm[rn[0]]->ln = llrc->arrrm[rn[1]];
-	llrc->arrrm[rn[0]]->ln->next = 0;
-	llrc->arrrm[rn[1]]->ln = llrc->arrrm[rn[0]];
-	llrc->arrrm[rn[1]]->ln->next = 0;*/
-/*	if (tmp[rn[0]]->ln)
-	{
-		ft_lstadd(tmp[rn[0]]->ln, tmp[rn[1]]->ln);
-	}
-	else
-	{
-		ft_lstnew()
-	}
-*/
-/*
-	tmp[rn[0]]->ln = llrc->arrrm[rn[1]];
-	tmp[rn[0]]->ln->next = 0;
-	tmp[rn[1]]->ln = llrc->arrrm[rn[0]];
-	tmp[rn[1]]->ln->next = 0;*/
-/*	while (llrc->arrrm[rn[0]]->ln)
-		ft_rlink(&(llrc->arrrm[rn[0]]->ln, llrc->arrrm[rn[1]]))*/
 	llrc->arrrm[rn[0]]->ln = ft_rlink(&(llrc->arrrm[rn[0]]->ln), llrc->arrrm[rn[1]]);
 	llrc->arrrm[rn[1]]->ln = ft_rlink(&(llrc->arrrm[rn[1]]->ln), llrc->arrrm[rn[0]]);
 }
 
-int 				nonelink(t_llrc *llrc)
+int 				nonelink(t_llrc *llrc)//doublewaylink
 {
 	int i;
 
-	i = 0;
-	while (llrc->arrrm[i])// && i < llrc->rmi)//ln)//
-	{
+	i = -1;
+	while (llrc->arrrm[++i])// && i < llrc->rmi)//ln)//
 		if (!llrc->arrrm[i]->ln)
 			return (0);
-		++i;
-	}
 	return (1);
 }
 char 				*linkval(char **line, t_llrc *lrc, int fd)
