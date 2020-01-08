@@ -13,31 +13,41 @@
 #include "lemin.h"
 #define BS 16000
 
-int				lines(char *buf)
+char			**lines(char *buf)
 {
-	int i;
-	int s;
+	int 	i;
+	int		s;
+	char	*sl;
 
-	i = 0;
+	i = -1;
 	s = 0;
-	while (buf[i])
-	{
+//	ls = 0;
+	while (buf[++i])
 		if (buf[i] == '\n')
 			++s;
-		++i;
-	}
-	return (s);
+	if (!(ls = (char **)malloc(sizeof(char *) * (s + 2)))
+		return (0);
+	i = -1;
+	while (++i < s + 2)
+		ls[i] = (char *)malloc(sizeof(char));//
+	return (ls);
 }
 
 char			**processmap(int fd)
 {
 	char	buf[BS + 1];
 	int		ret;
+ 	char	cp[fd];//
+ 	char	*sv;
 
+ 	cp[fd] = ft_strnew(0);
 	while ((ret = read(fd, buf, BS)) > 0)
 	{
 		buf[BS] = 0;
+		sv = ft_strjoin(cp[fd], buf);
+		free(cp[fd]);
+		cp[fd] = sv;
 	}
-	lines(buf);
+	lines(cp[fd]);//(buf);
 	return 0;
 }
