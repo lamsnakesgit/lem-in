@@ -128,6 +128,19 @@ void				savelink(t_llrc *llrc, int *rn)
 	llrc->arrrm[rn[1]]->ln = ft_rlink(&(llrc->arrrm[rn[1]]->ln), llrc->arrrm[rn[0]]);
 }
 
+int 				nonelink(t_llrc *llrc)
+{
+	int i;
+
+	i = 0;
+	while (llrc->arrrm[i])// && i < llrc->rmi)//ln)//
+	{
+		if (!llrc->arrrm[i]->ln)
+			return (0);
+		++i;
+	}
+	return (1);
+}
 char 				*linkval(char **line, t_llrc *lrc, int fd)
 {
 	int ret;
@@ -151,5 +164,7 @@ char 				*linkval(char **line, t_llrc *lrc, int fd)
 		}
 	}
 //	print_l(lrc);
+	if (!nonelink(lrc))
+		return (0);
 	return (*line);
 }

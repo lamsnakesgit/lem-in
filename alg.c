@@ -39,15 +39,15 @@ void 				print_l(t_llrc *lrc)
 /*
 ** delete links, rooms, ptr, name,
 */
-void 			freee(t_llrc *llrc)
+/*void 			freee(t_llrc *llrc)
 {
 	llrc->
-}
+}*/
 int				alg(t_llrc *llrc)
 {
 	int i;
 
-	print_l(llrc);
+//	print_l(llrc);
 	while (1)
 	{
 		break;

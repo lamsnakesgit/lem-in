@@ -112,11 +112,14 @@ int 			main(int ac, char **av)
 	fd = open(av[1], O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42", O_RDONLY);
 		   //maps_lemin/maps/map42", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map_42", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42", O_RDONLY);
+	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map_42", O_RDONLY);
+	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42-dup", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/maps/map", O_RDONLY);
-//	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map_l", O_RDONLY);
+	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/maps/map", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map_l", O_RDONLY);
+	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/maps_lemin/maps/map100k-m", O_RDONLY);
+	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/maps_lemin/maps/map38c", O_RDONLY);
+//	fd = open("")
 	//if (ac > 1)// && fd > 0)//6)
 		val_in(fd, &llrc);//(ac, av);
 	alg(&llrc);
