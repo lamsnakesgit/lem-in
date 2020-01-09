@@ -43,11 +43,26 @@ void 				print_l(t_llrc *lrc)
 {
 	llrc->
 }*/
+
+int 			bfs(t_llrc *llrc)
+{
+	t_rooms		**q;
+	t_list 		*neighbours;
+	t_rooms 	**tmp;
+	int 		*vis;
+
+	q = (t_rooms **)malloc(sizeof(t_rooms *) * llrc->rmi);
+	tmp = &(llrc->fr);
+	vis = (int *)malloc(sizeof(int) * llrc->rmi);
+	return (0);
+}
+
 int				alg(t_llrc *llrc)
 {
 	int i;
 
 //	print_l(llrc);
+	bfs = (llrc);
 	while (1)
 	{
 		break;
