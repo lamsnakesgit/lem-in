@@ -12,12 +12,12 @@
 
 #include "lemin.h"
 #define BS 16000
-
+/*
 char			**lines(char *buf)
 {
 	int 	i;
 	int		s;
-	char	*sl;
+	char	**ls;
 
 	i = -1;
 	s = 0;
@@ -25,7 +25,7 @@ char			**lines(char *buf)
 	while (buf[++i])
 		if (buf[i] == '\n')
 			++s;
-	if (!(ls = (char **)malloc(sizeof(char *) * (s + 2)))
+	if (!(ls = (char **)malloc(sizeof(char *) * (s + 2))))
 		return (0);
 	i = -1;
 	while (++i < s + 2)
@@ -50,4 +50,4 @@ char			**processmap(int fd)
 	}
 	lines(cp[fd]);//(buf);
 	return 0;
-}
+}*/

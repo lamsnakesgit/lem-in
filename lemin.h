@@ -63,6 +63,9 @@ typedef struct s_rooms
 	char	        *name_r;
 	int		        x;
 	int		        y;
+	int 			vis;
+	int 			lvl;
+	int				nu;
 //	struct s_rooms  *ln;
 	t_list          *ln;
 //	t_ 		links;
@@ -121,7 +124,7 @@ void 			print_l(t_llrc *lrc);
 
 int				alg(t_llrc *llrc);
 
-int				lines(char *buf);
+char			**lines(char *buf);
 char			**processmap(int fd);
 
 

@@ -43,26 +43,82 @@ void 				print_l(t_llrc *lrc)
 {
 	llrc->
 }*/
+t_rooms 		**queuefill(t_rooms **qu, t_llrc *llrc)
+{
+	t_rooms		**q;
+	int			i;
 
-int 			bfs(t_llrc *llrc)
+	q = (t_rooms **)malloc(sizeof(t_rooms *) * llrc->rmi);
+	i = 0;
+	q[0] = (llrc->fr);
+	while (/*q[i] &&*/ i < llrc->rmi)
+	{
+		q[i] = 0;
+		++i;
+	}
+	return (q);
+}
+/*
+** add root to que beg first el
+ * while q-not empty
+ * pop (element)//take out -> look up nhbrs//recopy que to beg
+ * 	while (el-neighbours)
+ * 		push neighbors
+*/
+/*int 			bfs(t_llrc *llrc)
 {
 	t_rooms		**q;
 	t_list 		*neighbours;
-	t_rooms 	**tmp;
+	t_rooms 	*tmp;
 	int 		*vis;
+	int 		i;
 
-	q = (t_rooms **)malloc(sizeof(t_rooms *) * llrc->rmi);
-	tmp = &(llrc->fr);
+	q = queuefill(q, llrc);
+	tmp = (llrc->fr);
 	vis = (int *)malloc(sizeof(int) * llrc->rmi);
+	q[0] = tmp;
+	i = 0;
+	while (q[i] != 0)
+	{
+		q[i] = 0;
+		tmp = (llrc->fr);
+	//	++i;
+		neighbours = tmp->ln;
+		while (neighbours)//((*tmp)->ln)
+		{
+			q[i] = (t_rooms *)neighbours->content;
+			++i;
+		}
+		tmp = (t_rooms *)(tmp->ln->content);
+	}
+	return (0);
+}*/
+
+int 			*unvisit(int *vis, t_llrc *llrc)
+{
+	int i;
+
+	i = -1;
+	while (++i < llrc->rmi)
+		vis[i] = 0;
 	return (0);
 }
+int 			bfs(t_llrc *llrc)
+{//	t_rooms		**q;
+	t_list		*q;
+	t_list 		*neighbours;
+	t_rooms 	*tmp;//int 		*vis;
 
+	tmp = (llrc->fr);//	vis = (int *)malloc(sizeof(int) * llrc->rmi);//	unvisit(vis, llrc);
+	q = ft_lstnew((void *)llrc->fr, (size_t)llrc->fr);
+	return 0;
+}
 int				alg(t_llrc *llrc)
 {
 	int i;
 
 //	print_l(llrc);
-	bfs = (llrc);
+	bfs(llrc);//bfs = (llrc);
 	while (1)
 	{
 		break;

@@ -68,7 +68,7 @@ int				val_in(int fd, t_llrc *llrc)
 //	t_llrc	llrc;
 
 //	llrc = *lrc;
-	processmap(fd);
+	//processmap(fd);
 	if ((llrc->ants = amount_ants(fd)) < 1)//> 0)
 		return (ft_err());
 	llrc->br =0;//uninit||init somethin?
@@ -109,8 +109,7 @@ int 			main(int ac, char **av)
 	int fd;
 	t_llrc llrc;
 
-	ac += 0;
-	fd = open(av[1], O_RDONLY);
+	ac += 0;//fd = open(av[1], O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42", O_RDONLY);
 		   //maps_lemin/maps/map42", O_RDONLY);
 	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map_42", O_RDONLY);
@@ -121,15 +120,15 @@ int 			main(int ac, char **av)
 	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/maps_lemin/maps/map20k-m", O_RDONLY);
 	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/maps_lemin/maps/map38c", O_RDONLY);
 	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/MAPGN", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/flow-one", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/flow-ten", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/flow-thousand", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/big", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/big-superposition", O_RDONLY);
 	//if (ac > 1)// && fd > 0)//6)
 		val_in(fd, &llrc);//(ac, av);
-	alg(&llrc);
+//	alg(&llrc);
 //	printl();
-//
-//
-//
-//
-//
 //
 	return (0);
 }

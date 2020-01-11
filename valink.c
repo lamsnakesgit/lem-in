@@ -108,6 +108,30 @@ int 				nonelink(t_llrc *llrc)//doublewaylink
 			return (0);
 	return (1);
 }
+
+int					copyse(t_llrc *llrc)
+{
+	int i;
+
+	i = 0;
+	while (i < llrc->rmi)
+	{
+		if (!ft_strcmp(llrc->arrrm[i]->name_r, llrc->fr->name_r))
+			llrc->fr->ln = llrc->arrrm[i]->ln;
+		else if (!ft_strcmp(llrc->arrrm[i]->name_r, llrc->er->name_r))
+			llrc->er->ln = llrc->arrrm[i]->ln;
+		++i;
+	}
+	while (i < llrc->rmi)
+	{
+		if (llrc->arrrm[i]->nu == llrc->fr->nu)
+			llrc->fr->ln = llrc->arrrm[i]->ln;
+		else if (llrc->arrrm[i]->nu == llrc->er->nu)
+			llrc->er->ln = llrc->arrrm[i]->ln;
+	}//
+	return (1);
+}
+
 char 				*linkval(char **line, t_llrc *lrc, int fd)
 {
 	int ret;
@@ -133,5 +157,6 @@ char 				*linkval(char **line, t_llrc *lrc, int fd)
 //	print_l(lrc);
 	if (!nonelink(lrc))
 		return (0);
+	copyse(lrc);
 	return (*line);
 }
