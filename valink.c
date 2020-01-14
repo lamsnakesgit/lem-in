@@ -67,7 +67,6 @@ int                 corr_link(char **line, t_llrc *llrc, int *rn)//checkmarginin
 	if ((rn[0] = ispresent(llrc, rs)) < 0)
 		return 0;
 	free (rs);
-//	if (ft_strcmp(*line + ))
 	++e;
 	while ((*line)[i])
 		++i;

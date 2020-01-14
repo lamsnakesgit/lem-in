@@ -16,9 +16,7 @@
 ** read next_line -> either "name_c-x_c-y" or "##start"/"##end"/"#"comment;
 ** if at least one space contained -> rooms mb; else -> check_##/start/end/commet#
 ** * then links: "name-1_name-2"
-** //maybe written null in line?
 ** /submodeuls if u lno how to exec i will exec ,inflesliu
-** actually delete putend; after- print_later
 ** also have to save fir-last rooms
 ** rooms: own gnl cycle : if comm/st/end slip; if st/end -> next? saveline
 ** else check_r-coords & save in lst
@@ -79,7 +77,7 @@ char				**valrmc_s(char *line)
 	i = 0;
 	if (!(roomcor = ft_strsplit(line, ' ')))
 		return 0;
-	while (roomcor[i])// && roomcor)//uncod jump
+	while (roomcor[i])// && roomcor)//uncod j
 		++i;
 	if (i == 3 && roomcor[0][0] != 'L' && val_cord(roomcor))
 		return (roomcor);
@@ -92,7 +90,7 @@ int					savemarg(t_llrc *lrc, int cm)//char *line,
 	t_rooms *x;//	char	**roomcor;
 	int		i;
 	char 	**ok;
-	i = 0;//lastcalfunck
+	i = 0;
 
 	ok = (char**)lrc->br->content;//ok = (char**)lrc->br->content;//x->x = 0;
 	x = (t_rooms*)malloc(sizeof(t_rooms));
@@ -102,7 +100,7 @@ int					savemarg(t_llrc *lrc, int cm)//char *line,
 	x->name_r = ok[0];
 	x->x = ft_atoi(ok[1]);
 	x->y = ft_atoi(ok[2]);
-//	roomcor = ft_strsplit(line, ' ');//dont we ned to pnt-1lst?
+//	roomcor = ft_strsplit(line, ' ');
 //	x->y = ft_atoi(roomcor[2]);//malloc??x//rfil!!!
 	x->vis = 0;
 	x->lvl = -1;

@@ -99,10 +99,13 @@ int 			*unvisit(int *vis, t_llrc *llrc)
 	int i;
 
 	i = -1;
-	while (++i < llrc->rmi)
+	while (++i < llrc->rmi)//iter array
 		vis[i] = 0;
 	return (0);
 }
+/*
+**
+*/
 int 			bfs(t_llrc *llrc)
 {//	t_rooms		**q;
 	t_list		*q;
@@ -111,6 +114,7 @@ int 			bfs(t_llrc *llrc)
 
 	tmp = (llrc->fr);//	vis = (int *)malloc(sizeof(int) * llrc->rmi);//	unvisit(vis, llrc);
 	q = ft_lstnew((void *)llrc->fr, (size_t)llrc->fr);
+
 	return 0;
 }
 int				alg(t_llrc *llrc)
