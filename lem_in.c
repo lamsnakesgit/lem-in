@@ -127,7 +127,7 @@ int 			main(int ac, char **av)
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/big-superposition", O_RDONLY);
 	//if (ac > 1)// && fd > 0)//6)
 		val_in(fd, &llrc);//(ac, av);
-//	alg(&llrc);
+	alg(&llrc);
 //	printl();
 //
 	return (0);

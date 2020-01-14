@@ -104,17 +104,98 @@ int 			*unvisit(int *vis, t_llrc *llrc)
 	return (0);
 }
 /*
-**
+** create link ist
+** add first rm there
+** while (q)
+**  pop q
+ * 	while q.nbrs
+ * 		if (notvis
+ * 			push q.nbr
 */
+/*t_list 			*queue_add(t_list *st, t_list)
+{
+	;
+}*/
+t_list 			*pullnode(t_list **q)
+{
+	t_list	*h;
+
+	h = 0;
+	if (q && *q)
+	{
+		h = *q;
+	//	if ((*q)->next)
+		(*q) = (*q)->next;
+	}
+	return (h);
+}
+
+t_list 			*q_create(t_list *q)
+{
+
+}
+int 			queadd(t_list **q, t_list *tr)
+{
+	t_list	*tmp;
+
+	if (q && *q)
+	{
+		tmp = (*q);
+		while (tmp)
+			tmp = tmp->next;
+		tmp = ft_lstnew((void *)tr->content, (size_t)sizeof(tr));//q_create(q, ft_lstadd(((void *)tr->content), (size_t)(sizeof(tr->content)));
+	}
+}
+
+int				quepush(t_llrc *llrc, t_list **q, t_list *tr)//levels mark;add to queue
+{
+	t_list *ln;
+
+	ln = ((t_rooms *)(tr->content))->ln;
+	while (ln)
+	{
+		if (llrc->er == (t_rooms *)ln->content)//if (llrc->er == (t_rooms *)tr->content)
+		{
+			((t_rooms *) tr->content)->lvl = -1;//((t_rooms *)tr->content)->lvl + 1;
+		}
+		else if (llrc->fr == (t_rooms *)ln->content)
+		{
+			((t_rooms *)ln->content)->lvl = -1;//((t_rooms *)tr->content)->lvl + 1;
+		}
+		else
+		{
+			((t_rooms *)ln->content)->lvl = ((t_rooms *)tr->content)->lvl + 1;
+			queadd(q, tr);
+		}
+		ln = ln->next;
+	}
+}
+
 int 			bfs(t_llrc *llrc)
 {//	t_rooms		**q;
 	t_list		*q;
 	t_list 		*neighbours;
 	t_rooms 	*tmp;//int 		*vis;
+	t_list		*tr;
 
 	tmp = (llrc->fr);//	vis = (int *)malloc(sizeof(int) * llrc->rmi);//	unvisit(vis, llrc);
-	q = ft_lstnew((void *)llrc->fr, (size_t)llrc->fr);
+	if (!(q = ft_lstnew((void *)llrc->fr, (size_t)(sizeof(llrc->fr)))))
+		return (0);
+	while (q != 0)///*(qu)/*/(q == 0)// || !q->content)
+	{
+		tr = pullnode(&q);
+		if ((t_rooms *)tr->content != llrc->er)
+		{
+			quepush(llrc, &q, tr);//put levels; add to queue
+		}
+		tr = tr->next;
+/*		while (((t_rooms*)q->content)->ln)
+		{
 
+		}
+*/
+		break ;
+	}
 	return 0;
 }
 int				alg(t_llrc *llrc)
