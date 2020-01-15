@@ -40,14 +40,18 @@ int 			checkmap(char **ls, char *buf)
 	int s;
 
 	i = -1;
-	j = -1;
-	ls[++j] = buf;
+	j = 0;
+	ls[0] = buf;
+	s = -1;//0;
 	while (buf[++i])
 	{
 		if (buf[i] == '\n')
 		{
-		//	s = i;
-			if (buf[i + 1] == '\n' || !i)
+		//	if (i == 1)
+			if (i - s < 2)//== 0)
+				return (0);
+			s = i;
+			if (buf[i + 1] == '\n' || !i)// || s - i == 0)
 				return (0);
 			buf[i] = 0;
 			ls[++j] = buf[i + 1];//s c
