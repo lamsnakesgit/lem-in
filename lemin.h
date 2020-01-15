@@ -76,6 +76,7 @@ while (q has els)
 	}
 }
  rmorlink dup else + 0.2
+ sne darrlines to check ants/rms/cr/lns
 */
 
 typedef struct s_rooms
@@ -147,7 +148,7 @@ void 			print_l(t_llrc *lrc);
 int				alg(t_llrc *llrc);
 
 char			**lines(char *buf);
-char			**processmap(int fd);
+char			**processmap(int fd, t_llrc *llrc);
 
 
 #endif

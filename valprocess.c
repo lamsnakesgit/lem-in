@@ -54,13 +54,13 @@ int 			checkmap(char **ls, char *buf)
 			if (buf[i + 1] == '\n' || !i)// || s - i == 0)
 				return (0);
 			buf[i] = 0;
-			ls[++j] = buf[i + 1];//s c
+			ls[++j] = buf + i + 1;//s c
 		}
 	}
 	ls[++j] = 0;
 }
 
-char			**processmap(int fd)
+char			**processmap(int fd, t_llrc *llrc)
 {
 	char	buf[BS + 1];
 	int		ret;
@@ -78,8 +78,23 @@ char			**processmap(int fd)
 	}
 	if (ret < 0)
 		return 0;
-	printf("%s", cp);
+//	printf("%s\n", cp);
 	ls = lines(cp);//(buf);
 	checkmap(ls, cp);
-	return 0;
+	int i = 0;
+	while (ls[i])
+	{
+		printf("%s\n", ls[i++]);
+	}
+	int j = 0;
+	while (ls[0][j])
+	{
+		if (!ft_isdigit(ls[0][j]))//intlon
+			return(0);//ft_err());
+		++j;
+	}
+	llrc->ants = ft_atoi(ls[0]);
+	//val
+	//print array chekk
+	return ls;
 }

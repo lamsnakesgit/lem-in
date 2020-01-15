@@ -12,33 +12,9 @@
 
 #include "lemin.h"
 
-unsigned int	amount_ants(int fd)
-{
-	char	*line;
-	int 	nant;
-
-	if (get_next_line(fd, &line) > 0)
-	{
-		if ((nant = ft_atoi(line)) == 0)// < 1
-		{
-			free(line);
-			return (0);//(ft_err());
-		}
-		else
-		{
-			ft_putendl(line);
-			free(line);
-			//    return (0);
-		}
-	}
-	else//free ?
-		return (0);
-	return (nant);
-}
-
 int				comstend(char *line)
 {
-	ft_putendl(line);//or after
+//	ft_putendl(line);//or after
 	if (line[0] == '#' && line[1] == '#' && line && line + 1)
 	{
 		if (!ft_strcmp(line + 2, "start"))// || !ft_strcmp(line + 2, "end")) unlnowm coms ignoreD
@@ -133,10 +109,11 @@ char				*roomlinkblock(char **line, t_llrc *lrc, int fd)
 	char    **ok;//*->**
 
 	i = 0;//r = r_fill(r, 0);
-	while (get_next_line(fd, line) > 0 && ++i)//f returns line=*
+	while (line[i])//while (get_next_line(fd, line) > 0 && ++i)//f returns line=*
 	{
-		if ((ret = comstend(*line))==0||ret==-3||ret==-1||ret==-2)
-			free(*line);//repetiton of st/e/else?
+		ret = comstend(*line);
+	//	if ((ret = comstend(*line))==0||ret==-3||ret==-1||ret==-2)
+	//		free(*line);//repetiton of st/e/else?//KEKEEEEK
 		if (ret == -1 ||ret == -2)/*)//save1/rol/cycle.iscom*/
 			if (!stcheck(line, lrc, ret, fd))//ret-check
 				return (0);//fre?
@@ -150,6 +127,7 @@ char				*roomlinkblock(char **line, t_llrc *lrc, int fd)
 			ok = (char**)lrc->br->content;
 			//	printf("%s\n|%s\n|%s\n", ((char**)lrc->br->content)[0], ((char**)(lrc->br->content))[1], ((char**)(lrc->br->content))[2]);
 		}
+		++i;
 	}
 	return (0);//(*line);ERRvalrmonly
 }
