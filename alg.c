@@ -129,11 +129,12 @@ t_list 			*pullnode(t_list **q)
 	}
 	return (h);
 }
-
+/*
 t_list 			*q_create(t_list *q)
 {
 
-}
+}*/
+
 int 			queadd(t_list **q, t_list *tr)
 {
 	t_list	*tmp;
@@ -145,8 +146,9 @@ int 			queadd(t_list **q, t_list *tr)
 			tmp = tmp->next;
 		tmp = ft_lstnew((void *)tr->content, (size_t)sizeof(tr));//q_create(q, ft_lstadd(((void *)tr->content), (size_t)(sizeof(tr->content)));
 	}
+	return 0;
 }
-
+/*
 int				quepush(t_llrc *llrc, t_list **q, t_list *tr)//levels mark;add to queue
 {
 	t_list *ln;
@@ -169,8 +171,9 @@ int				quepush(t_llrc *llrc, t_list **q, t_list *tr)//levels mark;add to queue
 		}
 		ln = ln->next;
 	}
+	return 0;
 }
-
+*/
 int 			bfs(t_llrc *llrc)
 {//	t_rooms		**q;
 	t_list		*q;
@@ -198,12 +201,62 @@ int 			bfs(t_llrc *llrc)
 	}
 	return 0;
 }
+/*
+** receive que-ptr, current node pull off que
+** save links in tmp to iterate through neighbours;
+** if curr link pts to unvis room; mark level; add to the end of que
+**
+*/
+int 			quepush(t_llrc *llrc, t_list **qu, t_list *tr)//**tr)///push unvis nbrs
+{//add to qu non vis /add levl marks
+	t_list	*ln;
+
+	ln = ((t_rooms *)((tr)->content))->ln;//((t_rooms *)tr)->ln;
+	while (ln)
+	{
+		if (((t_rooms *)(ln->content))->vis == 0)//(((t_rooms *)(*tr)->content)->vis == 0);
+		{//links of end/st/dead
+		//	if (((t_rooms *)(*tr)->content)->nu//(((t_rooms *)ln->content)->nu == llrc->fr->nu)
+		//		((t_rooms *)ln->content)->lvl
+			((t_rooms *)ln->content)->lvl = ((t_rooms*)(tr)->content)->lvl + 1;
+			queadd(qu, ln);//->content);//tr);//add room->q
+		}
+		ln = ln->next;
+	}
+	return 0;
+}
+
+int 			bft(t_llrc *llrc)
+{
+	t_list	*qu;
+	t_list	*cur;
+	t_list	*last;
+
+	if (!(qu = ft_lstnew((void *)llrc->fr, (size_t)(sizeof(llrc->fr)))))
+		return 0;
+	((t_rooms *)qu->content)->lvl = 0;
+	while (qu != 0)
+	{
+		cur = pullnode(&qu);//node w ptr to first room
+		if (ft_strcmp(cur->content, llrc->er->name_r))//if no reach end//add to que non vis
+		{
+			quepush(llrc, &qu, cur);//((t_rooms *)cur->content)->lvl;
+		}
+		else
+			last = cur;
+		cur = cur->next;
+	}
+	return 0;
+}
+
 int				alg(t_llrc *llrc)
 {
 	int i;
 
 //	print_l(llrc);
-	bfs(llrc);//bfs = (llrc);
+//	count_way()
+	bft(llrc);
+//	bfs(llrc);//bfs = (llrc);
 	while (1)
 	{
 		break;

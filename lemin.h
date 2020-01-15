@@ -55,6 +55,27 @@ or zero-strct w lr-line; ptr
 2 s/e? in links?
 se-savesep-allstrct
 whet top stop on link-s?
+Bfs: queue - root ; pop root-> putnbrs; mark levels path
+-[ ] Create f node;
+-[ ] Retrieve first out of q
+-[ ] Check if its the end
+-[ ] If non vis nor
+-	 unvis links add to queue;
+-	 Saving path in in;
+create first node t_list *q; add f.r. -> q; q->next = 0;
+while (q has els)
+{pull1node; move ptr to beg node -> next;return the beg node
+	while (curnode->links)
+	{
+ 		add level to room mark;
+ 		add to prevlist of all pulled nodes to collect path;reverse
+ 		non vis lns -> add to que;
+ 		//while (curnode->ln)
+ 		//{curnode->ln->vis
+ 		//}
+	}
+}
+ rmorlink dup else + 0.2
 */
 
 typedef struct s_rooms
@@ -66,6 +87,7 @@ typedef struct s_rooms
 	int 			vis;
 	int 			lvl;
 	int				nu;
+	int				ant;
 //	struct s_rooms  *ln;
 	t_list          *ln;
 //	t_ 		links;

@@ -68,7 +68,8 @@ int				val_in(int fd, t_llrc *llrc)
 //	t_llrc	llrc;
 
 //	llrc = *lrc;
-	//processmap(fd);
+	processmap(fd);
+	return 0;
 	if ((llrc->ants = amount_ants(fd)) < 1)//> 0)
 		return (ft_err());
 	llrc->br =0;//uninit||init somethin?
@@ -127,8 +128,8 @@ int 			main(int ac, char **av)
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/big-superposition", O_RDONLY);
 	//if (ac > 1)// && fd > 0)//6)
 		val_in(fd, &llrc);//(ac, av);
-	alg(&llrc);
+//	alg(&llrc);
 //	printl();
-//
+//	free(llrc.)
 	return (0);
 }

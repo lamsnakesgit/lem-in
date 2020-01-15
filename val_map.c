@@ -99,6 +99,7 @@ int					stcheck(char **line, t_llrc *lrc, int cm, int fd)
 ** comms -skipped;counted;nost/e->fail;no after s/e/-?F;if rm if link
 ** //mb link->sendline; inval-rmc???ret
 **		//ret if links->?in here->save-vallink
+** //check DUPS + 0.2
 */
 
 int				rmorlink(char *line, t_llrc *lrc)//, t_list *rl)
@@ -111,14 +112,14 @@ int				rmorlink(char *line, t_llrc *lrc)//, t_list *rl)
 		return 2;
 	}
 	if (!(roomcor = valrmc_s(line)))//STOP
-		return (0);//(NULL);//thereis no room; or fault
+		return (0);//thereis no room; or fault
 		//if (ft_strchr))
-	else//check DUPS
+	else
 	{
-		if (lrc->br)
+	/*	if (lrc->br)
 			if (!duplicheck(roomcor, lrc))
 				return -2;
-		lrc->br = valroom_fill1(/*&rl*/(&lrc->br), /*r,*/ roomcor);//vrf; llrc->br = rl;
+	*/	lrc->br = valroom_fill1(/*&rl*/(&lrc->br), /*r,*/ roomcor);//vrf; llrc->br = rl;
 		lrc->rmi++;
 	}
 	return 10;
