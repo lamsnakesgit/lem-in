@@ -52,12 +52,12 @@ int 			checkmap(char **ls, char *buf)
 				return (0);
 			s = i;
 			buf[i] = 0;
-		/*	if (buf[i + 1] == 0)
+			if (buf[i + 1] == 0)
 			{
 				ls[++j] = 0;
 				return (ls);
 			}
-		*/	if (buf[i + 1] == '\n' || !i)// || s - i == 0)
+			if (buf[i + 1] == '\n' || !i)// || s - i == 0)
 				return (0);
 		//	buf[i] = 0;
 			ls[++j] = buf + i + 1;//s c
