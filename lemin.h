@@ -137,7 +137,7 @@ char		    **valrmc_s(char *line);
 int			    savemarg(t_llrc *lrc, int cm);//char *line,
 int			    stcheck(char **line, t_llrc *lrc, int cm, int fd);
 int             duplicheck(char **roomcor, t_llrc *lrc);
-char		    *roomlinkblock(char **line, t_llrc *lrc, int fd);
+int		    	roomlinkblock(char **line, t_llrc *lrc, int fd);
 void            turninarr(t_llrc *llrc);
 
 int				ft_err(void);

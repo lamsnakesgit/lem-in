@@ -66,9 +66,9 @@ int				val_in(int fd, t_llrc *llrc)
 	char	*line;
 	char	*linkd;
 	char	**ls;
-//	t_llrc	llrc;
+	int 	i;
 
-//	llrc = *lrc;
+
 	if (!(ls = processmap(fd, &llrc)) || ! (1 + ls))
 		return (ft_err());
 	//return 0;
@@ -77,15 +77,15 @@ int				val_in(int fd, t_llrc *llrc)
 	llrc->br =0;//uninit||init somethin?
 	*llrc = nullst(*llrc);
 //	printf("%s\n%s\n", ls, ls + 1);
-	printf("lines\n%s\n%s\n", ls[0], ls[1]);
-	linkd = roomlinkblock(ls + 1, llrc, fd);//(&line, llrc, fd);//dupls?
+	printf("lines\n%s\n%s\n", ls[0], ls[1]);//	linkd
+	i = roomlinkblock(ls + 1, llrc, fd);//(&line, llrc, fd);//dupls?
 	if (!llrc->rmi || llrc->end != 1 || llrc->st != 1)
 		return (ft_err());//freel-ifl//free s/e
 	turninarr(llrc);//(&llrc);
-	if (linkd)//if freed? send rmlis+line+fd//st-end/line
+	if (ls && ls + i + 1)//1)//(linkd)//if freed? send rmlis+line+fd//st-end/line
 	{
 		//if (!linkval(&linkd, &llrc, fd))
-		if (!linkval(&linkd, llrc, fd))
+		if (!linkval(ls + i + 1, llrc, fd))
 			return (ft_err());
 	}
 	else
@@ -125,11 +125,12 @@ int 			main(int ac, char **av)
 	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/maps_lemin/maps/map20k-m", O_RDONLY);
 	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/maps_lemin/maps/map38c", O_RDONLY);
 	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/MAPGN", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/flow-one", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/flow-one", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/flow-ten", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/flow-thousand", O_RDONLY);
-//	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/big", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/big-superposition", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/big", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/big-superposition", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mmap", O_RDONLY);
 	//if (ac > 1)// && fd > 0)//6)
 		val_in(fd, &llrc);//(ac, av);
 //	alg(&llrc);

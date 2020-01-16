@@ -14,7 +14,7 @@
 
 int				comstend(char *line)
 {
-//	ft_putendl(line);//or after
+	ft_putendl(line);//or after
 	if (line[0] == '#' && line[1] == '#' && line && line + 1)
 	{
 		if (!ft_strcmp(line + 2, "start"))// || !ft_strcmp(line + 2, "end")) unlnowm coms ignoreD
@@ -35,29 +35,31 @@ int					stcheck(char **line, t_llrc *lrc, int cm, int fd)
 {
 	int re;
 	int rvl;
+	int i;
 //	if (cm == -2)++lrc->end;if (cm == -1)++lrc->st;
+
+	i = 0;
 	cm == -2 ? ++lrc->end : ++lrc->st;
 	if (lrc->st > 1 || lrc->end > 1)
-		return 0;
-	while (get_next_line(fd, line) > 0)
+		return -2;
+	while (line[i])//(get_next_line(fd, line) > 0)
 	{
-		if ((re=comstend(*line))!=1)
-		{
-			free(*line);
+		if ((re=comstend(line[i]))!=1)
+		{//	free(*line);
 			if (re ==-2||re==-1)
-				return 0;
+				return -2;
 		}
 		else if (re == 1)
 		{//freelst?
-			if ((rvl=rmorlink(*line, lrc))==2||!rvl)//orsavesep t_rm
-				return 0;
+			if ((rvl=rmorlink(line[i], lrc))==2||!rvl)//orsavesep t_rm
+				return -2;//0;
 			if (savemarg(lrc, cm) == 0)//*line,
-				return 0000;//nonfree?/ret?
-			free (*line);
-			return 1;
+				return -2;//0000;//nonfree?/ret?
+		//	free (*line);
+			return (1 + i);//1;
 		}//cont aft -1/-2 exit?
 	}
-	return 0;
+	return -2;
 }
 
 /*
@@ -101,30 +103,33 @@ int				rmorlink(char *line, t_llrc *lrc)//, t_list *rl)
 	return 10;
 }
 
-char				*roomlinkblock(char **line, t_llrc *lrc, int fd)
+int					roomlinkblock(char **line, t_llrc *lrc, int fd)//mv ind!
 {
 	int		ret;
 	int 	i;
-	int		rm;
-	char    **ok;//*->**
+	int		rm;//	char    **ok;//*->**
+	int		v;
 
 	i = 0;//r = r_fill(r, 0);
 	while (line[i])//while (get_next_line(fd, line) > 0 && ++i)//f returns line=*
 	{
-		ret = comstend(*line);
+		ret = comstend(line[i]);
 	//	if ((ret = comstend(*line))==0||ret==-3||ret==-1||ret==-2)
 	//		free(*line);//repetiton of st/e/else?//KEKEEEEK
 		if (ret == -1 ||ret == -2)/*)//save1/rol/cycle.iscom*/
-			if (!stcheck(line, lrc, ret, fd))//ret-check
+		{
+			if ((v = stcheck(line + i + 1, lrc, ret, fd)) < 0)//ret-check
 				return (0);//fre?
+			i += v;
+		}
 		if (ret == 1)
 		{
-			if ((rm = rmorlink(*line, lrc)/*, (lrc->br))*/) == 2)
-				return (*line);//if no rms->lnks(li);//
-			free(*line);
+			if ((rm = rmorlink(line[i], lrc)/*, (lrc->br))*/) == 2)
+				return i;//(line[i]);//if no rms->lnks(li);//
+		//	free(*line);
 			if (rm == 0 || rm == -2)
 				return (0);
-			ok = (char**)lrc->br->content;
+		//	ok = (char**)lrc->br->content;
 			//	printf("%s\n|%s\n|%s\n", ((char**)lrc->br->content)[0], ((char**)(lrc->br->content))[1], ((char**)(lrc->br->content))[2]);
 		}
 		++i;

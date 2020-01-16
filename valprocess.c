@@ -51,13 +51,20 @@ int 			checkmap(char **ls, char *buf)
 			if (i - s < 2)//== 0)
 				return (0);
 			s = i;
-			if (buf[i + 1] == '\n' || !i)// || s - i == 0)
-				return (0);
 			buf[i] = 0;
+		/*	if (buf[i + 1] == 0)
+			{
+				ls[++j] = 0;
+				return (ls);
+			}
+		*/	if (buf[i + 1] == '\n' || !i)// || s - i == 0)
+				return (0);
+		//	buf[i] = 0;
 			ls[++j] = buf + i + 1;//s c
 		}
 	}
 	ls[++j] = 0;
+	return (1);//(ls);//WTF
 }
 
 char			**processmap(int fd, t_llrc *llrc)
@@ -71,11 +78,13 @@ char			**processmap(int fd, t_llrc *llrc)
  	cp = ft_strnew(0);
 	while ((ret = read(fd, buf, BS)) > 0)
 	{
-		buf[BS] = 0;
+		buf[ret] = 0;//[BS] = 0;
 		sv = ft_strjoin(cp, buf);
 		free(cp);
 		cp = sv;
 	}
+	if (!cp)
+		free(cp);
 	if (ret < 0)
 		return 0;
 //	printf("%s\n", cp);
@@ -84,7 +93,7 @@ char			**processmap(int fd, t_llrc *llrc)
 	int i = 0;
 	while (ls[i])
 	{
-		printf("%s\n", ls[i++]);
+		printf("=%s\n", ls[i++]);
 	}
 	int j = 0;
 	while (ls[0][j])
