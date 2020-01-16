@@ -91,11 +91,11 @@ char			**processmap(int fd, t_llrc *llrc)
 	ls = lines(cp);//(buf);
 	checkmap(ls, cp);
 	int i = 0;
-	while (ls[i])
+/*	while (ls[i])
 	{
 		printf("=%s\n", ls[i++]);
 	}
-	int j = 0;
+*/	int j = 0;
 	while (ls[0][j])
 	{
 		if (!ft_isdigit(ls[0][j]))//intlon
