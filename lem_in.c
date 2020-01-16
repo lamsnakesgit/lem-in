@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:13 by ddratini          #+#    #+#             */
-/*   Updated: 2019/12/30 17:30:42 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/01/16 19:56:19 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,12 +119,13 @@ int 			main(int ac, char **av)
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map_l", O_RDONLY);
 	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/maps_lemin/maps/map20k-m", O_RDONLY);
 	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/maps_lemin/maps/map38c", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/MAPGN", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/flow-one", O_RDONLY);//MAPGN", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/flow-one", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/flow-ten", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/flow-thousand", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/big", O_RDONLY);
-//	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/big-superposition", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/big-superposition", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/maps/map", O_RDONLY);
 	//if (ac > 1)// && fd > 0)//6)
 		val_in(fd, &llrc);//(ac, av);
 	alg(&llrc);
