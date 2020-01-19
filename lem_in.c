@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:13 by ddratini          #+#    #+#             */
-/*   Updated: 2019/12/30 17:30:42 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/01/16 23:30:11 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_llrc 			nullst(t_llrc llrc)
 	llrc.rmi = 0;
 	llrc.linkd = 0;
 	llrc.br = 0;//rl=0?
-	llrc.fr = 0;
+//	llrc->br =0;//uninit||init somethin?	llrc.fr = 0;
 	llrc.er = 0;
 	llrc.arrrm = 0;
 	return (llrc);
@@ -74,10 +74,9 @@ int				val_in(int fd, t_llrc *llrc)
 	//return 0;
 //	if ((llrc->ants = amount_ants(fd)) < 1)//> 0)
 //		return (ft_err());
-	llrc->br =0;//uninit||init somethin?
 	*llrc = nullst(*llrc);
 //	printf("%s\n%s\n", ls, ls + 1);
-	printf("lines\n%s\n%s\n", ls[0], ls[1]);//	linkd
+//	printf("lines\n%s\n%s\n", ls[0], ls[1]);//	linkd
 	i = roomlinkblock(ls + 1, llrc, fd);//(&line, llrc, fd);//dupls?
 	if (!llrc->rmi || llrc->end != 1 || llrc->st != 1)
 		return (ft_err());//freel-ifl//free s/e
@@ -130,7 +129,7 @@ int 			main(int ac, char **av)
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/flow-thousand", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/big", O_RDONLY);
 	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/big-superposition", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mmap", O_RDONLY);
+	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mmap", O_RDONLY);
 	//if (ac > 1)// && fd > 0)//6)
 		val_in(fd, &llrc);//(ac, av);
 	alg(&llrc);
