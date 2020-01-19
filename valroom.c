@@ -138,5 +138,5 @@ void            turninarr(t_llrc *llrc)
 //		printf("||%s||%d\n", llrc->arrrm[i]->name_r, (llrc->arrrm)[i]->x);
 		++i;
 	}
-	llrc->arrrm[i] = 0;
+//	llrc->arrrm[i] = 0;
 }

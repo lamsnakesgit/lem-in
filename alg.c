@@ -146,6 +146,10 @@ int 			queadd(t_list **q, t_list *tr)
 			tmp = tmp->next;
 		tmp = ft_lstnew((void *)tr->content, (size_t)sizeof(tr));//q_create(q, ft_lstadd(((void *)tr->content), (size_t)(sizeof(tr->content)));
 	}
+	else
+    {
+        (*q) = ft_lstnew((void *)tr->content, (size_t)sizeof(tr));
+    }
 	return 0;
 }
 /*
@@ -187,10 +191,10 @@ int 			bfs(t_llrc *llrc)
 	while (q != 0)///*(qu)/*/(q == 0)// || !q->content)
 	{
 		tr = pullnode(&q);
-		if ((t_rooms *)tr->content != llrc->er)
+	/*	if ((t_rooms *)tr->content != llrc->er)
 		{
 			quepush(llrc, &q, tr);//put levels; add to queue
-		}
+		}*/
 		tr = tr->next;
 /*		while (((t_rooms*)q->content)->ln)
 		{
@@ -234,11 +238,12 @@ int 			bft(t_llrc *llrc)
 
 	if (!(qu = ft_lstnew((void *)llrc->fr, (size_t)(sizeof(llrc->fr)))))
 		return 0;
-	((t_rooms *)qu->content)->lvl = 0;
+//	qu = ft_lstnew((void *)llrc->arrrm[0], (size_t) sizeof(llrc->fr));//okright
+	((t_rooms *)(qu->content))->lvl = 0;//9990;//666;//0111;
 	while (qu != 0)
 	{
 		cur = pullnode(&qu);//node w ptr to first room
-		if (ft_strcmp(cur->content, llrc->er->name_r))//if no reach end//add to que non vis
+		if (ft_strcmp(/**/cur->content, llrc->er->name_r))//if no reach end//add to que non vis
 		{
 			quepush(llrc, &qu, cur);//((t_rooms *)cur->content)->lvl;
 		}
@@ -249,13 +254,40 @@ int 			bft(t_llrc *llrc)
 	return 0;
 }
 
+int             count_way(t_llrc *llrc)
+{
+    int		min;
+    t_list	*tf;
+    t_list	*te;
+    int 	f;
+
+    tf = llrc->fr->ln;
+	f = 0;
+	while (tf)
+    {
+		++f;
+		tf = tf->next;
+	}
+	min = llrc->ants > f ? f : llrc->ants;
+	te = llrc->er->ln;
+    f = 0;
+	while (te)
+	{
+    	++f;
+    	te = te->next;
+	}
+	min = min > f ? f : min;
+	return (min);
+}
+
 int				alg(t_llrc *llrc)
 {
 	int i;
+	int minw;
 
 //	print_l(llrc);
-//	count_way()
-	bft(llrc);
+	minw = count_way(llrc);
+	bft(llrc);//save x < minw paths; group
 //	bfs(llrc);//bfs = (llrc);
 	while (1)
 	{

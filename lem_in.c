@@ -69,7 +69,7 @@ int				val_in(int fd, t_llrc *llrc)
 	int 	i;
 
 
-	if (!(ls = processmap(fd, &llrc)) || ! (1 + ls))
+	if (!(ls = processmap(fd, llrc)) || ! (1 + ls))
 		return (ft_err());
 	//return 0;
 //	if ((llrc->ants = amount_ants(fd)) < 1)//> 0)

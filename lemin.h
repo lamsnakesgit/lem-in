@@ -89,14 +89,7 @@ typedef struct s_rooms
 	int 			lvl;
 	int				nu;
 	int				ant;
-//	struct s_rooms  *ln;
 	t_list          *ln;
-//	t_ 		links;
-/*	struct s_rooms *next;
-	{
-	};
-*/
-	struct s_rooms  *next;
 }				t_rooms;
 //struct that contains ptr to list /arr w rooms & ptr to lins??
 /*typedef	struct s_lemin

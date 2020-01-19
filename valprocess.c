@@ -55,7 +55,7 @@ int 			checkmap(char **ls, char *buf)
 			if (buf[i + 1] == 0)
 			{
 				ls[++j] = 0;
-				return (ls);
+				return 1;//(ls);
 			}
 			if (buf[i + 1] == '\n' || !i)// || s - i == 0)
 				return (0);
