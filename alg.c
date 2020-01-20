@@ -22,15 +22,11 @@ void 				print_l(t_llrc *lrc)
 	{
 		while (l)
 		{
-		//	printf("i=%4s|=|%d\n", lrc->arrrm[i]->name_r,
-		//		   ((t_rooms *) l->content)->lvl);
 			printf("i=%4s|%6s=|%d\n", lrc->arrrm[i]->name_r,
 				   ((t_rooms *) l->content)->name_r,
-				   ((t_rooms *) l->content)->lvl);//(t_rooms *)lrc->arrrm[rn[0]]->ln->content->name_r);
-			//lrc->arrrm[rn[0]]->ln = lrc-
+				   ((t_rooms *) l->content)->lvl);
 			l = l->next;
 		}
-//		printf("""");
 		printf("\n");
 		++i;
 		if (!lrc->arrrm[i])
@@ -233,7 +229,7 @@ int 			quepush(t_llrc *llrc, t_list **q, t_list *tr)//**tr)///push unvis nbrs
 	return 0;
 }
 
-int 			bft(t_llrc *llrc)
+t_list 			*bft(t_llrc *llrc)
 {
 	t_list	*q;
 	t_list	*cur;
@@ -241,31 +237,29 @@ int 			bft(t_llrc *llrc)
 
 	if (!(q = ft_lstnew((const void *)llrc->fr, (size_t)(sizeof((void *)(llrc->fr))))))
 		return 0;
-//	q = ft_lstnew((void *)llrc->arrrm[0], (size_t) sizeof(llrc->fr));//okright
 	q->content = (void *)llrc->fr;
-	((t_rooms *)(q->content))->lvl = 0;//90;//9990;//666;//0111;
+	((t_rooms *)(q->content))->lvl = 0;
 	((t_rooms *)q->content)->vis = 1;
 	((t_rooms *)q->content)->ant = -999;
 	llrc->arrrm[7]->vis = 1;
 	llrc->arrrm[7]->lvl = 0;
 	llrc->arrrm[7]->ant =555;
-//	llrc->fr->lvl = 0;
-//	llrc->fr->vis= 1;
 	int i = 0;
 	while (q != 0)
 	{
 		++i;
-		cur = pullnode(&q);//node w ptr to first room
-		if (ft_strcmp(/**/cur->content, llrc->er->name_r))//if no reach end//add to que non vis
+		cur = pullnode(&q);
+		if (!ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->fr->name_r))
+			printf("FIRST!\n");
+		if (ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->er->name_r))
 		{
-			quepush(llrc, &q, cur);//((t_rooms *)cur->content)->lvl;
+			quepush(llrc, &q, cur);
 		}
 		else
 			last = cur;
-		//cur = cur->next;
 	}
 	print_l(llrc);
-	return 0;
+	return (last);
 }
 
 int             count_way(t_llrc *llrc)
@@ -294,15 +288,55 @@ int             count_way(t_llrc *llrc)
 	return (min);
 }
 
+void			printflist(t_list *path)
+{
+	t_list *l;
+
+	int i = 0;
+	l = path;
+	while (l)
+	{
+		printf("%s\n", ((t_rooms *)l->content)->name_r);
+		l = l->next;
+	}
+}
+
+t_list 			**buildpath(t_list *er)
+{
+	t_list	*path;
+	t_list	*ln;
+
+	path = ft_lstnew((void*)er, (size_t)sizeof(er));
+	path->content = (void*)er;
+	while (((t_rooms *)er->content)->lvl != 0)
+	{
+		ln = ((t_rooms *)er->content)->ln;
+		while (ln)
+		{
+			if (((t_rooms *)ln->content)->lvl == ((t_rooms *)er->content)->lvl - 1)
+			{
+				ft_lstadd(&path, ln->content);
+				er = ln;
+				break;
+			}
+			ln = ln->next;
+		}
+	}
+	return (&path);
+}
 int				alg(t_llrc *llrc)
 {
 	int i;
 	int minw;
+	t_list	*last;
+	t_list	**path;
 
 //	print_l(llrc);
 	minw = count_way(llrc);
-	bft(llrc);//save x < minw paths; group
+	last = bft(llrc);//save x < minw paths; group
 //	bfs(llrc);//bfs = (llrc);
+	path = buildpath(last);
+	printflist(*path);
 	while (1)
 	{
 		break;
