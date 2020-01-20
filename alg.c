@@ -22,6 +22,8 @@ void 				print_l(t_llrc *lrc)
 	{
 		while (l)
 		{
+		//	printf("i=%4s|=|%d\n", lrc->arrrm[i]->name_r,
+		//		   ((t_rooms *) l->content)->lvl);
 			printf("i=%4s|%6s=|%d\n", lrc->arrrm[i]->name_r,
 				   ((t_rooms *) l->content)->name_r,
 				   ((t_rooms *) l->content)->lvl);//(t_rooms *)lrc->arrrm[rn[0]]->ln->content->name_r);
@@ -242,6 +244,13 @@ int 			bft(t_llrc *llrc)
 //	q = ft_lstnew((void *)llrc->arrrm[0], (size_t) sizeof(llrc->fr));//okright
 	q->content = (void *)llrc->fr;
 	((t_rooms *)(q->content))->lvl = 0;//90;//9990;//666;//0111;
+	((t_rooms *)q->content)->vis = 1;
+	((t_rooms *)q->content)->ant = -999;
+	llrc->arrrm[7]->vis = 1;
+	llrc->arrrm[7]->lvl = 0;
+	llrc->arrrm[7]->ant =555;
+//	llrc->fr->lvl = 0;
+//	llrc->fr->vis= 1;
 	int i = 0;
 	while (q != 0)
 	{
@@ -253,7 +262,7 @@ int 			bft(t_llrc *llrc)
 		}
 		else
 			last = cur;
-		q = q->next;//cur = cur->next;
+		//cur = cur->next;
 	}
 	print_l(llrc);
 	return 0;
