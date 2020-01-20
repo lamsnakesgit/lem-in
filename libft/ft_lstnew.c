@@ -30,7 +30,7 @@ t_list			*ft_lstnew(void const *content, size_t content_size)
 		{
 			free(lstnew);
 			return (0);
-		}
+		}//
 		ft_memcpy(lstnew->content, content, content_size);
 		lstnew->content_size = content_size;
 	}

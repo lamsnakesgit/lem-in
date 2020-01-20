@@ -15,16 +15,16 @@
 void 				print_l(t_llrc *lrc)
 {
 	t_list *l;
-//	l = lrc->arrrm[rn[0]]->ln;
-//	l = lrc->arrrm[13]->ln;
-//	l = lrc->arrrm[1]->ln;
+
 	int i = 0;
 	l = lrc->arrrm[i]->ln;
 	while (l)
 	{
-		while (l) {
-			printf("i=%4s|%s\n", lrc->arrrm[i]->name_r,
-				   ((t_rooms *) l->content)->name_r);//(t_rooms *)lrc->arrrm[rn[0]]->ln->content->name_r);
+		while (l)
+		{
+			printf("i=%4s|%6s=|%d\n", lrc->arrrm[i]->name_r,
+				   ((t_rooms *) l->content)->name_r,
+				   ((t_rooms *) l->content)->lvl);//(t_rooms *)lrc->arrrm[rn[0]]->ln->content->name_r);
 			//lrc->arrrm[rn[0]]->ln = lrc-
 			l = l->next;
 		}
@@ -39,10 +39,6 @@ void 				print_l(t_llrc *lrc)
 /*
 ** delete links, rooms, ptr, name,
 */
-/*void 			freee(t_llrc *llrc)
-{
-	llrc->
-}*/
 t_rooms 		**queuefill(t_rooms **qu, t_llrc *llrc)
 {
 	t_rooms		**q;
@@ -142,13 +138,15 @@ int 			queadd(t_list **q, t_list *tr)
 	if (q && *q)
 	{
 		tmp = (*q);
-		while (tmp)
+		while (tmp && tmp->next)
 			tmp = tmp->next;
-		tmp = ft_lstnew((void *)tr->content, (size_t)sizeof(tr));//q_create(q, ft_lstadd(((void *)tr->content), (size_t)(sizeof(tr->content)));
+		tmp->next = ft_lstnew((void *)tr->content, (size_t)sizeof(tr));//q_create(q, ft_lstadd(((void *)tr->content), (size_t)(sizeof(tr->content)));
+		tmp->next->content = (void *)tr->content;
 	}
 	else
     {
-        (*q) = ft_lstnew((void *)tr->content, (size_t)sizeof(tr));
+        (*q) = ft_lstnew((void *)tr->content, (size_t)sizeof(tr));//
+		(*q)->content = (void*)tr->content;
     }
 	return 0;
 }
@@ -211,11 +209,12 @@ int 			bfs(t_llrc *llrc)
 ** if curr link pts to unvis room; mark level; add to the end of que
 **
 */
-int 			quepush(t_llrc *llrc, t_list **qu, t_list *tr)//**tr)///push unvis nbrs
+int 			quepush(t_llrc *llrc, t_list **q, t_list *tr)//**tr)///push unvis nbrs
 {//add to qu non vis /add levl marks
 	t_list	*ln;
 
 	ln = ((t_rooms *)((tr)->content))->ln;//((t_rooms *)tr)->ln;
+	int i = 0;
 	while (ln)
 	{
 		if (((t_rooms *)(ln->content))->vis == 0)//(((t_rooms *)(*tr)->content)->vis == 0);
@@ -223,34 +222,40 @@ int 			quepush(t_llrc *llrc, t_list **qu, t_list *tr)//**tr)///push unvis nbrs
 		//	if (((t_rooms *)(*tr)->content)->nu//(((t_rooms *)ln->content)->nu == llrc->fr->nu)
 		//		((t_rooms *)ln->content)->lvl
 			((t_rooms *)ln->content)->lvl = ((t_rooms*)(tr)->content)->lvl + 1;
-			queadd(qu, ln);//->content);//tr);//add room->q
+			((t_rooms *)ln->content)->vis = 1;
+			queadd(q, ln);//->content);//tr);//add room->q
 		}
 		ln = ln->next;
+		++i;
 	}
 	return 0;
 }
 
 int 			bft(t_llrc *llrc)
 {
-	t_list	*qu;
+	t_list	*q;
 	t_list	*cur;
 	t_list	*last;
 
-	if (!(qu = ft_lstnew((void *)llrc->fr, (size_t)(sizeof(llrc->fr)))))
+	if (!(q = ft_lstnew((const void *)llrc->fr, (size_t)(sizeof((void *)(llrc->fr))))))
 		return 0;
-//	qu = ft_lstnew((void *)llrc->arrrm[0], (size_t) sizeof(llrc->fr));//okright
-	((t_rooms *)(qu->content))->lvl = 0;//9990;//666;//0111;
-	while (qu != 0)
+//	q = ft_lstnew((void *)llrc->arrrm[0], (size_t) sizeof(llrc->fr));//okright
+	q->content = (void *)llrc->fr;
+	((t_rooms *)(q->content))->lvl = 0;//90;//9990;//666;//0111;
+	int i = 0;
+	while (q != 0)
 	{
-		cur = pullnode(&qu);//node w ptr to first room
+		++i;
+		cur = pullnode(&q);//node w ptr to first room
 		if (ft_strcmp(/**/cur->content, llrc->er->name_r))//if no reach end//add to que non vis
 		{
-			quepush(llrc, &qu, cur);//((t_rooms *)cur->content)->lvl;
+			quepush(llrc, &q, cur);//((t_rooms *)cur->content)->lvl;
 		}
 		else
 			last = cur;
-		cur = cur->next;
+		q = q->next;//cur = cur->next;
 	}
+	print_l(llrc);
 	return 0;
 }
 

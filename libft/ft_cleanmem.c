@@ -14,8 +14,18 @@
 
 char			**ft_cleanmem(char **split)
 {
-	while (*split++)
+	int i;
+
+	i = 0;
+	while (split && split[i])
+	{
+		free(split[i]);
+		++i;
+	}
+/*	while (*split++)
 		free(*split);
+*/
+	free(split[i]);
 	free(split);
 	split = 0;
 	return (0);

@@ -22,7 +22,7 @@ int                 ispresent(t_llrc *llrc, char *rs)
 	int 	i;
 
 	i = 0;
-	while (llrc->arrrm[i])//((*tmp)[i])
+	while (i < llrc->rmi)//(llrc->arrrm[i])//((*tmp)[i])
 	{
 	//	if (ft_strcmp((*tmp)[i]->content, rs) == 0)
 	//	if (ft_strcmp((*tmp)[i].name_r, rs) == 0)
@@ -98,7 +98,7 @@ int 				nonelink(t_llrc *llrc)//doublewaylink
 	int i;
 
 	i = -1;
-	while (llrc->arrrm[++i])// && i < llrc->rmi)//ln)//
+	while ( ++i < llrc->rmi)//llrc->arrrm[++i])//(llrc->arrrm[++i]) &&)//ln)//
 		if (!llrc->arrrm[i]->ln)
 			return (0);
 	return (1);

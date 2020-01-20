@@ -78,7 +78,7 @@ int				val_in(int fd, t_llrc *llrc)
 //	printf("%s\n%s\n", ls, ls + 1);
 //	printf("lines\n%s\n%s\n", ls[0], ls[1]);//	linkd
 	i = roomlinkblock(ls + 1, llrc, fd);//(&line, llrc, fd);//dupls?
-	if (!llrc->rmi || llrc->end != 1 || llrc->st != 1)
+	if (!llrc->rmi || llrc->end != 1 || llrc->st != 1)//i ?
 		return (ft_err());//freel-ifl//free s/e
 	turninarr(llrc);//(&llrc);
 	if (ls && ls + i + 1)//1)//(linkd)//if freed? send rmlis+line+fd//st-end/line
@@ -128,11 +128,12 @@ int 			main(int ac, char **av)
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/flow-ten", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/flow-thousand", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/big", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/big-superposition", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/big-superposition", O_RDONLY);
 	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mmap", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa", O_RDONLY);
 	//if (ac > 1)// && fd > 0)//6)
-		val_in(fd, &llrc);//(ac, av);
-	alg(&llrc);
+	if (val_in(fd, &llrc))//(ac, av);
+		alg(&llrc);
 //	printl();
 //	free(llrc.)
 	return (0);
