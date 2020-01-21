@@ -45,6 +45,7 @@ t_list              *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor)
 
 //(t_rooms *)malloc(sizeof(t_rooms))
 	rmc = roomcor;//
+	rm = 0;
 	ft_room(&rm, roomcor);
 	if (!rm)
 		return 0;
@@ -105,27 +106,15 @@ char				**valrmc_s(char *line)
 	return (NULL);
 }
 
-int					savemarg(t_llrc *lrc, int cm)//char *line,
+int					savemarg(t_llrc *lrc, int cm)
 {
-	t_rooms *x;//	char	**roomcor;
-	int		i;
-	char 	**ok;
-	i = 0;
+	t_rooms *x;
 
-//	ok = (char**)((t_rooms *)lrc->br->content)->name_r);//ok = (char**)lrc->br->content;//x->x = 0;
 	x = (t_rooms*)malloc(sizeof(t_rooms));
 	if (!x)
 		return 0;
 	x = (t_rooms *)lrc->br->content;
-/*	x->name_r = ((t_rooms *)lrc->br->content)->name_r;//ok[0];
-	x->x = ((t_rooms *)lrc->br->content)->x;//ft_atoi(ok[1]);
-	x->y = ((t_rooms *)lrc->br->content)->y;
-//	roomcor = ft_strsplit(line, ' ');
-//	x->y = ft_atoi(roomcor[2]);//malloc??x//rfil!!!
-	x->vis = 0;
-	x->lvl = -1;//nu/ant
-	x->rm = lrc->br;
-*/	if (cm == -1)
+	if (cm == -1)
 		lrc->fr = x;
 	if (cm == -2)
 		lrc->er = x;
@@ -141,15 +130,12 @@ void            turninarr(t_llrc *llrc)
 		return ;
 	tmp = llrc->br;
 	i = 0;
-	while (tmp)//i < llrc->rmi
+	while (tmp)
 	{
-		llrc->arrrm[i] = (t_rooms *)malloc(sizeof(t_rooms));//	llrc->arrrm[i] = tmp;
+		llrc->arrrm[i] = (t_rooms *)malloc(sizeof(t_rooms));
 		llrc->arrrm[i] = (t_rooms *)tmp->content;
-//		llrc->arrrm[i]->rm = tmp;
-	//	(llrc->arrrm)[i]->name_r = ((char**)tmp->content)[0];
-//		if (ft_strcmp(((char **)tmp->content)[0], llrc->fr->name_r) == 0)
-//			llrc->fr->rm = tmp;
 		llrc->arrrm[i]->nu = i;
+		llrc->arrrm[i]->ant = -2;
 		tmp = tmp->next;
 //		printf("||%s||%d\n", llrc->arrrm[i]->name_r, (llrc->arrrm)[i]->x);
 		++i;

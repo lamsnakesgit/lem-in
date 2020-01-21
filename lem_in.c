@@ -56,6 +56,18 @@ t_llrc 			nullst(t_llrc llrc)
 	return (llrc);
 }
 
+void			freellrc(t_llrc *lrc)
+{
+	int i;
+
+	i = 0;
+	while (i < lrc->rmi)
+	{
+		free(lrc->arrrm[i]);
+		++i;
+	}
+	free(lrc->arrrm);
+}
 /*
 **{//extra dop otd for chech_room w own w gnl
 ** //--check_roomspresence_validif
@@ -71,12 +83,9 @@ int				val_in(int fd, t_llrc *llrc)
 
 	if (!(ls = processmap(fd, llrc)) || ! (1 + ls))
 		return (ft_err());
-	//return 0;
 //	if ((llrc->ants = amount_ants(fd)) < 1)//> 0)
 //		return (ft_err());
 	*llrc = nullst(*llrc);
-//	printf("%s\n%s\n", ls, ls + 1);
-//	printf("lines\n%s\n%s\n", ls[0], ls[1]);//	linkd
 	i = roomlinkblock(ls + 1, llrc, fd);//(&line, llrc, fd);//dupls?
 	if (!llrc->rmi || llrc->end != 1 || llrc->st != 1)//i ?
 		return (ft_err());//freel-ifl//free s/e
@@ -85,10 +94,22 @@ int				val_in(int fd, t_llrc *llrc)
 	{
 		//if (!linkval(&linkd, &llrc, fd))
 		if (!linkval(ls + i + 1, llrc, fd))
+		{
+			free(llrc->er);
+			free(llrc->fr);
+			ft_cleanmem(ls);
+			freellrc(llrc);
 			return (ft_err());
+		}
 	}
 	else
+	{
+		ft_cleanmem(ls);
+		free(llrc->er);
+		free(llrc->fr);
+		freellrc(llrc);
 		ft_err();
+	}
 	return (1);
 }
 /*

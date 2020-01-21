@@ -28,11 +28,13 @@ int                 ispresent(t_llrc *llrc, char *rs)
 	//	if (ft_strcmp((*tmp)[i].name_r, rs) == 0)
 		if (ft_strcmp(llrc->arrrm[i]->name_r, rs) == 0)
 		{
+			free(rs);
 			return i;
 		}
 		++i;
 	//	tmp = tmp->next;
 	}
+	free(rs);
 	return (-1);
 }
 
@@ -62,7 +64,7 @@ int                 corr_link(char **line, t_llrc *llrc, int *rn)//checkmarginin
 		return 0;
 	if ((rn[0] = ispresent(llrc, rs)) < 0)
 		return 0;
-	free (rs);
+//	free (rs);
 	++e;
 	while ((*line)[i])
 		++i;
