@@ -6,59 +6,72 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 18:55:30 by ddratini          #+#    #+#             */
-/*   Updated: 2019/12/25 20:00:48 by marvin           ###   ########.fr       */
+/*   Updated: 2020/01/21 14:39:47 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-static int			ft_word_am(char const *s, char c)
+static int		ft_nbw(const char *str, char c)
 {
-	int amount;
-	int i;
+	int word;
 
-	i = 0;
-	amount = 0;
-	while (s[i])
+	word = 0;
+	if (*str != c && *str)
 	{
-		while (s[i] && s[i] == c)
-			i++;
-		if (s[i] == '\0')
-			return (amount);
-		while (s[i] && s[i] != c)
-			i++;
-		amount++;
-		if (s[i] == '\0')
-			return (amount);
+		str++;
+		word++;
 	}
-	return (amount);
+	while (*str)
+	{
+		while (*str == c)
+		{
+			str++;
+			if (*str != c && *str)
+				word++;
+		}
+		str++;
+	}
+	return (word);
 }
 
-char				**ft_strsplit(char const *s, char c)
+static int		ft_ln(const char *str, char c)
 {
-	char	**split;
-	int		i;
-	int		ffound;
-	int		n;
+	int count;
 
-	n = 0;
-	i = 0;
-	if (s == 0)
-		return (0);
-	if (!(split = (char **)malloc(sizeof(char *) * (ft_word_am(s, c)) + 1)))
-		return (0);
-	while (s[i])
+	count = 0;
+	while (*str != c && *str)
 	{
-		while (s[i] && s[i] == c)
-			i++;
-		ffound = i;
-		while (s[i] && s[i] != c)
-			i++;
-		if (i > ffound)
-			split[n++] = ft_strndup(s + ffound, i - ffound);
-		if (!split[n-1])//(!(ft_strndup(s + ffound, i - ffound)))
-			return ((char **)ft_cleanmem(split));
+		count++;
+		str++;
 	}
-	split[n] = 0;
-	return (split);
+	return (count);
+}
+
+char			**ft_strsplit(char const *s, char c)
+{
+	int j;
+	int i;
+	char **spt;
+
+	j = 0;
+	i = 0;
+	if (!s || (!(spt = (char **) malloc(sizeof(char *) * (ft_nbw(s, c) + 1)))))
+		return (NULL);
+	while (*s) {
+		while (*s == c && *s)
+			s++;
+		if (*s != c && *s) {
+			if (!(spt[j] = (char *) malloc(sizeof(char) * (ft_ln(s, c) + 1))))
+				return (NULL);
+			while (*s && *s != c)
+				spt[j][i++] = (char) *s++;
+			spt[j][i] = '\0';
+			j++;
+			i = 0;
+		}
+	}
+	spt[j] = NULL;
+	return (spt);
 }

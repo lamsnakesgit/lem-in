@@ -23,23 +23,43 @@
 ** - room that has no link?
 */
 
+t_rooms				**ft_room(t_rooms **rm, char **roomcor)
+{
+	if (!(*rm = (t_rooms *)malloc(sizeof(t_rooms))))
+		return (0);
+	(*rm)->ln = 0;
+	(*rm)->name_r = roomcor[0];
+	(*rm)->lvl = -1;
+	(*rm)->vis = 0;
+	(*rm)->x = ft_atoi(roomcor[1]);
+	(*rm)->y = ft_atoi(roomcor[2]);
+	return 0;
+}
+/*
+** may erase lst elems right away; arr roomcor
+*/
 t_list              *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor)
 {
 	char **rmc;
+	t_rooms	*rm;
 
+//(t_rooms *)malloc(sizeof(t_rooms))
 	rmc = roomcor;//
+	ft_room(&rm, roomcor);
+	if (!rm)
+		return 0;
 	if (!br || !*br)
 	{
-		*br = ft_lstnew((const void *)roomcor, (size_t)sizeof(roomcor));
-		(*br)->content = (void *)roomcor;
+		*br = ft_lstnew((void *)rm, (size_t)sizeof(rm));
+		//ft_lstnew((const void *));//((const void *)roomcor, (size_t)sizeof(roomcor));
+		(*br)->content = (void *)rm;//roomcor;
 		return (*br);
 	}
 	else
 	{
-		//	br = br->next;
-		ft_lstadd(br, ft_lstnew((const void *)rmc, (size_t)sizeof(rmc)));
-		//br);
-		(*br)->content = (void *)roomcor;//!
+		//br = br->next;//ft_lstadd(br, ft_lstnew((const void *)rmc, (size_t)sizeof(rmc)));//br);
+		ft_lstadd(br, ft_lstnew((void *)rm, (size_t) sizeof(rm)));
+		(*br)->content = (void *)rm;//!
 		return (*br);
 	}
 	return (0);
@@ -92,20 +112,20 @@ int					savemarg(t_llrc *lrc, int cm)//char *line,
 	char 	**ok;
 	i = 0;
 
-	ok = (char**)lrc->br->content;//ok = (char**)lrc->br->content;//x->x = 0;
+//	ok = (char**)((t_rooms *)lrc->br->content)->name_r);//ok = (char**)lrc->br->content;//x->x = 0;
 	x = (t_rooms*)malloc(sizeof(t_rooms));
 	if (!x)
 		return 0;
-	x->name_r = 0; x->x = 0-1; x->y = -1;
-	x->name_r = ok[0];
-	x->x = ft_atoi(ok[1]);
-	x->y = ft_atoi(ok[2]);
+	x = (t_rooms *)lrc->br->content;
+/*	x->name_r = ((t_rooms *)lrc->br->content)->name_r;//ok[0];
+	x->x = ((t_rooms *)lrc->br->content)->x;//ft_atoi(ok[1]);
+	x->y = ((t_rooms *)lrc->br->content)->y;
 //	roomcor = ft_strsplit(line, ' ');
 //	x->y = ft_atoi(roomcor[2]);//malloc??x//rfil!!!
 	x->vis = 0;
-	x->lvl = -1;
+	x->lvl = -1;//nu/ant
 	x->rm = lrc->br;
-	if (cm == -1)
+*/	if (cm == -1)
 		lrc->fr = x;
 	if (cm == -2)
 		lrc->er = x;
@@ -124,16 +144,12 @@ void            turninarr(t_llrc *llrc)
 	while (tmp)//i < llrc->rmi
 	{
 		llrc->arrrm[i] = (t_rooms *)malloc(sizeof(t_rooms));//	llrc->arrrm[i] = tmp;
-		llrc->arrrm[i]->rm = tmp;
-		(llrc->arrrm)[i]->name_r = ((char**)tmp->content)[0];
-		if (ft_strcmp(((char **)tmp->content)[0], llrc->fr->name_r) == 0)
-			llrc->fr->rm = tmp;
-		llrc->arrrm[i]->x = ft_atoi(((char **)tmp->content)[1]);
-		llrc->arrrm[i]->y = ft_atoi(((char **)tmp->content)[2]);
-		llrc->arrrm[i]->lvl = -1;
-		llrc->arrrm[i]->vis = 0;
+		llrc->arrrm[i] = (t_rooms *)tmp->content;
+//		llrc->arrrm[i]->rm = tmp;
+	//	(llrc->arrrm)[i]->name_r = ((char**)tmp->content)[0];
+//		if (ft_strcmp(((char **)tmp->content)[0], llrc->fr->name_r) == 0)
+//			llrc->fr->rm = tmp;
 		llrc->arrrm[i]->nu = i;
-		llrc->arrrm[i]->ln = 0;
 		tmp = tmp->next;
 //		printf("||%s||%d\n", llrc->arrrm[i]->name_r, (llrc->arrrm)[i]->x);
 		++i;
