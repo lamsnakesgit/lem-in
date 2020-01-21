@@ -18,7 +18,7 @@ void 				print_l(t_llrc *lrc)
 
 	int i = 0;
 	l = lrc->arrrm[i]->ln;
-	while (l)
+	while (l && i < lrc->rmi)
 	{
 		while (l)
 		{
@@ -29,7 +29,7 @@ void 				print_l(t_llrc *lrc)
 		}
 		printf("\n");
 		++i;
-		if (!lrc->arrrm[i])
+		if (i == lrc->rmi)
 			break ;
 		l = lrc->arrrm[i]->ln;
 	}
@@ -291,8 +291,8 @@ int             count_way(t_llrc *llrc)
 void			printflist(t_list *path)
 {
 	t_list *ln;
-
 	int i = 0;
+
 	ln = path;
 	while (ln)
 	{
@@ -300,22 +300,47 @@ void			printflist(t_list *path)
 		ln = ln->next;
 	}
 }
+/*
+ * go from end-room to level-1 collect path
+ */
 
-t_list 			**buildpath(t_list *er, t_list **path)
+void			cutpath(t_list *er,t_list *er2 )
 {
 	t_list	*ln;
 
-	(*path) = ft_lstnew((void*)er, (size_t)sizeof(er));
-	(*path)->content = (void*)er;
-	while (((t_rooms *)er->content)->lvl != 0)
+	ln = ((t_rooms *)(er)->content)->ln;
+	while (ln)
 	{
-		ln = ((t_rooms *)er->content)->ln;
+		if (((t_rooms *)ln->content) == ((t_rooms *)(er2->content)))
+		{
+			ln->content_size = -1;
+			break;
+		}
+		ln = ln->next;
+	}
+}
+t_list 			*buildpath(t_list *er2)
+{
+	t_list *ln;
+	t_list *path;
+	t_list *er;
+
+	path = ft_lstnew((void *) er2, (size_t) sizeof(er2));
+	//ft_lstadd(&path, er2->content);
+	path->content = (void *) er2->content;
+	er = er2;
+	while (((t_rooms *) er->content)->lvl != 0)
+	{
+		ln = ((t_rooms *) er->content)->ln;
 		while (ln)
 		{
-			if (((t_rooms *)ln->content)->lvl == ((t_rooms *)er->content)->lvl - 1)
+			if (((t_rooms *) ln->content)->lvl == ((t_rooms *) er->content)->lvl - 1
+			&& ln->content_size != -1)
 			{
-				ft_lstadd(path, ln->content);
-				(*path)->content = ((void*)path, ft_lstnew((void *)ln->content, sizeof(ln->content)));
+				cutpath(ln, er);
+				ft_lstadd(&path, ln->content);
+				path->content = (void *) ln->content;
+				//	path->content = (void*)path, ft_lstnew((void *)ln->content, sizeof(ln->content));
 				er = ln;
 				break;
 			}
@@ -324,6 +349,7 @@ t_list 			**buildpath(t_list *er, t_list **path)
 	}
 	return (path);
 }
+
 int				alg(t_llrc *llrc)
 {
 	int i;
@@ -335,7 +361,7 @@ int				alg(t_llrc *llrc)
 	minw = count_way(llrc);
 	last = bft(llrc);//save x < minw paths; group
 //	bfs(llrc);//bfs = (llrc);
-	path = *buildpath(last, &path);
+	path = buildpath(last);
 	printflist(path);
 	while (1)
 	{
