@@ -97,7 +97,8 @@ int				rmorlink(char *line, t_llrc *lrc)//, t_list *rl)
 	/*	if (lrc->br)
 			if (!duplicheck(roomcor, lrc))
 				return -2;
-	*/	lrc->br = valroom_fill1(/*&rl*/(&lrc->br), /*r,*/ roomcor);//vrf; llrc->br = rl;
+	*/	if (!(lrc->br = valroom_fill1((&lrc->br), roomcor)))
+			return (0);
 		lrc->rmi++;
 	}
 	return 10;

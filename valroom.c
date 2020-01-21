@@ -23,17 +23,17 @@
 ** - room that has no link?
 */
 
-t_rooms				**ft_room(t_rooms **rm, char **roomcor)
+t_rooms				*ft_room(t_rooms *rm, char **roomcor)
 {
-	if (!(*rm = (t_rooms *)malloc(sizeof(t_rooms))))
+	if (!((rm) = (t_rooms *)malloc(sizeof(t_rooms))))
 		return (0);
-	(*rm)->ln = 0;
-	(*rm)->name_r = roomcor[0];
-	(*rm)->lvl = -1;
-	(*rm)->vis = 0;
-	(*rm)->x = ft_atoi(roomcor[1]);
-	(*rm)->y = ft_atoi(roomcor[2]);
-	return 0;
+	(rm)->ln = 0;
+	(rm)->name_r = roomcor[0];
+	(rm)->lvl = -1;
+	(rm)->vis = 0;
+	(rm)->x = ft_atoi(roomcor[1]);
+	(rm)->y = ft_atoi(roomcor[2]);
+	return (rm);//return 0;//
 }
 /*
 ** may erase lst elems right away; arr roomcor
@@ -46,7 +46,7 @@ t_list              *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor)
 //(t_rooms *)malloc(sizeof(t_rooms))
 	rmc = roomcor;//
 	rm = 0;
-	ft_room(&rm, roomcor);
+	rm = ft_room(rm, roomcor);
 	if (!rm)
 		return 0;
 	if (!br || !*br)
