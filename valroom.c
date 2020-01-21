@@ -114,6 +114,7 @@ int					savemarg(t_llrc *lrc, int cm)
 	if (!x)
 		return 0;
 	x = (t_rooms *)lrc->br->content;
+	x->lvl = 0;
 	if (cm == -1)
 		lrc->fr = x;
 	if (cm == -2)

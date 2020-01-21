@@ -257,34 +257,41 @@ void		bft2(int *f, t_list *cur, t_list **q, t_llrc *llrc)
 	}
 //	*f = 1;
 }
+int				clean(t_llrc *llrc, t_list **q)
+{
+	unvisit(llrc);
+	if (!((*q) = ft_lstnew((const void *)llrc->fr, (size_t)(sizeof((void *)(llrc->fr))))))
+		return 0;
+	(*q)->content = (void *)llrc->fr;
+//	((t_rooms *)(q->content))->lvl = 0;
+	((t_rooms *)(*q)->content)->vis = 1;
+	((t_rooms *)(*q)->content)->ant = -999;
+	return (1);
+}
+/*
+**	if (!ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->fr->name_r))
+**		printf("FIRST!\n");
+**
+*/
 t_list 			*bft(t_llrc *llrc)
 {
 	t_list	*q;
 	t_list	*cur;
 	t_list	*last;
 	int 	f;
-
-	unvisit(llrc);
-	if (!(q = ft_lstnew((const void *)llrc->fr, (size_t)(sizeof((void *)(llrc->fr))))))
-		return 0;
-	q->content = (void *)llrc->fr;
-	((t_rooms *)(q->content))->lvl = 0;
-	((t_rooms *)q->content)->vis = 1;
-	((t_rooms *)q->content)->ant = -999;
 	int i = 0;
+
+	q = 0;
+	clean(llrc, &q);
 	f = 0;
 	while (q != 0)
 	{
 		++i;
 		cur = pullnode(&q);
-		if (!ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->fr->name_r))
-			printf("FIRST!\n");
 		if (f == 0 && ((t_rooms*)cur->content)->vis2 == 1 && cur->content != llrc->fr)
 			bft2(&f, cur, &q, llrc);
 		else if (ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->er->name_r))
-		{
 			quepush(llrc, &q, cur);
-		}
 		else
 			last = cur;
 	}
@@ -379,7 +386,9 @@ t_list 			*buildpath(t_list *er)
 	}
 	return (path);
 }
-
+/*
+** create list of paths, run pathsearch x times,
+*/
 int				alg(t_llrc *llrc)
 {
 	int i;
