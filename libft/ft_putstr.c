@@ -19,11 +19,10 @@ void		ft_putstr(char const *s)
 	i = 0;
 	if (s)
 	{
-		write(1, s, ft_strlen(s));
-	/*	while (s[i])
+		while (s[i])
 		{
-			ft_putchar(s[i]);
-			i++;
+						i++;
 		}
-	*/}
+		write(1, s, ft_strlen(s));
+	}
 }

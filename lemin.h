@@ -86,6 +86,7 @@ typedef struct s_rooms
 	int		        x;
 	int		        y;
 	int 			vis;
+	int				vis2;
 	int 			lvl;
 	int				nu;
 	int				ant;

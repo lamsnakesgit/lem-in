@@ -88,7 +88,7 @@ t_rooms 		**queuefill(t_rooms **qu, t_llrc *llrc)
 	return (0);
 }*/
 
-int 			*unvisit(int *vis, t_llrc *llrc)
+int 			*unvisited(int *vis, t_llrc *llrc)
 {
 	int i;
 
@@ -215,7 +215,7 @@ int 			quepush(t_llrc *llrc, t_list **q, t_list *tr)//**tr)///push unvis nbrs
 	int i = 0;
 	while (ln)
 	{
-		if (((t_rooms *)(ln->content))->vis == 0)//(((t_rooms *)(*tr)->content)->vis == 0);
+		if (((t_rooms *)(ln->content))->vis == 0 && ln->content_size != -1)//(((t_rooms *)(*tr)->content)->vis == 0);
 		{//links of end/st/dead
 		//	if (((t_rooms *)(*tr)->content)->nu//(((t_rooms *)ln->content)->nu == llrc->fr->nu)
 		//		((t_rooms *)ln->content)->lvl
@@ -229,29 +229,59 @@ int 			quepush(t_llrc *llrc, t_list **q, t_list *tr)//**tr)///push unvis nbrs
 	return 0;
 }
 
+void			unvisit(t_llrc *lrc)
+{
+	int i;
+
+	i = -1;
+	while (++i < lrc->rmi)
+		lrc->arrrm[i]->vis = 0;
+}
+
+void		bft2(int *f, t_list *cur, t_list **q, t_llrc *llrc)
+{
+	t_list	*ln;
+
+	ln = ((t_rooms*)cur->content)->ln;
+	while (ln)
+	{
+		if (((t_rooms*)ln->content)->vis2 == 1 && ln->content != llrc->er)
+		{
+			((t_rooms *)ln->content)->lvl = ((t_rooms*)(cur)->content)->lvl + 1;
+			((t_rooms *)ln->content)->vis = 1;
+			queadd(q, ( ln));//->content)->ln);
+			*f = 1;
+			return ;
+		}
+		ln = ln->next;
+	}
+//	*f = 1;
+}
 t_list 			*bft(t_llrc *llrc)
 {
 	t_list	*q;
 	t_list	*cur;
 	t_list	*last;
+	int 	f;
 
+	unvisit(llrc);
 	if (!(q = ft_lstnew((const void *)llrc->fr, (size_t)(sizeof((void *)(llrc->fr))))))
 		return 0;
 	q->content = (void *)llrc->fr;
 	((t_rooms *)(q->content))->lvl = 0;
 	((t_rooms *)q->content)->vis = 1;
 	((t_rooms *)q->content)->ant = -999;
-	llrc->arrrm[7]->vis = 1;
-	llrc->arrrm[7]->lvl = 0;
-	llrc->arrrm[7]->ant =555;
 	int i = 0;
+	f = 0;
 	while (q != 0)
 	{
 		++i;
 		cur = pullnode(&q);
 		if (!ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->fr->name_r))
 			printf("FIRST!\n");
-		if (ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->er->name_r))
+		if (f == 0 && ((t_rooms*)cur->content)->vis2 == 1 && cur->content != llrc->fr)
+			bft2(&f, cur, &q, llrc);
+		else if (ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->er->name_r))
 		{
 			quepush(llrc, &q, cur);
 		}
@@ -319,16 +349,15 @@ void			cutpath(t_list *er,t_list *er2 )
 		ln = ln->next;
 	}
 }
-t_list 			*buildpath(t_list *er2)
+t_list 			*buildpath(t_list *er)
 {
 	t_list *ln;
 	t_list *path;
-	t_list *er;
 
-	path = ft_lstnew((void *) er2, (size_t) sizeof(er2));
+	path = ft_lstnew((void *) er, (size_t) sizeof(er));
 	//ft_lstadd(&path, er2->content);
-	path->content = (void *) er2->content;
-	er = er2;
+	path->content = (void *) er->content;
+	((t_rooms *)path->content)->vis2 = 1;
 	while (((t_rooms *) er->content)->lvl != 0)
 	{
 		ln = ((t_rooms *) er->content)->ln;
@@ -340,6 +369,7 @@ t_list 			*buildpath(t_list *er2)
 				cutpath(ln, er);
 				ft_lstadd(&path, ln->content);
 				path->content = (void *) ln->content;
+				((t_rooms *)path->content)->vis2 = 1;
 				//	path->content = (void*)path, ft_lstnew((void *)ln->content, sizeof(ln->content));
 				er = ln;
 				break;
@@ -365,6 +395,9 @@ int				alg(t_llrc *llrc)
 	printflist(path);
 	while (1)
 	{
+		last = bft(llrc);
+		path = buildpath(last);
+		printflist(path);
 		break;
 	}
 	return 1;
