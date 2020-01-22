@@ -386,6 +386,37 @@ t_list 			*buildpath(t_list *er, t_llrc *llrc)
 	}
 	return (path);
 }
+
+void surb2(t_list *ln, t_list *tr, t_list *(*mas)[4])
+{
+	static int i = 0;
+
+	while (ln)
+	{
+		while (tr)
+		{
+			if (tr->content == ln->content)
+			{
+				(*mas)[i] = ln->content;
+				i++;
+				(*mas)[i] = tr->next;
+			}
+			tr = tr->next;
+		}
+		ln = ln->next;
+	}
+}
+void surb(t_list *ln, t_list *tr)
+{
+	t_list *mas[4];
+
+	surb2(ln, tr, &mas);
+	surb2(tr, ln, &mas);
+
+	(*mas)[0].next = (*mas)[1].content;
+	(*mas)[2].next = (*mas)[3].content;
+
+}
 /*
 ** create list of paths, run pathsearch x times,
 */
@@ -395,21 +426,28 @@ int				alg(t_llrc *llrc)
 	int maxw;
 	t_list	*last;
 	t_list	*path;
+	t_list	*paths;
 
 //	print_l(llrc);
 	maxw = count_way(llrc);
-	last = bft(llrc);//save x < minw paths; group
 //	bfs(llrc);//bfs = (llrc);
-	path = buildpath(last, llrc);
-//	path = buildpath((t_list*)llrc->er, llrc);
-	printflist(path);
 	i = 0;
-	while (i < maxw)
+	path = NULL;
+	paths = ft_lstnew((void *)0, (size_t)sizeof(paths));//(t_rooms *)malloc(sizeof(t_rooms));
+	while (i <= maxw)
 	{
-		last = bft(llrc);
-		path = buildpath(last, llrc);
+		last = bft(llrc);//save x < minw paths; group
+		paths->content = buildpath(last, llrc);
+		if (paths->content)
+		{
+			paths->next = ft_lstnew((void *)paths, (size_t) sizeof(paths));
+			paths->content = path;
+		}
+		if (paths->next)
+			paths = paths->next;
 //		path = buildpath((t_list *)llrc->er, llrc);
-		printflist(path);
+		printflist(paths ->content);
+		surb(paths, paths->next);
 		++i;
 	}
 	return 1;
