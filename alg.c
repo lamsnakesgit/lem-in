@@ -482,26 +482,25 @@ int    apalon(t_list *paths, int ant)// if t > l то 1 путь лучше, ч�
 	return (t > l);
 }
 
-void    ft_lstadd_up(t_list **alst, t_list *new)
+
+void    ft_lstadd_up(t_list *alst, t_list *new)
 {
 	t_list *alst2;
-	if (*alst)
+
+	alst = new;
+	if (alst)
 	{
-		alst2 = *alst;
-		while ((*alst)->next)
-			*alst = (*alst)->next;
-		(*alst)->next = ft_lstnew((void *)0, (size_t)sizeof(new));
-		(*alst)->next->content = new;
-		(*alst)->next->next = NULL;
-		*alst = alst2;
+		alst2 = alst;
+		while ((alst)->next)
+			alst = (alst)->next;
+		(alst)->next = new;
+		new->next = NULL;
+		alst = alst2;
 	}
 	else
-	{
-		*alst = ft_lstnew((void *)0, (size_t)sizeof(new));
-		(*alst)->content = new;
-		(*alst)->next = NULL;
-	}
+		alst = new;
 }
+
 //void 	ft_lst
 /*
 ** create list of paths, run pathsearch x times,
@@ -521,18 +520,23 @@ int				alg(t_llrc *llrc)
 //	print_l(llrc);
 	maxw = count_way(llrc);//	bfs(llrc);//bfs = (llrc);
 	i = 0;
-	paths = NULL;
+	path = ft_lstnew((void *)paths, (size_t)sizeof(paths));
+	paths = path;
 	while (i <= maxw)
 	{
 		last = bft(llrc);//save x < minw paths; group
-		path = ft_lstnew((void *)0, (size_t)sizeof(paths));//(t_rooms *)malloc(sizeof(t_rooms));
+		//path = ft_lstnew((void *)0, (size_t)sizeof(paths));//(t_rooms *)malloc(sizeof(t_rooms));
 		path->content = (void *)buildpath(last, llrc);
 		printflist((t_list *)path->content);
 		//ft_lstaddup(&paths, path);
-		//ft_lstadd_up(&paths, path);
+	//	ft_lstadd_up(&paths, path);
 //		ft_lstnadd(path, path);
+		path->next = ft_lstnew((void *)paths, (size_t)sizeof(paths));
+		path = path->next;
 		if (!paths->next)
+		{
 			continue ;
+		}
 		surb((t_list *)paths->content, (t_list *)paths->next->content, &paths);
 		//print_l(llrc);
 		//	return 0;
