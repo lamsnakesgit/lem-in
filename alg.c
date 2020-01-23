@@ -420,7 +420,7 @@ t_list 			*buildpath(t_list *er)
 	return (path);
 }
 
-void surb2(t_list *ln, t_list *tr2, t_list *(*mas)[4], int *i)
+void surb2(t_list *ln, t_list *tr2, t_mas *mas, int *i)
 {
 	t_list *ln2;
 	t_list *tr;
@@ -435,9 +435,9 @@ void surb2(t_list *ln, t_list *tr2, t_list *(*mas)[4], int *i)
 		{
 			if (tr->content == ln->content)
 			{
-				(*mas)[*i] = ln->content;
+				mas->m0 = (t_list *)ln;
 				*i += 1;
-				(*mas)[*i] = tr->next;
+				mas->m1 = (t_list *)tr->next;
 				(*i)++;
 				return ;
 			}
@@ -448,6 +448,36 @@ void surb2(t_list *ln, t_list *tr2, t_list *(*mas)[4], int *i)
 	}
 	ln2->content_size = l;
 }
+
+void surb3(t_list *ln, t_list *tr2, t_mas *mas, int *i)
+{
+	t_list *ln2;
+	t_list *tr;
+	int l;
+
+	ln2 = ln;
+	l = 0;
+	while (ln)
+	{
+		tr = tr2;
+		while (tr)
+		{
+			if (tr->content == ln->content)
+			{
+				mas->m2 = ln;
+				*i += 1;
+				mas->m3 = tr->next;
+				(*i)++;
+				return ;
+			}
+			tr = tr->next;
+		}
+		ln = ln->next;
+		l++;
+	}
+	ln2->content_size = l;
+}
+
 void    ft_lstadd_up(t_list **alst, t_list *new)
 {
 	t_list *alst2;
@@ -498,18 +528,19 @@ void inferno(t_list **paths, t_list *ln, t_list *ln2, int f)
 }
 void surb(t_list *ln, t_list *tr, t_list **paths, t_llrc *llrc)
 {
-	t_list *mas[4];
+	t_mas	mas;
 	t_list *ln2;
 	int i;
 
 	i = 0;
+
 	surb2(ln->next, tr->next, &mas, &i);
-	surb2(tr->next, ln->next, &mas, &i);
+	surb3(tr->next, ln->next, &mas, &i);
 
 	if (i != 0)
 	{
-		inferno(paths, mas[0], mas[1], 1);
-		inferno(paths, mas[2], mas[3], 0);
+		inferno(paths, (t_list *)mas.m0, (t_list *)mas.m1, 1);
+		inferno(paths, (t_list *)mas.m2, (t_list *)mas.m3, 0);
 		ln2  = (*paths)->next->content;
 		(*paths)->next =(*paths)->next->next;
 		free(ln2);

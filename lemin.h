@@ -115,7 +115,13 @@ typedef struct s_llrc
 	   t_rooms	**arrrm;
 	   int      ants;
 }                              t_llrc;
-
+typedef	struct s_mas
+{
+	t_list *m0;
+	t_list *m1;
+	t_list *m2;
+	t_list *m3;
+}				t_mas;
 void crpath(t_list **path, t_list *tr);
 int				iscomment(char *line);
 int				rmorlink(char *line, t_llrc *llrc);//, t_list *rl);//0ptr-check
