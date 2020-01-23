@@ -12,6 +12,7 @@
 
 #include "lemin.h"
 
+void    ft_listup(t_list **alst, t_list *new);
 
 void    ft_lstaddup(t_list **alst, t_list *new)
 {
@@ -361,6 +362,7 @@ void			printflist(t_list *path)
 	int i = 0;
 
 	ln = path;
+
 	while (ln)
 	{
 		printf("%s\n", ((t_rooms *)ln->content)->name_r);
@@ -387,14 +389,13 @@ void			cutpath(t_list **er,t_list *er2)
 	}
 }
 
-t_list 			*buildpath(t_list *er, t_llrc *llrc)
+t_list 			*buildpath(t_list *er)
 {
 	t_list *ln;
 	t_list *path;
+	t_list *tmp;
 
-	path = ft_lstnew((void *) er, (size_t) sizeof(er));
-	//ft_lstadd(&path, er2->content);
-	path->content = (void *) er->content;
+	crpath(&path, er);
 	((t_rooms *)path->content)->vis2 = 1;
 	while (((t_rooms *) er->content)->lvl != 0)
 	{
@@ -405,10 +406,11 @@ t_list 			*buildpath(t_list *er, t_llrc *llrc)
 			((t_rooms *) er->content)->lvl - 1)
 			{
 				cutpath(&ln, er);
-				ft_lstadd(&path, ln->content);
-				path->content = (void *) ln->content;
+				tmp = ft_lstnew((void *)(ln->content),(size_t)(sizeof(er)));
+				tmp->content = (void *)ln->content;
+				ft_lstadd(&path, tmp);
+				path->content = (void *)ln->content;
 				((t_rooms *)path->content)->vis2 = 1;
-				//	path->content = (void*)path, ft_lstnew((void *)ln->content, sizeof(ln->content));
 				er = ln;
 				break;
 			}
@@ -418,15 +420,17 @@ t_list 			*buildpath(t_list *er, t_llrc *llrc)
 	return (path);
 }
 
-void surb2(t_list *ln, t_list *tr, t_list *(*mas)[4], int *i)
+void surb2(t_list *ln, t_list *tr2, t_list *(*mas)[4], int *i)
 {
 	t_list *ln2;
+	t_list *tr;
 	int l;
 
 	ln2 = ln;
 	l = 0;
 	while (ln)
 	{
+		tr = tr2;
 		while (tr)
 		{
 			if (tr->content == ln->content)
@@ -435,6 +439,7 @@ void surb2(t_list *ln, t_list *tr, t_list *(*mas)[4], int *i)
 				*i += 1;
 				(*mas)[*i] = tr->next;
 				(*i)++;
+				return ;
 			}
 			tr = tr->next;
 		}
@@ -443,19 +448,71 @@ void surb2(t_list *ln, t_list *tr, t_list *(*mas)[4], int *i)
 	}
 	ln2->content_size = l;
 }
-void surb(t_list *ln, t_list *tr, t_list **paths)
+void    ft_lstadd_up(t_list **alst, t_list *new)
+{
+	t_list *alst2;
+	if (*alst)
+	{
+		alst2 = *alst;
+		while ((*alst)->next)
+			*alst = (*alst)->next;
+		(*alst)->next = new;
+		new->next = NULL;
+		*alst = alst2;
+	}
+	else
+		*alst = new;
+}
+
+void crpath(t_list **path, t_list *tr)
+{
+	*path = ft_lstnew((void *)tr, (size_t)sizeof(*path));
+	(*path)->content = tr->content;
+	(*path)->content_size = tr->content_size;
+	(*path)->next = tr->next;
+}
+void inferno(t_list **paths, t_list *ln, t_list *ln2, int f)
+{
+	t_list *tr;
+	t_list *path;
+	t_list *main;
+
+	main = NULL;
+	if (f)
+		tr = (*paths)->content;
+	else
+		tr = (*paths)->next->content;
+	while (tr)
+	{
+		if (tr->content == ln->content)
+		{
+			crpath(&path, tr);
+			tr = ln2;
+		}
+		crpath(&path, tr);
+		ft_lstadd_up(&main, path);
+		tr = tr->next;
+	}
+	ft_listup(paths, main);
+
+}
+void surb(t_list *ln, t_list *tr, t_list **paths, t_llrc *llrc)
 {
 	t_list *mas[4];
+	t_list *ln2;
 	int i;
 
 	i = 0;
-	surb2(ln, tr, &mas, &i);
-	surb2(tr, ln, &mas, &i);
+	surb2(ln->next, tr->next, &mas, &i);
+	surb2(tr->next, ln->next, &mas, &i);
 
 	if (i != 0)
 	{
-		(*mas)[0].next = (*mas)[1].content;
-		(*mas)[2].next = (*mas)[3].content;
+		inferno(paths, mas[0], mas[1], 1);
+		inferno(paths, mas[2], mas[3], 0);
+		ln2  = (*paths)->next->content;
+		(*paths)->next =(*paths)->next->next;
+		free(ln2);
 	}
 
 }
@@ -482,23 +539,23 @@ int    apalon(t_list *paths, int ant)// if t > l то 1 путь лучше, ч�
 	return (t > l);
 }
 
-
-void    ft_lstadd_up(t_list *alst, t_list *new)
+void    ft_listup(t_list **alst, t_list *new)
 {
 	t_list *alst2;
-
-	alst = new;
-	if (alst)
+	if (*alst)
 	{
-		alst2 = alst;
-		while ((alst)->next)
-			alst = (alst)->next;
-		(alst)->next = new;
-		new->next = NULL;
-		alst = alst2;
+		alst2 = *alst;
+		while ((alst2)->next)
+			alst2 = (alst2)->next;
+		(alst2)->next = ft_lstnew((void *)new, (size_t)sizeof(new));
+		(alst2)->next->content = new;
 	}
 	else
-		alst = new;
+	{
+		*alst = ft_lstnew((void *)new, (size_t)sizeof(new));
+		(*alst)->content = new;
+		(*alst)->next = NULL;
+	}
 }
 
 //void 	ft_lst
@@ -520,33 +577,27 @@ int				alg(t_llrc *llrc)
 //	print_l(llrc);
 	maxw = count_way(llrc);//	bfs(llrc);//bfs = (llrc);
 	i = 0;
-	path = ft_lstnew((void *)paths, (size_t)sizeof(paths));
-	paths = path;
+	paths = NULL;
 	while (i <= maxw)
 	{
 		last = bft(llrc);//save x < minw paths; group
-		//path = ft_lstnew((void *)0, (size_t)sizeof(paths));//(t_rooms *)malloc(sizeof(t_rooms));
-		path->content = (void *)buildpath(last, llrc);
-		printflist((t_list *)path->content);
-		//ft_lstaddup(&paths, path);
-	//	ft_lstadd_up(&paths, path);
-//		ft_lstnadd(path, path);
-		path->next = ft_lstnew((void *)paths, (size_t)sizeof(paths));
-		path = path->next;
+		path = buildpath(last);
+		printflist(path);
+		ft_listup(&paths, path);
+		print_l(llrc);
 		if (!paths->next)
-		{
 			continue ;
-		}
-		surb((t_list *)paths->content, (t_list *)paths->next->content, &paths);
-		//print_l(llrc);
-		//	return 0;
+		surb((t_list *)paths->content, (t_list *)paths->next->content, &paths, llrc);
+		print_l(llrc);
 		if (apalon(paths, llrc->ants))
 		{
-			//завершить
-		}
+			printf("1\n");
+			exit(0);
+		}//(t_rooms*)((t_list*)(paths->next->content))->next->content
 		else
 		{
-
+			printf("2\n");
+			exit(0);
 		}
 		//printflist((t_list *)paths->content);
 		++i;
