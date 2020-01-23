@@ -12,21 +12,6 @@
 
 #include "lemin.h"
 
-void    ft_lstadd_up(t_list **alst, t_list *new)
-{
-	t_list *alst2;
-	if (*alst)
-	{
-		alst2 = *alst;
-		while ((*alst)->next)
-			*alst = (*alst)->next;
-		(*alst)->next = new;
-		new->next = NULL;
-		*alst = alst2;
-	}
-	else
-		*alst = new;
-}
 
 void    ft_lstaddup(t_list **alst, t_list *new)
 {
@@ -483,15 +468,46 @@ int    apalon(t_list *paths, int ant)// if t > l то 1 путь лучше, ч�
 	t_list *ln;
 	t_list *ln2;
 
-	tr  = paths->content;
-	ln = paths->next->content;
-	ln2 = paths->next->next->content;
-	l = ((float)(ant + ln->content_size + ln2->content_size)) / 2;
+	tr = paths->content;
+	l = 0;
+	if (paths->next)
+	{
+		ln = paths->next->content;
+		if ((ln2 = paths->next->next))
+			l = ((float)(ant + ln->content_size + ln2->content_size)) / 2;
+		else
+			l = ant + ln->content_size;
+	}
 	t = (float)tr->content_size + (float)ant;
 	return (t > l);
 }
+
+void    ft_lstadd_up(t_list **alst, t_list *new)
+{
+	t_list *alst2;
+	if (*alst)
+	{
+		alst2 = *alst;
+		while ((*alst)->next)
+			*alst = (*alst)->next;
+		(*alst)->next = ft_lstnew((void *)0, (size_t)sizeof(new));
+		(*alst)->next->content = new;
+		(*alst)->next->next = NULL;
+		*alst = alst2;
+	}
+	else
+	{
+		*alst = ft_lstnew((void *)0, (size_t)sizeof(new));
+		(*alst)->content = new;
+		(*alst)->next = NULL;
+	}
+}
+//void 	ft_lst
 /*
 ** create list of paths, run pathsearch x times,
+ * empty content
+** create first node; node->content = npath;
+** if (node->next) !node->next = nodewnpath
 */
 
 int				alg(t_llrc *llrc)
@@ -505,20 +521,21 @@ int				alg(t_llrc *llrc)
 //	print_l(llrc);
 	maxw = count_way(llrc);//	bfs(llrc);//bfs = (llrc);
 	i = 0;
-	paths = ft_lstnew((void *)0, (size_t)sizeof(paths));//(t_rooms *)malloc(sizeof(t_rooms));
-	path = paths;
+	paths = NULL;
 	while (i <= maxw)
 	{
 		last = bft(llrc);//save x < minw paths; group
+		path = ft_lstnew((void *)0, (size_t)sizeof(paths));//(t_rooms *)malloc(sizeof(t_rooms));
 		path->content = (void *)buildpath(last, llrc);
-	//	ft_lstnadd(paths, path);
-		printflist((t_list *)paths->content);
-		ft_lstaddup(&paths, path);
+		printflist((t_list *)path->content);
+		//ft_lstaddup(&paths, path);
+		//ft_lstadd_up(&paths, path);
+//		ft_lstnadd(path, path);
 		if (!paths->next)
 			continue ;
 		surb((t_list *)paths->content, (t_list *)paths->next->content, &paths);
-		print_l(llrc);
-
+		//print_l(llrc);
+		//	return 0;
 		if (apalon(paths, llrc->ants))
 		{
 			//завершить
