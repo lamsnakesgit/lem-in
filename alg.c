@@ -12,22 +12,36 @@
 
 #include "lemin.h"
 
-void    ft_lstadd_up(t_list **alst, t_list *new)
+
+void    ft_lstaddup(t_list **alst, t_list *new)
 {
 	t_list *alst2;
 	if (*alst)
 	{
 		alst2 = *alst;
-		while ((*alst)->next)
-			*alst = (*alst)->next;
-		(*alst)->next = new;
-		new->next = NULL;
-		*alst = alst2;
+		while (alst2->next)
+			alst2 = alst2->next;
+		alst2->next = new;
+		//while ((*alst)->next)
+		//	*alst = (*alst)->next;
+		//(*alst)->next = new;
+
+//	new->next = NULL;
+	//	*alst = alst2;
 	}
 	else
 		*alst = new;
 }
 
+void				ft_lstnadd(t_list *ln, t_list *new)
+{
+	t_list *tmp;
+
+	tmp = ln;
+	while (tmp && tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
+}
 void 				print_l(t_llrc *lrc)
 {
 	t_list *l;
@@ -461,6 +475,23 @@ int    apalon(t_list *paths, int ant)// if t > l то 1 путь лучше, ч�
 	t = (float)tr->content_size + (float)ant;
 	return (t > l);
 }
+
+void    ft_lstadd_up(t_list **alst, t_list *new)
+{
+	t_list *alst2;
+	if (*alst)
+	{
+		alst2 = *alst;
+		while ((*alst)->next)
+			*alst = (*alst)->next;
+		(*alst)->content = new;
+		(*alst)->next = NULL;
+		*alst = alst2;
+	}
+	else
+		*alst = new;
+}
+//void 	ft_lst
 /*
 ** create list of paths, run pathsearch x times,
 */
@@ -476,16 +507,21 @@ int				alg(t_llrc *llrc)
 //	print_l(llrc);
 	maxw = count_way(llrc);//	bfs(llrc);//bfs = (llrc);
 	i = 0;
-	paths = ft_lstnew((void *)0, (size_t)sizeof(paths));//(t_rooms *)malloc(sizeof(t_rooms));
-	path = paths;
+	path = ft_lstnew((void *)0, (size_t)sizeof(paths));//(t_rooms *)malloc(sizeof(t_rooms));
+	paths = NULL;
 	while (i <= maxw)
 	{
 		last = bft(llrc);//save x < minw paths; group
 		path->content = (void *)buildpath(last, llrc);
-		ft_lstadd_up(&paths, path);
+		ft_lstnadd(paths, path);
+		printflist((t_list *)path->content);
+		//ft_lstaddup(&paths, path);
+	//	ft_lstadd_up(&paths, path);
 		if (!paths->next)
 			continue ;
 		surb((t_list *)paths->content, (t_list *)paths->next->content, &paths);
+		print_l(llrc);
+		return 0;
 		if (apalon(paths, llrc->ants))
 		{
 			//завершить
