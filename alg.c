@@ -12,8 +12,6 @@
 
 #include "lemin.h"
 
-void    ft_listup(t_list **alst, t_list *new);
-
 void    ft_lstaddup(t_list **alst, t_list *new)
 {
 	t_list *alst2;
@@ -395,12 +393,13 @@ t_list 			*buildpath(t_list *er)
 	t_list *ln;
 	t_list *path;
 	t_list *tmp;
+	int i;
 
+	i = 0;
 //	crpath(&path, er);
 	path = ft_lstnew((void *)er, (size_t) sizeof(path));
 	path->content = er->content;
 	path->next = 0;
-
 	((t_rooms *)path->content)->vis2 = 1;
 	while (((t_rooms *) er->content)->lvl != 0)
 	{
@@ -414,6 +413,7 @@ t_list 			*buildpath(t_list *er)
 				tmp = ft_lstnew((void *)(ln->content),(size_t)(sizeof(er)));
 				tmp->content = (void *)ln->content;
 				ft_lstadd(&path, tmp);
+				i++;
 				path->content = (void *)ln->content;
 				((t_rooms *)path->content)->vis2 = 1;
 				er = ln;
@@ -422,6 +422,7 @@ t_list 			*buildpath(t_list *er)
 			ln = ln->next;
 		}
 	}
+	path->content_size = i;
 	return (path);
 }
 
@@ -504,7 +505,7 @@ void crpath(t_list **path, t_list *tr)
 	*path = ft_lstnew((void *)tr, (size_t)sizeof(*path));
 	(*path)->content = tr->content;
 	(*path)->content_size = tr->content_size;
-	(*path)->next = tr->next;
+//	(*path)->next = tr->next;
 }
 
 void inferno(t_list **paths, t_list *ln, t_list *ln2, int f)
@@ -512,7 +513,9 @@ void inferno(t_list **paths, t_list *ln, t_list *ln2, int f)
 	t_list *tr;
 	t_list *path;
 	t_list *main;
+	int i;
 
+	i = 0;
 	main = NULL;
 	if (f)
 		tr = (*paths)->content;
@@ -523,12 +526,16 @@ void inferno(t_list **paths, t_list *ln, t_list *ln2, int f)
 		if (tr->content == ln->content)
 		{
 			crpath(&path, tr);
+			ft_lstadd_up(&main, path);
 			tr = ln2;
+			i++;
 		}
 		crpath(&path, tr);
 		ft_lstadd_up(&main, path);
 		tr = tr->next;
+		i++;
 	}
+	main->content_size = i;
 	ft_listup(paths, main);
 
 }
@@ -537,6 +544,7 @@ void surb(t_list *ln, t_list *tr, t_list **paths, t_llrc *llrc)
 	t_mas	mas;
 	t_list *ln2;
 	int i;
+	t_list	*q;
 
 	i = 0;
 
@@ -545,8 +553,12 @@ void surb(t_list *ln, t_list *tr, t_list **paths, t_llrc *llrc)
 
 	if (i != 0)
 	{
+		q = (*paths);
 		inferno(paths, (t_list *)mas.m0, (t_list *)mas.m1, 1);
+		printflist(q->next->next->content);
+		printf("\n");
 		inferno(paths, (t_list *)mas.m2, (t_list *)mas.m3, 0);
+		printflist(q->next->next->next->content);
 		ln2  = (*paths)->next->content;
 		(*paths)->next =(*paths)->next->next;
 		free(ln2);
@@ -567,13 +579,13 @@ int    apalon(t_list *paths, int ant)// if t > l то 1 путь лучше, ч�
 	if (paths->next)
 	{
 		ln = paths->next->content;
-		if ((ln2 = paths->next->next))
-			l = ((float)(ant + ln->content_size + ln2->content_size)) / 2;
+		if (paths->next->next && (ln2 = paths->next->next->content))
+			l = ((float)(ant + ln->content_size - 1 + ln2->content_size - 1)) / 2;
 		else
 			l = ant + ln->content_size;
 	}
 	t = (float)tr->content_size + (float)ant;
-	return (t > l);
+	return (t < l);
 }
 
 void    ft_listup(t_list **alst, t_list *new)
@@ -615,15 +627,18 @@ int				alg(t_llrc *llrc)
 	maxw = count_way(llrc);//	bfs(llrc);//bfs = (llrc);
 	i = 0;
 	paths = NULL;
-	while (i <= maxw)
+	while (i < maxw)
 	{
 		last = bft(llrc);//save x < minw paths; group
 		path = buildpath(last);
 		printflist(path);
 		ft_listup(&paths, path);
 		print_l(llrc);
-		if (!paths->next)
+		if (!paths->next && i < maxw)
+		{
+			++i;
 			continue ;
+		}
 		surb((t_list *)paths->content, (t_list *)paths->next->content, &paths, llrc);
 		print_l(llrc);
 		if (apalon(paths, llrc->ants))
@@ -641,3 +656,37 @@ int				alg(t_llrc *llrc)
 	}
 	return 1;
 }
+/*
+** run bft to collect list of paths
+** block collected
+** 0 ants? null rm/link?
+** -+coors
+** count len path
+** run ants through paths
+** print_paths
+*/
+
+int				alg_alt(t_llrc *llrc)
+{
+	int i;
+	int maxw;
+	t_list	*last;
+	t_list	*path;
+	t_list	*paths;
+
+//	print_l(llrc);
+	maxw = count_way(llrc);//	bfs(llrc);//bfs = (llrc);
+	i = 0;
+	paths = NULL;
+	while (i <= maxw)
+	{
+		last = bft(llrc);//save x < minw paths; group
+		path = buildpath(last);
+		printflist(path);
+		ft_listup(&paths, path);
+		print_l(llrc);
+		++i;
+	}
+	return 1;
+}
+

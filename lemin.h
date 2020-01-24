@@ -152,5 +152,8 @@ int				alg(t_llrc *llrc);
 char			**lines(char *buf);
 char			**processmap(int fd, t_llrc *llrc);
 
+int				alg_alt(t_llrc *llrc);
+
+void			ft_listup(t_list **alst, t_list *new);
 
 #endif
