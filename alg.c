@@ -356,17 +356,18 @@ int             count_way(t_llrc *llrc)
 	return (min);
 }
 
-void			printflist(t_list *path)
+void			printflist(t_list *ln)
 {
-	t_list *ln;
+//	t_list *ln;
+	t_list *path;
 	int i = 0;
 
-	ln = path;
+	path = ln;
 
-	while (ln)
+	while (path)
 	{
-		printf("%s\n", ((t_rooms *)ln->content)->name_r);
-		ln = ln->next;
+		printf("%s\n", ((t_rooms *)path->content)->name_r);
+		path = path->next;
 	}
 }
 /*
@@ -395,7 +396,11 @@ t_list 			*buildpath(t_list *er)
 	t_list *path;
 	t_list *tmp;
 
-	crpath(&path, er);
+//	crpath(&path, er);
+	path = ft_lstnew((void *)er, (size_t) sizeof(path));
+	path->content = er->content;
+	path->next = 0;
+
 	((t_rooms *)path->content)->vis2 = 1;
 	while (((t_rooms *) er->content)->lvl != 0)
 	{
@@ -501,6 +506,7 @@ void crpath(t_list **path, t_list *tr)
 	(*path)->content_size = tr->content_size;
 	(*path)->next = tr->next;
 }
+
 void inferno(t_list **paths, t_list *ln, t_list *ln2, int f)
 {
 	t_list *tr;
