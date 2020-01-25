@@ -95,6 +95,33 @@ t_list 			*pullnode(t_list **q)
 	return (h);
 }
 /*
+** receive que-ptr, current node pull off que
+** save links in tmp to iterate through neighbours;
+** if curr link pts to unvis room; mark level; add to the end of que
+**
+*/
+int 			quepush(t_llrc *llrc, t_list **q, t_list *tr)//**tr)///push unvis nbrs
+{//add to qu non vis /add levl marks
+	t_list	*ln;
+
+	ln = ((t_rooms *)((tr)->content))->ln;//((t_rooms *)tr)->ln;
+	int i = 0;
+	while (ln)
+	{
+		if (((t_rooms *)(ln->content))->vis == 0 && ln->content_size != -1)//(((t_rooms *)(*tr)->content)->vis == 0);
+		{//links of end/st/dead
+			//	if (((t_rooms *)(*tr)->content)->nu//(((t_rooms *)ln->content)->nu == llrc->fr->nu)
+			//		((t_rooms *)ln->content)->lvl
+			((t_rooms *)ln->content)->lvl = ((t_rooms*)(tr)->content)->lvl + 1;
+			((t_rooms *)ln->content)->vis = 1;
+			queadd(q, ln);//->content);//tr);//add room->q
+		}
+		ln = ln->next;
+		++i;
+	}
+	return 0;
+}
+/*
 t_list 			*q_create(t_list *q)
 {
 
@@ -145,3 +172,31 @@ int				quepush(t_llrc *llrc, t_list **q, t_list *tr)//levels mark;add to queue
 	return 0;
 }
 */
+
+
+t_list 			*bfss(t_llrc *llrc)
+{
+	t_list	*q;
+	t_list	*cur;
+	t_list	*last;
+	int 	f;
+	int i = 0;
+
+	q = 0;
+	clean(llrc, &q);
+	f = 0;
+	last = 0;
+	while (q != 0)
+	{
+		++i;
+		cur = pullnode(&q);
+//		if (f == 0 && ((t_rooms*)cur->content)->vis2 == 1 && cur->content != llrc->fr)
+//			bft2(&f, cur, &q, llrc);
+		if (ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->er->name_r) && ((t_rooms *)(cur->content))->nu)
+			quepush(llrc, &q, cur);
+		else
+			last = cur;
+	}
+	print_l(llrc);
+	return (last);
+}

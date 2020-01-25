@@ -137,3 +137,15 @@ int					roomlinkblock(char **line, t_llrc *lrc, int fd)//mv ind!
 	}
 	return (0);//(*line);ERRvalrmonly
 }
+//if (i != 0)
+//{
+//q = (*paths);
+//cross_path(paths, (t_list *)mas.m0, (t_list *)mas.m1, 1);
+//printflist(q->next->next->content);
+//printf("\n");
+//cross_path(paths, (t_list *)mas.m2, (t_list *)mas.m3, 0);
+//printflist(q->next->next->next->content);
+//ln2  = (*paths)->next->content;
+//(*paths)->next =(*paths)->next->next;
+//free(ln2);
+//}

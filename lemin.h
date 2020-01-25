@@ -114,6 +114,8 @@ typedef struct s_llrc
 	   t_rooms	*er;
 	   t_rooms	**arrrm;
 	   int      ants;
+	   long 	plensum;
+	   long 	psum;
 }                              t_llrc;
 typedef	struct s_mas
 {
@@ -154,15 +156,20 @@ char			**processmap(int fd, t_llrc *llrc);
 int				alg_alt(t_llrc *llrc);
 
 void			ft_listup(t_list **alst, t_list *new);
+void			ft_lstadd_up(t_list **alst, t_list *new);
 
 int 			queadd(t_list **q, t_list *tr);
 
 t_list 			*pullnode(t_list **q);
 t_rooms 		**queuefill(t_rooms **qu, t_llrc *llrc);
+int 			quepush(t_llrc *llrc, t_list **q, t_list *tr);///push unvis nbrs
+
 void			printflist(t_list *ln);
 
 int             count_way(t_llrc *llrc);
 int				clean(t_llrc *llrc, t_list **q);
 void 			crpath(t_list **path, t_list *tr);
+
+t_list 			*bfss(t_llrc *llrc);
 
 #endif

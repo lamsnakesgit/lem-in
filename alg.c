@@ -39,52 +39,26 @@ int 			bfs(t_llrc *llrc)
 	}
 	return 0;
 }
-/*
-** receive que-ptr, current node pull off que
-** save links in tmp to iterate through neighbours;
-** if curr link pts to unvis room; mark level; add to the end of que
-**
-*/
-int 			quepush(t_llrc *llrc, t_list **q, t_list *tr)//**tr)///push unvis nbrs
-{//add to qu non vis /add levl marks
-	t_list	*ln;
 
-	ln = ((t_rooms *)((tr)->content))->ln;//((t_rooms *)tr)->ln;
-	int i = 0;
-	while (ln)
-	{
-		if (((t_rooms *)(ln->content))->vis == 0 && ln->content_size != -1)//(((t_rooms *)(*tr)->content)->vis == 0);
-		{//links of end/st/dead
-		//	if (((t_rooms *)(*tr)->content)->nu//(((t_rooms *)ln->content)->nu == llrc->fr->nu)
-		//		((t_rooms *)ln->content)->lvl
-			((t_rooms *)ln->content)->lvl = ((t_rooms*)(tr)->content)->lvl + 1;
-			((t_rooms *)ln->content)->vis = 1;
-			queadd(q, ln);//->content);//tr);//add room->q
-		}
-		ln = ln->next;
-		++i;
-	}
-	return 0;
-}
-
-void		bft2(int *f, t_list *cur, t_list **q, t_llrc *llrc)
+int 		bft2(int *f,t_list *cur, t_list **q, t_llrc *llrc)
 {
 	t_list	*ln;
 
 	ln = ((t_rooms*)cur->content)->ln;
 	while (ln)
 	{
-		if (((t_rooms*)ln->content)->vis2 == 1 && ln->content != llrc->er)
+		if (((t_rooms*)ln->content)->vis2 == 1 && ln->content != llrc->er
+		&& ((t_rooms*)ln->content)->vis != 1)
 		{
 			((t_rooms *)ln->content)->lvl = ((t_rooms*)(cur)->content)->lvl + 1;
 			((t_rooms *)ln->content)->vis = 1;
 			queadd(q, ( ln));//->content)->ln);
-			*f = 1;
-			return ;
+			*f  = 1;
+			return (0);
 		}
 		ln = ln->next;
 	}
-//	*f = 1;
+	return (1);
 }
 
 /*
@@ -108,16 +82,47 @@ t_list 			*bft(t_llrc *llrc)
 	{
 		++i;
 		cur = pullnode(&q);
-		if (f == 0 && ((t_rooms*)cur->content)->vis2 == 1 && cur->content != llrc->fr)
+		if (f == 0 && ((t_rooms*)cur->content)->vis2 == 1 && ((t_rooms*)cur->content)->nu != llrc->er->nu)
 			bft2(&f, cur, &q, llrc);
 		else if (ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->er->name_r))
+		{
+			f = 0;
 			quepush(llrc, &q, cur);
+		}
 		else
 			last = cur;
 	}
 	print_l(llrc);
 	return (last);
 }
+
+//t_list 			*bft04(t_llrc *llrc)
+//{
+//	t_list	*q;
+//	t_list	*cur;
+//	t_list	*last;
+//	int i = 0;
+//
+//	q = 0;
+//	clean(llrc, &q);
+//
+//	last = 0;
+//	while (q != 0)
+//	{
+//		cur = pullnode(&q);
+//		if (((t_rooms*)cur->content)->vis2 == 1 && cur->content != llrc->fr)
+//			i = bft2(&f, cur, &q, llrc);
+//		if (i)
+//		{
+//			if (ft_strcmp(((t_rooms *) cur->content)->name_r, llrc->er->name_r))
+//				quepush(llrc, &q, cur);
+//			else
+//				last = cur;
+//		}
+//	}
+//	print_l(llrc);
+//	return (last);
+//}
 
 /*
  * go from end-room to level-1 collect path
@@ -177,7 +182,7 @@ t_list 			*buildpath(t_list *er)
 	return (path);
 }
 
-void surb2(t_list *ln, t_list *tr2, t_mas *mas, int *i)
+int  surb2(t_list *ln, t_list *tr2, t_mas *mas, int *i)
 {
 	t_list *ln2;
 	t_list *tr;
@@ -196,7 +201,7 @@ void surb2(t_list *ln, t_list *tr2, t_mas *mas, int *i)
 				*i += 1;
 				mas->m1 = (t_list *)tr->next;
 				(*i)++;
-				return ;
+				return (1);
 			}
 			tr = tr->next;
 		}
@@ -204,6 +209,7 @@ void surb2(t_list *ln, t_list *tr2, t_mas *mas, int *i)
 		l++;
 	}
 	ln2->content_size = l;
+	return (0);
 }
 
 void surb3(t_list *ln, t_list *tr2, t_mas *mas, int *i)
@@ -236,7 +242,7 @@ void surb3(t_list *ln, t_list *tr2, t_mas *mas, int *i)
 }
 
 
-void inferno(t_list **paths, t_list *ln, t_list *ln2, int f)
+int cross_path(t_list **paths, t_list *ln, t_list *ln2, int f)
 {
 	t_list *tr;
 	t_list *path;
@@ -265,56 +271,81 @@ void inferno(t_list **paths, t_list *ln, t_list *ln2, int f)
 	}
 	main->content_size = i;
 	ft_listup(paths, main);
-
+	return (i);
 }
-void surb(t_list *ln, t_list *tr, t_list **paths, t_llrc *llrc)
+t_list *lastpath(t_list **paths)
 {
-	t_mas	mas;
-	t_list *ln2;
-	int i;
-	t_list	*q;
+	t_list *ln;
 
-	i = 0;
-
-	surb2(ln->next, tr->next, &mas, &i);
-	surb3(tr->next, ln->next, &mas, &i);
-
-	if (i != 0)
-	{
-		q = (*paths);
-		inferno(paths, (t_list *)mas.m0, (t_list *)mas.m1, 1);
-		printflist(q->next->next->content);
-		printf("\n");
-		inferno(paths, (t_list *)mas.m2, (t_list *)mas.m3, 0);
-		printflist(q->next->next->next->content);
-		ln2  = (*paths)->next->content;
-		(*paths)->next =(*paths)->next->next;
-		free(ln2);
-	}
-
+	ln = *paths;
+	while (ln->next)
+		ln = ln->next;
+	return (ln);
 }
-int    apalon(t_list *paths, int ant)// if t > l то 1 путь лучше, чем 2 остальных
+int				path_cmp2(t_llrc *llrc, size_t len)
 {
+	float l;
+	float t;
 
+	if (llrc->psum == 1)
+		return 1;
+	l = ((float)llrc->ants + (float)llrc->plensum) / (float)llrc->psum;
+	t = ((float)llrc->ants + (float)llrc->plensum - (float)len) / (float)llrc->psum;
+	return (t < l);//if t >= l -> break
+}
+int    path_cmp(int last, t_llrc *llrc, int x)// if t > l то 1 путь лучше, чем 2 остальных
+{
 	float t;
 	float l;
-	t_list *tr;
-	t_list *ln;
-	t_list *ln2;
 
-	tr = paths->content;
-	l = 0;
-	if (paths->next)
-	{
-		ln = paths->next->content;
-		if (paths->next->next && (ln2 = paths->next->next->content))
-			l = ((float)(ant + ln->content_size - 1 + ln2->content_size - 1)) / 2;
-		else
-			l = ant + ln->content_size;
-	}
-	t = (float)tr->content_size + (float)ant;
-	return (t < l);
+	l = (float)(llrc->ants + llrc->plensum - last + x) / (float)(llrc->psum + 1);
+	t = (float)(llrc->ants + llrc->plensum) / (float)llrc->psum;
+
+	return (t > l);
 }
+int surb(t_list **paths, t_llrc *llrc)
+{
+	t_mas	mas;
+	t_list *ln;
+	t_list *tr;
+	int i;
+	int l;
+
+	l = 0;
+	i = 0;
+	tr = *paths;
+	ln  = lastpath(paths);
+	while (tr->next->next)
+	{
+		while (surb2(ln->content, tr->content, &mas, &i))
+		{
+			i = 1;
+			surb3(tr->content, ln->content, &mas, &i);
+			l += cross_path(paths, (t_list *)mas.m0, (t_list *)mas.m1, 1);
+			l += cross_path(paths, (t_list *)mas.m2, (t_list *)mas.m3, 0);
+		}
+		if (i)
+			break;
+		tr = tr->next;
+	}
+	if (i)
+	{
+		path_cmp(ln->content_size, llrc, l);
+		printf("CMP\n");//(t_rooms*)cur->content)->vis2 == 1
+		//удаление
+	}
+	else
+	{
+		if (path_cmp2(llrc, ln->content_size))
+			printf("CMP2\n");//(t_rooms*)cur->content)->vis2 == 1
+		/// 1 - завершить, 0 - еще искать
+	}
+
+	return (i);// if i = 0 то не пересек
+}
+/*
+**
+*/
 
 /*
 ** create list of paths, run pathsearch x times,
@@ -325,22 +356,24 @@ int    apalon(t_list *paths, int ant)// if t > l то 1 путь лучше, ч�
 
 int				alg(t_llrc *llrc)
 {
-	int i;
-	int maxw;
+	int		i;
+	int		maxw;
 	t_list	*last;
 	t_list	*path;
 	t_list	*paths;
-
-//	print_l(llrc);
+	int l;
+//(t_rooms*)((t_list*)(paths->next->content))->next->content
 	maxw = count_way(llrc);//	bfs(llrc);//bfs = (llrc);
 	i = 0;
 	paths = NULL;
+	llrc->plensum = 0;
 	while (i < maxw)
 	{
 		last = bft(llrc);//save x < minw paths; group
 		if (!last)
 			break ; //no more ways
 		path = buildpath(last);
+		llrc->plensum += path->content_size;
 		printflist(path);
 		ft_listup(&paths, path);
 		print_l(llrc);
@@ -349,23 +382,14 @@ int				alg(t_llrc *llrc)
 			++i;
 			continue ;
 		}
-		surb((t_list *)paths->content, (t_list *)paths->next->content, &paths, llrc);
-		print_l(llrc);
-		if (apalon(paths, llrc->ants))
-		{
-			printf("1\n");
-			exit(0);
-		}//(t_rooms*)((t_list*)(paths->next->content))->next->content
-		else
-		{
-			printf("2\n");
-			exit(0);
-		}
+		l = surb(&paths, llrc);
+		return 1;
 		//printflist((t_list *)paths->content);
 		++i;
 	}
 	return 1;
 }
+
 /*
 ** run bft to collect list of paths
 ** block collected
@@ -386,16 +410,27 @@ int				alg_alt(t_llrc *llrc)
 
 //	print_l(llrc);
 	maxw = count_way(llrc);//	bfs(llrc);//bfs = (llrc);
-	i = 0;
+	i = -1;
 	paths = NULL;
-	while (i <= maxw)
-	{
-		last = bft(llrc);//save x < minw paths; group
+	llrc->plensum = 0;
+	llrc->psum = 0;
+	while (++i <= maxw)
+	{//
+		last = bfss(llrc);//save x < minw paths; group
+		if (!last) //didnt reach the end
+			break ;
 		path = buildpath(last);
+		llrc->psum++;
+		llrc->plensum += path->content_size;//len of all paths if !=
 		printflist(path);
 		ft_listup(&paths, path);
+		if (!paths->next && i < maxw)
+			continue ;
+//		if (isshorterpath(llrc, path->content_size))
+		{
+			break ;//run ant
+		}
 		print_l(llrc);
-		++i;
 	}
 	return 1;
 }

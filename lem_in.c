@@ -153,7 +153,7 @@ int 			main(int ac, char **av)
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/big-superposition", O_RDONLY);
 	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mmap", O_RDONLY);
 	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa2", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa3", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa3", O_RDONLY);
 	//if (ac > 1)// && fd > 0)//6)
 	if (val_in(fd, &llrc))//(ac, av);
 	{
