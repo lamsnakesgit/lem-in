@@ -122,17 +122,17 @@ typedef	struct s_mas
 	t_list *m2;
 	t_list *m3;
 }				t_mas;
-void 			crpath(t_list **path, t_list *tr);
+
 int				iscomment(char *line);
 int				rmorlink(char *line, t_llrc *llrc);//, t_list *rl);//0ptr-check
-
 int				comstend(char *line);
 
 char 			*linkval(char **line, t_llrc *lrc, int fd);
+
 int         	corr_link(char **line, t_llrc *llrc, int *rn);//checkmarginindxs
 int         	ispresent(t_llrc *llrc, char *rs);
-
 int			    comstend(char *line);
+
 t_list          *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor);
 int			    val_cord(char **roomcor);//ps related neg int?
 char		    **valrmc_s(char *line);
@@ -141,19 +141,28 @@ int			    stcheck(char **line, t_llrc *lrc, int cm, int fd);
 int             duplicheck(char **roomcor, t_llrc *lrc);
 int		    	roomlinkblock(char **line, t_llrc *lrc, int fd);
 void            turninarr(t_llrc *llrc);
-
 int				ft_err(void);
-unsigned int	amount_ants(int fd);
 
+unsigned int	amount_ants(int fd);
 void 			print_l(t_llrc *lrc);
 
 int				alg(t_llrc *llrc);
 
 char			**lines(char *buf);
-char			**processmap(int fd, t_llrc *llrc);
 
+char			**processmap(int fd, t_llrc *llrc);
 int				alg_alt(t_llrc *llrc);
 
 void			ft_listup(t_list **alst, t_list *new);
+
+int 			queadd(t_list **q, t_list *tr);
+
+t_list 			*pullnode(t_list **q);
+t_rooms 		**queuefill(t_rooms **qu, t_llrc *llrc);
+void			printflist(t_list *ln);
+
+int             count_way(t_llrc *llrc);
+int				clean(t_llrc *llrc, t_list **q);
+void 			crpath(t_list **path, t_list *tr);
 
 #endif

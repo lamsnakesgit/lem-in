@@ -103,6 +103,7 @@ char			**processmap(int fd, t_llrc *llrc)
 		++j;
 	}
 	llrc->ants = ft_atoi(ls[0]);
+	ft_putendl(ls[0]);
 	//val
 	//print array chekk
 	return ls;
