@@ -82,7 +82,7 @@ t_list 			*bft(t_llrc *llrc)
 	{
 		++i;
 		cur = pullnode(&q);
-		if (f == 0 && ((t_rooms*)cur->content)->vis2 == 1 && ((t_rooms*)cur->content)->nu != llrc->er->nu)
+		if (f == 0 && ((t_rooms*)cur->content)->vis2 == 1 && ((t_rooms*)cur->content)->nu != llrc->fr->nu)
 			bft2(&f, cur, &q, llrc);
 		else if (ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->er->name_r))
 		{
