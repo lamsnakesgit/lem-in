@@ -72,7 +72,6 @@ t_list 			*bft(t_llrc *llrc)
 	t_list	*cur;
 	t_list	*last;
 	int 	f;
-	int i = 0;
 
 	q = 0;
 	clean(llrc, &q);
@@ -80,9 +79,9 @@ t_list 			*bft(t_llrc *llrc)
 	last = 0;
 	while (q != 0)
 	{
-		++i;
 		cur = pullnode(&q);
-		if (f == 0 && ((t_rooms*)cur->content)->vis2 == 1 && ((t_rooms*)cur->content)->nu != llrc->fr->nu)
+		if (f == 0 && ((t_rooms*)cur->content)->vis2 == 1 && ((t_rooms*)cur->content)->nu != llrc->er->nu
+		&& ((t_rooms*)cur->content)->nu != llrc->fr->nu)
 			bft2(&f, cur, &q, llrc);
 		else if (ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->er->name_r))
 		{
@@ -95,34 +94,6 @@ t_list 			*bft(t_llrc *llrc)
 	print_l(llrc);
 	return (last);
 }
-
-//t_list 			*bft04(t_llrc *llrc)
-//{
-//	t_list	*q;
-//	t_list	*cur;
-//	t_list	*last;
-//	int i = 0;
-//
-//	q = 0;
-//	clean(llrc, &q);
-//
-//	last = 0;
-//	while (q != 0)
-//	{
-//		cur = pullnode(&q);
-//		if (((t_rooms*)cur->content)->vis2 == 1 && cur->content != llrc->fr)
-//			i = bft2(&f, cur, &q, llrc);
-//		if (i)
-//		{
-//			if (ft_strcmp(((t_rooms *) cur->content)->name_r, llrc->er->name_r))
-//				quepush(llrc, &q, cur);
-//			else
-//				last = cur;
-//		}
-//	}
-//	print_l(llrc);
-//	return (last);
-//}
 
 /*
  * go from end-room to level-1 collect path
@@ -190,17 +161,16 @@ int  surb2(t_list *ln, t_list *tr2, t_mas *mas, int *i)
 
 	ln2 = ln;
 	l = 0;
-	while (ln)
+	while (ln->next)
 	{
 		tr = tr2;
 		while (tr)
 		{
-			if (tr->content == ln->content)
+			if (tr->content == ln->content )
 			{
 				mas->m0 = (t_list *)ln;
-				*i += 1;
 				mas->m1 = (t_list *)tr->next;
-				(*i)++;
+				ln2->content_size = l;
 				return (1);
 			}
 			tr = tr->next;
@@ -273,14 +243,22 @@ int cross_path(t_list **paths, t_list *ln, t_list *ln2, int f)
 	ft_listup(paths, main);
 	return (i);
 }
-t_list *lastpath(t_list **paths)
+t_list *lastpath(t_list **paths, int i)
 {
 	t_list *ln;
 
 	ln = *paths;
-	while (ln->next)
-		ln = ln->next;
-	return (ln);
+	if (!i)
+	{
+		while (ln->next)
+			ln = ln->next;
+	}
+	else
+	{
+		while (ln->next->next)
+			ln = ln->next;
+	}
+	return (ln->content);
 }
 int				path_cmp2(t_llrc *llrc, size_t len)
 {
@@ -313,16 +291,18 @@ int surb(t_list **paths, t_llrc *llrc)
 
 	l = 0;
 	i = 0;
-	tr = *paths;
-	ln  = lastpath(paths);
-	while (tr->next->next)
+	tr = (*paths)->content;
+	ln  = lastpath(paths, 0);
+	while (tr->next && tr != ln)
 	{
-		while (surb2(ln->content, tr->content, &mas, &i))
+		while (surb2(ln->next, tr->next, &mas, &i))
 		{
 			i = 1;
-			surb3(tr->content, ln->content, &mas, &i);
-			l += cross_path(paths, (t_list *)mas.m0, (t_list *)mas.m1, 1);
-			l += cross_path(paths, (t_list *)mas.m2, (t_list *)mas.m3, 0);
+			surb3(tr->next, ln->next, &mas, &i);
+			l += cross_path(paths, (t_list *)mas.m0, (t_list *)mas.m1, 0);
+			l += cross_path(paths, (t_list *)mas.m2, (t_list *)mas.m3, 1); ///удаление
+			tr = lastpath(paths, 1);
+			ln = lastpath(paths, 0);
 		}
 		if (i)
 			break;
