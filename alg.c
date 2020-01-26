@@ -298,14 +298,34 @@ void 	delpath(t_list **paths, t_list *ln)
 	{
 		if (tr == ln)
 		{
-			tr2->next = ln->next;
-			free(ln);
+			if (!tr2)
+			{
+				(*paths) = (*paths)->next;
+				free(tr);
+			}
+			else
+			{
+				tr2->next = ln->next;
+				free(ln);
+			}
+			return ;
 		}
 		tr2 = tr;
 		tr = tr->next;
 	}
 }
+void		printallpaths(t_list *ln)//paths)
+{
+	t_list *path;
 
+	path = ln;
+	while (path)
+	{
+		printflist(path->content);
+		printf("\n");
+		path = path->next;
+	}
+}
 int surb(t_list **paths, t_llrc *llrc)
 {
 	t_mas	mas;
@@ -325,23 +345,26 @@ int surb(t_list **paths, t_llrc *llrc)
 			if (surb2(((t_list*)ln->content)->next, ((t_list*)tr->content)->next, &mas))
 			{
 				i = 1;
-				surb3(tr->content, ln->content, &mas);
+				surb3(((t_list*)tr->content)->next, ((t_list*)ln->content)->next, &mas);
 				l += cross_path(paths, (t_list *) mas.m0, (t_list *) mas.m1, 0);
 				l += cross_path(paths, (t_list *) mas.m2, (t_list *) mas.m3, 1);
-				llrc->plensum -= ln->content_size;
+				llrc->plensum -= ((t_list*)ln->content)->content_size;
 				llrc->psum -= 1;
 				delpath(paths, ln);
-				if (path_cmp(tr->content_size, llrc, l))
+				if (!path_cmp(((t_list*)tr->content)->content_size, llrc, l))
 				{
 					ln = lastpath(paths, 1);
 					free(ln->next);
 					ln->next = NULL;
 					ln = lastpath(paths, 1);
 					free(ln->next);
-					ln->next = NULL;
+					ln->next = NULL; /// psum
 				}
 				else
+				{
+					printallpaths(*paths);
 					delpath(paths, tr);
+				}
 				ln = lastpath(paths, 2);
 				tr = (*paths);
 				l = 0;
