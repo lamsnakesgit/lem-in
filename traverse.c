@@ -17,6 +17,11 @@
 ** llrc->plensum
 */
 
+void		move_forth(t_llrc *llrc, t_list **path)
+{
+	if ((*path)->)
+
+}
 void		run_ants(t_llrc *llrc, t_list **path)
 {
 	int i;
@@ -47,7 +52,6 @@ void		run_ants(t_llrc *llrc, t_list **path)
 	while (i < llrc->ants)
 	{
 		++i;
-
 		if (((t_rooms *)paths->content)->ant == 0)
 		{
 			printf("L%d-%s", i, ((t_rooms*)paths->content)->name_r);
