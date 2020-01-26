@@ -274,7 +274,7 @@ int				path_cmp2(t_llrc *llrc, size_t len)
 		return 1;
 	l = ((float)llrc->ants + (float)llrc->plensum) / (float)llrc->psum;
 	t = ((float)llrc->ants + (float)llrc->plensum - (float)len) / (float)llrc->psum;
-	return (t < l);//if t >= l -> break
+	return (t >= l);//if t >= l -> break
 }
 int    path_cmp(int last, t_llrc *llrc, int x)// if t > l то 1 путь лучше, чем 2 остальных
 {
@@ -330,28 +330,29 @@ int surb(t_list **paths, t_llrc *llrc)
 {
 	t_mas	mas;
 	t_list *ln;
+	t_list *ln2;
 	t_list *tr;
 	int i;
-	int l;
 
-	l = 0;
-	i = 0;
+
+	i = -1;
 	tr = (*paths);
 	ln  = lastpath(paths, 0);
+	ln2 = ln;
 	while (ln)
 	{
 		while (tr->next && tr != ln)
 		{
 			if (surb2(((t_list*)ln->content)->next, ((t_list*)tr->content)->next, &mas))
 			{
-				i = 1;
+				i = 0;
 				surb3(((t_list*)tr->content)->next, ((t_list*)ln->content)->next, &mas);
-				l += cross_path(paths, (t_list *) mas.m0, (t_list *) mas.m1, 0);
-				l += cross_path(paths, (t_list *) mas.m2, (t_list *) mas.m3, 1);
+				i += cross_path(paths, (t_list *) mas.m0, (t_list *) mas.m1, 0);
+				i += cross_path(paths, (t_list *) mas.m2, (t_list *) mas.m3, 1);
 				llrc->plensum -= ((t_list*)ln->content)->content_size;
 				llrc->psum -= 1;
 				delpath(paths, ln);
-				if (!path_cmp(((t_list*)tr->content)->content_size, llrc, l))
+				if (!path_cmp(((t_list*)tr->content)->content_size, llrc, i))
 				{
 					ln = lastpath(paths, 1);
 					free(ln->next);
@@ -362,31 +363,27 @@ int surb(t_list **paths, t_llrc *llrc)
 				}
 				else
 				{
+					llrc->plensum += i - ((t_list*)tr->content)->content_size;
+					llrc->psum += 1;
 					printallpaths(*paths);
 					delpath(paths, tr);
 				}
 				ln = lastpath(paths, 2);
 				tr = (*paths);
-				l = 0;
 				break;
 			}
 			tr = tr->next;
 		}
 		ln = ln->next;
 	}
-//	if (i)
-//	{
-//		path_cmp(ln->content_size, llrc, l);
-//		printf("CMP\n");//(t_rooms*)cur->content)->vis2 == 1
-//		//удаление
-//	}
-//	else
-//	{
-//		if (path_cmp2(llrc, ln->content_size))
-//			printf("CMP2\n");//(t_rooms*)cur->content)->vis2 == 1
-//		/// 1 - завершить, 0 - еще искать
-//	}
-
+	if (i == -1)
+	{
+		if (path_cmp2(llrc, ((t_list*)ln2->content)->content_size))
+		{
+			///вывод муравьев
+			return (-1);
+		}
+	}
 	return (i);// if i = 0 то не пересек
 }
 /*
@@ -413,7 +410,7 @@ int				alg(t_llrc *llrc)
 	i = 0;
 	paths = NULL;
 	llrc->plensum = 0;
-	while (i < maxw)
+	while (llrc->psum < maxw)//i < maxw)
 	{
 		last = bft(llrc);//save x < minw paths; group
 		if (!last)
@@ -424,15 +421,14 @@ int				alg(t_llrc *llrc)
 		printflist(path);
 		ft_listup(&paths, path);
 		print_l(llrc);
-		if (!paths->next && i < maxw)
+		++i;
+		if (!paths->next && llrc->psum < maxw)
 		{
-			++i;
 			continue ;
 		}
 		l = surb(&paths, llrc);
-		return 1;
+	//	return 1;
 		//printflist((t_list *)paths->content);
-		++i;
 	}
 	return 1;
 }
