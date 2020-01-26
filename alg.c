@@ -153,7 +153,7 @@ t_list 			*buildpath(t_list *er)
 	return (path);
 }
 
-int  surb2(t_list *ln, t_list *tr2, t_mas *mas, int *i)
+int  surb2(t_list *ln, t_list *tr2, t_mas *mas)
 {
 	t_list *ln2;
 	t_list *tr;
@@ -182,7 +182,7 @@ int  surb2(t_list *ln, t_list *tr2, t_mas *mas, int *i)
 	return (0);
 }
 
-void surb3(t_list *ln, t_list *tr2, t_mas *mas, int *i)
+void surb3(t_list *ln, t_list *tr2, t_mas *mas)
 {
 	t_list *ln2;
 	t_list *tr;
@@ -198,9 +198,7 @@ void surb3(t_list *ln, t_list *tr2, t_mas *mas, int *i)
 			if (tr->content == ln->content)
 			{
 				mas->m2 = ln;
-				*i += 1;
 				mas->m3 = tr->next;
-				(*i)++;
 				return ;
 			}
 			tr = tr->next;
@@ -248,7 +246,14 @@ t_list *lastpath(t_list **paths, int i)
 	t_list *ln;
 
 	ln = *paths;
-	if (!i)
+	if (i == 2)
+	{
+		while (ln && ln->next && ln->next->next && ln->next->next->next)
+		{
+			ln = ln->next;
+		}
+	}
+	else if (!i)
 	{
 		while (ln->next)
 			ln = ln->next;
@@ -258,7 +263,7 @@ t_list *lastpath(t_list **paths, int i)
 		while (ln->next->next)
 			ln = ln->next;
 	}
-	return (ln->content);
+	return (ln);
 }
 int				path_cmp2(t_llrc *llrc, size_t len)
 {
@@ -281,6 +286,26 @@ int    path_cmp(int last, t_llrc *llrc, int x)// if t > l то 1 путь луч
 
 	return (t > l);
 }
+
+void 	delpath(t_list **paths, t_list *ln)
+{
+	t_list *tr;
+	t_list *tr2;
+
+	tr = *paths;
+	tr2 = NULL;
+	while (tr)
+	{
+		if (tr == ln)
+		{
+			tr2->next = ln->next;
+			free(ln);
+		}
+		tr2 = tr;
+		tr = tr->next;
+	}
+}
+
 int surb(t_list **paths, t_llrc *llrc)
 {
 	t_mas	mas;
@@ -291,35 +316,53 @@ int surb(t_list **paths, t_llrc *llrc)
 
 	l = 0;
 	i = 0;
-	tr = (*paths)->content;
+	tr = (*paths);
 	ln  = lastpath(paths, 0);
-	while (tr->next && tr != ln)
+	while (ln)
 	{
-		while (surb2(ln->next, tr->next, &mas, &i))
+		while (tr->next && tr != ln)
 		{
-			i = 1;
-			surb3(tr->next, ln->next, &mas, &i);
-			l += cross_path(paths, (t_list *)mas.m0, (t_list *)mas.m1, 0);
-			l += cross_path(paths, (t_list *)mas.m2, (t_list *)mas.m3, 1); ///удаление
-			tr = lastpath(paths, 1);
-			ln = lastpath(paths, 0);
+			if (surb2(((t_list*)ln->content)->next, ((t_list*)tr->content)->next, &mas))
+			{
+				i = 1;
+				surb3(tr->content, ln->content, &mas);
+				l += cross_path(paths, (t_list *) mas.m0, (t_list *) mas.m1, 0);
+				l += cross_path(paths, (t_list *) mas.m2, (t_list *) mas.m3, 1);
+				llrc->plensum -= ln->content_size;
+				llrc->psum -= 1;
+				delpath(paths, ln);
+				if (path_cmp(tr->content_size, llrc, l))
+				{
+					ln = lastpath(paths, 1);
+					free(ln->next);
+					ln->next = NULL;
+					ln = lastpath(paths, 1);
+					free(ln->next);
+					ln->next = NULL;
+				}
+				else
+					delpath(paths, tr);
+				ln = lastpath(paths, 2);
+				tr = (*paths);
+				l = 0;
+				break;
+			}
+			tr = tr->next;
 		}
-		if (i)
-			break;
-		tr = tr->next;
+		ln = ln->next;
 	}
-	if (i)
-	{
-		path_cmp(ln->content_size, llrc, l);
-		printf("CMP\n");//(t_rooms*)cur->content)->vis2 == 1
-		//удаление
-	}
-	else
-	{
-		if (path_cmp2(llrc, ln->content_size))
-			printf("CMP2\n");//(t_rooms*)cur->content)->vis2 == 1
-		/// 1 - завершить, 0 - еще искать
-	}
+//	if (i)
+//	{
+//		path_cmp(ln->content_size, llrc, l);
+//		printf("CMP\n");//(t_rooms*)cur->content)->vis2 == 1
+//		//удаление
+//	}
+//	else
+//	{
+//		if (path_cmp2(llrc, ln->content_size))
+//			printf("CMP2\n");//(t_rooms*)cur->content)->vis2 == 1
+//		/// 1 - завершить, 0 - еще искать
+//	}
 
 	return (i);// if i = 0 то не пересек
 }
@@ -354,6 +397,7 @@ int				alg(t_llrc *llrc)
 			break ; //no more ways
 		path = buildpath(last);
 		llrc->plensum += path->content_size;
+		llrc->psum += 1;
 		printflist(path);
 		ft_listup(&paths, path);
 		print_l(llrc);
