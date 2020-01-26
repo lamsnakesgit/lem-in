@@ -93,6 +93,7 @@ void			unvisit(t_llrc *lrc)
 	while (++i < lrc->rmi)
 		lrc->arrrm[i]->vis = 0;
 }
+
 int 			*unvisited(int *vis, t_llrc *llrc)
 {
 	int i;
@@ -179,3 +180,93 @@ int				clean(t_llrc *llrc, t_list **q)
 	((t_rooms *)(*q)->content)->ant = -999;
 	return (1);
 }
+
+void		printallpaths(t_list *ln)//paths)
+{
+	t_list *path;
+
+	path = ln;
+	while (path)
+	{
+		printflist(path->content);
+		printf("\n");
+		path = path->next;
+	}
+}
+
+t_list *lastpath(t_list **paths, int i)
+{
+	t_list *ln;
+
+	ln = *paths;
+	if (i == 2)
+	{
+		while (ln && ln->next && ln->next->next && ln->next->next->next)
+		{
+			ln = ln->next;
+		}
+	}
+	else if (!i)
+	{
+		while (ln->next)
+			ln = ln->next;
+	}
+	else
+	{
+		while (ln->next->next)
+			ln = ln->next;
+	}
+	return (ln);
+}
+
+
+int				path_cmp2(t_llrc *llrc, size_t len)
+{
+	float l;
+	float t;
+
+	if (llrc->psum == 1)
+		return 1;
+	l = ((float)llrc->ants + (float)llrc->plensum) / (float)llrc->psum;
+	t = ((float)llrc->ants + (float)llrc->plensum - (float)len) / (float)llrc->psum;
+	return (t >= l);//if t >= l -> break
+}
+int    path_cmp(int last, t_llrc *llrc, int x)// if t > l то 1 путь лучше, чем 2 остальных
+{
+	float t;
+	float l;
+
+	l = (float)(llrc->ants + llrc->plensum - last + x) / (float)(llrc->psum + 1);
+	t = (float)(llrc->ants + llrc->plensum) / (float)llrc->psum;
+
+	return (t > l);
+}
+
+void 	delpath(t_list **paths, t_list *ln)
+{
+	t_list *tr;
+	t_list *tr2;
+
+	tr = *paths;
+	tr2 = NULL;
+	while (tr)
+	{
+		if (tr == ln)
+		{
+			if (!tr2)
+			{
+				(*paths) = (*paths)->next;
+				free(tr);
+			}
+			else
+			{
+				tr2->next = ln->next;
+				free(ln);
+			}
+			return ;
+		}
+		tr2 = tr;
+		tr = tr->next;
+	}
+}
+

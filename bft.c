@@ -38,35 +38,6 @@ t_rooms 		**queuefill(t_rooms **qu, t_llrc *llrc)
  * 	while (el-neighbours)
  * 		push neighbors
 */
-/*int 			bfs(t_llrc *llrc)
-{
-	t_rooms		**q;
-	t_list 		*neighbours;
-	t_rooms 	*tmp;
-	int 		*vis;
-	int 		i;
-
-	q = queuefill(q, llrc);
-	tmp = (llrc->fr);
-	vis = (int *)malloc(sizeof(int) * llrc->rmi);
-	q[0] = tmp;
-	i = 0;
-	while (q[i] != 0)
-	{
-		q[i] = 0;
-		tmp = (llrc->fr);
-	//	++i;
-		neighbours = tmp->ln;
-		while (neighbours)//((*tmp)->ln)
-		{
-			q[i] = (t_rooms *)neighbours->content;
-			++i;
-		}
-		tmp = (t_rooms *)(tmp->ln->content);
-	}
-	return (0);
-}*/
-
 
 /*
 ** create link ist
@@ -121,11 +92,6 @@ int 			quepush(t_llrc *llrc, t_list **q, t_list *tr)//**tr)///push unvis nbrs
 	}
 	return 0;
 }
-/*
-t_list 			*q_create(t_list *q)
-{
-
-}*/
 
 int 			queadd(t_list **q, t_list *tr)
 {
@@ -136,7 +102,7 @@ int 			queadd(t_list **q, t_list *tr)
 		tmp = (*q);
 		while (tmp && tmp->next)
 			tmp = tmp->next;
-		tmp->next = ft_lstnew((void *)tr->content, (size_t)sizeof(tr));//q_create(q, ft_lstadd(((void *)tr->content), (size_t)(sizeof(tr->content)));
+		tmp->next = ft_lstnew((void *)tr->content, (size_t)sizeof(tr));
 		tmp->next->content = (void *)tr->content;
 	}
 	else
@@ -146,33 +112,6 @@ int 			queadd(t_list **q, t_list *tr)
 	}
 	return 0;
 }
-/*
-int				quepush(t_llrc *llrc, t_list **q, t_list *tr)//levels mark;add to queue
-{
-	t_list *ln;
-
-	ln = ((t_rooms *)(tr->content))->ln;
-	while (ln)
-	{
-		if (llrc->er == (t_rooms *)ln->content)//if (llrc->er == (t_rooms *)tr->content)
-		{
-			((t_rooms *) tr->content)->lvl = -1;//((t_rooms *)tr->content)->lvl + 1;
-		}
-		else if (llrc->fr == (t_rooms *)ln->content)
-		{
-			((t_rooms *)ln->content)->lvl = -1;//((t_rooms *)tr->content)->lvl + 1;
-		}
-		else
-		{
-			((t_rooms *)ln->content)->lvl = ((t_rooms *)tr->content)->lvl + 1;
-			queadd(q, tr);
-		}
-		ln = ln->next;
-	}
-	return 0;
-}
-*/
-
 
 t_list 			*bfss(t_llrc *llrc)
 {

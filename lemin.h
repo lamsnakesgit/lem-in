@@ -77,6 +77,7 @@ while (q has els)
 }
  rmorlink dup else + 0.2
  sne darrlines to check ants/rms/cr/lns
+ -qpush -qcreate
 */
 
 typedef struct s_rooms
@@ -92,17 +93,9 @@ typedef struct s_rooms
 	int				ant;
 	t_list          *ln;
 }				t_rooms;
-//struct that contains ptr to list /arr w rooms & ptr to lins??
-/*typedef	struct s_lemin
-{
-	long	nant;
-	t_
-}      			 t_lemin;*/
-typedef struct s_link
-{
-	t_rooms         *rm;
-	struct  s_link  *next;
-}               t_link;
+/*
+** struct that contains ptr to list /arr w rooms & ptr to lins??
+*/
 typedef struct s_llrc
 {
        char    *linkd;
@@ -171,5 +164,21 @@ int				clean(t_llrc *llrc, t_list **q);
 void 			crpath(t_list **path, t_list *tr);
 
 t_list 			*bfss(t_llrc *llrc);
+
+void			printallpaths(t_list *ln);//paths)
+
+int				surb(t_list **paths, t_llrc *llrc);
+
+t_list			*lastpath(t_list **paths, int i);
+int				path_cmp2(t_llrc *llrc, size_t len);
+int				path_cmp(int last, t_llrc *llrc, int x);// if t > l то 1 путь лучше, чем 2 остальных
+void			delpath(t_list **paths, t_list *ln);
+
+void			run_ants(t_llrc *llrc, t_list **path);
+
+
+
+
+
 
 #endif
