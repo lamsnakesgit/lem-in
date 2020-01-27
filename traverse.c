@@ -89,9 +89,11 @@ void	print_ant2(t_list **paths, t_llrc *llrc)
 	t_list * ln;
 	t_list * tr;
 	int ant;
+	int last;
 	size_t *ul;
 
 	ant = 0;
+	last = -1;
 	while (ant != llrc->ants)
 	{
 		ln = *paths;
@@ -99,26 +101,35 @@ void	print_ant2(t_list **paths, t_llrc *llrc)
 		{
 			tr = ln->content;
 			ul = &tr->content_size;
-			while (tr && *ul > 0)
+			while (tr->next && *ul > 0)
 			{
+				if (((t_rooms *) tr->content)->ant == last)
+				{
+					tr = tr->next;
+					continue;
+				}
 				if (((t_rooms *) tr->next->content)->ant == 0 &&
 					((t_rooms *) tr->content)->nu == llrc->fr->nu)
 				{
 					*ul -= 1;
 					ant++;
+					last = ant;
 					printf("L%d-%s ", ant, ((t_rooms *)tr->next->content)->name_r);
 					((t_rooms *) tr->next->content)->ant = ant;
+
 				}
-				else if (((t_rooms *) tr->next->content)->ant == 0 &&
-						((t_rooms *) tr->content)->ant != 0)
+				if (((t_rooms *) tr->next->content)->ant == 0 &&
+						((t_rooms *) tr->content)->ant)
 				{
+					last = ((t_rooms *) tr->content)->ant;
 					printf("L%d-%s ", ((t_rooms *) tr->content)->ant,
 							((t_rooms *) tr->next->content)->name_r);
 					((t_rooms *) tr->next->content)->ant = ((t_rooms *) tr->content)->ant;
 					((t_rooms *) tr->content)->ant = 0;
+					tr = ln->content;
 				}
-				else if (((t_rooms *) tr->next->content)->ant == 0 &&
-						 ((t_rooms *) tr->next->next->content)->ant == 0)
+				else if (((t_rooms *) tr->next->content)->ant == 0 && tr->next->next
+				 && ((t_rooms *) tr->next->next->content)->ant == 0)
 					break;
 				tr = tr->next;
 			}
