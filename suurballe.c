@@ -158,6 +158,13 @@ int				surb(t_list **paths, t_llrc *llrc)
 			///вывод муравьев
 			return (-1);
 		}
+		else
+		{
+			llrc->psum -= 1;
+			llrc->plensum += ((t_list*)ln2->content)->content_size;
+			delpath(paths, ln2);
+			return (-2);
+		}
 	}
 	return (i);// if i = 0 то не пересек
 }

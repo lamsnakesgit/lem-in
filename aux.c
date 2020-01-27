@@ -137,9 +137,10 @@ void			printflist(t_list *ln)
 
 	while (path)
 	{
-		printf("%s\n", ((t_rooms *)path->content)->name_r);
+		printf("%s ", ((t_rooms *)path->content)->name_r);
 		path = path->next;
 	}
+	printf("\n");
 }
 
 
@@ -177,7 +178,7 @@ int				clean(t_llrc *llrc, t_list **q)
 	(*q)->content = (void *)llrc->fr;
 //	((t_rooms *)(q->content))->lvl = 0;
 	((t_rooms *)(*q)->content)->vis = 1;
-	((t_rooms *)(*q)->content)->ant = -999;
+	((t_rooms *)(*q)->content)->ant = 0;
 	return (1);
 }
 
@@ -192,6 +193,7 @@ void		printallpaths(t_list *ln)//paths)
 		printf("\n");
 		path = path->next;
 	}
+	printf("\n");
 }
 
 t_list *lastpath(t_list **paths, int i)
@@ -228,7 +230,7 @@ int				path_cmp2(t_llrc *llrc, size_t len)
 	if (llrc->psum == 1)
 		return 1;
 	l = ((float)llrc->ants + (float)llrc->plensum) / (float)llrc->psum;
-	t = ((float)llrc->ants + (float)llrc->plensum - (float)len) / (float)llrc->psum;
+	t = ((float)llrc->ants + (float)llrc->plensum - (float)len) / ((float)llrc->psum - 1);
 	return (t >= l);//if t >= l -> break
 }
 int    path_cmp(int last, t_llrc *llrc, int x)// if t > l то 1 путь лучше, чем 2 остальных

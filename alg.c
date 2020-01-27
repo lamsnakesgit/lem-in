@@ -91,7 +91,7 @@ t_list 			*bft(t_llrc *llrc)
 		else
 			last = cur;
 	}
-	print_l(llrc);
+//	print_l(llrc);
 	return (last);
 }
 
@@ -159,7 +159,7 @@ t_list 			*buildpath(t_list *er)
 
 /*
 ** create list of paths, run pathsearch x times,
- * empty content
+** empty content
 ** create first node; node->content = npath;
 ** if (node->next) !node->next = nodewnpath
 */
@@ -197,7 +197,10 @@ int				alg(t_llrc *llrc)
 	//	return 1;
 		//printflist((t_list *)paths->content);
 	}
-//	run_ants(llrc, &paths);
+	printf("\n");
+	printallpaths(paths);
+	sort_path(&paths);
+	print_ant(&paths, llrc);
 	return 1;
 }
 
