@@ -83,61 +83,61 @@ void 		step(int ants, t_list **path)
 
 	paths = (*path);
 }
+/*
+** move all ants to first room
+** move ant in each path by iteration
+** check all rooms in path
+ * move
+**
+*/
+void    printway(t_list *tr, t_llrc *llrc, int *ant, size_t *ul)
+{
+	if (!tr || ((t_rooms *)tr->content)->nu == llrc->er->nu)
+		return;
+	else if (((t_rooms *)tr->next->content)->nu != llrc->er->nu)
+		printway(tr->next, llrc, ant, ul);
+	if (((t_rooms *)tr->content)->nu == llrc->fr->nu && *ul > 0)
+	{
+		*ul -= 1;
+		(*ant)++;
+		printf("L%d-%s ", *ant, ((t_rooms *)tr->next->content)->name_r);
+		((t_rooms *)tr->next->content)->ant = *ant;
+	}
+	if ((((t_rooms *)tr->next->content)->ant == 0 ||
+	((t_rooms *)tr->next->content)->nu == llrc->er->nu) &&
+	((t_rooms *)tr->content)->ant != 0)
+	{
+		printf("L%d-%s ", ((t_rooms *)tr->content)->ant,
+			   ((t_rooms *)tr->next->content)->name_r);
+		((t_rooms *)tr->next->content)->ant = ((t_rooms *)tr->content)->ant;
+		((t_rooms *)tr->content)->ant = 0;
+	}
+}
 
-void	print_ant2(t_list **paths, t_llrc *llrc)
+void    print_ant2(t_list **paths, t_llrc *llrc)
 {
 	t_list * ln;
 	t_list * tr;
 	int ant;
-	int last;
 	size_t *ul;
 
 	ant = 0;
-	last = -1;
-	while (ant != llrc->ants)
+	while (llrc->er->ant < llrc->ants )
 	{
 		ln = *paths;
 		while (ln)
 		{
-			tr = ln->content;
-			ul = &tr->content_size;
-			while (tr->next && *ul > 0)
-			{
-				if (((t_rooms *) tr->content)->ant == last)
-				{
-					tr = tr->next;
-					continue;
-				}
-				if (((t_rooms *) tr->next->content)->ant == 0 &&
-					((t_rooms *) tr->content)->nu == llrc->fr->nu)
-				{
-					*ul -= 1;
-					ant++;
-					last = ant;
-					printf("L%d-%s ", ant, ((t_rooms *)tr->next->content)->name_r);
-					((t_rooms *) tr->next->content)->ant = ant;
-
-				}
-				if (((t_rooms *) tr->next->content)->ant == 0 &&
-						((t_rooms *) tr->content)->ant)
-				{
-					last = ((t_rooms *) tr->content)->ant;
-					printf("L%d-%s ", ((t_rooms *) tr->content)->ant,
-							((t_rooms *) tr->next->content)->name_r);
-					((t_rooms *) tr->next->content)->ant = ((t_rooms *) tr->content)->ant;
-					((t_rooms *) tr->content)->ant = 0;
-					tr = ln->content;
-				}
-				else if (((t_rooms *) tr->next->content)->ant == 0 && tr->next->next
-				 && ((t_rooms *) tr->next->next->content)->ant == 0)
-					break;
-				tr = tr->next;
-			}
+			tr = ln->content;//list
+			ul = &ln->content_size;
+			printway(tr, llrc, &ant, ul);
+		//	printway(tr, llrc, &ant, ul);
 			ln = ln->next;
 		}
 		printf("\n");
 	}
+	printf("END");
 }
+
 void                print_ant(t_list **paths, t_llrc *llrc)
 {
 	t_list * ln;
