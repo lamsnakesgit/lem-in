@@ -229,9 +229,9 @@ int				path_cmp2(t_llrc *llrc, size_t len)
 
 	if (llrc->psum == 1)
 		return 1;
-	l = ((float)llrc->ants + (float)llrc->plensum) / (float)llrc->psum;
+	l = ((float)llrc->ants + (float)llrc->plensum) / (float)llrc->psum;// с новым
 	t = ((float)llrc->ants + (float)llrc->plensum - (float)len) / ((float)llrc->psum - 1);
-	return (t >= l);//if t >= l -> break
+	return (l >= t);//if t >= l -> break
 }
 int    path_cmp(int last, t_llrc *llrc, int x)// if t > l то 1 путь лучше, чем 2 остальных
 {

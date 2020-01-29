@@ -117,6 +117,7 @@ int				surb(t_list **paths, t_llrc *llrc)
 	{
 		while (tr->next && tr != ln)
 		{
+			printallpaths(*paths);
 			if (surb2(((t_list*)ln->content)->next, ((t_list*)tr->content)->next, &mas))
 			{
 				i = 0;
@@ -139,9 +140,7 @@ int				surb(t_list **paths, t_llrc *llrc)
 				{
 					llrc->plensum += i - ((t_list*)tr->content)->content_size;
 					llrc->psum += 1;
-				//	printallpaths(*paths);
 					delpath(paths, tr);
-					printallpaths(*paths);
 				}
 				ln = lastpath(paths, 2);
 				tr = (*paths);
@@ -155,16 +154,11 @@ int				surb(t_list **paths, t_llrc *llrc)
 	{
 		if (path_cmp2(llrc, ((t_list*)ln2->content)->content_size))
 		{
-			///вывод муравьев
-			return (-1);
-		}
-		else
-		{
 			llrc->psum -= 1;
 			llrc->plensum += ((t_list*)ln2->content)->content_size;
 			delpath(paths, ln2);
-			return (-2);
+			return (1);
 		}
 	}
-	return (i);// if i = 0 то не пересек
+	return (0);// if i = 0 то не пересек
 }

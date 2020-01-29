@@ -80,8 +80,8 @@ t_list 			*bft(t_llrc *llrc)
 	while (q != 0)
 	{
 		cur = pullnode(&q);
-		if (f == 0 && ((t_rooms*)cur->content)->vis2 == 1 && ((t_rooms*)cur->content)->nu != llrc->er->nu
-		&& ((t_rooms*)cur->content)->nu != llrc->fr->nu)
+		if (f == 0 && ((t_rooms*)cur->content)->vis2 == 1
+		&& ((t_rooms*)cur->content)->nu != llrc->er->nu && ((t_rooms*)cur->content)->nu != llrc->fr->nu)
 			bft2(&f, cur, &q, llrc);
 		else if (ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->er->name_r))
 		{
@@ -174,6 +174,8 @@ int				alg(t_llrc *llrc)
 	int l;
 //(t_rooms*)((t_list*)(paths->next->content))->next->content
 	maxw = count_way(llrc);//	bfs(llrc);//bfs = (llrc);
+	if (!maxw)
+		return 0;
 	i = 0;
 	paths = NULL;
 	llrc->plensum = 0;
@@ -185,7 +187,7 @@ int				alg(t_llrc *llrc)
 		path = buildpath(last);
 		llrc->plensum += path->content_size;
 		llrc->psum += 1;
-		printflist(path);
+	//	printflist(path);
 		ft_listup(&paths, path);
 	//	print_l(llrc);
 		++i;
@@ -193,12 +195,13 @@ int				alg(t_llrc *llrc)
 		{
 			continue ;
 		}
-		l = surb(&paths, llrc);
+		if (surb(&paths, llrc))
+			break;
 	//	return 1;
 		//printflist((t_list *)paths->content);
 	}
-	printf("\n");
-	printallpaths(paths);
+//	printf("\n");
+//	printallpaths(paths);
 	sort_path(&paths);
 	print_ant(&paths, llrc);
 	//print_ant2(&paths, llrc);

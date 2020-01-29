@@ -157,7 +157,7 @@ char 				*linkval(char **line, t_llrc *lrc, int fd)
 	}
 //	print_l(lrc);
 	if (!nonelink(lrc))
-		return (0);
+		return (0);//do we check it?
 	copyse(lrc);
 	return (*line);
 }

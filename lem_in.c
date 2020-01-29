@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:13 by ddratini          #+#    #+#             */
-/*   Updated: 2020/01/16 23:30:11 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/01/29 18:49:12 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,14 +140,14 @@ int 			main(int ac, char **av)
 		   //maps_lemin/maps/map42", O_RDONLY);
 	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map_42", O_RDONLY);
 	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42-dup", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42-dup", O_RDONLY);
 	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/maps/map", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map_42", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map_42", O_RDONLY);
 	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/maps_lemin/maps/map20k-m", O_RDONLY);
 	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/maps_lemin/maps/map38c", O_RDONLY);
 	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/MAPGN", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/flow-one", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/flow-ten", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/flow-ten", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/flow-thousand", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/big", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/big-superposition", O_RDONLY);
@@ -157,9 +157,17 @@ int 			main(int ac, char **av)
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapsd/valid/map_dead_end_3", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapsd/valid/map_loop", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapsd/valid/map_subject_3", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_comments", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_pdf", O_RDONLY);
+	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_loop", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_shortest", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_slack_2_brute", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/BIGSP", O_RDONLY);
+//	fd = 0;
 	//if (ac > 1)// && fd > 0)//6)
 	if (val_in(fd, &llrc))//(ac, av);
 	{
+		printf("\n");
 		alg(&llrc);
 //		alg_alt(&llrc);
 	}

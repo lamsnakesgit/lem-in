@@ -75,7 +75,7 @@ void		sort_path(t_list **path)
 	///	paths = paths->next;
 //	}
 	paths = (*path);
-	printallpaths(paths);
+//	printallpaths(paths);
 }
 void 		step(int ants, t_list **path)
 {
@@ -98,6 +98,7 @@ void    printway(t_list *tr, t_llrc *llrc, int *ant, size_t *ul)
 		printway(tr->next, llrc, ant, ul);
 	if (((t_rooms *)tr->content)->nu == llrc->fr->nu && *ul > 0)
 	{
+		llrc->er->vis += (((t_rooms *)tr->next->content)->nu == llrc->er->nu);
 		*ul -= 1;
 		(*ant)++;
 		printf("L%d-%s ", *ant, ((t_rooms *)tr->next->content)->name_r);
@@ -107,6 +108,7 @@ void    printway(t_list *tr, t_llrc *llrc, int *ant, size_t *ul)
 	((t_rooms *)tr->next->content)->nu == llrc->er->nu) &&
 	((t_rooms *)tr->content)->ant != 0)
 	{
+		llrc->er->vis += (((t_rooms *)tr->next->content)->nu == llrc->er->nu);
 		printf("L%d-%s ", ((t_rooms *)tr->content)->ant,
 			   ((t_rooms *)tr->next->content)->name_r);
 		((t_rooms *)tr->next->content)->ant = ((t_rooms *)tr->content)->ant;
@@ -120,9 +122,12 @@ void    print_ant2(t_list **paths, t_llrc *llrc)
 	t_list * tr;
 	int ant;
 	size_t *ul;
+	int i;
 
 	ant = 0;
-	while (llrc->er->ant < llrc->ants )
+	llrc->er->vis = 0;
+	i = 0;
+	while (llrc->er->vis < llrc->ants)
 	{
 		ln = *paths;
 		while (ln)
@@ -133,9 +138,11 @@ void    print_ant2(t_list **paths, t_llrc *llrc)
 		//	printway(tr, llrc, &ant, ul);
 			ln = ln->next;
 		}
+		++i;
 		printf("\n");
 	}
-	printf("END");
+	printf("I=%d\n", i);
+//	printf("END");
 }
 
 void                print_ant(t_list **paths, t_llrc *llrc)
@@ -156,9 +163,10 @@ void                print_ant(t_list **paths, t_llrc *llrc)
 	}
 	mas[i - 1] += llrc->ants - s;
 	ln = *paths;
-	printf("------\n");
+//	printf("------\n");
 	while (ln)
 	{
+		printf("----------\n%d\n---------\n", mas[i - 1]);
 		ln->content_size = mas[--i];
 		ln = ln->next;
 	}
