@@ -179,6 +179,8 @@ void			run_ants(t_llrc *llrc, t_list **path);
 void			sort_path(t_list **path);
 void			print_ant(t_list **paths, t_llrc *llrc);
 
+void			print_ant2(t_list **paths, t_llrc *llrc);
+
 
 
 

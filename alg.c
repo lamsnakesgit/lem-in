@@ -201,6 +201,7 @@ int				alg(t_llrc *llrc)
 	printallpaths(paths);
 	sort_path(&paths);
 	print_ant(&paths, llrc);
+	//print_ant2(&paths, llrc);
 	return 1;
 }
 
