@@ -179,6 +179,7 @@ int				clean(t_llrc *llrc, t_list **q)
 //	((t_rooms *)(q->content))->lvl = 0;
 	((t_rooms *)(*q)->content)->vis = 1;
 	((t_rooms *)(*q)->content)->ant = 0;
+	llrc->er->vis2 = 0;//always
 	return (1);
 }
 
@@ -233,6 +234,7 @@ int				path_cmp2(t_llrc *llrc, size_t len)
 	t = ((float)llrc->ants + (float)llrc->plensum - (float)len) / ((float)llrc->psum - 1);
 	return (l >= t);//if t >= l -> break
 }
+
 int    path_cmp(int last, t_llrc *llrc, int x)// if t > l то 1 путь лучше, чем 2 остальных
 {
 	float t;

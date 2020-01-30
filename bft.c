@@ -77,9 +77,9 @@ int 			quepush(t_llrc *llrc, t_list **q, t_list *tr)//**tr)///push unvis nbrs
 
 	ln = ((t_rooms *)((tr)->content))->ln;//((t_rooms *)tr)->ln;
 	int i = 0;
-	while (ln)
+	while (ln)//content_size defines cut link
 	{
-		if (((t_rooms *)(ln->content))->vis == 0 && ln->content_size != -1)//(((t_rooms *)(*tr)->content)->vis == 0);
+		if (((t_rooms *)(ln->content))->vis == 0 && ((t_rooms*)ln->content)->vis2 == 0)// && ln->content_size != -1)//(((t_rooms *)(*tr)->content)->vis == 0);
 		{//links of end/st/dead
 			//	if (((t_rooms *)(*tr)->content)->nu//(((t_rooms *)ln->content)->nu == llrc->fr->nu)
 			//		((t_rooms *)ln->content)->lvl
@@ -131,11 +131,11 @@ t_list 			*bfss(t_llrc *llrc)
 		cur = pullnode(&q);
 //		if (f == 0 && ((t_rooms*)cur->content)->vis2 == 1 && cur->content != llrc->fr)
 //			bft2(&f, cur, &q, llrc);
-		if (ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->er->name_r) && ((t_rooms *)(cur->content))->nu)
+		if (ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->er->name_r) && ((t_rooms *)(cur->content))->nu != llrc->er->nu)
 			quepush(llrc, &q, cur);
 		else
 			last = cur;
 	}
-	print_l(llrc);
+//	print_l(llrc);
 	return (last);
 }

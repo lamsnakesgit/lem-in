@@ -232,7 +232,7 @@ int				alg_alt(t_llrc *llrc)
 	paths = NULL;
 	llrc->plensum = 0;
 	llrc->psum = 0;
-	while (++i <= maxw)
+	while (llrc->psum <= maxw)//(++i <= maxw)
 	{//
 		last = bfss(llrc);//save x < minw paths; group
 		if (!last) //didnt reach the end
@@ -240,16 +240,18 @@ int				alg_alt(t_llrc *llrc)
 		path = buildpath(last);
 		llrc->psum++;
 		llrc->plensum += path->content_size;//len of all paths if !=
-		printflist(path);
+	//	printflist(path);
 		ft_listup(&paths, path);
 		if (!paths->next && i < maxw)
 			continue ;
 //		if (isshorterpath(llrc, path->content_size))
+		if (path_cmp2(llrc, path->content_size))//if true it didnt get better
 		{
 			break ;//run ant
 		}
-		print_l(llrc);
+	//	print_l(llrc);
 	}
+	print_ant(&paths, llrc);
 	return 1;
 }
 

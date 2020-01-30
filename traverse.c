@@ -166,7 +166,7 @@ void                print_ant(t_list **paths, t_llrc *llrc)
 //	printf("------\n");
 	while (ln)
 	{
-		printf("----------\n%d\n---------\n", mas[i - 1]);
+	//	printf("----------\n%d\n---------\n", mas[i - 1]);
 		ln->content_size = mas[--i];
 		ln = ln->next;
 	}
