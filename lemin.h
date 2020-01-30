@@ -181,6 +181,7 @@ void			print_ant(t_list **paths, t_llrc *llrc);
 
 void			print_ant2(t_list **paths, t_llrc *llrc);
 
+int 			quepush2(t_llrc *llrc, t_list **q, t_list *tr);//**tr)///push unvis nbrs
 
 
 

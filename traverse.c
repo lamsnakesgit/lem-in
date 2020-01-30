@@ -127,8 +127,6 @@ void    print_ant2(t_list **paths, t_llrc *llrc)
 	ant = 0;
 	llrc->er->vis = 0;
 	i = 0;
-	printallpaths(*paths);
-	printf("\n");
 	while (llrc->er->vis < llrc->ants)
 	{
 		ln = *paths;
@@ -143,7 +141,7 @@ void    print_ant2(t_list **paths, t_llrc *llrc)
 		++i;
 		printf("\n");
 	}
-	printf("I=%d\n", i);
+//	printf("I=%d\n", i);
 //	printf("END");
 }
 

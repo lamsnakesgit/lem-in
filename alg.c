@@ -40,7 +40,7 @@ int 			bfs(t_llrc *llrc)
 	return 0;
 }
 
-int 		bft2(int *f,t_list *cur, t_list **q, t_llrc *llrc)
+int 		bft2(int *f, t_list *cur, t_list **q, t_llrc *llrc)
 {
 	t_list	*ln;
 
@@ -48,12 +48,12 @@ int 		bft2(int *f,t_list *cur, t_list **q, t_llrc *llrc)
 	while (ln)
 	{
 		if (((t_rooms*)ln->content)->vis2 == 1 && ln->content != llrc->er
-		&& ((t_rooms*)ln->content)->vis != 1)
+		&& ((t_rooms*)ln->content)->vis != 1 && ln->content_size != -1)
 		{
 			((t_rooms *)ln->content)->lvl = ((t_rooms*)(cur)->content)->lvl + 1;
 			((t_rooms *)ln->content)->vis = 1;
 			queadd(q, ( ln));//->content)->ln);
-			*f  = 1;
+			*f = 1;
 			return (0);
 		}
 		ln = ln->next;
@@ -71,26 +71,26 @@ t_list 			*bft(t_llrc *llrc)
 	t_list	*q;
 	t_list	*cur;
 	t_list	*last;
-	int 	f;
+	int f;
 
+	f = 0;
 	q = 0;
 	clean(llrc, &q);
-	f = 0;
 	last = 0;
 	while (q != 0)
 	{
 		cur = pullnode(&q);
-		if (f == 0 && ((t_rooms*)cur->content)->vis2 == 1
+		if (((t_rooms*)cur->content)->vis2 == 1
 		&& ((t_rooms*)cur->content)->nu != llrc->er->nu
 		&& ((t_rooms*)cur->content)->nu != llrc->fr->nu)
-			bft2(&f, cur, &q, llrc);
-		else if (ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->er->name_r))
+			bft2(&f , cur, &q, llrc);
+		if (ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->er->name_r) && f != 1)
 		{
-			f = 0;
-			quepush(llrc, &q, cur);
+			quepush2(llrc, &q, cur);
 		}
-		else
+		else if (((t_rooms*)cur->content)->nu == llrc->er->nu)
 			last = cur;
+		f = 0;
 	}
 	return (last);
 }
@@ -171,40 +171,33 @@ int				alg(t_llrc *llrc)
 	t_list	*last;
 	t_list	*path;
 	t_list	*paths;
-	int l;
-//(t_rooms*)((t_list*)(paths->next->content))->next->content
-	maxw = count_way(llrc);//	bfs(llrc);//bfs = (llrc);
+
+	maxw = count_way(llrc);
 	if (!maxw)
 		return 0;
 	i = 0;
 	paths = NULL;
 	llrc->plensum = 0;
-	while (llrc->psum < maxw)//i < maxw)
+	while (llrc->psum < maxw)
 	{
-		last = bft(llrc);//save x < minw paths; group
-		if (!last)
-			break ; //no more ways
+		if (!(last = bft(llrc)))
+			break ;
 		path = buildpath(last);
 		llrc->plensum += path->content_size;
 		llrc->psum += 1;
 	//	printflist(path);
 		ft_listup(&paths, path);
-	//	print_l(llrc);
 		++i;
 		if (!paths->next && llrc->psum < maxw)
-		{
 			continue ;
-		}
 		if (surb(&paths, llrc))
 			break;
-	//	return 1;
 		//printflist((t_list *)paths->content);
 	}
 //	printf("\n");
 //	printallpaths(paths);
 	sort_path(&paths);
 	print_ant(&paths, llrc);
-	//print_ant2(&paths, llrc);
 	return 1;
 }
 

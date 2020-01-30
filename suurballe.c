@@ -111,13 +111,13 @@ int				surb(t_list **paths, t_llrc *llrc)
 
 	i = -1;
 	tr = (*paths);
-	ln  = lastpath(paths, 0);
+	ln  = lastpath(paths, 0);///?
 	ln2 = ln;
+	printallpaths(*paths);
 	while (ln)
 	{
 		while (tr->next && tr != ln)
 		{
-			printallpaths(*paths);
 			if (surb2(((t_list*)ln->content)->next, ((t_list*)tr->content)->next, &mas))
 			{
 				i = 0;
