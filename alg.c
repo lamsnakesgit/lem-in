@@ -81,7 +81,8 @@ t_list 			*bft(t_llrc *llrc)
 	{
 		cur = pullnode(&q);
 		if (f == 0 && ((t_rooms*)cur->content)->vis2 == 1
-		&& ((t_rooms*)cur->content)->nu != llrc->er->nu && ((t_rooms*)cur->content)->nu != llrc->fr->nu)
+		&& ((t_rooms*)cur->content)->nu != llrc->er->nu
+		&& ((t_rooms*)cur->content)->nu != llrc->fr->nu)
 			bft2(&f, cur, &q, llrc);
 		else if (ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->er->name_r))
 		{
@@ -91,7 +92,6 @@ t_list 			*bft(t_llrc *llrc)
 		else
 			last = cur;
 	}
-//	print_l(llrc);
 	return (last);
 }
 
@@ -240,15 +240,13 @@ int				alg_alt(t_llrc *llrc)
 		path = buildpath(last);
 		llrc->psum++;
 		llrc->plensum += path->content_size;//len of all paths if !=
-	//	printflist(path);
+		printflist(path);
 		ft_listup(&paths, path);
 		if (!paths->next && i < maxw)
 			continue ;
 //		if (isshorterpath(llrc, path->content_size))
 		if (path_cmp2(llrc, path->content_size))//if true it didnt get better
-		{
 			break ;//run ant
-		}
 	//	print_l(llrc);
 	}
 	print_ant(&paths, llrc);
