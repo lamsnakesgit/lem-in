@@ -123,7 +123,6 @@ t_list 			*buildpath(t_list *er)
 	int i;
 
 	i = 0;
-//	crpath(&path, er);
 	path = ft_lstnew((void *)er, (size_t) sizeof(path));
 	path->content = er->content;
 	path->next = 0;
