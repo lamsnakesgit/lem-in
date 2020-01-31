@@ -197,6 +197,7 @@ int				alg(t_llrc *llrc)
 //	printallpaths(paths);
 	sort_path(&paths);
 	print_ant(&paths, llrc);
+	delete_rooms(llrc);
 	return 1;
 }
 

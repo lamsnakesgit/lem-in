@@ -37,7 +37,8 @@ void		swap_node(t_list **cur, t_list **ln, t_list **path)
 {
 	t_list *tr;
 	t_list *paths;
-	t_list *ln2;
+//	t_list *ln2;
+	size_t ln2;
 
 	paths = (*path);
 	tr = (*ln)->content;

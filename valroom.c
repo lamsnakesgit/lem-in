@@ -110,11 +110,10 @@ int					savemarg(t_llrc *lrc, int cm)
 {
 	t_rooms *x;
 
-	x = (t_rooms*)malloc(sizeof(t_rooms));
-	if (!x)
+	if (!(x = (t_rooms*)malloc(sizeof(t_rooms))))
 		return 0;
 	x = (t_rooms *)lrc->br->content;
-	x->lvl = 0;
+	x->lvl = 0;//?
 	if (cm == -1)
 		lrc->fr = x;
 	if (cm == -2)
@@ -122,7 +121,7 @@ int					savemarg(t_llrc *lrc, int cm)
 	return -11;
 }
 
-void            turninarr(t_llrc *llrc)
+void				turninarr(t_llrc *llrc)
 {
 	int     i;
 	t_list  *tmp;

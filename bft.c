@@ -112,7 +112,7 @@ int 			quepush2(t_llrc *llrc, t_list **q, t_list *tr)//**tr)///push unvis nbrs
 	}
 	return 0;
 }
-/*int 			quepush2(t_llrc *llrc, t_list **q, t_list *tr)//**tr)///push unvis nbrs
+/*int 			quepush2(t_llrc *llrc, t_list **q, t_list *tr)// **tr)///push unvis nbrs
 {//add to qu non vis /add levl marks
 	t_list	*ln;
 
@@ -176,6 +176,8 @@ t_list 			*bfss(t_llrc *llrc)
 			quepush(llrc, &q, cur);
 		else
 			last = cur;
+		free(cur->content);
+		free(cur);
 	}
 //	print_l(llrc);
 	return (last);

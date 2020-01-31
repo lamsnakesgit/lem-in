@@ -111,6 +111,13 @@ int				val_in(int fd, t_llrc *llrc)
 		freellrc(llrc);
 		ft_err();
 	}
+	int j = 0;
+	while (ls[j])
+	{
+		free(ls[j]);
+		++j;
+	}
+	free(ls);
 	return (1);
 }
 /*

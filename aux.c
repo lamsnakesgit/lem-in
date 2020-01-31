@@ -279,3 +279,27 @@ void 	delpath(t_list **paths, t_list *ln)
 	}
 }
 
+void	delete_rooms(t_llrc *llrc)
+{
+	int i;
+	t_list *tmpbr;
+	t_list *nextbr;
+
+	i = 0;
+//	free(llrc->er);
+//	free(llrc->fr);
+	while (i < llrc->rmi)
+	{
+		free(llrc->arrrm[i]->name_r);
+		free(llrc->arrrm[i]);
+		++i;
+	}
+	tmpbr = llrc->br;
+	while (tmpbr)
+	{
+		nextbr = tmpbr->next;
+		free(tmpbr);//->next)
+		tmpbr = nextbr;
+	}
+	free(llrc->arrrm);
+}
