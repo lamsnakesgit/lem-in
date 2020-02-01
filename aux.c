@@ -309,5 +309,5 @@ void	delete_rooms(t_llrc *llrc)
 		free(tmpbr);//->next)
 		tmpbr = nextbr;
 	}
-	free(llrc->arrrm);
+//	free(llrc->arrrm);
 }
