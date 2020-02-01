@@ -62,14 +62,14 @@ t_list              *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor)
 	{
 		*br = ft_lstnew((void *)rm, (size_t)sizeof(rm));
 		//ft_lstnew((const void *));//((const void *)roomcor, (size_t)sizeof(roomcor));
-		(*br)->content = (void *)rm;//roomcor;
+	//	(*br)->content = (void *)rm;//roomcor;
 		return (*br);
 	}
 	else
 	{
 		//br = br->next;//ft_lstadd(br, ft_lstnew((const void *)rmc, (size_t)sizeof(rmc)));//br);
 		ft_lstadd(br, ft_lstnew((void *)rm, (size_t) sizeof(rm)));
-		(*br)->content = (void *)rm;//!
+//		(*br)->content = (void *)rm;//!
 		return (*br);
 	}
 	return (0);

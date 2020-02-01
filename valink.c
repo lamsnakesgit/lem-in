@@ -79,13 +79,13 @@ t_list				*ft_rlink(/*(t_link **bg*/ t_list **bg, t_rooms *rm)//t_link *new)
 	if (!bg ||!*bg)
 	{
 		*bg = ft_lstnew((const void *)rm, (size_t)(sizeof(rm)));
-		(*bg)->content = (void *)rm;
+	//	(*bg)->content = (void *)rm;
 		return (*bg);
 	}
 	else
 	{
 		ft_lstadd(bg, ft_lstnew((const void *)rm, (size_t)(sizeof(rm))));
-		(*bg)->content = (void *)rm;
+	//	(*bg)->content = (void *)rm;
 		return (*bg);
 	}
 }

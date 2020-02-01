@@ -284,16 +284,23 @@ void	delete_rooms(t_llrc *llrc)
 	int i;
 	t_list *tmpbr;
 	t_list *nextbr;
+	t_list	*ln;
 
 	i = 0;
 	while (i < llrc->rmi)
 	{
 		free(llrc->arrrm[i]->name_r);
+		ln = llrc->arrrm[i]->ln;
+		while (llrc->arrrm[i]->ln)
+		{
+			ln = llrc->arrrm[i]->ln->next;
+		//	free(llrc->arrrm[i]->ln->content);
+			free(llrc->arrrm[i]->ln);
+			llrc->arrrm[i]->ln = ln;
+		}
 		free(llrc->arrrm[i]);
 		++i;
 	}
-//	free(llrc->er);
-//	free(llrc->fr);
 	tmpbr = llrc->br;
 	while (tmpbr)
 	{

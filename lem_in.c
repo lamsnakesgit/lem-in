@@ -95,9 +95,6 @@ int				val_in(int fd, t_llrc *llrc)
 		//if (!linkval(&linkd, &llrc, fd))
 		if (!linkval(ls + i + 1, llrc, fd))
 		{
-			free(llrc->er);
-			free(llrc->fr);
-
 //			ft_cleanmem(ls);
 ///			freellrc(llrc);
 			return (ft_err());
@@ -106,8 +103,6 @@ int				val_in(int fd, t_llrc *llrc)
 	else
 	{
 		ft_cleanmem(ls);
-		free(llrc->er);
-		free(llrc->fr);
 		freellrc(llrc);
 		ft_err();
 	}
@@ -122,22 +117,6 @@ int				val_in(int fd, t_llrc *llrc)
 	free(ls);
 	return (1);
 }
-/*
-int				iscomment(char *line)
-{
-	if (line[0] == '#')
-	{
-		if (line[1] != '#' && line[1])
-			return (0);
-		if (ft_strcmp(line + 2, "start"))
-			return (-1);
-		if (ft_strcmp(line + 2, "end"))
-			return (-2);
-		else
-			return -3;//
-	}
-	return (1);
-}*/
 
 int 			main(int ac, char **av)
 {
@@ -180,7 +159,7 @@ int 			main(int ac, char **av)
 	if (val_in(fd, &llrc))//(ac, av);
 	{
 		printf("\n");
-		alg(&llrc);
+	//	alg(&llrc);
 //		alg_alt(&llrc);
 	}
 //	printl();
