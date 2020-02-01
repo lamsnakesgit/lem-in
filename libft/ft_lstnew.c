@@ -26,12 +26,12 @@ t_list			*ft_lstnew(void const *content, size_t content_size)
 	}
 	else
 	{
-		if (!(lstnew->content = malloc(sizeof(content_size))))
+	/*	if (!(lstnew->content = malloc(sizeof(content_size))))
 		{
 			free(lstnew);
 			return (0);
 		}//
-		lstnew->content = ((void*)content);
+	*/	lstnew->content = ((void*)content);
 		//ft_memcpy(lstnew->content, content, sizeof(content_size));
 		lstnew->content_size = content_size;
 	}
