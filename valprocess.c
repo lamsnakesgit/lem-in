@@ -21,6 +21,7 @@ char			**lines(char *buf)
 
 	s = 0;
 	ls = 0;
+	i = 0;
 	while (buf[++i])
 		if (buf[i] == '\n')
 			++s;
@@ -83,7 +84,7 @@ char			**processmap(int fd, t_llrc *llrc)
 		free(cp);
 	if (ret < 0)
 		return 0;
-//	printf("%s\n", cp);
+	printf("%s", cp);
 	ls = lines(cp);//(buf);
 	checkmap(ls, cp);
 	//free(cp);
