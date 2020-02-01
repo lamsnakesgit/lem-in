@@ -82,7 +82,7 @@ int				rmorlink(char *line, t_llrc *lrc)//, t_list *rl)
 {
 	char	**roomcor;
 
-	if (!ft_strchr(line, ' '))//btwr-name-1//lol/KO
+	if (!ft_strchr(line, ' ') || ft_strchr(line, '-'))//btwr-name-1//lol/KO
 	{//oi	free (line);//0?
 		//	return(line);//line == 0 ? return (0) : return (llrc);//.linkd = line);
 		return 2;

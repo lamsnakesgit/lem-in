@@ -25,14 +25,23 @@
 
 t_rooms				*ft_room(t_rooms *rm, char **roomcor)
 {
+	int i;
+
 	if (!((rm) = (t_rooms *)malloc(sizeof(t_rooms))))
 		return (0);
 	(rm)->ln = 0;
-	(rm)->name_r = roomcor[0];
+	(rm)->name_r = /*ft_strcpy()*/roomcor[0];
 	(rm)->lvl = -1;
 	(rm)->vis = 0;
 	(rm)->x = ft_atoi(roomcor[1]);
 	(rm)->y = ft_atoi(roomcor[2]);
+	i = 1;
+	while (roomcor[i])
+	{
+		free(roomcor[i]);
+		++i;
+	}
+	free(roomcor);
 	return (rm);//return 0;//
 }
 /*
@@ -102,19 +111,14 @@ char				**valrmc_s(char *line)
 		++i;
 	if (i == 3 && roomcor[0][0] != 'L' && val_cord(roomcor))
 		return (roomcor);
-	while (roomcor[i])
-	{
-		free(roomcor[i]);
-		++i;
-	}
-	free(roomcor);
+
 //	ft_cleanmem(roomcor);
 	return (NULL);
 }
 
 int					savemarg(t_llrc *lrc, int cm)
 {
-	t_rooms *x;
+/*	t_rooms *x;
 
 	if (!(x = (t_rooms*)malloc(sizeof(t_rooms))))
 		return 0;
@@ -124,6 +128,19 @@ int					savemarg(t_llrc *lrc, int cm)
 		lrc->fr = x;
 	if (cm == -2)
 		lrc->er = x;
+*/
+//	x = (t_rooms *)lrc->br->content;
+//	x->lvl = 0;//?
+	if (cm == -1)
+	{
+		lrc->fr = (t_rooms *)lrc->br->content;
+		lrc->fr->lvl = 0;
+	}
+	if (cm == -2)
+	{
+		lrc->er = (t_rooms *)lrc->br->content;
+		lrc->er->lvl = 0;
+	}
 	return -11;
 }
 
@@ -138,7 +155,6 @@ void				turninarr(t_llrc *llrc)
 	i = 0;
 	while (tmp)
 	{
-		llrc->arrrm[i] = (t_rooms *)malloc(sizeof(t_rooms));
 		llrc->arrrm[i] = (t_rooms *)tmp->content;
 		llrc->arrrm[i]->nu = i;
 		llrc->arrrm[i]->ant = 0;
