@@ -19,17 +19,13 @@ char			**lines(char *buf)
 	int		s;
 	char	**ls;
 
-	i = -1;
 	s = 0;
-//	ls = 0;
+	ls = 0;
 	while (buf[++i])
 		if (buf[i] == '\n')
 			++s;
 	if (!(ls = (char **)malloc(sizeof(char *) * (s + 2))))
 		return (0);
-	i = -1;
-	while (++i < s + 2)
-		ls[i] = (char *)malloc(sizeof(char));//
 	return (ls);
 }
 
@@ -99,13 +95,11 @@ char			**processmap(int fd, t_llrc *llrc)
 */	int j = 0;
 	while (ls[0][j])
 	{
-		if (!ft_isdigit(ls[0][j]))//intlon
+		if (!ft_isdigit(ls[0][j]))
 			return(0);//ft_err());
 		++j;
 	}
 	llrc->ants = ft_atoi(ls[0]);
 	ft_putendl(ls[0]);
-	//val
-	//print array chekk
 	return ls;
 }

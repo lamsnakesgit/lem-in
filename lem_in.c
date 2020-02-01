@@ -112,12 +112,13 @@ int				val_in(int fd, t_llrc *llrc)
 		ft_err();
 	}
 	int j = 0;
-	while (ls[j])
+/*	while (ls[j])
 	{
 		printf("FREE=%s\n", ls[j]);
 		free(ls[j]);
 		++j;
-	}
+	}*/
+	free(ls[0]);
 	free(ls);
 	return (1);
 }

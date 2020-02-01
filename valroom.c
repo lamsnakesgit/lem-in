@@ -102,7 +102,13 @@ char				**valrmc_s(char *line)
 		++i;
 	if (i == 3 && roomcor[0][0] != 'L' && val_cord(roomcor))
 		return (roomcor);
-	ft_cleanmem(roomcor);
+	while (roomcor[i])
+	{
+		free(roomcor[i]);
+		++i;
+	}
+	free(roomcor);
+//	ft_cleanmem(roomcor);
 	return (NULL);
 }
 

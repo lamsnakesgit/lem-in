@@ -36,7 +36,6 @@ int					stcheck(char **line, t_llrc *lrc, int cm, int fd)
 	int re;
 	int rvl;
 	int i;
-//	if (cm == -2)++lrc->end;if (cm == -1)++lrc->st;
 
 	i = 0;
 	cm == -2 ? ++lrc->end : ++lrc->st;
@@ -45,18 +44,17 @@ int					stcheck(char **line, t_llrc *lrc, int cm, int fd)
 	while (line[i])//(get_next_line(fd, line) > 0)
 	{
 		if ((re=comstend(line[i]))!=1)
-		{//	free(*line);
+		{
 			if (re ==-2||re==-1)
 				return -2;
 		}
 		else if (re == 1)
 		{//freelst?
 			if ((rvl=rmorlink(line[i], lrc))==2||!rvl)//orsavesep t_rm
-				return -2;//0;
-			if (savemarg(lrc, cm) == 0)//*line,
+				return -2;
+			if (savemarg(lrc, cm) == 0)
 				return -2;//0000;//nonfree?/ret?
-		//	free (*line);
-			return (1 + i);//1;
+			return (1 + i);
 		}//cont aft -1/-2 exit?
 	}
 	return -2;
