@@ -60,7 +60,7 @@ int 			checkmap(char **ls, char *buf)
 			if (buf[i + 1] == '\n' || !i)// || s - i == 0)
 				return (0);
 		//	buf[i] = 0;
-			ls[++j] = buf + i + 1;//s c
+			ls[++j] = &(buf[i + 1]);//buf + i + 1;//s c
 		}
 	}
 	ls[++j] = 0;
@@ -90,6 +90,7 @@ char			**processmap(int fd, t_llrc *llrc)
 //	printf("%s\n", cp);
 	ls = lines(cp);//(buf);
 	checkmap(ls, cp);
+	//free(cp);
 	int i = 0;
 /*	while (ls[i])
 	{

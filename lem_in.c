@@ -114,6 +114,7 @@ int				val_in(int fd, t_llrc *llrc)
 	int j = 0;
 	while (ls[j])
 	{
+		printf("FREE=%s\n", ls[j]);
 		free(ls[j]);
 		++j;
 	}
