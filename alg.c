@@ -127,7 +127,7 @@ t_list 			*buildpath(t_list *er)
 	int i;
 
 	i = 0;
-	path = ft_lstnew((void *)er, (size_t) sizeof(path));
+	path = ft_lstnew(/*(void *)*/(t_rooms *)er, (size_t) sizeof(path));
 	path->content = er->content;
 	path->next = 0;
 	((t_rooms *)path->content)->vis2 = 1;
@@ -140,11 +140,11 @@ t_list 			*buildpath(t_list *er)
 			((t_rooms *) er->content)->lvl - 1)
 			{
 				cutpath(&ln, er);
-				tmp = ft_lstnew((void *)(ln->content),(size_t)(sizeof(er)));
-				tmp->content = (void *)ln->content;
+				tmp = ft_lstnew(/*(void *)*/(t_rooms*)(ln->content),(size_t)(sizeof(er)));
+			//	tmp->content = (void *)ln->content;
 				ft_lstadd(&path, tmp);
 				i++;
-				path->content = (void *)ln->content;
+			//	path->content = (void *)ln->content;
 				((t_rooms *)path->content)->vis2 = 1;
 				er = ln;
 				break;
@@ -159,7 +159,18 @@ t_list 			*buildpath(t_list *er)
 /*
 **
 */
-
+void			free_paths(t_list *path)
+{
+	t_list *paths;
+	//content?
+	while (path)
+	{
+		paths = path->next;
+		free(path->content);
+		free(path);
+		path = paths;
+	}
+}
 /*
 ** create list of paths, run pathsearch x times,
 ** empty content
@@ -202,6 +213,7 @@ int				alg(t_llrc *llrc)
 //	printallpaths(paths);
 	sort_path(&paths);
 	print_ant(&paths, llrc);
+	free_paths(paths);
 //	delete_rooms(llrc);
 	return 1;
 }
