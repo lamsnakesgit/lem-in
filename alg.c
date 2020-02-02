@@ -86,7 +86,9 @@ t_list 			*bft(t_llrc *llrc)
 		&& ((t_rooms*)cur->content)->nu != llrc->fr->nu)
 			bft2(&f , cur, &q, llrc);
 		printf("ifbft2|Q-cycle'\n");
-		if (ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->er->name_r) && f != 1)
+		printf("cur-con-name=%s\n", ((t_rooms*)cur->content)->name_r);
+		if (((t_rooms*)cur->content)->nu != llrc->er->nu)
+		//if (ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->er->name_r) && f != 1)
 		{
 			printf("f!=1;!=er|Q-cycle'\n");
 			quepush2(llrc, &q, cur);

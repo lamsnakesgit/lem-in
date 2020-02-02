@@ -162,7 +162,7 @@ void			printflist(t_list *ln);
 int             count_way(t_llrc *llrc);
 
 //int				clean(t_llrc *llrc, t_list **q);
-t_list *				clean(t_llrc *llrc, t_list **q);
+t_list *				clean(t_llrc *llrc, t_list *q);
 void 			crpath(t_list **path, t_list *tr);
 
 t_list 			*bfss(t_llrc *llrc);

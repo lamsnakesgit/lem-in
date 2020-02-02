@@ -74,8 +74,8 @@ void    ft_listup(t_list **alst, t_list *new)
 		alst2 = *alst;
 		while ((alst2)->next)
 			alst2 = (alst2)->next;
-		(alst2)->next = ft_lstnew(/*(void *)*/new, (size_t)sizeof(new));
-		(alst2)->next->content = new;
+		(alst2)->next = ft_lstnew(/*(void *)*/(t_rooms*)new, (size_t)sizeof(new));
+	//	(alst2)->next->content = new;
 	}
 	else
 	{
@@ -171,7 +171,7 @@ int             count_way(t_llrc *llrc)
 }
 
 //int
-t_list			*clean(t_llrc *llrc, t_list **qu)
+t_list			*clean(t_llrc *llrc, t_list *qu)
 {
 	int i;
 	t_list *q;

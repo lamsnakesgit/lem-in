@@ -163,7 +163,7 @@ t_list 			*bfss(t_llrc *llrc)
 	int i = 0;
 
 	q = 0;
-	clean(llrc, &q);
+	clean(llrc, q);
 	f = 0;
 	last = 0;
 	while (q != 0)
