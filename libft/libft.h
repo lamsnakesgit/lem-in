@@ -26,8 +26,20 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
-int					get_next_line(const int fd, char **zline);
-t_list				*ft_lstnew(void const *content, size_t content_size);
+typedef struct s_rooms
+{
+	t_list          *rm;
+	char	        *name_r;
+	int		        x;
+	int		        y;
+	int 			vis;
+	int				vis2;
+	int 			lvl;
+	int				nu;
+	int				ant;
+	t_list          *ln;
+}				t_rooms;int					get_next_line(const int fd, char **zline);
+t_list				*ft_lstnew(/*void const * */ t_rooms *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);

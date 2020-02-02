@@ -21,6 +21,7 @@ char			**lines(char *buf)
 
 	s = 0;
 	ls = 0;
+	i = 0;
 	while (buf[++i])
 		if (buf[i] == '\n')
 			++s;

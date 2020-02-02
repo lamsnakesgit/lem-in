@@ -79,7 +79,7 @@ while (q has els)
  sne darrlines to check ants/rms/cr/lns
  -qpush -qcreate
 */
-
+/*
 typedef struct s_rooms
 {
 	t_list          *rm;
@@ -92,7 +92,7 @@ typedef struct s_rooms
 	int				nu;
 	int				ant;
 	t_list          *ln;
-}				t_rooms;
+}				t_rooms;*/
 /*
 ** struct that contains ptr to list /arr w rooms & ptr to lins??
 */
