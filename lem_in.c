@@ -177,6 +177,7 @@ int 			main(int ac, char **av)
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_25", O_RDONLY);
 	//fd = 0;
 	//if (ac > 1)// && fd > 0)//6)
+	llrc.rmi = 0;
 	if (val_in(fd, &llrc))//(ac, av);
 	{
 		printf("\n");

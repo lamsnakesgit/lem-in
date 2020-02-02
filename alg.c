@@ -89,8 +89,12 @@ t_list 			*bft(t_llrc *llrc)
 			quepush2(llrc, &q, cur);
 		}
 		else if (((t_rooms*)cur->content)->nu == llrc->er->nu)
+		{
 			last = cur;
+			return (last);
+		}
 		f = 0;
+		free(cur);
 	}
 	return (last);
 }
@@ -177,6 +181,7 @@ int				alg(t_llrc *llrc)
 	i = 0;
 	paths = NULL;
 	llrc->plensum = 0;
+	llrc->psum = 0;
 	while (llrc->psum < maxw)
 	{
 		if (!(last = bft(llrc)))

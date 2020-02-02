@@ -26,12 +26,14 @@ t_list			*ft_lstnew(/*void const * */ t_rooms *content, size_t content_size)
 	}
 	else
 	{
-		if (!(lstnew->content = malloc(sizeof(content_size))))
+	/*	if (!(lstnew->content = malloc(sizeof(content_size))))
 		{
 			free(lstnew);
 			return (0);
 		}//
 		ft_memcpy(lstnew->content, content, content_size);
+	*/
+		lstnew->content = (void *)content;
 		lstnew->content_size = content_size;
 	}
 	lstnew->next = NULL;

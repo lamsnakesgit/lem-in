@@ -74,13 +74,13 @@ void    ft_listup(t_list **alst, t_list *new)
 		alst2 = *alst;
 		while ((alst2)->next)
 			alst2 = (alst2)->next;
-		(alst2)->next = ft_lstnew((void *)new, (size_t)sizeof(new));
+		(alst2)->next = ft_lstnew(/*(void *)*/new, (size_t)sizeof(new));
 		(alst2)->next->content = new;
 	}
 	else
 	{
-		*alst = ft_lstnew((void *)new, (size_t)sizeof(new));
-		(*alst)->content = new;
+		*alst = ft_lstnew(/*(void *)*/(t_rooms *)new, (size_t)sizeof(new));
+	//	(*alst)->content = new;
 		(*alst)->next = NULL;
 	}
 }
@@ -178,9 +178,9 @@ int				clean(t_llrc *llrc, t_list **q)
 	unvisit(llrc);
 //	while (++i < llrc->rmi)
 //		llrc->arrrm[i]->lvl = -1;
-	if (!((*q) = ft_lstnew((const void *)llrc->fr, (size_t)(sizeof((void *)(llrc->fr))))))
+	if (!((*q) = ft_lstnew(/*((const void *)*/llrc->fr, (size_t)(sizeof((void *)(llrc->fr))))))
 		return 0;
-	(*q)->content = (void *)llrc->fr;
+//	(*q)->content = (void *)llrc->fr;
 //	((t_rooms *)(q->content))->lvl = 0;
 	((t_rooms *)(*q)->content)->vis = 1;
 	((t_rooms *)(*q)->content)->ant = 0;
@@ -284,6 +284,8 @@ void	delete_rooms(t_llrc *llrc)
 	int i;
 	t_list *tmpbr;
 	t_list *nextbr;
+	t_list	*ln;
+	t_list	*next;
 
 	i = 0;
 //	free(llrc->er);
@@ -291,6 +293,13 @@ void	delete_rooms(t_llrc *llrc)
 	while (i < llrc->rmi)
 	{
 		free(llrc->arrrm[i]->name_r);
+		ln = llrc->arrrm[i]->ln;
+		while (ln)
+		{
+			next = ln->next;
+			free(ln);
+			ln = next;
+		}
 		free(llrc->arrrm[i]);
 		++i;
 	}

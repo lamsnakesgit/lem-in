@@ -143,13 +143,13 @@ int 			queadd(t_list **q, t_list *tr)
 		tmp = (*q);
 		while (tmp && tmp->next)
 			tmp = tmp->next;
-		tmp->next = ft_lstnew((void *)tr->content, (size_t)sizeof(tr));
-		tmp->next->content = (void *)tr->content;
+		tmp->next = ft_lstnew(/*(void *)*/(t_rooms *)tr->content, (size_t)sizeof(tr));
+	//	tmp->next->content = (void *)tr->content;
 	}
 	else
 	{
-		(*q) = ft_lstnew((void *)tr->content, (size_t)sizeof(tr));//
-		(*q)->content = (void*)tr->content;
+		(*q) = ft_lstnew(/*(void *)*/(t_rooms*)tr->content, (size_t)sizeof(tr));//
+	//	(*q)->content = (void*)tr->content;
 	}
 	return 0;
 }
