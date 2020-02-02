@@ -57,11 +57,11 @@ t_list 			*pullnode(t_list **q)
 	t_list	*h;
 
 	h = 0;
-	if (q && *q)
-	{
+//	if (q && *q)
+//	{
 		h = *q;
 		(*q) = (*q)->next;
-	}
+//	}
 	return (h);
 }
 /*

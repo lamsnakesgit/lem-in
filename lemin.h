@@ -160,7 +160,9 @@ int 			quepush(t_llrc *llrc, t_list **q, t_list *tr);///push unvis nbrs
 void			printflist(t_list *ln);
 
 int             count_way(t_llrc *llrc);
-int				clean(t_llrc *llrc, t_list **q);
+
+//int				clean(t_llrc *llrc, t_list **q);
+t_list *				clean(t_llrc *llrc, t_list **q);
 void 			crpath(t_list **path, t_list *tr);
 
 t_list 			*bfss(t_llrc *llrc);
@@ -185,6 +187,7 @@ int 			quepush2(t_llrc *llrc, t_list **q, t_list *tr);//**tr)///push unvis nbrs
 
 void			delete_rooms(t_llrc *llrc);
 
+//((t_rooms *)(*q)->content)->ant = 0;//	llrc->er->vis2 = 0;//always
 
 
 #endif

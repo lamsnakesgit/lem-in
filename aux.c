@@ -170,22 +170,25 @@ int             count_way(t_llrc *llrc)
 	return (min);
 }
 
-int				clean(t_llrc *llrc, t_list **q)
+//int
+t_list			*clean(t_llrc *llrc, t_list **qu)
 {
 	int i;
+	t_list *q;
 
 	i = -1;
 	unvisit(llrc);
 //	while (++i < llrc->rmi)
 //		llrc->arrrm[i]->lvl = -1;
-	if (!((*q) = ft_lstnew(/*((const void *)*/llrc->fr, (size_t)(sizeof((void *)(llrc->fr))))))
+	if (!((q) = ft_lstnew(/*((const void *)*/(t_rooms *)llrc->fr, sizeof(void*))))//(size_t)(sizeof((void *)(llrc->fr))))))
 		return 0;
 //	(*q)->content = (void *)llrc->fr;
 //	((t_rooms *)(q->content))->lvl = 0;
-	((t_rooms *)(*q)->content)->vis = 1;
-	((t_rooms *)(*q)->content)->ant = 0;
+	((t_rooms *)(q)->content)->vis = 1;
+	((t_rooms *)(q)->content)->ant = 0;
 //	llrc->er->vis2 = 0;//always
-	return (1);
+	return (q);
+//	return (1);
 }
 
 void		printallpaths(t_list *ln)//paths)

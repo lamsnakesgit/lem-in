@@ -75,17 +75,20 @@ t_list 			*bft(t_llrc *llrc)
 
 	f = 0;
 	q = 0;
-	clean(llrc, &q);
+	q = clean(llrc, q);
 	last = 0;
 	while (q != 0)
 	{
+		printf("Q-cycle'\n");
 		cur = pullnode(&q);
 		if (((t_rooms*)cur->content)->vis2 == 1
 		&& ((t_rooms*)cur->content)->nu != llrc->er->nu
 		&& ((t_rooms*)cur->content)->nu != llrc->fr->nu)
 			bft2(&f , cur, &q, llrc);
+		printf("ifbft2|Q-cycle'\n");
 		if (ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->er->name_r) && f != 1)
 		{
+			printf("f!=1;!=er|Q-cycle'\n");
 			quepush2(llrc, &q, cur);
 		}
 		else if (((t_rooms*)cur->content)->nu == llrc->er->nu)
@@ -195,8 +198,10 @@ int				alg(t_llrc *llrc)
 	llrc->psum = 0;
 	while (llrc->psum < maxw)
 	{
+		printf("CYCLE\n");
 		if (!(last = bft(llrc)))
 			break ;
+		printf("AFTERBT\n");
 		path = buildpath(last);
 		llrc->plensum += path->content_size;
 		llrc->psum += 1;

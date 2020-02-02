@@ -180,7 +180,7 @@ int 			main(int ac, char **av)
 	llrc.rmi = 0;
 	if (val_in(fd, &llrc))//(ac, av);
 	{
-		printf("\n");
+		printf("ALGO\n");
 		alg(&llrc);
 		delete_rooms(&llrc);
 //		alg_alt(&llrc);
