@@ -181,6 +181,7 @@ int 			main(int ac, char **av)
 	{
 		printf("\n");
 		alg(&llrc);
+		delete_rooms(&llrc);
 //		alg_alt(&llrc);
 	}
 //	printl();

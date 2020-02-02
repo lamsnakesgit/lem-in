@@ -28,11 +28,18 @@ t_rooms				*ft_room(t_rooms *rm, char **roomcor)
 	if (!((rm) = (t_rooms *)malloc(sizeof(t_rooms))))
 		return (0);
 	(rm)->ln = 0;
-	(rm)->name_r = roomcor[0];
+	(rm)->name_r = ft_strdup(roomcor[0]);
 	(rm)->lvl = -1;
 	(rm)->vis = 0;
 	(rm)->x = ft_atoi(roomcor[1]);
 	(rm)->y = ft_atoi(roomcor[2]);
+	int i = 0;
+	while (roomcor[i])
+	{
+		free(roomcor[i]);
+		++i;
+	}
+	free(roomcor);
 	return (rm);//return 0;//
 }
 /*
@@ -138,7 +145,7 @@ void				turninarr(t_llrc *llrc)
 	i = 0;
 	while (tmp)
 	{
-		llrc->arrrm[i] = (t_rooms *)malloc(sizeof(t_rooms));
+//		llrc->arrrm[i] = (t_rooms *)malloc(sizeof(t_rooms));
 		llrc->arrrm[i] = (t_rooms *)tmp->content;
 		llrc->arrrm[i]->nu = i;
 		llrc->arrrm[i]->ant = 0;
