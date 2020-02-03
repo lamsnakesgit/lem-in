@@ -136,9 +136,9 @@ t_list 			*buildpath(t_list *er)
 			((t_rooms *) er->content)->lvl - 1)
 			{
 				cutpath(&ln, er);
-				tmp = ft_lstnew((void *)(ln->content),(size_t)(sizeof(er)));
-				tmp->content = (void *)ln->content;
-				ft_lstadd(&path, tmp);
+			//	tmp = ft_lstnew((void *)(ln->content),(size_t)(sizeof(er)));
+			//	tmp->content = (void *)ln->content;
+				ft_lstadd(&path, ft_lstnew((void *)ln->content, (size_t) sizeof(er)));//tmp);//leak
 				i++;
 				path->content = (void *)ln->content;
 				((t_rooms *)path->content)->vis2 = 1;
@@ -163,6 +163,7 @@ void			free_paths(t_list *path)
 	while (path)
 	{
 		paths = path->next;
+		free(path->content);
 		free(path);
 		path = paths;
 	}
@@ -188,6 +189,7 @@ int				alg(t_llrc *llrc)
 	i = 0;
 	paths = NULL;
 	llrc->plensum = 0;
+	llrc->psum = 0;
 	while (llrc->psum < maxw)
 	{
 		if (!(last = bft(llrc)))
