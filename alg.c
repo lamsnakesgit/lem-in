@@ -190,6 +190,7 @@ int				alg(t_llrc *llrc)
 	paths = NULL;
 	llrc->plensum = 0;
 	llrc->psum = 0;
+	path = 0;
 	while (llrc->psum < maxw)
 	{
 		if (!(last = bft(llrc)))

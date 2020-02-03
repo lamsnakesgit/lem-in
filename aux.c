@@ -178,7 +178,7 @@ int				clean(t_llrc *llrc, t_list **q)
 	unvisit(llrc);
 //	while (++i < llrc->rmi)
 //		llrc->arrrm[i]->lvl = -1;
-	if (!((*q) = ft_lstnew((const void *)llrc->fr, (size_t)(sizeof((void *)(llrc->fr))))))
+	if (!((*q) = ft_lstnew((/*const*/ void *)llrc->fr, (size_t)(sizeof((void *)(llrc->fr))))))
 		return 0;
 	(*q)->content = (void *)llrc->fr;
 //	((t_rooms *)(q->content))->lvl = 0;

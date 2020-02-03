@@ -138,6 +138,7 @@ void				turninarr(t_llrc *llrc)
 {
 	int     i;
 	t_list  *tmp;
+	t_list	*next;
 	//llrc->arrrm = (t_rooms *)malloc(sizeof(t_rooms));// * (llrc->rmi - 1));
 	if (!(llrc->arrrm = (t_rooms **)malloc(sizeof(t_rooms *) * (llrc->rmi))))
 		return ;
@@ -147,10 +148,13 @@ void				turninarr(t_llrc *llrc)
 	{
 //		llrc->arrrm[i] = (t_rooms *)malloc(sizeof(t_rooms));
 		llrc->arrrm[i] = (t_rooms *)tmp->content;
+	//	next = tmp->next;
+	//	free(tmp);
 		llrc->arrrm[i]->nu = i;
 		llrc->arrrm[i]->ant = 0;
 		llrc->arrrm[i]->vis2 = 0;
-		tmp = tmp->next;
+		llrc->arrrm[i]->ln = 0;
+		tmp = tmp->next;//tmp->next;
 //		printf("||%s||%d\n", llrc->arrrm[i]->name_r, (llrc->arrrm)[i]->x);
 		++i;
 	}
