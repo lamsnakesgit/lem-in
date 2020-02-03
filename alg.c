@@ -40,19 +40,21 @@ int 			bfs(t_llrc *llrc)
 	return 0;
 }
 
-int 		bft2(int *f, t_list *cur, t_list **q, t_llrc *llrc)
+int 		 bft2(int *f, t_list *cur, t_list **q, t_llrc *llrc)
 {
 	t_list	*ln;
 
 	ln = ((t_rooms*)cur->content)->ln;
 	while (ln)
 	{
-		if (((t_rooms*)ln->content)->vis2 == 1 && ln->content != llrc->er
-		&& ((t_rooms*)ln->content)->vis != 1 && ln->content_size != -1)
+		if (ln->content == llrc->fr || ln->content == llrc->er)
+			*f = 1;
+		if (((t_rooms*)ln->content)->vis2 == 1 && ln->content_size != -1
+		&& ln->content != llrc->fr && ln->content != llrc->er )
 		{
 			((t_rooms *)ln->content)->lvl = ((t_rooms*)(cur)->content)->lvl + 1;
 			((t_rooms *)ln->content)->vis = 1;
-			queadd(q, ( ln));//->content)->ln);
+			queadd(q, ( ln));
 			*f = 1;
 			return (0);
 		}
@@ -70,13 +72,11 @@ t_list 			*bft(t_llrc *llrc)
 {
 	t_list	*q;
 	t_list	*cur;
-	t_list	*last;
 	int f;
 
+	q = NULL;
 	f = 0;
-	q = 0;
 	clean(llrc, &q);
-	last = 0;
 	while (q != 0)
 	{
 		cur = pullnode(&q);
@@ -85,14 +85,12 @@ t_list 			*bft(t_llrc *llrc)
 		&& ((t_rooms*)cur->content)->nu != llrc->fr->nu)
 			bft2(&f , cur, &q, llrc);
 		if (ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->er->name_r) && f != 1)
-		{
 			quepush2(llrc, &q, cur);
-		}
 		else if (((t_rooms*)cur->content)->nu == llrc->er->nu)
-			last = cur;
+			return (cur);
 		f = 0;
 	}
-	return (last);
+	return (NULL);
 }
 
 /*
@@ -114,6 +112,27 @@ void			cutpath(t_list **er,t_list *er2)
 		ln = ln->next;
 	}
 }
+t_list 			*findlist(t_list *ln, t_list *er)
+{
+	t_list *tr;
+	t_list *cur;
+
+	tr = NULL;
+	cur = NULL;
+	while (ln)
+	{
+		if (((t_rooms *) ln->content)->lvl ==
+		    ((t_rooms *) er->content)->lvl - 1
+		    && ((t_rooms *)ln->content)->vis2 == 1)
+			tr = ln;
+		if (((t_rooms *) ln->content)->lvl ==
+		    ((t_rooms *) er->content)->lvl - 1
+		    && ((t_rooms *)ln->content)->vis2 != 1)
+			cur = ln;
+		ln = ln->next;
+	}
+	return (cur != NULL ? cur : tr);
+}
 
 t_list 			*buildpath(t_list *er)
 {
@@ -129,24 +148,15 @@ t_list 			*buildpath(t_list *er)
 	((t_rooms *)path->content)->vis2 = 1;
 	while (((t_rooms *) er->content)->lvl != 0)
 	{
-		ln = ((t_rooms *) er->content)->ln;
-		while (ln)
-		{
-			if (((t_rooms *) ln->content)->lvl ==
-			((t_rooms *) er->content)->lvl - 1)
-			{
-				cutpath(&ln, er);
-				tmp = ft_lstnew((void *)(ln->content),(size_t)(sizeof(er)));
-				tmp->content = (void *)ln->content;
-				ft_lstadd(&path, tmp);
-				i++;
-				path->content = (void *)ln->content;
-				((t_rooms *)path->content)->vis2 = 1;
-				er = ln;
-				break;
-			}
-			ln = ln->next;
-		}
+		ln = findlist(((t_rooms *) er->content)->ln, er);
+		cutpath(&ln, er);
+		tmp = ft_lstnew((void *) (ln->content), (size_t) (sizeof(er)));
+		tmp->content = (void *) ln->content;
+		ft_lstadd(&path, tmp);
+		i++;
+		path->content = (void *) ln->content;
+		((t_rooms *) path->content)->vis2 = 1;
+		er = ln;
 	}
 	path->content_size = i;
 	return (path);
@@ -184,7 +194,7 @@ int				alg(t_llrc *llrc)
 		path = buildpath(last);
 		llrc->plensum += path->content_size;
 		llrc->psum += 1;
-	//	printflist(path);
+		printflist(path);
 		ft_listup(&paths, path);
 		++i;
 		if (!paths->next && llrc->psum < maxw)

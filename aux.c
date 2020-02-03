@@ -92,6 +92,7 @@ void			unvisit(t_llrc *lrc)
 	i = -1;
 	while (++i < lrc->rmi)
 		lrc->arrrm[i]->vis = 0;
+
 }
 
 int 			*unvisited(int *vis, t_llrc *llrc)
@@ -174,17 +175,17 @@ int				clean(t_llrc *llrc, t_list **q)
 {
 	int i;
 
-	i = -1;
-	unvisit(llrc);
-//	while (++i < llrc->rmi)
-//		llrc->arrrm[i]->lvl = -1;
 	if (!((*q) = ft_lstnew((const void *)llrc->fr, (size_t)(sizeof((void *)(llrc->fr))))))
 		return 0;
+	i = -1;
+	while (++i < llrc->rmi)
+	{
+		llrc->arrrm[i]->vis = 0;
+		llrc->arrrm[i]->lvl = 0;
+	}
 	(*q)->content = (void *)llrc->fr;
-//	((t_rooms *)(q->content))->lvl = 0;
 	((t_rooms *)(*q)->content)->vis = 1;
 	((t_rooms *)(*q)->content)->ant = 0;
-//	llrc->er->vis2 = 0;//always
 	return (1);
 }
 

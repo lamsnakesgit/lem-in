@@ -142,7 +142,7 @@ void    print_ant2(t_list **paths, t_llrc *llrc)
 		++i;
 		printf("\n");
 	}
-//	printf("I=%d\n", i);
+	printf("I=%d\n", i);
 //	printf("END");
 }
 
@@ -162,7 +162,7 @@ void                print_ant(t_list **paths, t_llrc *llrc)
 		ln = ln->next;
 		i++;
 	}
-	mas[i - 1] += llrc->ants - s;
+	mas[i - 1 + (i == 0)] += llrc->ants - s;
 	ln = *paths;
 //	printf("------\n");
 	while (ln)

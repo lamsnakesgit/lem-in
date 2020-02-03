@@ -113,7 +113,9 @@ int				surb(t_list **paths, t_llrc *llrc)
 	tr = (*paths);
 	ln  = lastpath(paths, 0);///?
 	ln2 = ln;
-	printallpaths(*paths);
+//	printallpaths(*paths);
+	if (ln == tr)
+		return (0);
 	while (ln)
 	{
 		while (tr->next && tr != ln)
