@@ -155,7 +155,18 @@ t_list 			*buildpath(t_list *er)
 /*
 **
 */
+void			free_paths(t_list *path)
+{
+	t_list *paths;
 
+//	paths = path;
+	while (path)
+	{
+		paths = path->next;
+		free(path);
+		path = paths;
+	}
+}
 /*
 ** create list of paths, run pathsearch x times,
 ** empty content
@@ -197,6 +208,7 @@ int				alg(t_llrc *llrc)
 //	printallpaths(paths);
 	sort_path(&paths);
 	print_ant(&paths, llrc);
+	free_paths(paths);
 //	delete_rooms(llrc);
 	return 1;
 }
