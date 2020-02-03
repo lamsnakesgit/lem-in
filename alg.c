@@ -165,7 +165,43 @@ t_list 			*buildpath(t_list *er)
 /*
 **
 */
+int				count_steps(t_llrc *llrc, t_list *path)
+{
+	long	steps;
+	t_list	*paths;
+	long	lenp;
+	long 	rev;
+	long 	nonrev;
+	long 	rema;
+	long	flow;
+	long 	newrev;
+	long 	nupath;
 
+	paths = path;
+	lenp = paths->content_size;
+	rema = 0;
+	flow = 0;
+	nupath = 1;
+	steps = llrc->ants + lenp - 1;
+	while (paths)
+	{
+		if (paths->next)
+		{
+			steps = llrc->ants + paths->next->content_size - 1;//shortest path - flow-cap
+			if (steps > paths)//->next->content_size)
+			{
+				rev = steps - (paths->next->content_size - 1);
+				nonrev = steps - rev;
+			}
+			rema = ((rev * nupath) + rema) % ++flow;
+			newrev = ((rev * nupath) + rema) / flow;
+			steps = newrev + rema + nonrev;
+		}
+		paths = paths->next;
+		++nupath;
+	}
+	return ();
+}
 /*
 ** create list of paths, run pathsearch x times,
 ** empty content
@@ -206,6 +242,7 @@ int				alg(t_llrc *llrc)
 //	printf("\n");
 //	printallpaths(paths);
 	sort_path(&paths);
+	count_steps(llrc, paths);
 	print_ant(&paths, llrc);
 	delete_rooms(llrc);
 	return 1;
