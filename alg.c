@@ -165,33 +165,47 @@ t_list 			*buildpath(t_list *er)
 /*
 **
 */
-long 					follow_each_path(long steps, t_list *path)
+long 					follow_each_path(long steps, t_list *path, t_llrc *llrc)
 {
 	t_list *paths;
+	long 	ants;
 
-
+	ants = llrc->ants;
 	paths = path;
 	while (paths)
 	{
-		paths->ants = 0;
+		paths->flow = 0;
 		paths = paths->next;
 	}
 	paths = path;
-	while (steps)
+	while (steps > 0)
 	{
 		paths = path;
 		while (paths)
 		{
 			if (steps > paths->content_size)
-				++paths->ants;
+			{
+				++paths->flow;
+				--ants;
+			}
 			paths = paths->next;
+		}
+		if (steps <= path->content_size)//(ants <= path->content_size)
+		{
+			while (ants > 0)//steps > 2)
+			{
+				++path->flow;
+				--ants;
+				--steps;
+			}
 		}
 		--steps;
 	}
 	paths = path;
 	while (paths)
 	{
-		printf("ANTS=%ld\n", paths->ants);
+		paths->content_size = paths->flow;
+		printf("ANTS=%ld CSIZE=%ld ", paths->flow, paths->content_size);
 		paths = paths->next;
 	}
 	return (0);
@@ -249,7 +263,6 @@ long int				count_steps(t_llrc *llrc, t_list *path)
 		++i;
 	}
 	printf("STEPS=%ld\n", steps);
-	follow_each_path(steps, path);
 	return (steps);
 }
 /*
@@ -294,8 +307,11 @@ int				alg(t_llrc *llrc)
 	sort_path(&paths);
 //	t_list *npaths;
 //	npaths = ft_lstnew()
-	count_steps(llrc, paths);
-	print_ant(&paths, llrc);
+	long steps;
+	steps = count_steps(llrc, paths);
+	follow_each_path(steps, paths, llrc);
+//	print_ant(&paths, llrc);
+	print_ant2(&paths, llrc);
 	delete_rooms(llrc);
 	return 1;
 }

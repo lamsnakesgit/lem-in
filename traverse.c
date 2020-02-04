@@ -134,7 +134,7 @@ void    print_ant2(t_list **paths, t_llrc *llrc)
 		while (ln)
 		{
 			tr = ln->content;//list
-			ul = &ln->content_size;
+			ul = &ln->content_size;//&ln->flow;//content_size;
 			printway(tr, llrc, &ant, ul);
 		//	printway(tr, llrc, &ant, ul);
 			ln = ln->next;
@@ -171,7 +171,7 @@ void                print_ant(t_list **paths, t_llrc *llrc)
 		ln->content_size = mas[--i];
 		ln = ln->next;
 	}
-	print_ant2(paths, llrc);
+//	print_ant2(paths, llrc);
 }
 
 void		run_ants(t_llrc *llrc, t_list **path)
