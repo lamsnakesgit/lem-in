@@ -48,6 +48,11 @@ long 					follow_each_path(long steps, t_list *path, t_llrc *llrc)
 			}
 		*/	--steps;
 	}
+	while (ants > 0)
+	{
+		++path->flow;
+		--ants;
+	}
 /*	while (ants)
 	{
 		paths = path;

@@ -182,8 +182,8 @@ int 			main(int ac, char **av)
 	if (val_in(fd, &llrc))//(ac, av);
 	{
 		printf("\n");
-	//	alg(&llrc);
-		alg_alt(&llrc);
+		alg(&llrc);
+//		alg_alt(&llrc);
 	}
 //	printl();
 //	free(llrc.)
