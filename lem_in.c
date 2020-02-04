@@ -114,7 +114,7 @@ int				val_in(int fd, t_llrc *llrc)
 	int j = 0;
 	while (ls[j])
 	{
-		printf("FREE=%s\n", ls[j]);
+	//	printf("FREE=%s\n", ls[j]);
 	//	free(ls[j]);
 		++j;
 	}
@@ -160,7 +160,7 @@ int 			main(int ac, char **av)
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/big", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/big-superposition", O_RDONLY);
 	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mmap", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa2", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa4", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa3", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapsd/valid/map_dead_end_3", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapsd/valid/map_loop", O_RDONLY);
@@ -171,10 +171,10 @@ int 			main(int ac, char **av)
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_shortest", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_slack_2_brute", O_RDONLY);
 	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/BIGSP", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapsd/valid/map_dead_end_2", O_RDONLY);
-	fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big_sup/map_big_sup_11", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapsd/valid/map_dead_end_2", O_RDONLY);
+//	fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big_sup/map_big_sup_11", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_25", O_RDONLY);
-	fd = 0;
+//	fd = 0;
 	//if (ac > 1)// && fd > 0)//6)
 	if (val_in(fd, &llrc))//(ac, av);
 	{

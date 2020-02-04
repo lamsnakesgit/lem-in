@@ -24,6 +24,7 @@ typedef struct		s_list
 //	/*void*/char*			*content;
 	void            *content;
 	size_t			content_size;
+	long 			ants;
 	struct s_list	*next;
 }					t_list;
 int					get_next_line(const int fd, char **zline);
