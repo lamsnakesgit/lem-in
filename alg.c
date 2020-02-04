@@ -165,106 +165,7 @@ t_list 			*buildpath(t_list *er)
 /*
 **
 */
-long 					follow_each_path(long steps, t_list *path, t_llrc *llrc)
-{
-	t_list *paths;
-	long 	ants;
 
-	ants = llrc->ants;
-	paths = path;
-	while (paths)
-	{
-		paths->flow = 0;
-		paths = paths->next;
-	}
-	paths = path;
-	while (steps > 0)
-	{
-		paths = path;
-		while (paths)
-		{
-			if (steps > paths->content_size)
-			{
-				++paths->flow;
-				--ants;
-			}
-			paths = paths->next;
-		}
-		if (steps <= path->content_size)//(ants <= path->content_size)
-		{
-			while (ants > 0)//steps > 2)
-			{
-				++path->flow;
-				--ants;
-				--steps;
-			}
-		}
-		--steps;
-	}
-	paths = path;
-	while (paths)
-	{
-		paths->content_size = paths->flow;
-		printf("ANTS=%ld CSIZE=%ld ", paths->flow, paths->content_size);
-		paths = paths->next;
-	}
-	return (0);
-}
-long int				count_steps(t_llrc *llrc, t_list *path)
-{
-	long	steps;
-	t_list	*paths;
-	long	lenp;
-	long 	rev;
-	long 	nonrev;
-	long 	rema;
-	long	flow;
-	long 	newrev;
-	long 	nupath;
-	int i = 0;
-	t_list *pat;
-
-	pat = path;
-//	while (path)
-//	{
-		path->content_size = 2;
-		if (path->next)
-		{
-			path->next->content_size = 5;
-			if (path->next->next)
-				path->next->next->content_size = 10;
-		}
-//	}
-
-	paths = path;
-	lenp = paths->content_size;
-	rema = 0;
-	flow = 1;//0;
-	nupath = 1;
-	steps = llrc->ants + lenp - 1;
-	while (paths && i < 3)
-	{
-		if (paths->next)
-		{
-	//		steps = llrc->ants + paths->next->content_size - 1;//shortest path - flow-cap
-			if (steps > paths->next->content_size)//paths)//->next->content_size)
-			{
-				rev = steps - (paths->next->content_size - 1);
-				nonrev = steps - rev;
-			}
-			else
-				break ;
-			rema = ((rev * nupath) + rema) % ++flow;
-			newrev = ((rev * nupath) + rema) / flow;
-			steps = newrev + rema + nonrev;
-		}
-		paths = paths->next;
-		++nupath;
-		++i;
-	}
-	printf("STEPS=%ld\n", steps);
-	return (steps);
-}
 /*
 ** create list of paths, run pathsearch x times,
 ** empty content
@@ -357,7 +258,17 @@ int				alg_alt(t_llrc *llrc)
 			break ;//run ant
 	//	print_l(llrc);
 	}
-	print_ant(&paths, llrc);
+//	printf("\n");
+//	printallpaths(paths);
+	sort_path(&paths);
+//	t_list *npaths;
+//	npaths = ft_lstnew()
+	long steps;
+	steps = count_steps(llrc, paths);
+	follow_each_path(steps, paths, llrc);
+//	print_ant(&paths, llrc);
+	print_ant2(&paths, llrc);
+	delete_rooms(llrc);
 	return 1;
 }
 

@@ -154,6 +154,24 @@ int 			queadd(t_list **q, t_list *tr)
 	return 0;
 }
 
+int				clean1(t_llrc *llrc, t_list **q)
+{
+	int i;
+
+	if (!((*q) = ft_lstnew((const void *)llrc->fr, (size_t)(sizeof((void *)(llrc->fr))))))
+		return 0;
+	i = -1;
+	while (++i < llrc->rmi)
+	{
+		llrc->arrrm[i]->vis = 0;
+	//	llrc->arrrm[i]->lvl = 0;
+	}
+	(*q)->content = (void *)llrc->fr;
+	((t_rooms *)(*q)->content)->vis = 1;
+	((t_rooms *)(*q)->content)->ant = 0;
+	return (1);
+}
+
 t_list 			*bfss(t_llrc *llrc)
 {
 	t_list	*q;
@@ -163,7 +181,7 @@ t_list 			*bfss(t_llrc *llrc)
 	int i = 0;
 
 	q = 0;
-	clean(llrc, &q);
+	clean1(llrc, &q);
 	f = 0;
 	last = 0;
 	while (q != 0)
@@ -175,9 +193,12 @@ t_list 			*bfss(t_llrc *llrc)
 		if (ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->er->name_r) && ((t_rooms *)(cur->content))->nu != llrc->er->nu)
 			quepush(llrc, &q, cur);
 		else
+		{
 			last = cur;
-		free(cur->content);
-		free(cur);
+			return (last);
+		}
+	//	free(cur->content);
+	//	free(cur);
 	}
 //	print_l(llrc);
 	return (last);

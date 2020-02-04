@@ -185,6 +185,8 @@ int 			quepush2(t_llrc *llrc, t_list **q, t_list *tr);//**tr)///push unvis nbrs
 
 void			delete_rooms(t_llrc *llrc);
 
+long int				count_steps(t_llrc *llrc, t_list *path);
+long 					follow_each_path(long steps, t_list *path, t_llrc *llrc);
 
 
 #endif
