@@ -60,9 +60,7 @@ void		sort_path(t_list **path)
 	t_list *ln;
 
 	paths = (*path);
-//	while (paths)
-//	{
-	//	paths = (*path);
+
 		while (paths)
 		{
 			if (paths->next && paths->content_size > paths->next->content_size)
@@ -72,11 +70,10 @@ void		sort_path(t_list **path)
 			}
 			paths = paths->next;
 		}
-//		paths = (*path);
-	///	paths = paths->next;
+
 //	}
 	paths = (*path);
-//	printallpaths(paths);
+
 }
 void 		step(int ants, t_list **path)
 {
@@ -133,46 +130,76 @@ void    print_ant2(t_list **paths, t_llrc *llrc)
 		ln = *paths;
 		while (ln)
 		{
-			tr = ln->content;//list
-			ul = &ln->content_size;//&ln->flow;//content_size;
+			tr = ln->content;
+			ul = &ln->content_size;
 			printway(tr, llrc, &ant, ul);
-		//	printway(tr, llrc, &ant, ul);
 			ln = ln->next;
 		}
 		++i;
 		printf("\n");
 	}
 	printf("I=%d\n", i);
-//	printf("END");
 }
 
 void                print_ant(t_list **paths, t_llrc *llrc)
 {
-	t_list * ln;
-	int mas[llrc->psum];
-	int i;
-	int s;
-	ln = *paths;
-	i = 0;
-	s = 0;
-	while (ln)
-	{
-		mas[i] = (((t_list*)ln->content)->content_size * llrc->ants) / llrc->plensum;
-		s += mas[i];
-		ln = ln->next;
-		i++;
-	}
-	mas[i - 1 + (i == 0)] += llrc->ants - s;
-	ln = *paths;
-//	printf("------\n");
-	while (ln)
-	{
-	//	printf("----------\n%d\n---------\n", mas[i - 1]);
-		ln->content_size = mas[--i];
-		ln = ln->next;
-	}
-//	print_ant2(paths, llrc);
+    t_list *ln;
+    int i;
+    int s;
+
+    printallpaths(*paths);
+    ln = *paths;
+    i = ((float) (llrc->plensum + llrc->ants)) / ((float) llrc->psum);
+    s = 0;
+    while (ln)
+    {
+        printf("len = %d ", (int) ((t_list *)ln->content)->content_size);
+        ln->content_size = i - ((t_list *) ln->content)->content_size;
+        printf("ant = %d\n", (int) ln->content_size);
+        s += ln->content_size;
+        ln = ln->next;
+    }
+    i = (llrc->plensum + llrc->ants) - (i * llrc->psum);
+    ln = *paths;
+    while (i-- >0)
+    {
+        ln->content_size += 1;
+        ln = ln->next;
+    }
+    printf("%d\n", (int) (*paths)->content_size);
+    print_ant2(paths, llrc);
 }
+
+
+//void                print_ant(t_list **paths, t_llrc *llrc)
+//{
+//	t_list * ln;
+//	int mas[llrc->psum];
+//	int i;
+//	int s;
+//	ln = *paths;
+//	i = 0;
+//	s = 0;
+//
+//    sort_path(paths);
+//	while (ln)
+//	{
+//		mas[i] = (((t_list*)ln->content)->content_size * llrc->ants) / llrc->plensum;
+//		s += mas[i];
+//		ln = ln->next;
+//		i++;
+//	}
+//	mas[i - 1 + (i == 0)] += llrc->ants - s;
+//	ln = *paths;
+//	printf("------\n");
+//	while (ln)
+//	{
+//		printf("----------\n%d\n---------\n", mas[i - 1]);
+//		ln->content_size = mas[--i];
+//		ln = ln->next;
+//	}
+//	print_ant2(paths, llrc);
+//}
 
 void		run_ants(t_llrc *llrc, t_list **path)
 {

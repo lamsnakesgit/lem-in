@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   lem-in.c                                           :+:      :+:    :+:   */
@@ -143,47 +143,12 @@ int 			main(int ac, char **av)
 	int fd;
 	t_llrc llrc;
 
-	ac += 0;//fd = open(av[1], O_RDONLY);
-//	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42", O_RDONLY);
-		   //maps_lemin/maps/map42", O_RDONLY);
-	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map_42", O_RDONLY);
-	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42", O_RDONLY);
-//	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map-42-dup", O_RDONLY);
-	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/maps/map", O_RDONLY);
-//	fd = open("/Users/ddratini/42_03_projests/lem-in_rep/map_42", O_RDONLY);
-	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/maps_lemin/maps/map20k-m", O_RDONLY);
-	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/maps_lemin/maps/map38c", O_RDONLY);
-	//fd = open("/Users/ddratini/42_03_projests/lem-in_rep/MAPGN", O_RDONLY);
-//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/flow-one", O_RDONLY);
-//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/flow-ten", O_RDONLY);
-//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/flow-thousand", O_RDONLY);
-//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/big", O_RDONLY);
-//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/big-superposition", O_RDONLY);
-	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mmap", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa4", O_RDONLY);
-//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa3", O_RDONLY);
-//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapsd/valid/map_dead_end_3", O_RDONLY);
-//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapsd/valid/map_loop", O_RDONLY);
-//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapsd/valid/map_subject_3", O_RDONLY);
-//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_comments", O_RDONLY);
-//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_pdf", O_RDONLY);
-	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_loop", O_RDONLY);
-//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_shortest", O_RDONLY);
-//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_slack_2_brute", O_RDONLY);
-	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/BIGSP", O_RDONLY);
-//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapsd/valid/map_dead_end_2", O_RDONLY);
-	//fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big_sup/map_big_sup_11", O_RDONLY);
-	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/big_sup/map_big_sup_12", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_25", O_RDONLY);
-//	fd = 0;
-	//if (ac > 1)// && fd > 0)//6)
+	fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big_sup/map_big_sup_20", O_RDONLY);
+	//fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/map_40", O_RDONLY);
 	if (val_in(fd, &llrc))//(ac, av);
 	{
 		printf("\n");
 		alg(&llrc);
-//		alg_alt(&llrc);
 	}
-//	printl();
-//	free(llrc.)
 	return (0);
 }

@@ -205,37 +205,30 @@ long 					follow_each_path(long steps, t_list *path, t_llrc *llrc)
 	while (paths)
 	{
 		paths->content_size = paths->flow;
-		printf("ANTS=%ld CSIZE=%ld ", paths->flow, paths->content_size);
+		printf("ANTS=%ld CSIZE=%ld \n", paths->flow, paths->content_size);
 		paths = paths->next;
 	}
 	return (0);
 }
 long int				count_steps(t_llrc *llrc, t_list *path)
 {
-	long	steps;
-	t_list	*paths;
-	long	lenp;
-	long 	rev;
-	long 	nonrev;
-	long 	rema;
-	long	flow;
-	long 	newrev;
-	long 	nupath;
+	long steps;
+	t_list *paths;
+	long lenp;
+	long rev;
+	long nonrev;
+	long rema;
+	long flow;
+	long newrev;
+	long nupath;
 	int i = 0;
-	t_list *pat;
 
-	pat = path;
-//	while (path)
-//	{
-		path->content_size = 2;
-		if (path->next)
-		{
-			path->next->content_size = 5;
-			if (path->next->next)
-				path->next->next->content_size = 10;
-		}
-//	}
-
+	path->content_size = 2;
+	if (path->next) {
+        path->next->content_size = 5;
+        if (path->next->next)
+            path->next->next->content_size = 10;
+    }
 	paths = path;
 	lenp = paths->content_size;
 	rema = 0;
@@ -246,14 +239,14 @@ long int				count_steps(t_llrc *llrc, t_list *path)
 	{
 		if (paths->next)
 		{
-	//		steps = llrc->ants + paths->next->content_size - 1;//shortest path - flow-cap
+			//		steps = llrc->ants + paths->next->content_size - 1;//shortest path - flow-cap
 			if (steps > paths->next->content_size)//paths)//->next->content_size)
 			{
 				rev = steps - (paths->next->content_size - 1);
 				nonrev = steps - rev;
 			}
 			else
-				break ;
+				break;
 			rema = ((rev * nupath) + rema) % ++flow;
 			newrev = ((rev * nupath) + rema) / flow;
 			steps = newrev + rema + nonrev;
@@ -280,8 +273,7 @@ int				alg(t_llrc *llrc)
 	t_list	*path;
 	t_list	*paths;
 
-	maxw = count_way(llrc);
-	if (!maxw)
+	if (!(maxw = count_way(llrc)))
 		return 0;
 	i = 0;
 	paths = NULL;
@@ -293,25 +285,14 @@ int				alg(t_llrc *llrc)
 		path = buildpath(last);
 		llrc->plensum += path->content_size;
 		llrc->psum += 1;
-		printflist(path);
 		ft_listup(&paths, path);
 		++i;
 		if (!paths->next && llrc->psum < maxw)
 			continue ;
 		if (surb(&paths, llrc))
 			break;
-		//printflist((t_list *)paths->content);
 	}
-//	printf("\n");
-//	printallpaths(paths);
-	sort_path(&paths);
-//	t_list *npaths;
-//	npaths = ft_lstnew()
-	long steps;
-	steps = count_steps(llrc, paths);
-	follow_each_path(steps, paths, llrc);
-//	print_ant(&paths, llrc);
-	print_ant2(&paths, llrc);
+	print_ant(&paths, llrc);
 	delete_rooms(llrc);
 	return 1;
 }
@@ -330,9 +311,9 @@ int				alg_alt(t_llrc *llrc)
 {
 	int i;
 	int maxw;
-	t_list	*last;
-	t_list	*path;
-	t_list	*paths;
+	t_list *last;
+	t_list *path;
+	t_list *paths;
 
 //	print_l(llrc);
 	maxw = count_way(llrc);//	bfs(llrc);//bfs = (llrc);
@@ -344,20 +325,19 @@ int				alg_alt(t_llrc *llrc)
 	{//
 		last = bfss(llrc);//save x < minw paths; group
 		if (!last) //didnt reach the end
-			break ;
+			break;
 		path = buildpath(last);
 		llrc->psum++;
 		llrc->plensum += path->content_size;//len of all paths if !=
 		printflist(path);
 		ft_listup(&paths, path);
 		if (!paths->next && i < maxw)
-			continue ;
+			continue;
 //		if (isshorterpath(llrc, path->content_size))
 		if (path_cmp2(llrc, path->content_size))//if true it didnt get better
-			break ;//run ant
-	//	print_l(llrc);
+			break;//run ant
+		//	print_l(llrc);
 	}
 	print_ant(&paths, llrc);
 	return 1;
 }
-

@@ -197,7 +197,6 @@ void		printallpaths(t_list *ln)//paths)
 	while (path)
 	{
 		printflist(path->content);
-		printf("\n");
 		path = path->next;
 	}
 	printf("\n");

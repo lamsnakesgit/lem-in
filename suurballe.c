@@ -111,9 +111,8 @@ int				surb(t_list **paths, t_llrc *llrc)
 
 	i = -1;
 	tr = (*paths);
-	ln  = lastpath(paths, 0);///?
+	ln  = lastpath(paths, 0);
 	ln2 = ln;
-//	printallpaths(*paths);
 	if (ln == tr)
 		return (0);
 	while (ln)
@@ -157,7 +156,7 @@ int				surb(t_list **paths, t_llrc *llrc)
 		if (path_cmp2(llrc, ((t_list*)ln2->content)->content_size))
 		{
 			llrc->psum -= 1;
-			llrc->plensum += ((t_list*)ln2->content)->content_size;
+			llrc->plensum -= ((t_list*)ln2->content)->content_size;
 			delpath(paths, ln2);
 			return (1);
 		}
