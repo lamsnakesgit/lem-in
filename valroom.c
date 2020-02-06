@@ -116,8 +116,8 @@ int					savemarg(t_llrc *lrc, int cm)
 {
 	t_rooms *x;
 
-	if (!(x = (t_rooms*)malloc(sizeof(t_rooms))))
-		return 0;
+//	if (!(x = (t_rooms*)malloc(sizeof(t_rooms))))
+//		return 0;
 	x = (t_rooms *)lrc->br->content;
 	x->lvl = 0;//?
 	if (cm == -1)
