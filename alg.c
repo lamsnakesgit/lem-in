@@ -70,10 +70,10 @@ t_list 			*bft(t_llrc *llrc)
 			quepush2(llrc, &q, cur);
 		else if (((t_rooms*)cur->content)->nu == llrc->er->nu)
 		{
-			dellist(q);
+		//	dellist(q);
 			return (cur);
 		}
-		free(cur);
+	//	free(cur);
 		f = 0;
 	}
 	return (NULL);
@@ -199,7 +199,8 @@ int				alg(t_llrc *llrc)
 		if (surb(&paths, llrc))
 			break;
 	}
-	print_ant(&paths, llrc);
+	if (paths)
+    	print_ant(&paths, llrc);
 	del_paths(paths, llrc);
 	return 1;
 }
