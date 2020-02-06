@@ -86,7 +86,10 @@ char			**processmap(int fd, t_llrc *llrc)
 	if (!cp)
 		free(cp);
 	if (ret < 0)
-		return 0;
+    {
+	    free(cp);
+	    return 0;
+    }
 //	printf("%s\n", cp);
 	ls = lines(cp);//(buf);
 	checkmap(ls, cp);
@@ -105,7 +108,5 @@ char			**processmap(int fd, t_llrc *llrc)
 	}
 	llrc->ants = ft_atoi(ls[0]);
 	ft_putendl(ls[0]);
-	//val
-	//print array chekk
 	return ls;
 }

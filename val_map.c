@@ -108,11 +108,11 @@ int					roomlinkblock(char **line, t_llrc *lrc, int fd)//mv ind!
 {
 	int		ret;
 	int 	i;
-	int		rm;//	char    **ok;//*->**
+	int		rm;
 	int		v;
 
-	i = 0;//r = r_fill(r, 0);
-	while (line[i])//while (get_next_line(fd, line) > 0 && ++i)//f returns line=*
+	i = 0;
+	while (line[i])
 	{
 		ret = comstend(line[i]);
 	//	if ((ret = comstend(*line))==0||ret==-3||ret==-1||ret==-2)
@@ -137,15 +137,3 @@ int					roomlinkblock(char **line, t_llrc *lrc, int fd)//mv ind!
 	}
 	return (0);//(*line);ERRvalrmonly
 }
-//if (i != 0)
-//{
-//q = (*paths);
-//cross_path(paths, (t_list *)mas.m0, (t_list *)mas.m1, 1);
-//printflist(q->next->next->content);
-//printf("\n");
-//cross_path(paths, (t_list *)mas.m2, (t_list *)mas.m3, 0);
-//printflist(q->next->next->next->content);
-//ln2  = (*paths)->next->content;
-//(*paths)->next =(*paths)->next->next;
-//free(ln2);
-//}

@@ -9,11 +9,11 @@ CFLAG = -Wall -Wextra -Werror
 
 all: $(NAME)
 $(NAME):
-	gcc $(CFLAG) -c $(SRC) -I $(HEADER)
+	@gcc $(CFLAG) -c $(SRC) -I $(HEADER)
 	ar rc $(NAME) $(OBJ)
 clean:
-		rm -f $(OBJ)
+		@rm -f $(OBJ)
 fclean: clean
-			rm -f $(NAME)
+			@rm -f $(NAME)
 
 re: fclean all
