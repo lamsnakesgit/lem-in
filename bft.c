@@ -47,21 +47,19 @@ int 			quepush(t_llrc *llrc, t_list **q, t_list *tr)//**tr)///push unvis nbrs
 	}
 	return 0;
 }
-int 			quepush2(t_llrc *llrc, t_list **q, t_list *tr)//**tr)///push unvis nbrs
-{//add to qu non vis /add levl marks
+int 			quepush2(t_llrc *llrc, t_list **q, t_list *tr)
+{
 	t_list	*ln;
 
-	ln = ((t_rooms *)((tr)->content))->ln;//((t_rooms *)tr)->ln;
+	ln = ((t_rooms *)((tr)->content))->ln;
 	int i = 0;
 	while (ln)
 	{
-		if (((t_rooms *)(ln->content))->vis == 0 && ln->content_size != -1)//(((t_rooms *)(*tr)->content)->vis == 0);
-		{//links of end/st/dead
-			//	if (((t_rooms *)(*tr)->content)->nu//(((t_rooms *)ln->content)->nu == llrc->fr->nu)
-			//		((t_rooms *)ln->content)->lvl
+		if (((t_rooms *)(ln->content))->vis == 0 && ln->content_size != -1)
+		{
 			((t_rooms *)ln->content)->lvl = ((t_rooms*)(tr)->content)->lvl + 1;
 			((t_rooms *)ln->content)->vis = 1;
-			queadd(q, ln);//->content);//tr);//add room->q
+			queadd(q, ln);
 		}
 		ln = ln->next;
 		++i;

@@ -14,19 +14,19 @@
 
 int 		 bft2(int *f, t_list *cur, t_list **q, t_llrc *llrc)
 {
-	t_list	*ln;
+	t_list *ln;
 
-	ln = ((t_rooms*)cur->content)->ln;
+	ln = ((t_rooms *) cur->content)->ln;
 	while (ln)
 	{
 		if (ln->content == llrc->fr || ln->content == llrc->er)
 			*f = 1;
-		if (((t_rooms*)ln->content)->vis2 == 1 && ln->content_size != -1
-		&& ln->content != llrc->fr && ln->content != llrc->er )
+		if (((t_rooms *) ln->content)->vis2 == 1 && ln->content_size != -1
+		    && ln->content != llrc->fr && ln->content != llrc->er)
 		{
-			((t_rooms *)ln->content)->lvl = ((t_rooms*)(cur)->content)->lvl + 1;
-			((t_rooms *)ln->content)->vis = 1;
-			queadd(q, ( ln));
+			((t_rooms *) ln->content)->lvl = ((t_rooms *) (cur)->content)->lvl + 1;
+			((t_rooms *) ln->content)->vis = 1;
+			queadd(q, ln);
 			*f = 1;
 			return (0);
 		}
@@ -40,6 +40,16 @@ int 		 bft2(int *f, t_list *cur, t_list **q, t_llrc *llrc)
 **		printf("FIRST!\n");
 **
 */
+void    dellist(t_list	*ln)
+{
+	t_list	*tr;
+	while (ln)
+	{
+		tr = ln->next;
+		free(ln);
+		ln = tr;
+	}
+}
 t_list 			*bft(t_llrc *llrc)
 {
 	t_list	*q;
@@ -59,7 +69,11 @@ t_list 			*bft(t_llrc *llrc)
 		if (ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->er->name_r) && f != 1)
 			quepush2(llrc, &q, cur);
 		else if (((t_rooms*)cur->content)->nu == llrc->er->nu)
+		{
+			dellist(q);
 			return (cur);
+		}
+		free(cur);
 		f = 0;
 	}
 	return (NULL);
@@ -123,17 +137,18 @@ t_list 			*buildpath(t_list *er)
 		ln = findlist(((t_rooms *) er->content)->ln, er);
 		cutpath(&ln, er);
 		tmp = ft_lstnew((void *) (ln->content), (size_t) (sizeof(er)));
-	//	tmp->content = (void *) ln->content;
 		ft_lstadd(&path, tmp);
 		i++;
 		path->content = (void *) ln->content;
 		((t_rooms *) path->content)->vis2 = 1;
+		if (i == 1)
+			free(er);
 		er = ln;
 	}
 	path->content_size = i;
 	return (path);
 }
-void            del_paths(t_list *path)//free paths as wellas path content
+void            del_paths(t_list *path, t_llrc *llrc)//free paths as wellas path content
 {
 	t_list  *paths;
 	t_list  *ln;
@@ -143,7 +158,6 @@ void            del_paths(t_list *path)//free paths as wellas path content
 	{
 		paths = path->next;
 		ln = (t_list *)path->content;
-		//free(path->content);
 		while (ln)
 		{
 			next = (t_list *)ln->next;
@@ -153,6 +167,8 @@ void            del_paths(t_list *path)//free paths as wellas path content
 		free(path);
 		path = paths;
 	}
+	delete_rooms(llrc);
+	exit(0);
 }
 int				alg(t_llrc *llrc)
 {
@@ -184,7 +200,7 @@ int				alg(t_llrc *llrc)
 			break;
 	}
 	print_ant(&paths, llrc);
-	del_paths(paths);
+	del_paths(paths, llrc);
 	return 1;
 }
 
