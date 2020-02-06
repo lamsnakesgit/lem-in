@@ -143,8 +143,9 @@ int 			main(int ac, char **av)
 	int fd;
 	t_llrc llrc;
 
-	fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big_sup/map_big_sup_20", O_RDONLY);
-	//fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/map_40", O_RDONLY);
+	fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big_sup/map_big_sup_1", O_RDONLY);
+	fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/map_39", O_RDONLY);
+	//fd = 0;
 	if (val_in(fd, &llrc))//(ac, av);
 	{
 		printf("\n");

@@ -28,8 +28,8 @@ char			**lines(char *buf)
 	if (!(ls = (char **)malloc(sizeof(char *) * (s + 2))))
 		return (0);
 	i = -1;
-	while (++i < s + 2)
-		ls[i] = (char *)malloc(sizeof(char));//
+//	while (++i < s + 2)
+//		ls[i] = (char *)malloc(sizeof(char));//
 	return (ls);
 }
 

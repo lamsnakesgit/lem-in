@@ -147,7 +147,7 @@ void                print_ant(t_list **paths, t_llrc *llrc)
     int i;
     int s;
 
-    printallpaths(*paths);
+    //printallpaths(*paths);
     ln = *paths;
     i = ((float) (llrc->plensum + llrc->ants)) / ((float) llrc->psum);
     s = 0;

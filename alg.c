@@ -12,34 +12,6 @@
 
 #include "lemin.h"
 
-int 			bfs(t_llrc *llrc)
-{//	t_rooms		**q;
-	t_list		*q;
-	t_list 		*neighbours;
-	t_rooms 	*tmp;//int 		*vis;
-	t_list		*tr;
-
-	tmp = (llrc->fr);//	vis = (int *)malloc(sizeof(int) * llrc->rmi);//	unvisit(vis, llrc);
-	if (!(q = ft_lstnew((void *)llrc->fr, (size_t)(sizeof(llrc->fr)))))
-		return (0);
-	while (q != 0)///*(qu)/*/(q == 0)// || !q->content)
-	{
-		tr = pullnode(&q);
-	/*	if ((t_rooms *)tr->content != llrc->er)
-		{
-			quepush(llrc, &q, tr);//put levels; add to queue
-		}*/
-		tr = tr->next;
-/*		while (((t_rooms*)q->content)->ln)
-		{
-
-		}
-*/
-		break ;
-	}
-	return 0;
-}
-
 int 		 bft2(int *f, t_list *cur, t_list **q, t_llrc *llrc)
 {
 	t_list	*ln;
@@ -130,8 +102,8 @@ t_list 			*findlist(t_list *ln, t_list *er)
 		    && ((t_rooms *)ln->content)->vis2 != 1)
 			cur = ln;
 		ln = ln->next;
-	}
-	return (cur != NULL ? cur : tr);
+	} //return (tr != NULL ? tr : cur);x§X
+    return (cur != NULL ? cur : tr);
 }
 
 t_list 			*buildpath(t_list *er)
@@ -162,109 +134,6 @@ t_list 			*buildpath(t_list *er)
 	return (path);
 }
 
-/*
-**
-*/
-long 					follow_each_path(long steps, t_list *path, t_llrc *llrc)
-{
-	t_list *paths;
-	long 	ants;
-
-	ants = llrc->ants;
-	paths = path;
-	while (paths)
-	{
-		paths->flow = 0;
-		paths = paths->next;
-	}
-	paths = path;
-	while (steps > 0)
-	{
-		paths = path;
-		while (paths)
-		{
-			if (steps > paths->content_size)
-			{
-				++paths->flow;
-				--ants;
-			}
-			paths = paths->next;
-		}
-		if (steps <= path->content_size)//(ants <= path->content_size)
-		{
-			while (ants > 0)//steps > 2)
-			{
-				++path->flow;
-				--ants;
-				--steps;
-			}
-		}
-		--steps;
-	}
-	paths = path;
-	while (paths)
-	{
-		paths->content_size = paths->flow;
-		printf("ANTS=%ld CSIZE=%ld \n", paths->flow, paths->content_size);
-		paths = paths->next;
-	}
-	return (0);
-}
-long int				count_steps(t_llrc *llrc, t_list *path)
-{
-	long steps;
-	t_list *paths;
-	long lenp;
-	long rev;
-	long nonrev;
-	long rema;
-	long flow;
-	long newrev;
-	long nupath;
-	int i = 0;
-
-	path->content_size = 2;
-	if (path->next) {
-        path->next->content_size = 5;
-        if (path->next->next)
-            path->next->next->content_size = 10;
-    }
-	paths = path;
-	lenp = paths->content_size;
-	rema = 0;
-	flow = 1;//0;
-	nupath = 1;
-	steps = llrc->ants + lenp - 1;
-	while (paths && i < 3)
-	{
-		if (paths->next)
-		{
-			//		steps = llrc->ants + paths->next->content_size - 1;//shortest path - flow-cap
-			if (steps > paths->next->content_size)//paths)//->next->content_size)
-			{
-				rev = steps - (paths->next->content_size - 1);
-				nonrev = steps - rev;
-			}
-			else
-				break;
-			rema = ((rev * nupath) + rema) % ++flow;
-			newrev = ((rev * nupath) + rema) / flow;
-			steps = newrev + rema + nonrev;
-		}
-		paths = paths->next;
-		++nupath;
-		++i;
-	}
-	printf("STEPS=%ld\n", steps);
-	return (steps);
-}
-/*
-** create list of paths, run pathsearch x times,
-** empty content
-** create first node; node->content = npath;
-** if (node->next) !node->next = nodewnpath
-*/
-
 int				alg(t_llrc *llrc)
 {
 	int		i;
@@ -278,6 +147,7 @@ int				alg(t_llrc *llrc)
 	i = 0;
 	paths = NULL;
 	llrc->plensum = 0;
+	llrc->psum = 0;
 	while (llrc->psum < maxw)
 	{
 		if (!(last = bft(llrc)))
@@ -285,6 +155,7 @@ int				alg(t_llrc *llrc)
 		path = buildpath(last);
 		llrc->plensum += path->content_size;
 		llrc->psum += 1;
+        printflist(path);
 		ft_listup(&paths, path);
 		++i;
 		if (!paths->next && llrc->psum < maxw)

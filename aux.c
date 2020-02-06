@@ -290,7 +290,7 @@ void	delete_rooms(t_llrc *llrc)
 //	free(llrc->fr);
 	while (i < llrc->rmi)
 	{
-		free(llrc->arrrm[i]->name_r);
+	//	free(llrc->arrrm[i]->name_r);
 		free(llrc->arrrm[i]);
 		++i;
 	}
