@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/leminleak.dir/alg.c.o"
+  "CMakeFiles/leminleak.dir/alg2.c.o"
   "CMakeFiles/leminleak.dir/aux.c.o"
   "CMakeFiles/leminleak.dir/bft.c.o"
   "CMakeFiles/leminleak.dir/lem_in.c.o"
@@ -68,6 +69,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/leminleak.dir/libft/ft_toupper.c.o"
   "CMakeFiles/leminleak.dir/libft/get_next_line.c.o"
   "CMakeFiles/leminleak.dir/libft/revstr.c.o"
+  "CMakeFiles/leminleak.dir/surb2.c.o"
   "CMakeFiles/leminleak.dir/suurballe.c.o"
   "CMakeFiles/leminleak.dir/traverse.c.o"
   "CMakeFiles/leminleak.dir/val_map.c.o"

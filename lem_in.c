@@ -53,6 +53,8 @@ t_llrc 			nullst(t_llrc llrc)
 //	llrc->br =0;//uninit||init somethin?	llrc.fr = 0;
 	llrc.er = 0;
 	llrc.arrrm = 0;
+	llrc.plensum = 0;
+	llrc.psum = 0;
 	return (llrc);
 }
 
@@ -133,10 +135,8 @@ int 			main(int ac, char **av)
 	t_llrc llrc;
 
 	fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big_sup/map_big_sup_1", O_RDONLY);
-	fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/map_39", O_RDONLY);
+	//fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/map_39", O_RDONLY);
 	//fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big/map_big_1", O_RDONLY);
-	fd = open("/Users/gusujio/lem-in/map_44", O_RDONLY);
-	fd = open("/Users/gusujio/leminleak/map_44", O_RDONLY);
 	//fd = 0;
 	if (val_in(fd, &llrc))//(ac, av);
 	{

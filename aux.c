@@ -186,7 +186,7 @@ int				clean(t_llrc *llrc, t_list **q)
 	(*q)->content = (void *)llrc->fr;
 	((t_rooms *)(*q)->content)->vis = 1;
 	((t_rooms *)(*q)->content)->ant = 0;
-	return (1);
+	return (0);
 }
 
 void		printallpaths(t_list *ln)//paths)

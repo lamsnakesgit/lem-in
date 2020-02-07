@@ -6,92 +6,16 @@
 /*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 19:18:58 by ddratini          #+#    #+#             */
-/*   Updated: 2020/01/26 19:19:13 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/07 18:56:44 by gusujio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-/*
-** -llrc->psum
-** llrc->plensum
-** assuming paths are located from the shortest to the longest
-** move 1 ant to the first shortest path
-** decide if to move 2 ant to the next path
-** using formula: ants remain at the start
-** and sum of differences between length of current path and lengths of shorter paths
-**
-*/
-/*
-void		move_forth(t_llrc *llrc, t_list **path)
-{
-	if ((*path)->)
-
-}*/
-/*
-** iterate through lists & check if next->size is not less then cur->size
-** save link of cur & next if else
-** swap links
-*/
-void		swap_node(t_list **cur, t_list **ln, t_list **path)
-{
-	t_list *tr;
-	t_list *paths;
-//	t_list *ln2;
-	size_t ln2;
-
-	paths = (*path);
-	tr = (*ln)->content;
-	ln2 = (*ln)->content_size;
-	(*ln)->content = (*cur)->content;
-	(*ln)->content_size = (*cur)->content_size;
-	(*cur)->content = tr->content;
-	(*cur)->content_size = ln2;//tr->content_size;
-/*	while (paths)
-	{
-		if (paths == *cur)
-
-	}*/
-}
-void		sort_path(t_list **path)
-{
-	t_list *paths;
-	t_list *cur;
-	t_list *ln;
-
-	paths = (*path);
-
-		while (paths)
-		{
-			if (paths->next && paths->content_size > paths->next->content_size)
-			{
-				swap_node(&paths, &paths->next, path);
-				paths = (*path);
-			}
-			paths = paths->next;
-		}
-
-//	}
-	paths = (*path);
-
-}
-void 		step(int ants, t_list **path)
-{
-	t_list *paths;
-
-	paths = (*path);
-}
-/*
-** move all ants to first room
-** move ant in each path by iteration
-** check all rooms in path
- * move
-**
-*/
-void    printway(t_list *tr, t_llrc *llrc, int *ant, size_t *ul)
+void	printway(t_list *tr, t_llrc *llrc, int *ant, size_t *ul)
 {
 	if (!tr || ((t_rooms *)tr->content)->nu == llrc->er->nu)
-		return;
+		return ;
 	else if (((t_rooms *)tr->next->content)->nu != llrc->er->nu)
 		printway(tr->next, llrc, ant, ul);
 	if (((t_rooms *)tr->content)->nu == llrc->fr->nu && *ul > 0)
@@ -103,24 +27,24 @@ void    printway(t_list *tr, t_llrc *llrc, int *ant, size_t *ul)
 		((t_rooms *)tr->next->content)->ant = *ant;
 	}
 	if ((((t_rooms *)tr->next->content)->ant == 0 ||
-	((t_rooms *)tr->next->content)->nu == llrc->er->nu) &&
-	((t_rooms *)tr->content)->ant != 0)
+		((t_rooms *)tr->next->content)->nu == llrc->er->nu) &&
+		((t_rooms *)tr->content)->ant != 0)
 	{
 		llrc->er->vis += (((t_rooms *)tr->next->content)->nu == llrc->er->nu);
 		printf("L%d-%s ", ((t_rooms *)tr->content)->ant,
-			   ((t_rooms *)tr->next->content)->name_r);
+				((t_rooms *)tr->next->content)->name_r);
 		((t_rooms *)tr->next->content)->ant = ((t_rooms *)tr->content)->ant;
 		((t_rooms *)tr->content)->ant = 0;
 	}
 }
 
-void    print_ant2(t_list **paths, t_llrc *llrc)
+void	print_ant2(t_list **paths, t_llrc *llrc)
 {
-	t_list * ln;
-	t_list * tr;
-	int ant;
-	size_t *ul;
-	int i;
+	t_list	*ln;
+	t_list	*tr;
+	int		ant;
+	size_t	*ul;
+	int		i;
 
 	ant = 0;
 	llrc->er->vis = 0;
@@ -141,100 +65,31 @@ void    print_ant2(t_list **paths, t_llrc *llrc)
 	printf("I=%d\n", i);
 }
 
-void                print_ant(t_list **paths, t_llrc *llrc)
+void	print_ant(t_list **paths, t_llrc *llrc)
 {
-    t_list *ln;
-    int i;
-    int s;
+	t_list	*ln;
+	int		i;
+	int		s;
 
-    //printallpaths(*paths);
-    ln = *paths;
-    i = ((float) (llrc->plensum + llrc->ants)) / ((float) llrc->psum);
-    s = 0;
-    while (ln)
-    {
-        printf("len = %d ", (int) ((t_list *)ln->content)->content_size);
-        ln->content_size = i - ((t_list *) ln->content)->content_size;
-        printf("ant = %d\n", (int) ln->content_size);
-        s += ln->content_size;
-        ln = ln->next;
-    }
-    i = (llrc->plensum + llrc->ants) - (i * llrc->psum);
-    ln = *paths;
-    while (i-- >0)
-    {
-        ln->content_size += 1;
-        ln = ln->next;
-    }
-    printf("%d\n", (int) (*paths)->content_size);
-    print_ant2(paths, llrc);
-}
-
-
-//void                print_ant(t_list **paths, t_llrc *llrc)
-//{
-//	t_list * ln;
-//	int mas[llrc->psum];
-//	int i;
-//	int s;
-//	ln = *paths;
-//	i = 0;
-//	s = 0;
-//
-//    sort_path(paths);
-//	while (ln)
-//	{
-//		mas[i] = (((t_list*)ln->content)->content_size * llrc->ants) / llrc->plensum;
-//		s += mas[i];
-//		ln = ln->next;
-//		i++;
-//	}
-//	mas[i - 1 + (i == 0)] += llrc->ants - s;
-//	ln = *paths;
-//	printf("------\n");
-//	while (ln)
-//	{
-//		printf("----------\n%d\n---------\n", mas[i - 1]);
-//		ln->content_size = mas[--i];
-//		ln = ln->next;
-//	}
-//	print_ant2(paths, llrc);
-//}
-
-void		run_ants(t_llrc *llrc, t_list **path)
-{
-	int i;
-	t_list *paths;
-	int	psum;
-	int plens;
-	t_list *ln;
-
-	i = 0;
-	psum = 0;
-	paths = (*path);
-	printallpaths(paths);
-	plens = 0;
-	while (paths)
+	ln = *paths;
+	i = ((float)(llrc->plensum + llrc->ants)) / ((float)llrc->psum);
+	s = 0;
+	while (ln)
 	{
-		++psum;
-		ln = paths->content;
-		--plens;
-		while (ln)
-		{
-			++plens;
-			ln = ln->next;
-		}
-		printf("%d\n", plens);
-		paths = paths->next;
+		printf("len = %d ", (int)((t_list *)ln->content)->content_size);
+		ln->content_size = i - ((t_list *)ln->content)->content_size;
+		printf("ant = %d\n", (int)ln->content_size);
+		s += ln->content_size;
+		ln = ln->next;
 	}
-	paths = (*path);
-	while (i < llrc->ants)
+	i = (llrc->plensum + llrc->ants) - (i * llrc->psum);
+	ln = *paths;
+	while (i-- > 0)
 	{
-		++i;
-		if (((t_rooms *)paths->content)->ant == 0)
-		{
-			printf("L%d-%s", i, ((t_rooms*)paths->content)->name_r);
-		}
+		ln->content_size += 1;
+		ln = ln->next;
 	}
-	return;
+	printf("%d\n", (int)(*paths)->content_size);
+	print_ant2(paths, llrc);
+	del_paths(*paths, llrc);
 }

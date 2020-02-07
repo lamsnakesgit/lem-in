@@ -150,6 +150,33 @@ alg.c.s:
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/alg.c.s
 .PHONY : alg.c.s
 
+alg2.o: alg2.c.o
+
+.PHONY : alg2.o
+
+# target to build an object file
+alg2.c.o:
+	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/alg2.c.o
+.PHONY : alg2.c.o
+
+alg2.i: alg2.c.i
+
+.PHONY : alg2.i
+
+# target to preprocess a source file
+alg2.c.i:
+	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/alg2.c.i
+.PHONY : alg2.c.i
+
+alg2.s: alg2.c.s
+
+.PHONY : alg2.s
+
+# target to generate assembly for a file
+alg2.c.s:
+	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/alg2.c.s
+.PHONY : alg2.c.s
+
 aux.o: aux.c.o
 
 .PHONY : aux.o
@@ -1986,6 +2013,33 @@ libft/revstr.c.s:
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/revstr.c.s
 .PHONY : libft/revstr.c.s
 
+surb2.o: surb2.c.o
+
+.PHONY : surb2.o
+
+# target to build an object file
+surb2.c.o:
+	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/surb2.c.o
+.PHONY : surb2.c.o
+
+surb2.i: surb2.c.i
+
+.PHONY : surb2.i
+
+# target to preprocess a source file
+surb2.c.i:
+	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/surb2.c.i
+.PHONY : surb2.c.i
+
+surb2.s: surb2.c.s
+
+.PHONY : surb2.s
+
+# target to generate assembly for a file
+surb2.c.s:
+	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/surb2.c.s
+.PHONY : surb2.c.s
+
 suurballe.o: suurballe.c.o
 
 .PHONY : suurballe.o
@@ -2187,6 +2241,9 @@ help:
 	@echo "... alg.o"
 	@echo "... alg.i"
 	@echo "... alg.s"
+	@echo "... alg2.o"
+	@echo "... alg2.i"
+	@echo "... alg2.s"
 	@echo "... aux.o"
 	@echo "... aux.i"
 	@echo "... aux.s"
@@ -2391,6 +2448,9 @@ help:
 	@echo "... libft/revstr.o"
 	@echo "... libft/revstr.i"
 	@echo "... libft/revstr.s"
+	@echo "... surb2.o"
+	@echo "... surb2.i"
+	@echo "... surb2.s"
 	@echo "... suurballe.o"
 	@echo "... suurballe.i"
 	@echo "... suurballe.s"

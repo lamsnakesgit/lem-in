@@ -84,4 +84,4 @@ add_executable(leminleak
         valink.c
         valprocess.c
         valroom.c
-        valroom1.c)
+        valroom1.c alg2.c surb2.c)

@@ -87,6 +87,9 @@
 		<Unit filename="/Users/gusujio/leminleak/alg.c">
 			<Option target="leminleak"/>
 		</Unit>
+		<Unit filename="/Users/gusujio/leminleak/alg2.c">
+			<Option target="leminleak"/>
+		</Unit>
 		<Unit filename="/Users/gusujio/leminleak/aux.c">
 			<Option target="leminleak"/>
 		</Unit>
@@ -295,6 +298,9 @@
 			<Option target="leminleak"/>
 		</Unit>
 		<Unit filename="/Users/gusujio/leminleak/libft/revstr.c">
+			<Option target="leminleak"/>
+		</Unit>
+		<Unit filename="/Users/gusujio/leminleak/surb2.c">
 			<Option target="leminleak"/>
 		</Unit>
 		<Unit filename="/Users/gusujio/leminleak/suurballe.c">

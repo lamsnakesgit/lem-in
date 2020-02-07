@@ -5,6 +5,10 @@ CMakeFiles/leminleak.dir/alg.c.o: ../alg.c
 CMakeFiles/leminleak.dir/alg.c.o: ../lemin.h
 CMakeFiles/leminleak.dir/alg.c.o: ../libft/libft.h
 
+CMakeFiles/leminleak.dir/alg2.c.o: ../alg2.c
+CMakeFiles/leminleak.dir/alg2.c.o: ../lemin.h
+CMakeFiles/leminleak.dir/alg2.c.o: ../libft/libft.h
+
 CMakeFiles/leminleak.dir/aux.c.o: ../aux.c
 CMakeFiles/leminleak.dir/aux.c.o: ../lemin.h
 CMakeFiles/leminleak.dir/aux.c.o: ../libft/libft.h
@@ -211,6 +215,10 @@ CMakeFiles/leminleak.dir/libft/get_next_line.c.o: ../libft/libft.h
 
 CMakeFiles/leminleak.dir/libft/revstr.c.o: ../libft/libft.h
 CMakeFiles/leminleak.dir/libft/revstr.c.o: ../libft/revstr.c
+
+CMakeFiles/leminleak.dir/surb2.c.o: ../lemin.h
+CMakeFiles/leminleak.dir/surb2.c.o: ../libft/libft.h
+CMakeFiles/leminleak.dir/surb2.c.o: ../surb2.c
 
 CMakeFiles/leminleak.dir/suurballe.c.o: ../lemin.h
 CMakeFiles/leminleak.dir/suurballe.c.o: ../libft/libft.h
