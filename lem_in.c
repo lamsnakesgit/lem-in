@@ -83,23 +83,17 @@ int				val_in(int fd, t_llrc *llrc)
 
 	if (!(ls = processmap(fd, llrc)) || ! (1 + ls))
 		return (ft_err());
-//	if ((llrc->ants = amount_ants(fd)) < 1)//> 0)
-//		return (ft_err());
 	*llrc = nullst(*llrc);
-	i = roomlinkblock(ls + 1, llrc, fd);//(&line, llrc, fd);//dupls?
+	i = roomlinkblock(ls + 1, llrc, fd);
 	if (!llrc->rmi || llrc->end != 1 || llrc->st != 1)//i ?
-		return (ft_err());//freel-ifl//free s/e
+		return (ft_err());
 	turninarr(llrc);//(&llrc);
-	if (ls && ls + i + 1)//1)//(linkd)//if freed? send rmlis+line+fd//st-end/line
+	if (ls && ls + i + 1)
 	{
-		//if (!linkval(&linkd, &llrc, fd))
 		if (!linkval(ls + i + 1, llrc, fd))
 		{
 			free(llrc->er);
 			free(llrc->fr);
-
-//			ft_cleanmem(ls);
-///			freellrc(llrc);
 			return (ft_err());
 		}
 	}
@@ -141,6 +135,8 @@ int 			main(int ac, char **av)
 	fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big_sup/map_big_sup_1", O_RDONLY);
 	fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/map_39", O_RDONLY);
 	//fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big/map_big_1", O_RDONLY);
+	fd = open("/Users/gusujio/lem-in/map_44", O_RDONLY);
+	fd = open("/Users/gusujio/leminleak/map_44", O_RDONLY);
 	//fd = 0;
 	if (val_in(fd, &llrc))//(ac, av);
 	{

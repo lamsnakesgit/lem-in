@@ -71,14 +71,14 @@ char			**processmap(int fd, t_llrc *llrc)
 {
 	char	buf[BS + 1];
 	int		ret;
- 	char	*cp;//
+ 	char	*cp;
  	char	*sv;
  	char 	**ls;
 
  	cp = ft_strnew(0);
 	while ((ret = read(fd, buf, BS)) > 0)
 	{
-		buf[ret] = 0;//[BS] = 0;
+		buf[ret] = 0;
 		sv = ft_strjoin(cp, buf);
 		free(cp);
 		cp = sv;
@@ -87,25 +87,16 @@ char			**processmap(int fd, t_llrc *llrc)
 		free(cp);
 	if (ret < 0)
 		return 0;
-//	printf("%s\n", cp);
-	ls = lines(cp);//(buf);
+	ls = lines(cp);
 	checkmap(ls, cp);
-	//free(cp);
-	int i = 0;
-/*	while (ls[i])
-	{
-		printf("=%s\n", ls[i++]);
-	}
-*/	int j = 0;
+	int j = 0;
 	while (ls[0][j])
 	{
-		if (!ft_isdigit(ls[0][j]))//intlon
-			return(0);//ft_err());
+		if (!ft_isdigit(ls[0][j]))
+			return(0);
 		++j;
 	}
 	llrc->ants = ft_atoi(ls[0]);
 	ft_putendl(ls[0]);
-	//val
-	//print array chekk
 	return ls;
 }

@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/gusujio/leminleak/lem_in.c
+lemin.h
+/Users/gusujio/leminleak/lemin.h
+
+/Users/gusujio/leminleak/lemin.h
+unistd.h
+-
+stdio.h
+-
+libft/libft.h
+/Users/gusujio/leminleak/libft/libft.h
+fcntl.h
+-
+
+/Users/gusujio/leminleak/libft/libft.h
+stdlib.h
+-
+unistd.h
+-
+string.h
+-
+

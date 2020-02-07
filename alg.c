@@ -62,6 +62,7 @@ t_list 			*bft(t_llrc *llrc)
 	while (q != 0)
 	{
 		cur = pullnode(&q);
+		(t_rooms*)((t_rooms*)cur->content)->ln->content;
 		if (((t_rooms*)cur->content)->vis2 == 1
 		&& ((t_rooms*)cur->content)->nu != llrc->er->nu
 		&& ((t_rooms*)cur->content)->nu != llrc->fr->nu)
