@@ -58,6 +58,7 @@ int					stcheck(char **line, t_llrc *lrc, int cm, int fd)
 		//	free (*line);
 			return (1 + i);//1;
 		}//cont aft -1/-2 exit?
+		++i;//OMG
 	}
 	return -2;
 }
