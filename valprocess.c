@@ -21,7 +21,7 @@ char			**lines(char *buf)
 
 	i = -1;
 	s = 0;
-//	ls = 0;
+	ls = 0;
 	while (buf[++i])
 		if (buf[i] == '\n')
 			++s;
@@ -47,9 +47,12 @@ int 			checkmap(char **ls, char *buf)
 	{
 		if (buf[i] == '\n')
 		{
-		//	if (i == 1)
-			if (i - s < 2)//== 0)
+			if (i - s < 2)
+			{
+				free(ls[0]);
+				free(ls);
 				return (0);
+			}
 			s = i;
 			buf[i] = 0;
 			if (buf[i + 1] == 0)
@@ -57,16 +60,32 @@ int 			checkmap(char **ls, char *buf)
 				ls[++j] = 0;
 				return 1;//(ls);
 			}
-			if (buf[i + 1] == '\n' || !i)// || s - i == 0)
+			if (buf[i + 1] == '\n' || !i)
 				return (0);
-		//	buf[i] = 0;
-			ls[++j] = &(buf[i + 1]);//buf + i + 1;//s c
+			ls[++j] = &(buf[i + 1]);
 		}
 	}
 	ls[++j] = 0;
 	return (1);//(ls);//WTF
 }
+int 			isdig(char **line)
+{
+	int j;
 
+	j = 0;
+	if (!(validate(2, line, -1)))
+	{
+		free(line[0]);
+		free(line);
+		return (0);
+	}
+/*	while (line[j])
+	{
+		if (!ft_isdigit(line[j]))
+			return (0);
+		++j;
+	}*/
+}
 char			**processmap(int fd, t_llrc *llrc)
 {
 	char	buf[BS + 1];
@@ -91,21 +110,23 @@ char			**processmap(int fd, t_llrc *llrc)
 	    return 0;
     }
 //	printf("%s\n", cp);
-	ls = lines(cp);//(buf);
-	checkmap(ls, cp);
+	if (!(ls = lines(cp)))
+		return(0);//(buf);
+	if (!(checkmap(ls, cp)))
+		return (0);
 	//free(cp);
-	int i = 0;
-/*	while (ls[i])
-	{
-		printf("=%s\n", ls[i++]);
-	}
-*/	int j = 0;
-	while (ls[0][j])
+	if (!isdig(ls))
+		return (0);
+	/*while (ls[0][j])
 	{
 		if (!ft_isdigit(ls[0][j]))//intlon
+		{
+			free(ls[0]);
+			free(ls);
 			return(0);//ft_err());
+		}
 		++j;
-	}
+	}*/
 	llrc->ants = ft_atoi(ls[0]);
 	ft_putendl(ls[0]);
 	return ls;

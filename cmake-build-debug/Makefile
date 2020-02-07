@@ -1986,6 +1986,33 @@ libft/revstr.c.s:
 	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/revstr.c.s
 .PHONY : libft/revstr.c.s
 
+split.o: split.c.o
+
+.PHONY : split.o
+
+# target to build an object file
+split.c.o:
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/split.c.o
+.PHONY : split.c.o
+
+split.i: split.c.i
+
+.PHONY : split.i
+
+# target to preprocess a source file
+split.c.i:
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/split.c.i
+.PHONY : split.c.i
+
+split.s: split.c.s
+
+.PHONY : split.s
+
+# target to generate assembly for a file
+split.c.s:
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/split.c.s
+.PHONY : split.c.s
+
 suurballe.o: suurballe.c.o
 
 .PHONY : suurballe.o
@@ -2418,6 +2445,9 @@ help:
 	@echo "... libft/revstr.o"
 	@echo "... libft/revstr.i"
 	@echo "... libft/revstr.s"
+	@echo "... split.o"
+	@echo "... split.i"
+	@echo "... split.s"
 	@echo "... suurballe.o"
 	@echo "... suurballe.i"
 	@echo "... suurballe.s"

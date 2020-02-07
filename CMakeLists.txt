@@ -85,4 +85,6 @@ add_executable(DIRlem_in_rep
         valprocess.c
         valroom.c
         valroom1.c
-        valen.c)
+        valen.c
+        split.c
+        )

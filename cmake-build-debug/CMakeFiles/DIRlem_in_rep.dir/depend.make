@@ -212,6 +212,10 @@ CMakeFiles/DIRlem_in_rep.dir/libft/get_next_line.c.o: ../libft/libft.h
 CMakeFiles/DIRlem_in_rep.dir/libft/revstr.c.o: ../libft/libft.h
 CMakeFiles/DIRlem_in_rep.dir/libft/revstr.c.o: ../libft/revstr.c
 
+CMakeFiles/DIRlem_in_rep.dir/split.c.o: ../lemin.h
+CMakeFiles/DIRlem_in_rep.dir/split.c.o: ../libft/libft.h
+CMakeFiles/DIRlem_in_rep.dir/split.c.o: ../split.c
+
 CMakeFiles/DIRlem_in_rep.dir/suurballe.c.o: ../lemin.h
 CMakeFiles/DIRlem_in_rep.dir/suurballe.c.o: ../libft/libft.h
 CMakeFiles/DIRlem_in_rep.dir/suurballe.c.o: ../suurballe.c

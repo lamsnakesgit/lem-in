@@ -70,8 +70,12 @@ int				val_in(int fd, t_llrc *llrc)
 		return (ft_err());
 	*llrc = nullst(*llrc);
 	i = roomlinkblock(ls + 1, llrc, fd);//dupls?
-	if (!llrc->rmi || llrc->end != 1 || llrc->st != 1)
+	if (!llrc->rmi || llrc->end != 1 || llrc->st != 1 || !i)
+	{
+		free(ls[0]);
+		free(ls);
 		return (ft_err());//freel-ifl//free s/e
+	}
 	turninarr(llrc);
 	if (ls && ls + i + 1)
 	{
@@ -104,11 +108,14 @@ int 			main(int ac, char **av)
 	fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big_sup/map_big_sup_1", O_RDONLY);
 	fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/map_39", O_RDONLY);
     //fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big/map_big_1", O_RDONLY);invalid/ants_empty
-    fd = open("/Users/ddratini/42_03_projests/lem-in/42_lem-in_tools/maps/valid/map_25" ,O_RDONLY);
-    fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_25", O_RDONLY);
-    fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_simple", O_RDONLY);
-    fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/map_42", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/lem-in/42_lem-in_tools/maps/valid/map_25" ,O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_25", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_simple", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/map_42", O_RDONLY);
     ///Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/ants_nbr_inf_int_min", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/ants_nbr_inf_int_min", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/ants_nbr_too_big", O_RDONLY);
 //	fd = 0;
 	if (val_in(fd, &llrc))//(ac, av);
 	{

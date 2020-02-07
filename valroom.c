@@ -71,12 +71,13 @@ t_list              *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor)
 	}
 	return (0);
 }
-
+/*
 int					val_cord(char **roomcor)//ps related neg int?
 {
 	int		j;
 
 	j = -1;
+	check_dig(roomcor[1])
 	while (roomcor[1][++j])
 	{
 		if (j == 10)
@@ -88,8 +89,69 @@ int					val_cord(char **roomcor)//ps related neg int?
 		if (!ft_isdigit(roomcor[2][j]) && ft_cleanmem(roomcor))
 			return (ft_err());
 	return (1);
+}*/
+
+long			valsp(char *av, long *sg)
+{
+	if (*av == '-')
+		*sg = -1;
+	if ((*av == ' ' && (*(av + 1) == ' ' || !*(av + 1))) \
+	|| ((*av == '-' || *av == '+') && !ft_isdigit(*(av + 1))) \
+	|| (*av != ' ' && *av != '-' && *av != '+' && !ft_isdigit(*av)) \
+	|| (ft_isdigit(*av) && !ft_isdigit(*(av + 1)) && *(av + 1) != ' ' \
+	&& *(av + 1)))
+		return (0);
+	return (1);
 }
 
+int				check_dig(char *av, int fn)
+{
+	int		i;
+	char	*maxi;
+	char	*mini;
+	int		cmpr;
+
+	i = -1;
+	maxi = "2147483647";
+	mini = "-2147483648";
+	if (!fn && (cmpr = ft_strcmp(av, maxi)) > 0)
+		return (0);//ft_err();
+	else if (fn && ft_strcmp(av, mini) > 0)
+		return (0);//ft_err(); //else?
+	else
+		return (1);
+	return (0);
+}
+
+int				validate(int ac, char **av, int i)
+{
+	int		j;
+	long	fn;
+	size_t	len;
+
+	while (av[++i] && i < ac - 1)
+	{
+		fn = 0;
+		j = -1;
+		if (av[i][0] == '-')
+			fn = 1;
+		if ((len = ft_strlen(av[i])) > 11 || (len > 10 && !fn))
+			return (0);//ft_err();
+		while (av[i][++j])
+		{
+			if (fn && !j)
+				++j;
+			if (!ft_isdigit(av[i][j]))
+				return (0);//ft_err();
+			if (!valsp(av[i] + j, &fn))
+				return (0);//ft_err();
+			if ((j >= 10) || (j >= 9 && !fn))
+				if (!check_dig(av[i], fn))
+					return (0);
+		}
+	}
+	return (1);
+}
 /*
 **send line ->check val inters->check coords; save r_name/room in linst;return->link1?
 ** delete- if nonval rmcor
@@ -102,11 +164,13 @@ char				**valrmc_s(char *line)
 	int 	i;
 
 	i = 0;
+	if (!issplitsp(line, ' '))
+		return (0);
 	if (!(roomcor = ft_strsplit(line, ' ')))
-		return 0;
+		return (0);
 	while (roomcor[i])// && roomcor)//uncod j
 		++i;
-	if (i == 3 && roomcor[0][0] != 'L' && val_cord(roomcor))
+	if (i == 3 && roomcor[0][0] != 'L' && validate(4, roomcor, -1))//val_cord(roomcor))
 		return (roomcor);
 	ft_cleanmem(roomcor);
 	return (NULL);

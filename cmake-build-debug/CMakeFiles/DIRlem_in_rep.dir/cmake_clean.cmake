@@ -68,6 +68,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/DIRlem_in_rep.dir/libft/ft_toupper.c.o"
   "CMakeFiles/DIRlem_in_rep.dir/libft/get_next_line.c.o"
   "CMakeFiles/DIRlem_in_rep.dir/libft/revstr.c.o"
+  "CMakeFiles/DIRlem_in_rep.dir/split.c.o"
   "CMakeFiles/DIRlem_in_rep.dir/suurballe.c.o"
   "CMakeFiles/DIRlem_in_rep.dir/traverse.c.o"
   "CMakeFiles/DIRlem_in_rep.dir/val_map.c.o"

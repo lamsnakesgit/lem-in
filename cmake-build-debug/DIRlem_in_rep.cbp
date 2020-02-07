@@ -297,6 +297,9 @@
 		<Unit filename="/Users/ddratini/42_03_projests/DIRlem-in_rep/libft/revstr.c">
 			<Option target="DIRlem_in_rep"/>
 		</Unit>
+		<Unit filename="/Users/ddratini/42_03_projests/DIRlem-in_rep/split.c">
+			<Option target="DIRlem_in_rep"/>
+		</Unit>
 		<Unit filename="/Users/ddratini/42_03_projests/DIRlem-in_rep/suurballe.c">
 			<Option target="DIRlem_in_rep"/>
 		</Unit>

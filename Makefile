@@ -2,7 +2,7 @@ NAME = lem-in
 
 SRC =   alg.c       bft.c       aux.c       lem_in.c\
         suurballe.c traverse.c  val_map.c\
-        valink.c    valprocess.c valroom.c  valroom1.c
+        valink.c    valprocess.c valroom.c  valroom1.c split.c
 
 OBJ = $(patsubst %.c, %.o, $(SRC))
 
