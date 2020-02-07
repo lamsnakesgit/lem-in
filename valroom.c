@@ -19,7 +19,7 @@ void				freermlst(t_llrc *llrc, t_rooms *rm)
 	while (llrc->br)
 	{
 		tmp = llrc->br->next;
-		free(((t_rooms *)tmp->content)->name_r);
+		free(((t_rooms *)llrc->br->content)->name_r);
 		free(llrc->br->content);
 		free(llrc->br);
 		llrc->br = tmp;
@@ -79,7 +79,7 @@ t_rooms				*ft_room(t_rooms *rm, char **roomcor, t_llrc *llrc)
 	}
 	free(roomcor);
 	if (!checkcor(rm, llrc))
-		;
+		return (0);
 	return (rm);//return 0;//
 }
 /*
@@ -87,11 +87,8 @@ t_rooms				*ft_room(t_rooms *rm, char **roomcor, t_llrc *llrc)
 */
 t_list              *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor, t_llrc *llrc)
 {
-	char **rmc;
 	t_rooms	*rm;
 
-//(t_rooms *)malloc(sizeof(t_rooms))
-	rmc = roomcor;//
 	rm = 0;
 	rm = ft_room(rm, roomcor, llrc);
 	if (!rm)
@@ -100,14 +97,14 @@ t_list              *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor, 
 	{
 		*br = ft_lstnew((void *)rm, (size_t)sizeof(rm));
 		//ft_lstnew((const void *));//((const void *)roomcor, (size_t)sizeof(roomcor));
-		(*br)->content = (void *)rm;//roomcor;
+		(*br)->content = (void *)rm;
 		return (*br);
 	}
 	else
 	{
 		//br = br->next;//ft_lstadd(br, ft_lstnew((const void *)rmc, (size_t)sizeof(rmc)));//br);
 		ft_lstadd(br, ft_lstnew((void *)rm, (size_t) sizeof(rm)));
-		(*br)->content = (void *)rm;//!
+		(*br)->content = (void *)rm;
 		return (*br);
 	}
 	return (0);

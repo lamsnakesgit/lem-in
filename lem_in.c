@@ -53,6 +53,22 @@ void			freellrc(t_llrc *lrc)
 	}
 	free(lrc->arrrm);
 }
+int 			wrongroom(t_llrc *llrc, char **line)
+{
+	int i;
+	t_list	*tmp;
+
+	while (llrc->br)
+	{
+		tmp = llrc->br->next;
+		free(((t_rooms *)llrc->br->content)->name_r);
+		free((t_rooms *)llrc->br->content);
+		free(llrc->br);
+		llrc->br = tmp;
+	}
+	free(line[0]);
+	free(line);
+}
 /*
 **{//extra dop otd for chech_room w own w gnl
 ** //--check_roomspresence_validif
@@ -72,8 +88,7 @@ int				val_in(int fd, t_llrc *llrc)
 	i = roomlinkblock(ls + 1, llrc, fd);//dupls?
 	if (!llrc->rmi || llrc->end != 1 || llrc->st != 1 || !i)
 	{
-		free(ls[0]);
-		free(ls);
+		wrongroom(llrc, ls);
 		return (ft_err());//freel-ifl//free s/e
 	}
 	turninarr(llrc);
@@ -116,7 +131,7 @@ int 			main(int ac, char **av)
 	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/ants_nbr_inf_int_min", O_RDONLY);
 	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/ants_nbr_inf_int_min", O_RDONLY);
 	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/ants_nbr_too_big", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/room_name_duplicated", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/room_no_y_coord", O_RDONLY);
 //	fd = 0;
 	if (val_in(fd, &llrc))//(ac, av);
 	{

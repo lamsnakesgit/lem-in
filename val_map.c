@@ -92,10 +92,10 @@ int				rmorlink(char *line, t_llrc *lrc)//, t_list *rl)
 		return (0);//thereis no room; or fault
 	else
 	{
-		if (lrc->br)
+	/*	if (lrc->br)
 			if (!duplicheck(roomcor, lrc))
 				return -2;
-		if (!(lrc->br = valroom_fill1((&lrc->br), roomcor, lrc)))
+	*/	if (!(lrc->br = valroom_fill1((&lrc->br), roomcor, lrc)))
 			return (0);
 		lrc->rmi++;
 	}
