@@ -131,8 +131,8 @@ int 			main(int ac, char **av)
     ///Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools
 	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/ants_nbr_inf_int_min", O_RDONLY);
 	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/room_name_duplicated", O_RDONLY);
-	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/ants_nbr_too_big", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapnoconnect", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/ants_nbr_too_big", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/BGMAP", O_RDONLY);
 //	fd = 0;
 	if (val_in(fd, &llrc))//(ac, av);
 	{
