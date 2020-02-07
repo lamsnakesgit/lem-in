@@ -11,6 +11,45 @@
 /* ************************************************************************** */
 
 #include "lemin.h"
+void				freermlst(t_llrc *llrc, t_rooms *rm)
+{
+	t_list *tmp;
+
+	tmp = llrc->br;
+	while (llrc->br)
+	{
+		tmp = llrc->br->next;
+		free(((t_rooms *)tmp->content)->name_r);
+		free(llrc->br->content);
+		free(llrc->br);
+		llrc->br = tmp;
+	}
+	free(rm->name_r);
+	free(rm);
+}
+int 				checkcor(t_rooms *rm, t_llrc *llrc)
+{
+	t_list	*tmp;
+
+	tmp = llrc->br;
+	while (tmp)
+	{
+		if (!(ft_strcmp(((t_rooms *)(tmp->content))->name_r, rm->name_r)))
+		{
+			freermlst(llrc, rm);
+			return (0);
+		}
+		if (rm->x == ((t_rooms *)tmp->content)->x && rm->y == ((t_rooms *)(tmp->content))->y)
+		{
+			freermlst(llrc, rm);
+			return (0);
+		}
+		//	if (((t_rooms *)tmp->content)->x ==
+		//	lrc->br = lrc->br->next;
+		tmp = tmp->next;
+	}
+	return (1);
+}
 /*
 ** if not - or order or comment above ants -> display ERROR?
 ** read next_line -> either "name_c-x_c-y" or "##start"/"##end"/"#"comment;
@@ -23,7 +62,7 @@
 ** - room that has no link?
 */
 
-t_rooms				*ft_room(t_rooms *rm, char **roomcor)
+t_rooms				*ft_room(t_rooms *rm, char **roomcor, t_llrc *llrc)
 {
 	if (!((rm) = (t_rooms *)malloc(sizeof(t_rooms))))
 		return (0);
@@ -39,12 +78,14 @@ t_rooms				*ft_room(t_rooms *rm, char **roomcor)
 		free(roomcor[i]);
 	}
 	free(roomcor);
+	if (!checkcor(rm, llrc))
+		;
 	return (rm);//return 0;//
 }
 /*
 ** may erase lst elems right away; arr roomcor
 */
-t_list              *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor)
+t_list              *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor, t_llrc *llrc)
 {
 	char **rmc;
 	t_rooms	*rm;
@@ -52,7 +93,7 @@ t_list              *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor)
 //(t_rooms *)malloc(sizeof(t_rooms))
 	rmc = roomcor;//
 	rm = 0;
-	rm = ft_room(rm, roomcor);
+	rm = ft_room(rm, roomcor, llrc);
 	if (!rm)
 		return 0;
 	if (!br || !*br)

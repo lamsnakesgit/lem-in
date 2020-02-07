@@ -18,15 +18,11 @@ int                 duplicheck(char **roomcor, t_llrc *lrc)
 	int     cmp;
 
 	tmp = lrc->br;
-	//while (lrc->br)
 	while (tmp)
-	{//char * void*[0]*
-		//	if (!(ft_strcmp(((char**)(lrc->br->content))[0], roomcor[0])))
-		if (!(ft_strcmp(((char**)(tmp->content))[0], roomcor[0])))
+	{
+		if (!(ft_strcmp(((t_rooms *)(tmp->content))->name_r, roomcor[0])))
 			return (0);
-		cmp = ft_strcmp((((char**)(tmp->content))[1]), roomcor[1]);
-		if (!(ft_strcmp((((char**)(tmp->content))[2]), roomcor[2])) && !cmp)
-			return 0;
+	//	if (((t_rooms *)tmp->content)->x ==
 		//	lrc->br = lrc->br->next;
 		tmp= tmp->next;
 	}
