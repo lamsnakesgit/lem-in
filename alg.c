@@ -98,6 +98,8 @@ void			cutpath(t_list **er,t_list *er2)
 		ln = ln->next;
 	}
 }
+
+
 t_list 			*findlist(t_list *ln, t_list *er)
 {
 	t_list *tr;
@@ -148,6 +150,7 @@ t_list 			*buildpath(t_list *er)
 	path->content_size = i;
 	return (path);
 }
+
 void            del_paths(t_list *path, t_llrc *llrc)//free paths as wellas path content
 {
 	t_list  *paths;
@@ -170,6 +173,7 @@ void            del_paths(t_list *path, t_llrc *llrc)//free paths as wellas path
 	delete_rooms(llrc);
 	exit(0);
 }
+
 int				alg(t_llrc *llrc)
 {
 	int		i;

@@ -66,9 +66,14 @@ int                 corr_link(char **line, t_llrc *llrc, int *rn)//checkmarginin
 		return 0;
 //	free (rs);
 	++e;
-	while ((*line)[i])
-		++i;
-	rs = ft_strsub(*line, e, i);
+//	while ((*line)[i])
+//		++i;
+	i = e;
+	while((*line)[e])
+		++e;
+	rs = ft_strsub(*line, i, e - i);//e, i - 1);//ISPRAVLEN
+//	rs = ft_nstrsub(*line, i, e);//e, i - 1);
+    ///////rs = ft_nstrsub(*line, i, e - i);//e, i - 1);
 	if ((rn[1] = ispresent(llrc, rs)) < 0)
 		return 0;
 	return 1;

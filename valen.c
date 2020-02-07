@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   valen.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/19 13:59:59 by ddratini          #+#    #+#             */
-/*   Updated: 2019/04/19 17:50:33 by ddratini         ###   ########.fr       */
+/*   Created: 2020/02/07 18:37:18 by ddratini          #+#    #+#             */
+/*   Updated: 2020/02/07 18:37:37 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <lemin.h>
 
-char		*ft_strsub(char const *s, unsigned int start, size_t len)
+char		*ft_nstrsub(char const *s, unsigned int start, size_t len)
 {
 	char	*newsub;
 	size_t	i;
@@ -28,9 +28,10 @@ char		*ft_strsub(char const *s, unsigned int start, size_t len)
 			newsub[i++] = s[start++];
 
 		}
-     //   newsub[i++] = s[start++];
+		newsub[i++] = s[start++];
 		newsub[i] = '\0';
 		return (newsub);
 	}
 	return (0);
 }
+
