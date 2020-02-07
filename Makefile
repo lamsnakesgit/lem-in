@@ -8,7 +8,7 @@ OBJ = $(patsubst %.c, %.o, $(SRC))
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(OBJ)
 	@make -C ./libft re
 	@gcc -o $(NAME)  $(SRC) -L ./libft -lft #-Wall -Wextra -Werror#
 
