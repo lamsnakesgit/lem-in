@@ -185,6 +185,8 @@ int 			quepush2(t_llrc *llrc, t_list **q, t_list *tr);//**tr)///push unvis nbrs
 
 void			delete_rooms(t_llrc *llrc);
 
+char			*ft_nstrsub(char const *s, unsigned int start, size_t len);
+
 
 
 #endif
