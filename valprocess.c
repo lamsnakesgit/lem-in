@@ -68,7 +68,8 @@ int 			checkmap(char **ls, char *buf)
 	ls[++j] = 0;
 	return (1);//(ls);//WTF
 }
-int 			isdig(char **line)
+
+int 			isdig(char **line, t_llrc *llrc)
 {
 	int j;
 
@@ -79,6 +80,9 @@ int 			isdig(char **line)
 		free(line);
 		return (0);
 	}
+	llrc->ants = ft_atoi(line[0]);
+	ft_putendl(line[0]);
+	return (1);
 /*	while (line[j])
 	{
 		if (!ft_isdigit(line[j]))
@@ -109,25 +113,16 @@ char			**processmap(int fd, t_llrc *llrc)
 	    free(cp);
 	    return 0;
     }
-//	printf("%s\n", cp);
 	if (!(ls = lines(cp)))
-		return(0);//(buf);
+		return(0);
 	if (!(checkmap(ls, cp)))
-		return (0);
-	//free(cp);
-	if (!isdig(ls))
-		return (0);
-	/*while (ls[0][j])
 	{
-		if (!ft_isdigit(ls[0][j]))//intlon
-		{
-			free(ls[0]);
-			free(ls);
-			return(0);//ft_err());
-		}
-		++j;
-	}*/
-	llrc->ants = ft_atoi(ls[0]);
-	ft_putendl(ls[0]);
-	return ls;
+		free(ls[0]);
+		free(ls);
+		return (0);
+	}
+	//free(cp);
+	if (!isdig(ls, llrc))
+		return (0);
+	return (ls);
 }

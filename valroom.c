@@ -152,13 +152,27 @@ int				validate(int ac, char **av, int i)
 	}
 	return (1);
 }
+void 				freelrm(t_llrc *llrc)
+{
+	t_list	*tmp;
+
+	tmp = llrc->br;
+	while (llrc->br)
+	{
+		tmp = llrc->br->next;
+		free(((t_rooms *)llrc->br->content)->name_r);
+		free(llrc->br->content);
+		free(llrc->br);
+		llrc->br = tmp;
+	}
+}
 /*
 **send line ->check val inters->check coords; save r_name/room in linst;return->link1?
 ** delete- if nonval rmcor
 */
 /*t_rooms				*/
 
-char				**valrmc_s(char *line)
+char				**valrmc_s(char *line, t_llrc *llrc)
 {
 	char	**roomcor;
 	int 	i;
@@ -170,8 +184,9 @@ char				**valrmc_s(char *line)
 		return (0);
 	while (roomcor[i])// && roomcor)//uncod j
 		++i;
-	if (i == 3 && roomcor[0][0] != 'L' && validate(4, roomcor, -1))//val_cord(roomcor))
+	if (i == 3 && roomcor[0][0] != 'L' && validate(3, roomcor + 1, -1))//val_cord(roomcor))
 		return (roomcor);
+	freelrm(llrc);
 	ft_cleanmem(roomcor);
 	return (NULL);
 }

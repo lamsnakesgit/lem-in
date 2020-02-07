@@ -130,7 +130,7 @@ int			    comstend(char *line);
 
 t_list          *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor);
 int			    val_cord(char **roomcor);//ps related neg int?
-char		    **valrmc_s(char *line);
+char		    **valrmc_s(char *line, t_llrc *llrc);
 int			    savemarg(t_llrc *lrc, int cm);//char *line,
 int			    stcheck(char **line, t_llrc *lrc, int cm, int fd);
 int             duplicheck(char **roomcor, t_llrc *lrc);

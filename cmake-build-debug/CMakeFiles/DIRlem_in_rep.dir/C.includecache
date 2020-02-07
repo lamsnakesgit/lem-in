@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/Users/ddratini/42_03_projests/DIRlem-in_rep/lem_in.c
+lemin.h
+/Users/ddratini/42_03_projests/DIRlem-in_rep/lemin.h
+
 /Users/ddratini/42_03_projests/DIRlem-in_rep/lemin.h
 unistd.h
 -
@@ -23,8 +27,4 @@ unistd.h
 -
 string.h
 -
-
-/Users/ddratini/42_03_projests/DIRlem-in_rep/valprocess.c
-lemin.h
-/Users/ddratini/42_03_projests/DIRlem-in_rep/lemin.h
 

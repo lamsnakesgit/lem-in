@@ -85,13 +85,11 @@ int				rmorlink(char *line, t_llrc *lrc)//, t_list *rl)
 	char	**roomcor;
 
 	if (!ft_strchr(line, ' '))//btwr-name-1//lol/KO
-	{//oi	free (line);//0?
-		//	return(line);//line == 0 ? return (0) : return (llrc);//.linkd = line);
+	{
 		return 2;
 	}
-	if (!(roomcor = valrmc_s(line)))//STOP
+	if (!(roomcor = valrmc_s(line, lrc)))
 		return (0);//thereis no room; or fault
-		//if (ft_strchr))
 	else
 	{
 	/*	if (lrc->br)
