@@ -203,7 +203,8 @@ int				alg(t_llrc *llrc)
 		if (surb(&paths, llrc))
 			break;
 	}
-	print_ant(&paths, llrc);
+	if (paths)
+		print_ant(&paths, llrc);
 	del_paths(paths, llrc);
 	return 1;
 }
