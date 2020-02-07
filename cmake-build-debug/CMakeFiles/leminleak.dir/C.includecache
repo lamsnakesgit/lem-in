@@ -6,26 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/gusujio/leminleak/alg.c
-lemin.h
-/Users/gusujio/leminleak/lemin.h
-
-/Users/gusujio/leminleak/alg2.c
-lemin.h
-/Users/gusujio/leminleak/lemin.h
-
-/Users/gusujio/leminleak/aux.c
-lemin.h
-/Users/gusujio/leminleak/lemin.h
-
-/Users/gusujio/leminleak/bft.c
-lemin.h
-/Users/gusujio/leminleak/lemin.h
-
-/Users/gusujio/leminleak/lem_in.c
-lemin.h
-/Users/gusujio/leminleak/lemin.h
-
 /Users/gusujio/leminleak/lemin.h
 unistd.h
 -
@@ -45,34 +25,6 @@ string.h
 -
 
 /Users/gusujio/leminleak/surb2.c
-lemin.h
-/Users/gusujio/leminleak/lemin.h
-
-/Users/gusujio/leminleak/suurballe.c
-lemin.h
-/Users/gusujio/leminleak/lemin.h
-
-/Users/gusujio/leminleak/traverse.c
-lemin.h
-/Users/gusujio/leminleak/lemin.h
-
-/Users/gusujio/leminleak/val_map.c
-lemin.h
-/Users/gusujio/leminleak/lemin.h
-
-/Users/gusujio/leminleak/valink.c
-lemin.h
-/Users/gusujio/leminleak/lemin.h
-
-/Users/gusujio/leminleak/valprocess.c
-lemin.h
-/Users/gusujio/leminleak/lemin.h
-
-/Users/gusujio/leminleak/valroom.c
-lemin.h
-/Users/gusujio/leminleak/lemin.h
-
-/Users/gusujio/leminleak/valroom1.c
 lemin.h
 /Users/gusujio/leminleak/lemin.h
 
