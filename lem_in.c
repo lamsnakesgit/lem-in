@@ -53,7 +53,15 @@ void			freellrc(t_llrc *lrc)
 	}
 	free(lrc->arrrm);
 }
-int 			wrongroom(t_llrc *llrc, char **line)
+
+/*
+** go through lst if f == x delete x; names/contents/links
+** when do we delete list of rooms?
+** first cycle = list of rooms
+** second array or fooms +- links
+*/
+
+int 			wrongroom(t_llrc *llrc, char **line, int f)
 {
 	int i;
 	t_list	*tmp;
@@ -65,6 +73,23 @@ int 			wrongroom(t_llrc *llrc, char **line)
 		free((t_rooms *)llrc->br->content);
 		free(llrc->br);
 		llrc->br = tmp;
+	}
+	i = -1;
+	if (f == 2)
+	{
+		while (++i < llrc->rmi)
+		{
+		//	free(llrc->arrrm[i]->name_r);
+			while (llrc->arrrm[i]->ln)
+			{
+				tmp = llrc->arrrm[i]->ln->next;
+				free(llrc->arrrm[i]->ln);
+				llrc->arrrm[i]->ln = tmp;
+			}
+			free(llrc->arrrm[i]->name_r);
+			free(llrc->arrrm[i]);
+		}
+		free(llrc->arrrm);
 	}
 	free(line[0]);
 	free(line);
@@ -89,7 +114,7 @@ int				val_in(int fd, t_llrc *llrc)
 	i = roomlinkblock(ls + 1, llrc, fd);//dupls?
 	if (!llrc->rmi || llrc->end != 1 || llrc->st != 1 || !i)
 	{
-		wrongroom(llrc, ls);
+		wrongroom(llrc, ls, 1);
 		return (ft_err());//freel-ifl//free s/e
 	}
 	turninarr(llrc);
@@ -97,8 +122,7 @@ int				val_in(int fd, t_llrc *llrc)
 	{
 		if (!linkval(ls + i + 1, llrc, fd))
 		{
-			free(llrc->er);
-			free(llrc->fr);
+			wrongroom(llrc, ls, 2);
 ///			freellrc(llrc);
 			return (ft_err());
 		}
@@ -132,7 +156,7 @@ int 			main(int ac, char **av)
 	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/ants_nbr_inf_int_min", O_RDONLY);
 	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/room_name_duplicated", O_RDONLY);
 	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/ants_nbr_too_big", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/map_l", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/map_l", O_RDONLY);
 //	fd = 0;
 	if (val_in(fd, &llrc))//(ac, av);
 	{

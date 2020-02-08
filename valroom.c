@@ -253,13 +253,16 @@ void				turninarr(t_llrc *llrc)
 		return ;
 	tmp = llrc->br;
 	i = 0;
-	while (tmp)
+	while (llrc->br)
 	{
-		llrc->arrrm[i] = (t_rooms *)tmp->content;
+		tmp = llrc->br->next;
+		llrc->arrrm[i] = (t_rooms *)llrc->br->content;
 		llrc->arrrm[i]->nu = i;
 		llrc->arrrm[i]->ant = 0;
 		llrc->arrrm[i]->vis2 = 0;
-		tmp = tmp->next;
+		free(llrc->br);
+		llrc->br = tmp;
+		//tmp = tmp->next;
 //		printf("||%s||%d\n", llrc->arrrm[i]->name_r, (llrc->arrrm)[i]->x);
 		++i;
 	}
