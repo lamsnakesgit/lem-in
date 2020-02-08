@@ -6,11 +6,12 @@
 /*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 16:11:35 by ddratini          #+#    #+#             */
-/*   Updated: 2020/01/06 16:12:02 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/08 18:53:47 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
+
 void				freermlst(t_llrc *llrc, t_rooms *rm)
 {
 	t_list *tmp;
@@ -27,6 +28,7 @@ void				freermlst(t_llrc *llrc, t_rooms *rm)
 	free(rm->name_r);
 	free(rm);
 }
+
 int 				checkcor(t_rooms *rm, t_llrc *llrc)
 {
 	t_list	*tmp;
@@ -158,7 +160,6 @@ int				check_dig(char *av, int fn)
 		return (0);//ft_err(); //else?
 	else
 		return (1);
-	return (0);
 }
 
 int				validate(int ac, char **av, int i)
@@ -220,7 +221,7 @@ char				**valrmc_s(char *line, t_llrc *llrc)
 		return (0);
 	if (!(roomcor = ft_strsplit(line, ' ')))
 		return (0);
-	while (roomcor[i])// && roomcor)//uncod j
+	while (roomcor[i])//&& roomcor)//uncod j
 		++i;
 	if (i == 3 && roomcor[0][0] != 'L' && validate(3, roomcor + 1, -1))//val_cord(roomcor))
 		return (roomcor);

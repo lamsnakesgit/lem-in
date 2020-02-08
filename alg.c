@@ -205,6 +205,7 @@ int				alg(t_llrc *llrc)
 	}
 	if (paths)
 		print_ant(&paths, llrc);
+	ft_err();
 	del_paths(paths, llrc);
 	return 1;
 }

@@ -189,6 +189,10 @@ char			*ft_nstrsub(char const *s, unsigned int start, size_t len);
 int 			issplitsp(char *s, char c);
 int				validate(int ac, char **av, int i);
 
+int				free_map(char **line);
+int 			wrongroom(t_llrc *llrc, char **line, int f);
+void			freermlst(t_llrc *llrc, t_rooms *rm);
+
 
 
 #endif

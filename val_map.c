@@ -36,13 +36,12 @@ int					stcheck(char **line, t_llrc *lrc, int cm, int fd)
 	int re;
 	int rvl;
 	int i;
-//	if (cm == -2)++lrc->end;if (cm == -1)++lrc->st;
 
-	i = 0;
+	i = -1;
 	cm == -2 ? ++lrc->end : ++lrc->st;
 	if (lrc->st > 1 || lrc->end > 1)
 		return -2;
-	while (line[i])//(get_next_line(fd, line) > 0)
+	while (line[++i])
 	{
 		if ((re=comstend(line[i]))!=1)
 		{//	free(*line);
@@ -55,10 +54,8 @@ int					stcheck(char **line, t_llrc *lrc, int cm, int fd)
 				return -2;//0;
 			if (savemarg(lrc, cm) == 0)//*line,
 				return -2;//0000;//nonfree?/ret?
-		//	free (*line);
 			return (1 + i);//1;
-		}//cont aft -1/-2 exit?
-		++i;//OMG
+		}//cont aft -1/-2 exit?//OMG
 	}
 	return -2;
 }
@@ -114,8 +111,6 @@ int					roomlinkblock(char **line, t_llrc *lrc, int fd)//mv ind!
 	while (line[i])
 	{
 		ret = comstend(line[i]);
-	//	if ((ret = comstend(*line))==0||ret==-3||ret==-1||ret==-2)
-	//		free(*line);//repetiton of st/e/else?//KEKEEEEK
 		if (ret == -1 ||ret == -2)/*)//save1/rol/cycle.iscom*/
 		{
 			if ((v = stcheck(line + i + 1, lrc, ret, fd)) < 0)//ret-check
@@ -126,13 +121,10 @@ int					roomlinkblock(char **line, t_llrc *lrc, int fd)//mv ind!
 		{
 			if ((rm = rmorlink(line[i], lrc)/*, (lrc->br))*/) == 2)
 				return i;//(line[i]);//if no rms->lnks(li);//
-		//	free(*line);
 			if (rm == 0 || rm == -2)
 				return (0);
-		//	ok = (char**)lrc->br->content;
-			//	printf("%s\n|%s\n|%s\n", ((char**)lrc->br->content)[0], ((char**)(lrc->br->content))[1], ((char**)(lrc->br->content))[2]);
 		}
 		++i;
 	}
-	return (0);//(*line);ERRvalrmonly
+	return (0);//;ERRvalrmonly
 }

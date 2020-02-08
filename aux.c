@@ -278,7 +278,10 @@ void 	delpath(t_list **paths, t_list *ln)
 		tr = tr->next;
 	}
 }
-
+/*
+** deletes roomnames, links. array of rooms, pointer to arrrooms
+** free lst removed
+*/
 void	delete_rooms(t_llrc *llrc)
 {
 	int i;
