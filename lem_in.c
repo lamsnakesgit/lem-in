@@ -41,7 +41,7 @@ t_llrc 			nullst(t_llrc llrc)
 	return (llrc);
 }
 
-void			freellrc(t_llrc *lrc)
+void			freearr(t_llrc *lrc)
 {
 	int i;
 
@@ -60,7 +60,25 @@ void			freellrc(t_llrc *lrc)
 ** first cycle = list of rooms
 ** second array or fooms +- links
 */
+int 			free_array_content(t_llrc *llrc, char **line, int f)
+{
+	int i;
 
+	i = 0;
+	while (++i < llrc->rmi)
+	{
+		//	free(llrc->arrrm[i]->name_r);
+		while (llrc->arrrm[i]->ln)
+		{
+			tmp = llrc->arrrm[i]->ln->next;
+			free(llrc->arrrm[i]->ln);
+			llrc->arrrm[i]->ln = tmp;
+		}
+		free(llrc->arrrm[i]->name_r);
+		free(llrc->arrrm[i]);
+	}
+	free(llrc->arrrm);
+}
 int 			wrongroom(t_llrc *llrc, char **line, int f)
 {
 	int i;
@@ -77,19 +95,7 @@ int 			wrongroom(t_llrc *llrc, char **line, int f)
 	i = -1;
 	if (f == 2)
 	{
-		while (++i < llrc->rmi)
-		{
-		//	free(llrc->arrrm[i]->name_r);
-			while (llrc->arrrm[i]->ln)
-			{
-				tmp = llrc->arrrm[i]->ln->next;
-				free(llrc->arrrm[i]->ln);
-				llrc->arrrm[i]->ln = tmp;
-			}
-			free(llrc->arrrm[i]->name_r);
-			free(llrc->arrrm[i]);
-		}
-		free(llrc->arrrm);
+		free_array_content(llrc, line, f);
 	}
 	free(line[0]);
 	free(line);
@@ -98,6 +104,7 @@ int 			wrongroom(t_llrc *llrc, char **line, int f)
 /*
 **{//extra dop otd for chech_room w own w gnl
 ** //--check_roomspresence_validif
+** i == 0 -> no links or else error
 */
 
 int				val_in(int fd, t_llrc *llrc)
@@ -107,33 +114,22 @@ int				val_in(int fd, t_llrc *llrc)
 	char	**ls;
 	int 	i;
 
-
 	if (!(ls = processmap(fd, llrc)) || ! (1 + ls))
 		return (ft_err());
 	*llrc = nullst(*llrc);
-	i = roomlinkblock(ls + 1, llrc, fd);//dupls?
+	i = roomlinkblock(ls + 1, llrc, fd);
 	if (!llrc->rmi || llrc->end != 1 || llrc->st != 1 || !i)
 	{
 		wrongroom(llrc, ls, 1);
-		return (ft_err());//freel-ifl//free s/e
+		return (ft_err());
 	}
 	turninarr(llrc);
-	if (ls && ls + i + 1)
-	{
+	if (ls + i + 1)
 		if (!linkval(ls + i + 1, llrc, fd))
 		{
 			wrongroom(llrc, ls, 2);
-///			freellrc(llrc);
 			return (ft_err());
 		}
-	}
-	else
-	{
-		ft_cleanmem(ls);
-		delete_rooms(llrc);
-	//	freellrc(llrc);
-		ft_err();
-	}
 	free_map(ls);
 	return (1);
 }
@@ -148,15 +144,15 @@ int 			main(int ac, char **av)
     //fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big/map_big_1", O_RDONLY);invalid/ants_empty
 //	fd = open("/Users/ddratini/42_03_projests/lem-in/42_lem-in_tools/maps/valid/map_25" ,O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_25", O_RDONLY);
-//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_simple", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_simple", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/map_42", O_RDONLY);
     ///Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools
-	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/empty_map", O_RDONLY);
+	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/empty_map", O_RDONLY);
 	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/room_name_duplicated", O_RDONLY);
 	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/ants_nbr_too_big", O_RDONLY);
 	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_invalidcommand1", O_RDONLY);
-//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/noendline", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/LOL", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/nolinksb", O_RDONLY);
+	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/emptyline", O_RDONLY);
 //	fd = 0;
 	if (val_in(fd, &llrc))//(ac, av);
 	{

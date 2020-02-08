@@ -162,10 +162,9 @@ int				check_dig(char *av, int fn)
 		return (1);
 }
 
-int				validate(int ac, char **av, int i)
+int				validate(int ac, char **av, int i, long fn)
 {
 	int		j;
-	long	fn;
 	size_t	len;
 
 	while (av[++i] && i < ac - 1)

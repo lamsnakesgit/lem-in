@@ -187,7 +187,7 @@ void			delete_rooms(t_llrc *llrc);
 
 char			*ft_nstrsub(char const *s, unsigned int start, size_t len);
 int 			issplitsp(char *s, char c);
-int				validate(int ac, char **av, int i);
+int				validate(int ac, char **av, int i, long);
 
 int				free_map(char **line);
 int 			wrongroom(t_llrc *llrc, char **line, int f);

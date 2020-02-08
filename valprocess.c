@@ -42,18 +42,14 @@ int				free_map(char **line)
 	return (0);
 }
 
-int 			checkmap(char **ls, char *buf)
+int 			checkmap(char **ls, char *buf, int i, int j)
 {
-	int i;
-	int j;
 	int s;
 
 	i = -1;
-	j = 0;
 	ls[0] = buf;
 	s = -1;//0;
 	while (buf[++i])
-	{
 		if (buf[i] == '\n')
 		{
 			if (i - s < 2)
@@ -69,7 +65,8 @@ int 			checkmap(char **ls, char *buf)
 				return (free_map(ls));
 			ls[++j] = &(buf[i + 1]);
 		}
-	}
+	if (buf[i - 1] != '\n')
+		return (free_map(ls));
 	ls[++j] = 0;
 	return (1);//(ls);//WTF
 }
@@ -112,7 +109,7 @@ char			**processmap(int fd, t_llrc *llrc)
 	    free(cp);
 	    return 0;
     }
-	if (!(checkmap(ls, cp)))
+	if (!(checkmap(ls, cp, -1, 0)))
 		return(0);//free_map(ls));
 	//free(cp);
 	if (!isdig(ls, llrc))
