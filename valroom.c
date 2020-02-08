@@ -87,32 +87,30 @@ t_rooms				*ft_room(t_rooms *rm, char **roomcor, t_llrc *llrc)
 	free(roomcor);
 	if (!checkcor(rm, llrc))
 		return (0);
-	return (rm);//return 0;//
+	return (rm);
 }
 
 /*
 ** may erase lst elems right away; arr roomcor
 */
 
-t_list              *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor, t_llrc *llrc)
+t_list				*valroom_fill1(t_list **br, char **roomcor, t_llrc *llrc)
 {
 	t_rooms	*rm;
 
 	rm = 0;
 	rm = ft_room(rm, roomcor, llrc);
 	if (!rm)
-		return 0;
+		return (0);
 	if (!br || !*br)
 	{
 		*br = ft_lstnew((void *)rm, (size_t)sizeof(rm));
-		//ft_lstnew((const void *));//((const void *)roomcor, (size_t)sizeof(roomcor));
 		(*br)->content = (void *)rm;
 		return (*br);
 	}
 	else
 	{
-		//br = br->next;//ft_lstadd(br, ft_lstnew((const void *)rmc, (size_t)sizeof(rmc)));//br);
-		ft_lstadd(br, ft_lstnew((void *)rm, (size_t) sizeof(rm)));
+		ft_lstadd(br, ft_lstnew((void *)rm, (size_t)sizeof(rm)));
 		(*br)->content = (void *)rm;
 		return (*br);
 	}
@@ -143,9 +141,9 @@ int				check_dig(char *av, int fn)
 	maxi = "2147483647";
 	mini = "-2147483648";
 	if (!fn && (cmpr = ft_strcmp(av, maxi)) > 0)
-		return (0);//ft_err();
+		return (0);
 	else if (fn && ft_strcmp(av, mini) > 0)
-		return (0);//ft_err(); //else?
+		return (0);
 	else
 		return (1);
 }
@@ -162,15 +160,15 @@ int				validate(int ac, char **av, int i, long fn)
 		if (av[i][0] == '-')
 			fn = 1;
 		if ((len = ft_strlen(av[i])) > 11 || (len > 10 && !fn))
-			return (0);//ft_err();
+			return (0);
 		while (av[i][++j])
 		{
 			if (fn && !j)
 				++j;
 			if (!ft_isdigit(av[i][j]))
-				return (0);//ft_err();
+				return (0);
 			if (!valsp(av[i] + j, &fn))
-				return (0);//ft_err();
+				return (0);
 			if ((j >= 10) || (j >= 9 && !fn))
 				if (!check_dig(av[i], fn))
 					return (0);
@@ -179,7 +177,7 @@ int				validate(int ac, char **av, int i, long fn)
 	return (1);
 }
 
-void 				freelrm(t_llrc *llrc)
+void			freelrm(t_llrc *llrc)
 {
 	t_list	*tmp;
 
@@ -193,25 +191,25 @@ void 				freelrm(t_llrc *llrc)
 		llrc->br = tmp;
 	}
 }
+
 /*
 **send line ->check val inters->check coords; save r_name/room in linst;return->link1?
 ** delete- if nonval rmcor
 */
-/*t_rooms				*/
 
 char				**valrmc_s(char *line, t_llrc *llrc)
 {
 	char	**roomcor;
-	int 	i;
+	int		i;
 
 	i = 0;
 	if (!issplitsp(line, ' '))
 		return (0);
 	if (!(roomcor = ft_strsplit(line, ' ')))
 		return (0);
-	while (roomcor[i])//&& roomcor)//uncod j
+	while (roomcor[i])
 		++i;
-	if (i == 3 && roomcor[0][0] != 'L' && validate(3, roomcor + 1, -1))//val_cord(roomcor))
+	if (i == 3 && roomcor[0][0] != 'L' && validate(3, roomcor + 1, -1))
 		return (roomcor);
 	freelrm(llrc);
 	ft_cleanmem(roomcor);
@@ -222,22 +220,20 @@ int					savemarg(t_llrc *lrc, int cm)
 {
 	t_rooms *x;
 
-//	if (!(x = (t_rooms*)malloc(sizeof(t_rooms))))
-//		return 0;
 	x = (t_rooms *)lrc->br->content;
-	x->lvl = 0;//?
+	x->lvl = 0;
 	if (cm == -1)
 		lrc->fr = x;
 	if (cm == -2)
 		lrc->er = x;
-	return -11;
+	return (-11);
 }
 
 void				turninarr(t_llrc *llrc)
 {
-	int     i;
-	t_list  *tmp;
-	//llrc->arrrm = (t_rooms *)malloc(sizeof(t_rooms));// * (llrc->rmi - 1));
+	int		i;
+	t_list	*tmp;
+
 	if (!(llrc->arrrm = (t_rooms **)malloc(sizeof(t_rooms *) * (llrc->rmi))))
 		return ;
 	tmp = llrc->br;
@@ -251,8 +247,6 @@ void				turninarr(t_llrc *llrc)
 		llrc->arrrm[i]->vis2 = 0;
 		free(llrc->br);
 		llrc->br = tmp;
-		//tmp = tmp->next;
-//		printf("||%s||%d\n", llrc->arrrm[i]->name_r, (llrc->arrrm)[i]->x);
 		++i;
 	}
 }

@@ -12,19 +12,21 @@
 
 #include "lemin.h"
 
-int                 duplicheck(char **roomcor, t_llrc *lrc)
-{//if all val recd-> atoi cors n check
-	t_list *tmp;
-	int     cmp;
+/*
+** //if all val recd-> atoi cors n check
+*/
+
+int			duplicheck(char **roomcor, t_llrc *lrc)
+{
+	t_list	*tmp;
+	int		cmp;
 
 	tmp = lrc->br;
 	while (tmp)
 	{
 		if (!(ft_strcmp(((t_rooms *)(tmp->content))->name_r, roomcor[0])))
 			return (0);
-	//	if (((t_rooms *)tmp->content)->x ==
-		//	lrc->br = lrc->br->next;
-		tmp= tmp->next;
+		tmp = tmp->next;
 	}
 	return (1);
 }
