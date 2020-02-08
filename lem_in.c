@@ -1,4 +1,4 @@
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   lem-in.c                                           :+:      :+:    :+:   */
@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "lemin.h"
+
 /*
 ** amount of ants - ints?
 ** unsigned int
@@ -22,12 +23,7 @@ int				ft_err(void)
 	return (0);
 }
 
-/*char			**ft_split_room(char *line, char c)
-{
-	int i;
-}*/
-
-t_llrc 			nullst(t_llrc llrc)
+t_llrc			nullst(t_llrc llrc)
 {
 	llrc.end = 0;
 	llrc.st = 0;
@@ -60,9 +56,11 @@ void			freearr(t_llrc *lrc)
 ** first cycle = list of rooms
 ** second array or fooms +- links
 */
-int 			free_array_content(t_llrc *llrc, char **line, int f)
+
+int				free_array_content(t_llrc *llrc, char **line, int f)
 {
-	int i;
+	int		i;
+	t_list	*tmp;
 
 	i = 0;
 	while (++i < llrc->rmi)
@@ -79,9 +77,10 @@ int 			free_array_content(t_llrc *llrc, char **line, int f)
 	}
 	free(llrc->arrrm);
 }
-int 			wrongroom(t_llrc *llrc, char **line, int f)
+
+int				wrongroom(t_llrc *llrc, char **line, int f)
 {
-	int i;
+	int		i;
 	t_list	*tmp;
 
 	while (llrc->br)
@@ -101,6 +100,7 @@ int 			wrongroom(t_llrc *llrc, char **line, int f)
 	free(line);
 	return (1);
 }
+
 /*
 **{//extra dop otd for chech_room w own w gnl
 ** //--check_roomspresence_validif
@@ -112,9 +112,9 @@ int				val_in(int fd, t_llrc *llrc)
 	char	*line;
 	char	*linkd;
 	char	**ls;
-	int 	i;
+	int		i;
 
-	if (!(ls = processmap(fd, llrc)) || ! (1 + ls))
+	if (!(ls = processmap(fd, llrc)) || !(1 + ls))
 		return (ft_err());
 	*llrc = nullst(*llrc);
 	i = roomlinkblock(ls + 1, llrc, fd);
@@ -141,12 +141,12 @@ int 			main(int ac, char **av)
 
 	fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big_sup/map_big_sup_1", O_RDONLY);
 	fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/map_39", O_RDONLY);
-    //fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big/map_big_1", O_RDONLY);invalid/ants_empty
+	//fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big/map_big_1", O_RDONLY);invalid/ants_empty
 //	fd = open("/Users/ddratini/42_03_projests/lem-in/42_lem-in_tools/maps/valid/map_25" ,O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_25", O_RDONLY);
 	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_simple", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/map_42", O_RDONLY);
-    ///Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools
+	///Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools
 	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/empty_map", O_RDONLY);
 	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/room_name_duplicated", O_RDONLY);
 	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/ants_nbr_too_big", O_RDONLY);

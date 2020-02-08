@@ -29,9 +29,10 @@ void				freermlst(t_llrc *llrc, t_rooms *rm)
 	free(rm);
 }
 
-int 				checkcor(t_rooms *rm, t_llrc *llrc)
+int					checkcor(t_rooms *rm, t_llrc *llrc)
 {
 	t_list	*tmp;
+	t_rooms	*n;
 
 	tmp = llrc->br;
 	while (tmp)
@@ -41,7 +42,8 @@ int 				checkcor(t_rooms *rm, t_llrc *llrc)
 			freermlst(llrc, rm);
 			return (0);
 		}
-		if (rm->x == ((t_rooms *)tmp->content)->x && rm->y == ((t_rooms *)(tmp->content))->y)
+		n = (t_rooms *)tmp->content;
+		if (rm->x == (n)->x && rm->y == (n)->y)
 		{
 			freermlst(llrc, rm);
 			return (0);
@@ -52,6 +54,7 @@ int 				checkcor(t_rooms *rm, t_llrc *llrc)
 	}
 	return (1);
 }
+
 /*
 ** if not - or order or comment above ants -> display ERROR?
 ** read next_line -> either "name_c-x_c-y" or "##start"/"##end"/"#"comment;
@@ -66,6 +69,8 @@ int 				checkcor(t_rooms *rm, t_llrc *llrc)
 
 t_rooms				*ft_room(t_rooms *rm, char **roomcor, t_llrc *llrc)
 {
+	int i;
+
 	if (!((rm) = (t_rooms *)malloc(sizeof(t_rooms))))
 		return (0);
 	(rm)->ln = 0;
@@ -74,7 +79,7 @@ t_rooms				*ft_room(t_rooms *rm, char **roomcor, t_llrc *llrc)
 	(rm)->vis = 0;
 	(rm)->x = ft_atoi(roomcor[1]);
 	(rm)->y = ft_atoi(roomcor[2]);
-	int i = -1;
+	i = -1;
 	while (roomcor[++i])
 	{
 		free(roomcor[i]);
@@ -84,9 +89,11 @@ t_rooms				*ft_room(t_rooms *rm, char **roomcor, t_llrc *llrc)
 		return (0);
 	return (rm);//return 0;//
 }
+
 /*
 ** may erase lst elems right away; arr roomcor
 */
+
 t_list              *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor, t_llrc *llrc)
 {
 	t_rooms	*rm;
@@ -111,25 +118,6 @@ t_list              *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor, 
 	}
 	return (0);
 }
-/*
-int					val_cord(char **roomcor)//ps related neg int?
-{
-	int		j;
-
-	j = -1;
-	check_dig(roomcor[1])
-	while (roomcor[1][++j])
-	{
-		if (j == 10)
-			if (!ft_isdigit(roomcor[1][j]) && ft_cleanmem(roomcor))
-				return (ft_err());//0?
-	}
-	j = -1;
-	while (roomcor[2][++j])
-		if (!ft_isdigit(roomcor[2][j]) && ft_cleanmem(roomcor))
-			return (ft_err());
-	return (1);
-}*/
 
 long			valsp(char *av, long *sg)
 {
@@ -190,6 +178,7 @@ int				validate(int ac, char **av, int i, long fn)
 	}
 	return (1);
 }
+
 void 				freelrm(t_llrc *llrc)
 {
 	t_list	*tmp;
