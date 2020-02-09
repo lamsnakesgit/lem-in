@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alg2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gusujio <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 18:19:03 by gusujio           #+#    #+#             */
-/*   Updated: 2020/02/07 18:35:45 by gusujio          ###   ########.fr       */
+/*   Updated: 2020/02/09 17:08:34 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,6 @@ void		del_paths(t_list *path, t_llrc *llrc)
 		free(path);
 		path = paths;
 	}
-	delete_rooms(llrc);
+	delete_rooms(llrc, 0);
 	exit(0);
 }

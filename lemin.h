@@ -6,7 +6,7 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:18 by ddratini          #+#    #+#             */
-/*   Updated: 2020/02/09 16:46:25 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/09 17:05:12 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void			ft_listup(t_list **alst, t_list *new);
 void			ft_lstadd_up(t_list **alst, t_list *new);
 
 int 			queadd(t_list **q, t_list *tr);
-int				quepush2(t_list **q, t_list *tr, t_llrc *llrc);
+int				quepush2(t_list **q, t_list *tr);
 t_list 			*pullnode(t_list **q);
 void			printflist(t_list *ln);
 

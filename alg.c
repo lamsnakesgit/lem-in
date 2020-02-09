@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alg.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 18:19:18 by ddratini          #+#    #+#             */
-/*   Updated: 2020/02/07 18:34:06 by gusujio          ###   ########.fr       */
+/*   Updated: 2020/02/09 17:06:47 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int			bft2(int *f, t_list *cur, t_list **q, t_llrc *llrc)
 	{
 		if (ln->content == llrc->fr || ln->content == llrc->er)
 			*f = 1;
-		if (((t_rooms *)ln->content)->vis2 == 1 && ln->content_size != -1
+		if (((t_rooms *)ln->content)->vis2 == 1 && ln->content_size != (size_t)-1
 				&& ln->content != llrc->fr && ln->content != llrc->er && *f != 1)
 		{
 			((t_rooms *)ln->content)->lvl =
@@ -46,14 +46,13 @@ t_list		*bft(t_llrc *llrc)
 	while (q != 0)
 	{
 		cur = pullnode(&q);
-		(t_rooms *)((t_rooms *)cur->content)->ln->content;
 		if (((t_rooms *)cur->content)->vis2 == 1
 				&& ((t_rooms *)cur->content)->nu != llrc->er->nu
 				&& ((t_rooms *)cur->content)->nu != llrc->fr->nu)
 			bft2(&f, cur, &q, llrc);
 		if (ft_strcmp(((t_rooms *)cur->content)->name_r,
 				llrc->er->name_r) && f != 1)
-			quepush2(&q, cur, llrc);
+			quepush2(&q, cur);
 		else if (((t_rooms *)cur->content)->nu == llrc->er->nu)
 		{
 			dellist(q);

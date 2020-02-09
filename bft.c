@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bft.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 21:32:48 by ddratini          #+#    #+#             */
-/*   Updated: 2020/02/07 18:44:19 by gusujio          ###   ########.fr       */
+/*   Updated: 2020/02/09 17:07:37 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_list		*pullnode(t_list **q)
 	return (h);
 }
 
-int			quepush2(t_list **q, t_list *tr, t_llrc *llrc)
+int			quepush2(t_list **q, t_list *tr)
 {
 	t_list	*ln;
 	int		i;
@@ -34,7 +34,8 @@ int			quepush2(t_list **q, t_list *tr, t_llrc *llrc)
 	i = 0;
 	while (ln)
 	{
-		if (((t_rooms *)(ln->content))->vis == 0 && ln->content_size != -1)
+		if (((t_rooms *)(ln->content))->vis == 0
+			&& ln->content_size != (size_t)-1)
 		{
 			((t_rooms *)ln->content)->lvl = ((t_rooms*)(tr)->content)->lvl + 1;
 			((t_rooms *)ln->content)->vis = 1;

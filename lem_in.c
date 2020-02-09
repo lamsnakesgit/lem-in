@@ -6,7 +6,7 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:13 by ddratini          #+#    #+#             */
-/*   Updated: 2020/02/09 16:59:10 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/09 16:59:53 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 ** unsigned int
 */
 
-int				ft_err(void)
+int					ft_err(void)
 {
 	write(1, "ERROR\n", 6);
 	return (0);
 }
 
-t_llrc			nullst(t_llrc llrc)
+t_llrc				nullst(t_llrc llrc)
 {
 	llrc.end = 0;
 	llrc.st = 0;
@@ -37,7 +37,7 @@ t_llrc			nullst(t_llrc llrc)
 	return (llrc);
 }
 
-void			freellrc(t_llrc *lrc)
+void				freellrc(t_llrc *lrc)
 {
 	int i;
 
@@ -55,7 +55,7 @@ void			freellrc(t_llrc *lrc)
 ** //--check_roomspresence_validif
 */
 
-int				val_in(int fd, t_llrc *llrc)
+int					val_in(int fd, t_llrc *llrc)
 {
 	char	**ls;
 	int		i;

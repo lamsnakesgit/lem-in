@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 20:29:46 by ddratini          #+#    #+#             */
-/*   Updated: 2020/02/07 20:44:03 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/09 17:00:34 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-int 		issplitsp(char *s, char c)
+int			issplitsp(char *s, char c)
 {
 	int		i;
-	int 	cnt;
+	int		cnt;
 
 	if (s[0] == c)
 		return (0);
