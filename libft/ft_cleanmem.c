@@ -6,7 +6,7 @@
 /*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:37:44 by ddratini          #+#    #+#             */
-/*   Updated: 2019/05/17 17:37:48 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/09 18:26:19 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ char			**ft_cleanmem(char **split)
 		free(split[i]);
 		++i;
 	}
-/*	while (*split++)
-		free(*split);
-*/
 	free(split[i]);
 	free(split);
 	split = 0;

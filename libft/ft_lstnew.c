@@ -6,7 +6,7 @@
 /*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 22:52:33 by ddratini          #+#    #+#             */
-/*   Updated: 2019/05/15 22:52:35 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/09 18:24:49 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,6 @@ t_list			*ft_lstnew(void const *content, size_t content_size)
 	}
 	else
 	{
-//		if (!(lstnew->content = malloc(sizeof(content_size))))
-//		{
-//			free(lstnew);
-//			return (0);
-//		}//
-//		ft_memcpy(lstnew->content, content, content_size);
 		lstnew->content_size = content_size;
 		lstnew->content = (void*)content;
 	}

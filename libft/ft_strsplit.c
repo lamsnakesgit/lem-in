@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   2ft_strsplit.c                                     :+:      :+:    :+:   */
+/*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 16:16:41 by ddratini          #+#    #+#             */
-/*   Updated: 2020/02/01 16:16:50 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/09 18:24:13 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
- * allocate ptr to ptrs of dif len;
- * count smount of words os string ceparated by symbol char
- * copy words in allocated space in ptr array
- * if some string was not allcoated ; free previous allocations
- */
-int 	ft_count_word(char const *s, char c)
+
+int			ft_count_word(char const *s, char c)
 {
 	int i;
 	int word;
@@ -30,14 +25,15 @@ int 	ft_count_word(char const *s, char c)
 	{
 		if (s[i] != c)
 			++word;
-		while (s[i] && s[i] != c)//while not separator
+		while (s[i] && s[i] != c)
 			++i;
 		while (s[i] && s[i] == c)
 			++i;
 	}
 	return (word);
 }
-int 	ft_len(char *s, char c)
+
+int			ft_len(char *s, char c)
 {
 	int cnt;
 	int i;
@@ -51,24 +47,20 @@ int 	ft_len(char *s, char c)
 	}
 	return (cnt);
 }
-char	**ft_strsplit(const char *s, char c)
+
+char		**ft_strsplit(const char *s, char c)
 {
-	int i;
-	int j;
-	int m;
-	char **spt;
-	int words;
-	int ff;
+	int		i;
+	int		m;
+	char	**spt;
+	int		words;
+	int		ff;
 
 	if (!s)
 		return (0);
 	i = 0;
-	j = 0;
 	m = 0;
-	spt = 0;
-	words = ft_count_word(s, c);
-	spt = (char **)malloc(sizeof(char *) * (words + 1));
-	if (!spt)
+	if (!(spt = (char **)malloc(sizeof(char *) * (ft_count_word(s, c) + 1))))
 		return (0);
 	while (s[m])
 	{
@@ -80,10 +72,6 @@ char	**ft_strsplit(const char *s, char c)
 		if (ff < m)
 			if (!(spt[i++] = ft_strndup(s + ff, m - ff)))
 				return (ft_cleanmem(spt));
-	/*	if (s[m] && s[m] != c)
-		{
-			if (!(spt[i] = (char *)malloc(sizeof(char) * (ft_len(s + m, c) + 1))))
-		}*/
 	}
 	spt[i] = 0;
 	return (spt);
