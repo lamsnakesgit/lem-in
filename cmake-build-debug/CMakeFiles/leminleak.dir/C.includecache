@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/Users/gusujio/leminleak/lem_in.c
+lemin.h
+/Users/gusujio/leminleak/lemin.h
+
 /Users/gusujio/leminleak/lemin.h
 unistd.h
 -
@@ -23,8 +27,4 @@ unistd.h
 -
 string.h
 -
-
-/Users/gusujio/leminleak/surb2.c
-lemin.h
-/Users/gusujio/leminleak/lemin.h
 
