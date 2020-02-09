@@ -77,8 +77,6 @@ void			freellrc(t_llrc *lrc)
 
 int				val_in(int fd, t_llrc *llrc)
 {
-	char	*line;
-	char	*linkd;
 	char	**ls;
 	int 	i;
 
@@ -86,30 +84,20 @@ int				val_in(int fd, t_llrc *llrc)
 	if (!(ls = processmap(fd, llrc)) || ! (1 + ls))
 		return (ft_err());
 	*llrc = nullst(*llrc);
-	i = roomlinkblock(ls + 1, llrc, fd);
+	i = roomlinkblock(ls + 1, llrc);
 	if (!llrc->rmi || llrc->end != 1 || llrc->st != 1)//i ?
 		return (ft_err());
 	turninarr(llrc);//(&llrc);
 	if (ls && ls + i + 1)
 	{
-		if (!linkval(ls + i + 1, llrc, fd))
+		if (!linkval(ls + i + 1, llrc))
 		{
 			free(llrc->er);
 			free(llrc->fr);
 			return (ft_err());
 		}
 	}
-	else
-	{
-		ft_cleanmem(ls);
-		free(llrc->er);
-		free(llrc->fr);
-		freellrc(llrc);
-		ft_err();
-	}
-	int j = 0;
-	free(ls[0]);
-	free(ls);
+	free_map(ls);
 	return (1);
 }
 /*
@@ -129,7 +117,7 @@ int				iscomment(char *line)
 	return (1);
 }*/
 
-int 			main(int ac, char **av)
+int 			main(void)//(int ac, char **av)
 {
 	int fd;
 	t_llrc llrc;

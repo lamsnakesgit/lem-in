@@ -6,7 +6,7 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:18 by ddratini          #+#    #+#             */
-/*   Updated: 2020/01/06 16:18:49 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/09 16:46:25 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,19 +67,19 @@ t_list 			*findlist(t_list *ln, t_list *er);
 void            del_paths(t_list *path, t_llrc *llrc);
 int				rmorlink(char *line, t_llrc *llrc);
 int				comstend(char *line);
-void		dellist(t_list *ln);
-char 			*linkval(char **line, t_llrc *lrc, int fd);
+void			dellist(t_list *ln);
+char 			*linkval(char **line, t_llrc *lrc);
 
 int         	corr_link(char **line, t_llrc *llrc, int *rn);
 int         	ispresent(t_llrc *llrc, char *rs);
 int			    comstend(char *line);
 
-t_list          *valroom_fill1(t_list **br,  char **roomcor);
+t_list          *valroom_fill1(t_list **br,  char **roomcor, t_llrc *);
 int			    val_cord(char **roomcor);
-char		    **valrmc_s(char *line);
+char		    **valrmc_s(char *line, t_llrc *);
 int			    savemarg(t_llrc *lrc, int cm);
-int			    stcheck(char **line, t_llrc *lrc, int cm, int fd);
-int		    	roomlinkblock(char **line, t_llrc *lrc, int fd);
+int			    stcheck(char **line, t_llrc *lrc, int cm);
+int		    	roomlinkblock(char **line, t_llrc *lrc);
 void            turninarr(t_llrc *llrc);
 int				ft_err(void);
 
@@ -93,7 +93,7 @@ void			ft_listup(t_list **alst, t_list *new);
 void			ft_lstadd_up(t_list **alst, t_list *new);
 
 int 			queadd(t_list **q, t_list *tr);
-int			quepush2(t_list **q, t_list *tr, t_llrc *llrc);
+int				quepush2(t_list **q, t_list *tr, t_llrc *llrc);
 t_list 			*pullnode(t_list **q);
 void			printflist(t_list *ln);
 
@@ -114,7 +114,21 @@ void			print_ant(t_list **paths, t_llrc *llrc);
 
 void			print_ant2(t_list **paths, t_llrc *llrc);
 
-void			delete_rooms(t_llrc *llrc);
+void			delete_rooms(t_llrc *llrc, int);
+
+//new
+char			*ft_nstrsub(char const *s, unsigned int start, size_t len);
+int 			issplitsp(char *s, char c);
+int				validate(int ac, char **av, int i, long);
+
+int				free_map(char **line);
+int 			wrongroom(t_llrc *llrc, char **line, int f);
+void			freermlst(t_llrc *llrc, t_rooms *rm);
+
+void				freelrm(t_llrc *llrc);
+//void				freermlst(t_llrc *llrc, t_rooms *rm);
+int					validate(int ac, char **av, int i, long fn);
+int					checkcor(t_rooms *rm, t_llrc *llrc);
 
 
 
