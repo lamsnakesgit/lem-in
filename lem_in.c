@@ -1,16 +1,17 @@
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem-in.c                                           :+:      :+:    :+:   */
+/*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:13 by ddratini          #+#    #+#             */
-/*   Updated: 2020/01/29 18:49:12 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/09 16:59:10 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
+
 /*
 ** amount of ants - ints?
 ** unsigned int
@@ -22,7 +23,7 @@ int				ft_err(void)
 	return (0);
 }
 
-t_llrc 			nullst(t_llrc llrc)
+t_llrc			nullst(t_llrc llrc)
 {
 	llrc.end = 0;
 	llrc.st = 0;
@@ -57,10 +58,9 @@ void			freellrc(t_llrc *lrc)
 int				val_in(int fd, t_llrc *llrc)
 {
 	char	**ls;
-	int 	i;
+	int		i;
 
-
-	if (!(ls = processmap(fd, llrc)) || ! (1 + ls))
+	if (!(ls = processmap(fd, llrc)) || !(1 + ls))
 		return (ft_err());
 	*llrc = nullst(*llrc);
 	i = roomlinkblock(ls + 1, llrc);
@@ -80,10 +80,10 @@ int				val_in(int fd, t_llrc *llrc)
 	return (1);
 }
 
-int 			main(void)//(int ac, char **av)
+int					main(void)
 {
-	int fd;
-	t_llrc llrc;
+	int		fd;
+	t_llrc	llrc;
 
 	fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big_sup/map_big_sup_1", O_RDONLY);
 	//fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/map_39", O_RDONLY);
@@ -93,7 +93,6 @@ int 			main(void)//(int ac, char **av)
 	{
 		printf("\n");
 		alg(&llrc);
-		//delete_rooms(&llrc);
 	}
 	return (0);
 }
