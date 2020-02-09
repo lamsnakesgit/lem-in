@@ -52,6 +52,7 @@ void				freellrc(t_llrc *lrc)
 /*
 **{//extra dop otd for chech_room w own w gnl
 ** //--check_roomspresence_validif
+** if roomlinknlock -> error; free listrooms, contents
 */
 
 int					val_in(int fd, t_llrc *llrc)
@@ -63,9 +64,12 @@ int					val_in(int fd, t_llrc *llrc)
 		return (ft_err());
 	*llrc = nullst(*llrc);
 	i = roomlinkblock(ls + 1, llrc);
-	if (!llrc->rmi || llrc->end != 1 || llrc->st != 1)
-		return (ft_err());
-	turninarr(llrc);
+	if (!llrc->rmi || !i || llrc->end != 1 || llrc->st != 1)
+	{
+		return (freelrm(llrc) | free_map(ls) | ft_err());
+	}
+	if (!turninarr(llrc))
+		return (0);//
 	if (ls && ls + i + 1)
 	{
 		if (!linkval(ls + i + 1, llrc))
@@ -84,6 +88,10 @@ int					main(void)
 	int		fd;
 	t_llrc	llrc;
 
+	fd = 0;
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa2", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa2", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/ants_empty", O_RDONLY);
 	fd = 0;
 	if (val_in(fd, &llrc))
 	{

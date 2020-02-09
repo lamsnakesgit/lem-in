@@ -62,24 +62,24 @@ t_list		*findlist(t_list *ln, t_list *er)
 	return (cur != NULL ? cur : tr);
 }
 
-void		del_paths(t_list *path, t_llrc *llrc)
+void		del_paths(t_list **path, t_llrc *llrc)
 {
 	t_list	*paths;
 	t_list	*ln;
 	t_list	*next;
 
-	while (path)
+	while (*path)
 	{
-		paths = path->next;
-		ln = (t_list *)path->content;
+		paths = (*path)->next;
+		ln = (t_list *)(*path)->content;
 		while (ln)
 		{
 			next = (t_list *)ln->next;
 			free(ln);
 			ln = next;
 		}
-		free(path);
-		path = paths;
+		free(*path);
+		(*path) = paths;
 	}
 	delete_rooms(llrc, 0);
 	exit(0);

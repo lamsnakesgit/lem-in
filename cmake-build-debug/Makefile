@@ -204,6 +204,33 @@ aux.c.s:
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/aux.c.s
 .PHONY : aux.c.s
 
+aux2.o: aux2.c.o
+
+.PHONY : aux2.o
+
+# target to build an object file
+aux2.c.o:
+	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/aux2.c.o
+.PHONY : aux2.c.o
+
+aux2.i: aux2.c.i
+
+.PHONY : aux2.i
+
+# target to preprocess a source file
+aux2.c.i:
+	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/aux2.c.i
+.PHONY : aux2.c.i
+
+aux2.s: aux2.c.s
+
+.PHONY : aux2.s
+
+# target to generate assembly for a file
+aux2.c.s:
+	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/aux2.c.s
+.PHONY : aux2.c.s
+
 bft.o: bft.c.o
 
 .PHONY : bft.o
@@ -231,6 +258,33 @@ bft.c.s:
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/bft.c.s
 .PHONY : bft.c.s
 
+freefun.o: freefun.c.o
+
+.PHONY : freefun.o
+
+# target to build an object file
+freefun.c.o:
+	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/freefun.c.o
+.PHONY : freefun.c.o
+
+freefun.i: freefun.c.i
+
+.PHONY : freefun.i
+
+# target to preprocess a source file
+freefun.c.i:
+	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/freefun.c.i
+.PHONY : freefun.c.i
+
+freefun.s: freefun.c.s
+
+.PHONY : freefun.s
+
+# target to generate assembly for a file
+freefun.c.s:
+	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/freefun.c.s
+.PHONY : freefun.c.s
+
 lem_in.o: lem_in.c.o
 
 .PHONY : lem_in.o
@@ -257,33 +311,6 @@ lem_in.s: lem_in.c.s
 lem_in.c.s:
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/lem_in.c.s
 .PHONY : lem_in.c.s
-
-libft/STRSPLIT.o: libft/STRSPLIT.c.o
-
-.PHONY : libft/STRSPLIT.o
-
-# target to build an object file
-libft/STRSPLIT.c.o:
-	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/STRSPLIT.c.o
-.PHONY : libft/STRSPLIT.c.o
-
-libft/STRSPLIT.i: libft/STRSPLIT.c.i
-
-.PHONY : libft/STRSPLIT.i
-
-# target to preprocess a source file
-libft/STRSPLIT.c.i:
-	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/STRSPLIT.c.i
-.PHONY : libft/STRSPLIT.c.i
-
-libft/STRSPLIT.s: libft/STRSPLIT.c.s
-
-.PHONY : libft/STRSPLIT.s
-
-# target to generate assembly for a file
-libft/STRSPLIT.c.s:
-	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/STRSPLIT.c.s
-.PHONY : libft/STRSPLIT.c.s
 
 libft/ft_atoi.o: libft/ft_atoi.c.o
 
@@ -2013,6 +2040,60 @@ libft/revstr.c.s:
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/revstr.c.s
 .PHONY : libft/revstr.c.s
 
+print.o: print.c.o
+
+.PHONY : print.o
+
+# target to build an object file
+print.c.o:
+	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/print.c.o
+.PHONY : print.c.o
+
+print.i: print.c.i
+
+.PHONY : print.i
+
+# target to preprocess a source file
+print.c.i:
+	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/print.c.i
+.PHONY : print.c.i
+
+print.s: print.c.s
+
+.PHONY : print.s
+
+# target to generate assembly for a file
+print.c.s:
+	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/print.c.s
+.PHONY : print.c.s
+
+split.o: split.c.o
+
+.PHONY : split.o
+
+# target to build an object file
+split.c.o:
+	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/split.c.o
+.PHONY : split.c.o
+
+split.i: split.c.i
+
+.PHONY : split.i
+
+# target to preprocess a source file
+split.c.i:
+	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/split.c.i
+.PHONY : split.c.i
+
+split.s: split.c.s
+
+.PHONY : split.s
+
+# target to generate assembly for a file
+split.c.s:
+	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/split.c.s
+.PHONY : split.c.s
+
 surb2.o: surb2.c.o
 
 .PHONY : surb2.o
@@ -2120,6 +2201,33 @@ val_map.s: val_map.c.s
 val_map.c.s:
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/val_map.c.s
 .PHONY : val_map.c.s
+
+valdi.o: valdi.c.o
+
+.PHONY : valdi.o
+
+# target to build an object file
+valdi.c.o:
+	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/valdi.c.o
+.PHONY : valdi.c.o
+
+valdi.i: valdi.c.i
+
+.PHONY : valdi.i
+
+# target to preprocess a source file
+valdi.c.i:
+	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/valdi.c.i
+.PHONY : valdi.c.i
+
+valdi.s: valdi.c.s
+
+.PHONY : valdi.s
+
+# target to generate assembly for a file
+valdi.c.s:
+	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/valdi.c.s
+.PHONY : valdi.c.s
 
 valink.o: valink.c.o
 
@@ -2247,15 +2355,18 @@ help:
 	@echo "... aux.o"
 	@echo "... aux.i"
 	@echo "... aux.s"
+	@echo "... aux2.o"
+	@echo "... aux2.i"
+	@echo "... aux2.s"
 	@echo "... bft.o"
 	@echo "... bft.i"
 	@echo "... bft.s"
+	@echo "... freefun.o"
+	@echo "... freefun.i"
+	@echo "... freefun.s"
 	@echo "... lem_in.o"
 	@echo "... lem_in.i"
 	@echo "... lem_in.s"
-	@echo "... libft/STRSPLIT.o"
-	@echo "... libft/STRSPLIT.i"
-	@echo "... libft/STRSPLIT.s"
 	@echo "... libft/ft_atoi.o"
 	@echo "... libft/ft_atoi.i"
 	@echo "... libft/ft_atoi.s"
@@ -2448,6 +2559,12 @@ help:
 	@echo "... libft/revstr.o"
 	@echo "... libft/revstr.i"
 	@echo "... libft/revstr.s"
+	@echo "... print.o"
+	@echo "... print.i"
+	@echo "... print.s"
+	@echo "... split.o"
+	@echo "... split.i"
+	@echo "... split.s"
 	@echo "... surb2.o"
 	@echo "... surb2.i"
 	@echo "... surb2.s"
@@ -2460,6 +2577,9 @@ help:
 	@echo "... val_map.o"
 	@echo "... val_map.i"
 	@echo "... val_map.s"
+	@echo "... valdi.o"
+	@echo "... valdi.i"
+	@echo "... valdi.s"
 	@echo "... valink.o"
 	@echo "... valink.i"
 	@echo "... valink.s"

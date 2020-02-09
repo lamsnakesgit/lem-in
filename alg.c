@@ -44,7 +44,8 @@ t_list		*bft(t_llrc *llrc)
 	t_list	*cur;
 	int		f;
 
-	f = clean(llrc, &q);
+	if ((f = clean(llrc, &q)))
+		return (0);
 	while (q != 0)
 	{
 		cur = pullnode(&q);

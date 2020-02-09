@@ -889,22 +889,9 @@ CMakeFiles/leminleak.dir/libft/revstr.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/leminleak.dir/libft/revstr.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ddratini/42_03_projests/DIRlem-in_rep/libft/revstr.c -o CMakeFiles/leminleak.dir/libft/revstr.c.s
 
-CMakeFiles/leminleak.dir/libft/STRSPLIT.c.o: CMakeFiles/leminleak.dir/flags.make
-CMakeFiles/leminleak.dir/libft/STRSPLIT.c.o: ../libft/STRSPLIT.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/leminleak.dir/libft/STRSPLIT.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/leminleak.dir/libft/STRSPLIT.c.o   -c /Users/ddratini/42_03_projests/DIRlem-in_rep/libft/STRSPLIT.c
-
-CMakeFiles/leminleak.dir/libft/STRSPLIT.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/leminleak.dir/libft/STRSPLIT.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ddratini/42_03_projests/DIRlem-in_rep/libft/STRSPLIT.c > CMakeFiles/leminleak.dir/libft/STRSPLIT.c.i
-
-CMakeFiles/leminleak.dir/libft/STRSPLIT.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/leminleak.dir/libft/STRSPLIT.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ddratini/42_03_projests/DIRlem-in_rep/libft/STRSPLIT.c -o CMakeFiles/leminleak.dir/libft/STRSPLIT.c.s
-
 CMakeFiles/leminleak.dir/alg.c.o: CMakeFiles/leminleak.dir/flags.make
 CMakeFiles/leminleak.dir/alg.c.o: ../alg.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/leminleak.dir/alg.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/leminleak.dir/alg.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/leminleak.dir/alg.c.o   -c /Users/ddratini/42_03_projests/DIRlem-in_rep/alg.c
 
 CMakeFiles/leminleak.dir/alg.c.i: cmake_force
@@ -917,7 +904,7 @@ CMakeFiles/leminleak.dir/alg.c.s: cmake_force
 
 CMakeFiles/leminleak.dir/aux.c.o: CMakeFiles/leminleak.dir/flags.make
 CMakeFiles/leminleak.dir/aux.c.o: ../aux.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/leminleak.dir/aux.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/leminleak.dir/aux.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/leminleak.dir/aux.c.o   -c /Users/ddratini/42_03_projests/DIRlem-in_rep/aux.c
 
 CMakeFiles/leminleak.dir/aux.c.i: cmake_force
@@ -930,7 +917,7 @@ CMakeFiles/leminleak.dir/aux.c.s: cmake_force
 
 CMakeFiles/leminleak.dir/bft.c.o: CMakeFiles/leminleak.dir/flags.make
 CMakeFiles/leminleak.dir/bft.c.o: ../bft.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/leminleak.dir/bft.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/leminleak.dir/bft.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/leminleak.dir/bft.c.o   -c /Users/ddratini/42_03_projests/DIRlem-in_rep/bft.c
 
 CMakeFiles/leminleak.dir/bft.c.i: cmake_force
@@ -943,7 +930,7 @@ CMakeFiles/leminleak.dir/bft.c.s: cmake_force
 
 CMakeFiles/leminleak.dir/lem_in.c.o: CMakeFiles/leminleak.dir/flags.make
 CMakeFiles/leminleak.dir/lem_in.c.o: ../lem_in.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/leminleak.dir/lem_in.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/leminleak.dir/lem_in.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/leminleak.dir/lem_in.c.o   -c /Users/ddratini/42_03_projests/DIRlem-in_rep/lem_in.c
 
 CMakeFiles/leminleak.dir/lem_in.c.i: cmake_force
@@ -956,7 +943,7 @@ CMakeFiles/leminleak.dir/lem_in.c.s: cmake_force
 
 CMakeFiles/leminleak.dir/suurballe.c.o: CMakeFiles/leminleak.dir/flags.make
 CMakeFiles/leminleak.dir/suurballe.c.o: ../suurballe.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/leminleak.dir/suurballe.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/leminleak.dir/suurballe.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/leminleak.dir/suurballe.c.o   -c /Users/ddratini/42_03_projests/DIRlem-in_rep/suurballe.c
 
 CMakeFiles/leminleak.dir/suurballe.c.i: cmake_force
@@ -969,7 +956,7 @@ CMakeFiles/leminleak.dir/suurballe.c.s: cmake_force
 
 CMakeFiles/leminleak.dir/traverse.c.o: CMakeFiles/leminleak.dir/flags.make
 CMakeFiles/leminleak.dir/traverse.c.o: ../traverse.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/leminleak.dir/traverse.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/leminleak.dir/traverse.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/leminleak.dir/traverse.c.o   -c /Users/ddratini/42_03_projests/DIRlem-in_rep/traverse.c
 
 CMakeFiles/leminleak.dir/traverse.c.i: cmake_force
@@ -982,7 +969,7 @@ CMakeFiles/leminleak.dir/traverse.c.s: cmake_force
 
 CMakeFiles/leminleak.dir/val_map.c.o: CMakeFiles/leminleak.dir/flags.make
 CMakeFiles/leminleak.dir/val_map.c.o: ../val_map.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/leminleak.dir/val_map.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/leminleak.dir/val_map.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/leminleak.dir/val_map.c.o   -c /Users/ddratini/42_03_projests/DIRlem-in_rep/val_map.c
 
 CMakeFiles/leminleak.dir/val_map.c.i: cmake_force
@@ -995,7 +982,7 @@ CMakeFiles/leminleak.dir/val_map.c.s: cmake_force
 
 CMakeFiles/leminleak.dir/valink.c.o: CMakeFiles/leminleak.dir/flags.make
 CMakeFiles/leminleak.dir/valink.c.o: ../valink.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/leminleak.dir/valink.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/leminleak.dir/valink.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/leminleak.dir/valink.c.o   -c /Users/ddratini/42_03_projests/DIRlem-in_rep/valink.c
 
 CMakeFiles/leminleak.dir/valink.c.i: cmake_force
@@ -1008,7 +995,7 @@ CMakeFiles/leminleak.dir/valink.c.s: cmake_force
 
 CMakeFiles/leminleak.dir/valprocess.c.o: CMakeFiles/leminleak.dir/flags.make
 CMakeFiles/leminleak.dir/valprocess.c.o: ../valprocess.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/leminleak.dir/valprocess.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/leminleak.dir/valprocess.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/leminleak.dir/valprocess.c.o   -c /Users/ddratini/42_03_projests/DIRlem-in_rep/valprocess.c
 
 CMakeFiles/leminleak.dir/valprocess.c.i: cmake_force
@@ -1021,7 +1008,7 @@ CMakeFiles/leminleak.dir/valprocess.c.s: cmake_force
 
 CMakeFiles/leminleak.dir/valroom.c.o: CMakeFiles/leminleak.dir/flags.make
 CMakeFiles/leminleak.dir/valroom.c.o: ../valroom.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/leminleak.dir/valroom.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/leminleak.dir/valroom.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/leminleak.dir/valroom.c.o   -c /Users/ddratini/42_03_projests/DIRlem-in_rep/valroom.c
 
 CMakeFiles/leminleak.dir/valroom.c.i: cmake_force
@@ -1034,7 +1021,7 @@ CMakeFiles/leminleak.dir/valroom.c.s: cmake_force
 
 CMakeFiles/leminleak.dir/valroom1.c.o: CMakeFiles/leminleak.dir/flags.make
 CMakeFiles/leminleak.dir/valroom1.c.o: ../valroom1.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/leminleak.dir/valroom1.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/leminleak.dir/valroom1.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/leminleak.dir/valroom1.c.o   -c /Users/ddratini/42_03_projests/DIRlem-in_rep/valroom1.c
 
 CMakeFiles/leminleak.dir/valroom1.c.i: cmake_force
@@ -1047,7 +1034,7 @@ CMakeFiles/leminleak.dir/valroom1.c.s: cmake_force
 
 CMakeFiles/leminleak.dir/alg2.c.o: CMakeFiles/leminleak.dir/flags.make
 CMakeFiles/leminleak.dir/alg2.c.o: ../alg2.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/leminleak.dir/alg2.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/leminleak.dir/alg2.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/leminleak.dir/alg2.c.o   -c /Users/ddratini/42_03_projests/DIRlem-in_rep/alg2.c
 
 CMakeFiles/leminleak.dir/alg2.c.i: cmake_force
@@ -1060,7 +1047,7 @@ CMakeFiles/leminleak.dir/alg2.c.s: cmake_force
 
 CMakeFiles/leminleak.dir/surb2.c.o: CMakeFiles/leminleak.dir/flags.make
 CMakeFiles/leminleak.dir/surb2.c.o: ../surb2.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/leminleak.dir/surb2.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/leminleak.dir/surb2.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/leminleak.dir/surb2.c.o   -c /Users/ddratini/42_03_projests/DIRlem-in_rep/surb2.c
 
 CMakeFiles/leminleak.dir/surb2.c.i: cmake_force
@@ -1070,6 +1057,71 @@ CMakeFiles/leminleak.dir/surb2.c.i: cmake_force
 CMakeFiles/leminleak.dir/surb2.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/leminleak.dir/surb2.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ddratini/42_03_projests/DIRlem-in_rep/surb2.c -o CMakeFiles/leminleak.dir/surb2.c.s
+
+CMakeFiles/leminleak.dir/aux2.c.o: CMakeFiles/leminleak.dir/flags.make
+CMakeFiles/leminleak.dir/aux2.c.o: ../aux2.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/leminleak.dir/aux2.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/leminleak.dir/aux2.c.o   -c /Users/ddratini/42_03_projests/DIRlem-in_rep/aux2.c
+
+CMakeFiles/leminleak.dir/aux2.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/leminleak.dir/aux2.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ddratini/42_03_projests/DIRlem-in_rep/aux2.c > CMakeFiles/leminleak.dir/aux2.c.i
+
+CMakeFiles/leminleak.dir/aux2.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/leminleak.dir/aux2.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ddratini/42_03_projests/DIRlem-in_rep/aux2.c -o CMakeFiles/leminleak.dir/aux2.c.s
+
+CMakeFiles/leminleak.dir/freefun.c.o: CMakeFiles/leminleak.dir/flags.make
+CMakeFiles/leminleak.dir/freefun.c.o: ../freefun.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/leminleak.dir/freefun.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/leminleak.dir/freefun.c.o   -c /Users/ddratini/42_03_projests/DIRlem-in_rep/freefun.c
+
+CMakeFiles/leminleak.dir/freefun.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/leminleak.dir/freefun.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ddratini/42_03_projests/DIRlem-in_rep/freefun.c > CMakeFiles/leminleak.dir/freefun.c.i
+
+CMakeFiles/leminleak.dir/freefun.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/leminleak.dir/freefun.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ddratini/42_03_projests/DIRlem-in_rep/freefun.c -o CMakeFiles/leminleak.dir/freefun.c.s
+
+CMakeFiles/leminleak.dir/split.c.o: CMakeFiles/leminleak.dir/flags.make
+CMakeFiles/leminleak.dir/split.c.o: ../split.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/leminleak.dir/split.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/leminleak.dir/split.c.o   -c /Users/ddratini/42_03_projests/DIRlem-in_rep/split.c
+
+CMakeFiles/leminleak.dir/split.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/leminleak.dir/split.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ddratini/42_03_projests/DIRlem-in_rep/split.c > CMakeFiles/leminleak.dir/split.c.i
+
+CMakeFiles/leminleak.dir/split.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/leminleak.dir/split.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ddratini/42_03_projests/DIRlem-in_rep/split.c -o CMakeFiles/leminleak.dir/split.c.s
+
+CMakeFiles/leminleak.dir/valdi.c.o: CMakeFiles/leminleak.dir/flags.make
+CMakeFiles/leminleak.dir/valdi.c.o: ../valdi.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/leminleak.dir/valdi.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/leminleak.dir/valdi.c.o   -c /Users/ddratini/42_03_projests/DIRlem-in_rep/valdi.c
+
+CMakeFiles/leminleak.dir/valdi.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/leminleak.dir/valdi.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ddratini/42_03_projests/DIRlem-in_rep/valdi.c > CMakeFiles/leminleak.dir/valdi.c.i
+
+CMakeFiles/leminleak.dir/valdi.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/leminleak.dir/valdi.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ddratini/42_03_projests/DIRlem-in_rep/valdi.c -o CMakeFiles/leminleak.dir/valdi.c.s
+
+CMakeFiles/leminleak.dir/print.c.o: CMakeFiles/leminleak.dir/flags.make
+CMakeFiles/leminleak.dir/print.c.o: ../print.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/leminleak.dir/print.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/leminleak.dir/print.c.o   -c /Users/ddratini/42_03_projests/DIRlem-in_rep/print.c
+
+CMakeFiles/leminleak.dir/print.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/leminleak.dir/print.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ddratini/42_03_projests/DIRlem-in_rep/print.c > CMakeFiles/leminleak.dir/print.c.i
+
+CMakeFiles/leminleak.dir/print.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/leminleak.dir/print.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ddratini/42_03_projests/DIRlem-in_rep/print.c -o CMakeFiles/leminleak.dir/print.c.s
 
 # Object files for target leminleak
 leminleak_OBJECTS = \
@@ -1137,7 +1189,6 @@ leminleak_OBJECTS = \
 "CMakeFiles/leminleak.dir/libft/ft_toupper.c.o" \
 "CMakeFiles/leminleak.dir/libft/get_next_line.c.o" \
 "CMakeFiles/leminleak.dir/libft/revstr.c.o" \
-"CMakeFiles/leminleak.dir/libft/STRSPLIT.c.o" \
 "CMakeFiles/leminleak.dir/alg.c.o" \
 "CMakeFiles/leminleak.dir/aux.c.o" \
 "CMakeFiles/leminleak.dir/bft.c.o" \
@@ -1150,7 +1201,12 @@ leminleak_OBJECTS = \
 "CMakeFiles/leminleak.dir/valroom.c.o" \
 "CMakeFiles/leminleak.dir/valroom1.c.o" \
 "CMakeFiles/leminleak.dir/alg2.c.o" \
-"CMakeFiles/leminleak.dir/surb2.c.o"
+"CMakeFiles/leminleak.dir/surb2.c.o" \
+"CMakeFiles/leminleak.dir/aux2.c.o" \
+"CMakeFiles/leminleak.dir/freefun.c.o" \
+"CMakeFiles/leminleak.dir/split.c.o" \
+"CMakeFiles/leminleak.dir/valdi.c.o" \
+"CMakeFiles/leminleak.dir/print.c.o"
 
 # External object files for target leminleak
 leminleak_EXTERNAL_OBJECTS =
@@ -1219,7 +1275,6 @@ leminleak: CMakeFiles/leminleak.dir/libft/ft_tolower.c.o
 leminleak: CMakeFiles/leminleak.dir/libft/ft_toupper.c.o
 leminleak: CMakeFiles/leminleak.dir/libft/get_next_line.c.o
 leminleak: CMakeFiles/leminleak.dir/libft/revstr.c.o
-leminleak: CMakeFiles/leminleak.dir/libft/STRSPLIT.c.o
 leminleak: CMakeFiles/leminleak.dir/alg.c.o
 leminleak: CMakeFiles/leminleak.dir/aux.c.o
 leminleak: CMakeFiles/leminleak.dir/bft.c.o
@@ -1233,9 +1288,14 @@ leminleak: CMakeFiles/leminleak.dir/valroom.c.o
 leminleak: CMakeFiles/leminleak.dir/valroom1.c.o
 leminleak: CMakeFiles/leminleak.dir/alg2.c.o
 leminleak: CMakeFiles/leminleak.dir/surb2.c.o
+leminleak: CMakeFiles/leminleak.dir/aux2.c.o
+leminleak: CMakeFiles/leminleak.dir/freefun.c.o
+leminleak: CMakeFiles/leminleak.dir/split.c.o
+leminleak: CMakeFiles/leminleak.dir/valdi.c.o
+leminleak: CMakeFiles/leminleak.dir/print.c.o
 leminleak: CMakeFiles/leminleak.dir/build.make
 leminleak: CMakeFiles/leminleak.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Linking C executable leminleak"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Linking C executable leminleak"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/leminleak.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

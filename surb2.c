@@ -24,10 +24,12 @@ void	sur(t_mas *mas, t_llrc *llrc, t_list **paths)
 	if (!path_cmp(((t_list *)(*mas).tr->content)->content_size, llrc, (*mas).i))
 	{
 		(*mas).ln = lastpath(paths, 1);
-		free((*mas).ln->next);
+		delpath(paths, (*mas).ln->next);
+		//free((*mas).ln->next);
 		(*mas).ln->next = NULL;
 		(*mas).ln = lastpath(paths, 1);
-		free((*mas).ln->next);
+		delpath(paths, (*mas).ln->next);
+		//free((*mas).ln->next);
 		(*mas).ln->next = NULL;
 	}
 	else

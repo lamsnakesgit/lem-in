@@ -68,7 +68,7 @@ int				cross_path(t_list **paths, t_list *ln, t_list *ln2, int f);
 void			dellist(t_list	*ln);
 void			cutpath(t_list **er, t_list *er2);
 t_list			*findlist(t_list *ln, t_list *er);
-void			del_paths(t_list *path, t_llrc *llrc);
+void		del_paths(t_list **path, t_llrc *llrc);
 int				rmorlink(char *line, t_llrc *llrc);
 int				comstend(char *line);
 void			dellist(t_list *ln);
@@ -84,7 +84,7 @@ char			**valrmc_s(char *line, t_llrc *ko);
 int				savemarg(t_llrc *lrc, int cm);
 int				stcheck(char **line, t_llrc *lrc, int cm);
 int				roomlinkblock(char **line, t_llrc *lrc);
-void			turninarr(t_llrc *llrc);
+int				turninarr(t_llrc *llrc);
 int				ft_err(void);
 
 void			alg(t_llrc *llrc);
@@ -133,7 +133,7 @@ int				free_map(char **line);
 int				wrongroom(t_llrc *llrc, char **line, int f);
 void			freermlst(t_llrc *llrc, t_rooms *rm);
 
-void			freelrm(t_llrc *llrc);
+int				freelrm(t_llrc *llrc);
 int				validate(int ac, char **av, int i, long fn);
 int				checkcor(t_rooms *rm, t_llrc *llrc);
 

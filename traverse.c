@@ -91,5 +91,5 @@ void	print_ant(t_list **paths, t_llrc *llrc)
 	}
 	printf("%d\n", (int)(*paths)->content_size);
 	print_ant2(paths, llrc);
-	del_paths(*paths, llrc);
+	del_paths(paths, llrc);
 }

@@ -46,7 +46,7 @@ int				clean(t_llrc *llrc, t_list **q)
 	fr = llrc->fr;
 	(*q) = ft_lstnew((const void *)fr, (size_t)(sizeof((void *)(fr))));
 	if (!(*q))
-		return (0);
+		return (1);
 	i = -1;
 	while (++i < llrc->rmi)
 	{
@@ -56,7 +56,7 @@ int				clean(t_llrc *llrc, t_list **q)
 	(*q)->content = (void *)llrc->fr;
 	((t_rooms *)(*q)->content)->vis = 1;
 	((t_rooms *)(*q)->content)->ant = 0;
-	return (1);
+	return (0);
 }
 
 /*

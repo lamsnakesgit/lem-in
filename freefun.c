@@ -29,7 +29,7 @@ void				freermlst(t_llrc *llrc, t_rooms *rm)
 	free(rm);
 }
 
-void				freelrm(t_llrc *llrc)
+int					freelrm(t_llrc *llrc)
 {
 	t_list	*tmp;
 
@@ -42,4 +42,5 @@ void				freelrm(t_llrc *llrc)
 		free(llrc->br);
 		llrc->br = tmp;
 	}
+	return (0);
 }

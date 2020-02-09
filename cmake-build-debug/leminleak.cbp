@@ -93,16 +93,19 @@
 		<Unit filename="/Users/ddratini/42_03_projests/DIRlem-in_rep/aux.c">
 			<Option target="leminleak"/>
 		</Unit>
+		<Unit filename="/Users/ddratini/42_03_projests/DIRlem-in_rep/aux2.c">
+			<Option target="leminleak"/>
+		</Unit>
 		<Unit filename="/Users/ddratini/42_03_projests/DIRlem-in_rep/bft.c">
+			<Option target="leminleak"/>
+		</Unit>
+		<Unit filename="/Users/ddratini/42_03_projests/DIRlem-in_rep/freefun.c">
 			<Option target="leminleak"/>
 		</Unit>
 		<Unit filename="/Users/ddratini/42_03_projests/DIRlem-in_rep/lem_in.c">
 			<Option target="leminleak"/>
 		</Unit>
 		<Unit filename="/Users/ddratini/42_03_projests/DIRlem-in_rep/lemin.h">
-			<Option target="leminleak"/>
-		</Unit>
-		<Unit filename="/Users/ddratini/42_03_projests/DIRlem-in_rep/libft/STRSPLIT.c">
 			<Option target="leminleak"/>
 		</Unit>
 		<Unit filename="/Users/ddratini/42_03_projests/DIRlem-in_rep/libft/ft_atoi.c">
@@ -300,6 +303,12 @@
 		<Unit filename="/Users/ddratini/42_03_projests/DIRlem-in_rep/libft/revstr.c">
 			<Option target="leminleak"/>
 		</Unit>
+		<Unit filename="/Users/ddratini/42_03_projests/DIRlem-in_rep/print.c">
+			<Option target="leminleak"/>
+		</Unit>
+		<Unit filename="/Users/ddratini/42_03_projests/DIRlem-in_rep/split.c">
+			<Option target="leminleak"/>
+		</Unit>
 		<Unit filename="/Users/ddratini/42_03_projests/DIRlem-in_rep/surb2.c">
 			<Option target="leminleak"/>
 		</Unit>
@@ -310,6 +319,9 @@
 			<Option target="leminleak"/>
 		</Unit>
 		<Unit filename="/Users/ddratini/42_03_projests/DIRlem-in_rep/val_map.c">
+			<Option target="leminleak"/>
+		</Unit>
+		<Unit filename="/Users/ddratini/42_03_projests/DIRlem-in_rep/valdi.c">
 			<Option target="leminleak"/>
 		</Unit>
 		<Unit filename="/Users/ddratini/42_03_projests/DIRlem-in_rep/valink.c">

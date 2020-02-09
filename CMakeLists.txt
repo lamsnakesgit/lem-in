@@ -72,7 +72,6 @@ add_executable(leminleak
         libft/get_next_line.c
         libft/libft.h
         libft/revstr.c
-        libft/STRSPLIT.c
         alg.c
         aux.c
         bft.c
@@ -84,4 +83,10 @@ add_executable(leminleak
         valink.c
         valprocess.c
         valroom.c
-        valroom1.c alg2.c surb2.c)
+        valroom1.c alg2.c surb2.c
+        aux2.c
+        freefun.c
+        split.c
+        valdi.c
+        print.c
+        )
