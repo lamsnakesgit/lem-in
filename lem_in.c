@@ -6,7 +6,7 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:13 by ddratini          #+#    #+#             */
-/*   Updated: 2020/02/09 17:28:09 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/09 18:01:36 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,7 @@ int					main(void)
 	int		fd;
 	t_llrc	llrc;
 
-	fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big_sup/map_big_sup_1", O_RDONLY);
-//fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/map_39", O_RDONLY);
-//fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big/map_big_1", O_RDONLY);
-	//fd = 0;
+	fd = 0;
 	if (val_in(fd, &llrc))
 	{
 		printf("\n");

@@ -6,7 +6,7 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 18:19:18 by ddratini          #+#    #+#             */
-/*   Updated: 2020/02/09 17:06:47 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/09 17:52:35 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ int			bft2(int *f, t_list *cur, t_list **q, t_llrc *llrc)
 	{
 		if (ln->content == llrc->fr || ln->content == llrc->er)
 			*f = 1;
-		if (((t_rooms *)ln->content)->vis2 == 1 && ln->content_size != (size_t)-1
-				&& ln->content != llrc->fr && ln->content != llrc->er && *f != 1)
+		if (((t_rooms *)ln->content)->vis2 == 1
+				&& ln->content_size != (size_t)-1
+				&& ln->content != llrc->fr
+				&& ln->content != llrc->er && *f != 1)
 		{
 			((t_rooms *)ln->content)->lvl =
 					((t_rooms *)(cur)->content)->lvl + 1;

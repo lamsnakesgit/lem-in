@@ -6,7 +6,7 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 15:19:14 by ddratini          #+#    #+#             */
-/*   Updated: 2020/02/09 17:38:28 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/09 18:02:41 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,11 @@ int				count_way(t_llrc *llrc)
 
 int				clean(t_llrc *llrc, t_list **q)
 {
-	int i;
+	int		i;
+	t_rooms	*fr;
 
-	(*q) = ft_lstnew((const void *)llrc->fr, (size_t)(sizeof((void *)(llrc->fr))));
+	fr = llrc->fr;
+	(*q) = ft_lstnew((const void *)fr, (size_t)(sizeof((void *)(fr))));
 	if (!(*q))
 		return (0);
 	i = -1;
@@ -66,11 +68,13 @@ int				path_cmp2(t_llrc *llrc, size_t len)
 {
 	float l;
 	float t;
+	float sum;
 
+	sum = (float)llrc->ants + (float)llrc->plensum;
 	if (llrc->psum == 1)
 		return (1);
-	l = ((float)llrc->ants + (float)llrc->plensum) / (float)llrc->psum;
-	t = ((float)llrc->ants + (float)llrc->plensum - (float)len) / ((float)llrc->psum - 1);
+	l = sum / (float)llrc->psum;
+	t = (sum - (float)len) / ((float)llrc->psum - 1);
 	return (l >= t);
 }
 
@@ -82,8 +86,10 @@ int				path_cmp(int last, t_llrc *llrc, int x)
 {
 	float t;
 	float l;
+	float sum;
 
-	l = (float)(llrc->ants + llrc->plensum - last + x) / (float)(llrc->psum + 1);
+	sum = (float)(llrc->ants + llrc->plensum);
+	l = (float)(sum - last + x) / (float)(llrc->psum + 1);
 	t = (float)(llrc->ants + llrc->plensum) / (float)llrc->psum;
 	return (t > l);
 }
