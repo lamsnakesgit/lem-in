@@ -57,7 +57,7 @@ void			freearr(t_llrc *lrc)
 ** second array or fooms +- links
 */
 
-int				free_array_content(t_llrc *llrc, char **line, int f)
+int				free_array_content(t_llrc *llrc, int f)
 {
 	int		i;
 	t_list	*tmp;
@@ -65,7 +65,7 @@ int				free_array_content(t_llrc *llrc, char **line, int f)
 	i = 0;
 	while (++i < llrc->rmi)
 	{
-		//	free(llrc->arrrm[i]->name_r);
+//		free(llrc->arrrm[i]->name_r);
 		while (llrc->arrrm[i]->ln)
 		{
 			tmp = llrc->arrrm[i]->ln->next;
@@ -76,6 +76,7 @@ int				free_array_content(t_llrc *llrc, char **line, int f)
 		free(llrc->arrrm[i]);
 	}
 	free(llrc->arrrm);
+	return (0);
 }
 
 int				wrongroom(t_llrc *llrc, char **line, int f)
@@ -94,10 +95,9 @@ int				wrongroom(t_llrc *llrc, char **line, int f)
 	i = -1;
 	if (f == 2)
 	{
-		free_array_content(llrc, line, f);
+		free_array_content(llrc, f);
 	}
-	free(line[0]);
-	free(line);
+	free_map(line);
 	return (1);
 }
 
@@ -109,15 +109,13 @@ int				wrongroom(t_llrc *llrc, char **line, int f)
 
 int				val_in(int fd, t_llrc *llrc)
 {
-	char	*line;
-	char	*linkd;
 	char	**ls;
 	int		i;
 
 	if (!(ls = processmap(fd, llrc)) || !(1 + ls))
 		return (ft_err());
 	*llrc = nullst(*llrc);
-	i = roomlinkblock(ls + 1, llrc, fd);
+	i = roomlinkblock(ls + 1, llrc);
 	if (!llrc->rmi || llrc->end != 1 || llrc->st != 1 || !i)
 	{
 		wrongroom(llrc, ls, 1);
@@ -125,7 +123,7 @@ int				val_in(int fd, t_llrc *llrc)
 	}
 	turninarr(llrc);
 	if (ls + i + 1)
-		if (!linkval(ls + i + 1, llrc, fd))
+		if (!linkval(ls + i + 1, llrc))
 		{
 			wrongroom(llrc, ls, 2);
 			return (ft_err());
@@ -134,10 +132,11 @@ int				val_in(int fd, t_llrc *llrc)
 	return (1);
 }
 
-int 			main(int ac, char **av)
+int				main(void)//int ac, char **av)
 {
-	int fd;
-	t_llrc llrc;
+	int		fd;
+	t_llrc	llrc;
+//	int					checkcor(t_rooms *rm, t_llrc *llrc)
 
 	fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big_sup/map_big_sup_1", O_RDONLY);
 	fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/map_39", O_RDONLY);

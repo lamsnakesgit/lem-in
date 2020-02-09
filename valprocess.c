@@ -74,7 +74,7 @@ int				isdig(char **line, t_llrc *llrc)
 	int j;
 
 	j = -1;
-	if (!(validate(2, line, -1)))
+	if (!(validate(2, line, -1, 0)))
 		return (free_map(line));
 	while (line[0][++j])
 	{
@@ -108,8 +108,7 @@ char			**processmap(int fd, t_llrc *llrc)
 		return (0);
 	}
 	if (!(checkmap(ls, cp, -1, 0)))
-		return(0);//free_map(ls));
-	//free(cp);
+		return (0);
 	if (!isdig(ls, llrc))
 		return (0);
 	return (ls);

@@ -170,7 +170,7 @@ void            del_paths(t_list *path, t_llrc *llrc)//free paths as wellas path
 		free(path);
 		path = paths;
 	}
-	delete_rooms(llrc);
+	delete_rooms(llrc, 0);
 	exit(0);
 }
 

@@ -12,53 +12,10 @@
 
 #include "lemin.h"
 
-void				freermlst(t_llrc *llrc, t_rooms *rm)
-{
-	t_list *tmp;
-
-	tmp = llrc->br;
-	while (llrc->br)
-	{
-		tmp = llrc->br->next;
-		free(((t_rooms *)llrc->br->content)->name_r);
-		free(llrc->br->content);
-		free(llrc->br);
-		llrc->br = tmp;
-	}
-	free(rm->name_r);
-	free(rm);
-}
-
-int					checkcor(t_rooms *rm, t_llrc *llrc)
-{
-	t_list	*tmp;
-	t_rooms	*n;
-
-	tmp = llrc->br;
-	while (tmp)
-	{
-		if (!(ft_strcmp(((t_rooms *)(tmp->content))->name_r, rm->name_r)))
-		{
-			freermlst(llrc, rm);
-			return (0);
-		}
-		n = (t_rooms *)tmp->content;
-		if (rm->x == (n)->x && rm->y == (n)->y)
-		{
-			freermlst(llrc, rm);
-			return (0);
-		}
-		//	if (((t_rooms *)tmp->content)->x ==
-		//	lrc->br = lrc->br->next;
-		tmp = tmp->next;
-	}
-	return (1);
-}
-
 /*
 ** if not - or order or comment above ants -> display ERROR?
 ** read next_line -> either "name_c-x_c-y" or "##start"/"##end"/"#"comment;
-** if at least one space contained -> rooms mb; else -> check_##/start/end/commet#
+** if at least one space contained -> rooms mb;else -> check_##/start/end/commet
 ** * then links: "name-1_name-2"
 ** /submodeuls if u lno how to exec i will exec ,inflesliu
 ** also have to save fir-last rooms
@@ -117,83 +74,9 @@ t_list				*valroom_fill1(t_list **br, char **roomcor, t_llrc *llrc)
 	return (0);
 }
 
-long			valsp(char *av, long *sg)
-{
-	if (*av == '-')
-		*sg = -1;
-	if ((*av == ' ' && (*(av + 1) == ' ' || !*(av + 1))) \
-	|| ((*av == '-' || *av == '+') && !ft_isdigit(*(av + 1))) \
-	|| (*av != ' ' && *av != '-' && *av != '+' && !ft_isdigit(*av)) \
-	|| (ft_isdigit(*av) && !ft_isdigit(*(av + 1)) && *(av + 1) != ' ' \
-	&& *(av + 1)))
-		return (0);
-	return (1);
-}
-
-int				check_dig(char *av, int fn)
-{
-	int		i;
-	char	*maxi;
-	char	*mini;
-	int		cmpr;
-
-	i = -1;
-	maxi = "2147483647";
-	mini = "-2147483648";
-	if (!fn && (cmpr = ft_strcmp(av, maxi)) > 0)
-		return (0);
-	else if (fn && ft_strcmp(av, mini) > 0)
-		return (0);
-	else
-		return (1);
-}
-
-int				validate(int ac, char **av, int i, long fn)
-{
-	int		j;
-	size_t	len;
-
-	while (av[++i] && i < ac - 1)
-	{
-		fn = 0;
-		j = -1;
-		if (av[i][0] == '-')
-			fn = 1;
-		if ((len = ft_strlen(av[i])) > 11 || (len > 10 && !fn))
-			return (0);
-		while (av[i][++j])
-		{
-			if (fn && !j)
-				++j;
-			if (!ft_isdigit(av[i][j]))
-				return (0);
-			if (!valsp(av[i] + j, &fn))
-				return (0);
-			if ((j >= 10) || (j >= 9 && !fn))
-				if (!check_dig(av[i], fn))
-					return (0);
-		}
-	}
-	return (1);
-}
-
-void			freelrm(t_llrc *llrc)
-{
-	t_list	*tmp;
-
-	tmp = llrc->br;
-	while (llrc->br)
-	{
-		tmp = llrc->br->next;
-		free(((t_rooms *)llrc->br->content)->name_r);
-		free(llrc->br->content);
-		free(llrc->br);
-		llrc->br = tmp;
-	}
-}
-
 /*
-**send line ->check val inters->check coords; save r_name/room in linst;return->link1?
+** send line ->check val inters->check coords;
+** save r_name/room in linst;return->link1?
 ** delete- if nonval rmcor
 */
 
@@ -209,7 +92,7 @@ char				**valrmc_s(char *line, t_llrc *llrc)
 		return (0);
 	while (roomcor[i])
 		++i;
-	if (i == 3 && roomcor[0][0] != 'L' && validate(3, roomcor + 1, -1))
+	if (i == 3 && roomcor[0][0] != 'L' && validate(3, roomcor + 1, -1, 0))
 		return (roomcor);
 	freelrm(llrc);
 	ft_cleanmem(roomcor);

@@ -12,26 +12,29 @@
 
 #include "lemin.h"
 
-int				comstend(char *line)
+/*
+** -1 = start, -2 = end 0 = comment, 1 = line
+** -3 = unknown command
+*/
+
+int					comstend(char *line)
 {
-	ft_putendl(line);//or after
-	if (line[0] == '#' && line[1] == '#' && line && line + 1)
+	ft_putendl(line);
+	if (line && line[0] == '#' && line + 1 && line[1] == '#')
 	{
-		if (!ft_strcmp(line + 2, "start"))// || !ft_strcmp(line + 2, "end")) unlnowm coms ignoreD
-			//else ft_err(); its a comm#
-			//	ft_create_rooms();
+		if (!ft_strcmp(line + 2, "start"))
 			return (-1);
 		if (!ft_strcmp(line + 2, "end"))
 			return (-2);
 		else
-			return (-3);//commnd?
+			return (-3);
 	}
 	else if (line[0] == '#')
 		return (0);
 	return (1);
 }
 
-int					stcheck(char **line, t_llrc *lrc, int cm, int fd)
+int					stcheck(char **line, t_llrc *lrc, int cm)
 {
 	int re;
 	int rvl;
@@ -40,24 +43,24 @@ int					stcheck(char **line, t_llrc *lrc, int cm, int fd)
 	i = -1;
 	cm == -2 ? ++lrc->end : ++lrc->st;
 	if (lrc->st > 1 || lrc->end > 1)
-		return -2;
+		return (-2);
 	while (line[++i])
 	{
-		if ((re=comstend(line[i]))!=1)
+		if ((re = comstend(line[i])) != 1)
 		{//	free(*line);
-			if (re ==-2||re==-1)
-				return -2;
+			if (re == -2 || re == -1)
+				return (-2);
 		}
 		else if (re == 1)
 		{//freelst?
-			if ((rvl=rmorlink(line[i], lrc))==2||!rvl)//orsavesep t_rm
-				return -2;//0;
-			if (savemarg(lrc, cm) == 0)//*line,
-				return -2;//0000;//nonfree?/ret?
-			return (1 + i);//1;
-		}//cont aft -1/-2 exit?//OMG
+			if ((rvl = rmorlink(line[i], lrc)) == 2 || !rvl)
+				return (-2);
+			if (savemarg(lrc, cm) == 0)
+				return (-2);//nonfree?/ret?
+			return (1 + i);
+		}
 	}
-	return -2;
+	return (-2);
 }
 
 /*
@@ -78,32 +81,29 @@ int					stcheck(char **line, t_llrc *lrc, int cm, int fd)
 ** //check DUPS + 0.2
 */
 
-int				rmorlink(char *line, t_llrc *lrc)//, t_list *rl)
+int					rmorlink(char *line, t_llrc *lrc)//, t_list *rl)
 {
 	char	**roomcor;
 
 	if (!ft_strchr(line, ' '))//btwr-name-1//lol/KO
 	{
-		return 2;
+		return (2);
 	}
 	if (!(roomcor = valrmc_s(line, lrc)))
-		return (0);//thereis no room; or fault
+		return (0);
 	else
 	{
-	/*	if (lrc->br)
-			if (!duplicheck(roomcor, lrc))
-				return -2;
-	*/	if (!(lrc->br = valroom_fill1((&lrc->br), roomcor, lrc)))
+		if (!(lrc->br = valroom_fill1((&lrc->br), roomcor, lrc)))
 			return (0);
 		lrc->rmi++;
 	}
-	return 10;
+	return (10);
 }
 
-int					roomlinkblock(char **line, t_llrc *lrc, int fd)//mv ind!
+int					roomlinkblock(char **line, t_llrc *lrc)//mv ind!
 {
 	int		ret;
-	int 	i;
+	int		i;
 	int		rm;
 	int		v;
 
@@ -111,20 +111,20 @@ int					roomlinkblock(char **line, t_llrc *lrc, int fd)//mv ind!
 	while (line[i])
 	{
 		ret = comstend(line[i]);
-		if (ret == -1 ||ret == -2)/*)//save1/rol/cycle.iscom*/
+		if (ret == -1 || ret == -2)
 		{
-			if ((v = stcheck(line + i + 1, lrc, ret, fd)) < 0)//ret-check
+			if ((v = stcheck(line + i + 1, lrc, ret)) < 0)
 				return (0);//fre?
 			i += v;
 		}
 		if (ret == 1)
 		{
-			if ((rm = rmorlink(line[i], lrc)/*, (lrc->br))*/) == 2)
-				return i;//(line[i]);//if no rms->lnks(li);//
+			if ((rm = rmorlink(line[i], lrc)) == 2)
+				return (i);
 			if (rm == 0 || rm == -2)
 				return (0);
 		}
 		++i;
 	}
-	return (0);//;ERRvalrmonly
+	return (0);
 }

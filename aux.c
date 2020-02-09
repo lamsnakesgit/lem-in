@@ -12,27 +12,22 @@
 
 #include "lemin.h"
 
-void    ft_lstaddup(t_list **alst, t_list *new)
+void			ft_lstaddup(t_list **alst, t_list *new)
 {
 	t_list *alst2;
+
 	if (*alst)
 	{
 		alst2 = *alst;
 		while (alst2->next)
 			alst2 = alst2->next;
 		alst2->next = new;
-		//while ((*alst)->next)
-		//	*alst = (*alst)->next;
-		//(*alst)->next = new;
-
-//	new->next = NULL;
-		//	*alst = alst2;
 	}
 	else
 		*alst = new;
 }
 
-void				ft_lstnadd(t_list *ln, t_list *new)
+void			ft_lstnadd(t_list *ln, t_list *new)
 {
 	t_list *tmp;
 
@@ -42,9 +37,10 @@ void				ft_lstnadd(t_list *ln, t_list *new)
 	tmp->next = new;
 }
 
-void    ft_lstadd_up(t_list **alst, t_list *new)
+void			ft_lstadd_up(t_list **alst, t_list *new)
 {
 	t_list *alst2;
+
 	if (*alst)
 	{
 		alst2 = *alst;
@@ -58,17 +54,17 @@ void    ft_lstadd_up(t_list **alst, t_list *new)
 		*alst = new;
 }
 
-void crpath(t_list **path, t_list *tr)
+void			crpath(t_list **path, t_list *tr)
 {
 	*path = ft_lstnew((void *)tr, (size_t)sizeof(*path));
 	(*path)->content = tr->content;
 	(*path)->content_size = tr->content_size;
-//	(*path)->next = tr->next;
 }
 
-void    ft_listup(t_list **alst, t_list *new)
+void			ft_listup(t_list **alst, t_list *new)
 {
 	t_list *alst2;
+
 	if (*alst)
 	{
 		alst2 = *alst;
@@ -92,32 +88,32 @@ void			unvisit(t_llrc *lrc)
 	i = -1;
 	while (++i < lrc->rmi)
 		lrc->arrrm[i]->vis = 0;
-
 }
 
-int 			*unvisited(int *vis, t_llrc *llrc)
+int				*unvisited(int *vis, t_llrc *llrc)
 {
 	int i;
 
 	i = -1;
-	while (++i < llrc->rmi)//iter array
+	while (++i < llrc->rmi)
 		vis[i] = 0;
 	return (0);
 }
 
-void 				print_l(t_llrc *lrc)
+void			print_l(t_llrc *lrc)
 {
-	t_list *l;
+	t_list	*l;
+	int		i;
 
-	int i = 0;
+	i = 0;
 	l = lrc->arrrm[i]->ln;
 	while (l && i < lrc->rmi)
 	{
 		while (l)
 		{
 			printf("i=%4s|%6s=|%d\n", lrc->arrrm[i]->name_r,
-				   ((t_rooms *) l->content)->name_r,
-				   ((t_rooms *) l->content)->lvl);
+				((t_rooms *)l->content)->name_r,
+				((t_rooms *)l->content)->lvl);
 			l = l->next;
 		}
 		printf("\n");
@@ -130,12 +126,11 @@ void 				print_l(t_llrc *lrc)
 
 void			printflist(t_list *ln)
 {
-//	t_list *ln;
-	t_list *path;
-	int i = 0;
+	t_list	*path;
+	int		i;
 
+	i = 0;
 	path = ln;
-
 	while (path)
 	{
 		printf("%s ", ((t_rooms *)path->content)->name_r);
@@ -144,13 +139,12 @@ void			printflist(t_list *ln)
 	printf("\n");
 }
 
-
-int             count_way(t_llrc *llrc)
+int				count_way(t_llrc *llrc)
 {
 	int		min;
 	t_list	*tf;
 	t_list	*te;
-	int 	f;
+	int		f;
 
 	tf = llrc->fr->ln;
 	f = 0;
@@ -175,8 +169,9 @@ int				clean(t_llrc *llrc, t_list **q)
 {
 	int i;
 
-	if (!((*q) = ft_lstnew((const void *)llrc->fr, (size_t)(sizeof((void *)(llrc->fr))))))
-		return 0;
+	(*q) = ft_lstnew((const void *)llrc->fr, (size_t)(sizeof((void *)(llrc->fr))));
+	if (!(*q))
+		return (0);
 	i = -1;
 	while (++i < llrc->rmi)
 	{
@@ -189,7 +184,7 @@ int				clean(t_llrc *llrc, t_list **q)
 	return (1);
 }
 
-void		printallpaths(t_list *ln)//paths)
+void			printallpaths(t_list *ln)
 {
 	t_list *path;
 
@@ -202,7 +197,7 @@ void		printallpaths(t_list *ln)//paths)
 	printf("\n");
 }
 
-t_list *lastpath(t_list **paths, int i)
+t_list			*lastpath(t_list **paths, int i)
 {
 	t_list *ln;
 
@@ -227,6 +222,10 @@ t_list *lastpath(t_list **paths, int i)
 	return (ln);
 }
 
+/*
+** l = // с новым
+** return //if t >= l -> break
+*/
 
 int				path_cmp2(t_llrc *llrc, size_t len)
 {
@@ -234,24 +233,27 @@ int				path_cmp2(t_llrc *llrc, size_t len)
 	float t;
 
 	if (llrc->psum == 1)
-		return 1;
-	l = ((float)llrc->ants + (float)llrc->plensum) / (float)llrc->psum;// с новым
+		return (1);
+	l = ((float)llrc->ants + (float)llrc->plensum) / (float)llrc->psum;
 	t = ((float)llrc->ants + (float)llrc->plensum - (float)len) / ((float)llrc->psum - 1);
-	return (l >= t);//if t >= l -> break
+	return (l >= t);
 }
 
-int    path_cmp(int last, t_llrc *llrc, int x)// if t > l то 1 путь лучше, чем 2 остальных
+/*
+** // if t > l то 1 путь лучше, чем 2 остальных
+*/
+
+int				path_cmp(int last, t_llrc *llrc, int x)
 {
 	float t;
 	float l;
 
 	l = (float)(llrc->ants + llrc->plensum - last + x) / (float)(llrc->psum + 1);
 	t = (float)(llrc->ants + llrc->plensum) / (float)llrc->psum;
-
 	return (t > l);
 }
 
-void 	delpath(t_list **paths, t_list *ln)
+void			delpath(t_list **paths, t_list *ln)
 {
 	t_list *tr;
 	t_list *tr2;
@@ -278,20 +280,19 @@ void 	delpath(t_list **paths, t_list *ln)
 		tr = tr->next;
 	}
 }
+
 /*
 ** deletes roomnames, links. array of rooms, pointer to arrrooms
 ** free lst removed
 */
-void	delete_rooms(t_llrc *llrc)
+
+void			delete_rooms(t_llrc *llrc, int i)
 {
-	int i;
-	t_list *tmpbr;
-	t_list *nextbr;
-	t_list  *tmp;
+	t_list	*tmpbr;
+	t_list	*nextbr;
+	t_list	*tmp;
 
 	i = 0;
-//	free(llrc->er);
-//	free(llrc->fr);
 	while (i < llrc->rmi)
 	{
 		free(llrc->arrrm[i]->name_r);
@@ -308,7 +309,7 @@ void	delete_rooms(t_llrc *llrc)
 	while (tmpbr)
 	{
 		nextbr = tmpbr->next;
-		free(tmpbr);//->next)
+		free(tmpbr);
 		tmpbr = nextbr;
 	}
 	free(llrc->arrrm);

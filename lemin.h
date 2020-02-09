@@ -122,7 +122,7 @@ int				iscomment(char *line);
 int				rmorlink(char *line, t_llrc *llrc);//, t_list *rl);//0ptr-check
 int				comstend(char *line);
 
-char 			*linkval(char **line, t_llrc *lrc, int fd);
+char 			*linkval(char **line, t_llrc *lrc);
 
 int         	corr_link(char **line, t_llrc *llrc, int *rn);//checkmarginindxs
 int         	ispresent(t_llrc *llrc, char *rs);
@@ -132,9 +132,9 @@ t_list          *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor, t_ll
 int			    val_cord(char **roomcor);//ps related neg int?
 char		    **valrmc_s(char *line, t_llrc *llrc);
 int			    savemarg(t_llrc *lrc, int cm);//char *line,
-int			    stcheck(char **line, t_llrc *lrc, int cm, int fd);
+int			    stcheck(char **line, t_llrc *lrc, int cm);
 int             duplicheck(char **roomcor, t_llrc *lrc);
-int		    	roomlinkblock(char **line, t_llrc *lrc, int fd);
+int		    	roomlinkblock(char **line, t_llrc *lrc);
 void            turninarr(t_llrc *llrc);
 int				ft_err(void);
 
@@ -183,7 +183,7 @@ void			print_ant2(t_list **paths, t_llrc *llrc);
 
 int 			quepush2(t_llrc *llrc, t_list **q, t_list *tr);//**tr)///push unvis nbrs
 
-void			delete_rooms(t_llrc *llrc);
+void			delete_rooms(t_llrc *llrc, int i);
 
 char			*ft_nstrsub(char const *s, unsigned int start, size_t len);
 int 			issplitsp(char *s, char c);
@@ -192,6 +192,11 @@ int				validate(int ac, char **av, int i, long);
 int				free_map(char **line);
 int 			wrongroom(t_llrc *llrc, char **line, int f);
 void			freermlst(t_llrc *llrc, t_rooms *rm);
+
+void				freelrm(t_llrc *llrc);
+//void				freermlst(t_llrc *llrc, t_rooms *rm);
+int					validate(int ac, char **av, int i, long fn);
+int					checkcor(t_rooms *rm, t_llrc *llrc);
 
 
 
