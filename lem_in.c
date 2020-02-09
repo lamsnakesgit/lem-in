@@ -22,35 +22,13 @@ int				ft_err(void)
 	return (0);
 }
 
-/*char			**ft_split_room(char *line, char c)
-{
-	int i;
-}*/
-/*t_list			*ft_create_rooms(char *line)
-{   line+=0;
-	return (0);
-}*/
-
-t_rooms				*r_fill(t_rooms *r, char **roomcor)
-{
-	if (!r)//!roomcor)
-	{
-	//	r = ()
-		r->name_r = roomcor[0];
-		r->x = ft_atoi(roomcor[1]);
-		r->y = ft_atoi(roomcor[2]);
-	}
-	return (r);
-}
-
 t_llrc 			nullst(t_llrc llrc)
 {
 	llrc.end = 0;
 	llrc.st = 0;
 	llrc.rmi = 0;
 	llrc.linkd = 0;
-	llrc.br = 0;//rl=0?
-//	llrc->br =0;//uninit||init somethin?	llrc.fr = 0;
+	llrc.br = 0;
 	llrc.er = 0;
 	llrc.arrrm = 0;
 	llrc.plensum = 0;
@@ -70,6 +48,7 @@ void			freellrc(t_llrc *lrc)
 	}
 	free(lrc->arrrm);
 }
+
 /*
 **{//extra dop otd for chech_room w own w gnl
 ** //--check_roomspresence_validif
@@ -85,9 +64,9 @@ int				val_in(int fd, t_llrc *llrc)
 		return (ft_err());
 	*llrc = nullst(*llrc);
 	i = roomlinkblock(ls + 1, llrc);
-	if (!llrc->rmi || llrc->end != 1 || llrc->st != 1)//i ?
+	if (!llrc->rmi || llrc->end != 1 || llrc->st != 1)
 		return (ft_err());
-	turninarr(llrc);//(&llrc);
+	turninarr(llrc);
 	if (ls && ls + i + 1)
 	{
 		if (!linkval(ls + i + 1, llrc))
@@ -100,22 +79,6 @@ int				val_in(int fd, t_llrc *llrc)
 	free_map(ls);
 	return (1);
 }
-/*
-int				iscomment(char *line)
-{
-	if (line[0] == '#')
-	{
-		if (line[1] != '#' && line[1])
-			return (0);
-		if (ft_strcmp(line + 2, "start"))
-			return (-1);
-		if (ft_strcmp(line + 2, "end"))
-			return (-2);
-		else
-			return -3;//
-	}
-	return (1);
-}*/
 
 int 			main(void)//(int ac, char **av)
 {
@@ -126,7 +89,7 @@ int 			main(void)//(int ac, char **av)
 	//fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/map_39", O_RDONLY);
 	//fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big/map_big_1", O_RDONLY);
 	//fd = 0;
-	if (val_in(fd, &llrc))//(ac, av);
+	if (val_in(fd, &llrc))
 	{
 		printf("\n");
 		alg(&llrc);

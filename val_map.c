@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   val_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 16:23:48 by ddratini          #+#    #+#             */
-/*   Updated: 2020/01/06 16:23:50 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/09 16:55:02 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ int					comstend(char *line)
 	return (1);
 }
 
+/*
+** re com != 1 ;
+** re == 1 freelst?
+** ret -1 nonfreeret?
+*/
+
 int					stcheck(char **line, t_llrc *lrc, int cm)
 {
 	int re;
@@ -47,16 +53,16 @@ int					stcheck(char **line, t_llrc *lrc, int cm)
 	while (line[++i])
 	{
 		if ((re = comstend(line[i])) != 1)
-		{//	free(*line);
+		{
 			if (re == -2 || re == -1)
 				return (-2);
 		}
 		else if (re == 1)
-		{//freelst?
+		{
 			if ((rvl = rmorlink(line[i], lrc)) == 2 || !rvl)
 				return (-2);
 			if (savemarg(lrc, cm) == 0)
-				return (-2);//nonfree?/ret?
+				return (-2);
 			return (1 + i);
 		}
 	}
@@ -65,14 +71,16 @@ int					stcheck(char **line, t_llrc *lrc, int cm)
 
 /*
 **lineforma: "##start" "##end" "#comm" "nam1 cx cy"
-//if not comm-s -> saveline-checked; somee var to kkeep countrun on rooms->then link follow
-			{//usual nemeroom w coords two//if (ft_strchr(line, ' '))//this maybe a room; save
-	add counter of st & en in cylcle; check st-|end end-|st
-	save rooms; after val-r-x-y; in lists ptr to 1 placeh mem/2d-arrs
-	if valrmcor->ssave links
-	check if linksblck? how->nextstep?
-	!' ' -> no rooms-coors
- 	i guess create seprt roomspace for s/e;ret=line+strct w roomptr
+** //if not comm-s -> saveline-checked;
+**somee var to kkeep countrun on rooms->then link follow
+**{//usual nemeroom w coords two
+** //if (ft_strchr(line, ' '))//this maybe a room; save
+**	add counter of st & en in cylcle; check st-|end end-|st
+**	save rooms; after val-r-x-y; in lists ptr to 1 placeh mem/2d-arrs
+**	if valrmcor->ssave links
+**	check if linksblck? how->nextstep?
+**	!' ' -> no rooms-coors
+ **	i guess create seprt roomspace for s/e;ret=line+strct w roomptr
 */
 /*
 ** comms -skipped;counted;nost/e->fail;no after s/e/-?F;if rm if link
@@ -81,11 +89,11 @@ int					stcheck(char **line, t_llrc *lrc, int cm)
 ** //check DUPS + 0.2
 */
 
-int					rmorlink(char *line, t_llrc *lrc)//, t_list *rl)
+int					rmorlink(char *line, t_llrc *lrc)
 {
 	char	**roomcor;
 
-	if (!ft_strchr(line, ' '))//btwr-name-1//lol/KO
+	if (!ft_strchr(line, ' '))
 	{
 		return (2);
 	}
@@ -100,7 +108,11 @@ int					rmorlink(char *line, t_llrc *lrc)//, t_list *rl)
 	return (10);
 }
 
-int					roomlinkblock(char **line, t_llrc *lrc)//mv ind!
+/*
+** //mv ind! stcheck//fre?
+*/
+
+int					roomlinkblock(char **line, t_llrc *lrc)
 {
 	int		ret;
 	int		i;
@@ -114,7 +126,7 @@ int					roomlinkblock(char **line, t_llrc *lrc)//mv ind!
 		if (ret == -1 || ret == -2)
 		{
 			if ((v = stcheck(line + i + 1, lrc, ret)) < 0)
-				return (0);//fre?
+				return (0);
 			i += v;
 		}
 		if (ret == 1)

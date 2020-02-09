@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valink.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 16:03:11 by ddratini          #+#    #+#             */
-/*   Updated: 2020/01/06 16:03:32 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/09 16:56:21 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 ** linkval: first - check1st line
 ** rm presence /path to itself
 ** //checkmarginindxs
+** re free?
 */
 
 int					corr_link(char **line, t_llrc *llrc, int *rn)
@@ -46,7 +47,6 @@ int					corr_link(char **line, t_llrc *llrc, int *rn)
 		return (0);
 	if ((rn[0] = ispresent(llrc, rs)) < 0)
 		return (0);
-//	free (rs);
 	++e;
 	i = e;
 	while ((*line)[e])
