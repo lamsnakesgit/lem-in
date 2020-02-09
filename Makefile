@@ -3,7 +3,8 @@ NAME = lem-in
 SRC =   alg.c       bft.c       aux.c       lem_in.c\
         suurballe.c traverse.c  val_map.c\
         valink.c    valprocess.c valroom.c  valroom1.c split.c valdi.c freefun.c\
-		surb2.c alg2.c
+		surb2.c alg2.c \
+		aux2.c print.c
 
 OBJ = $(patsubst %.c, %.o, $(SRC))
 

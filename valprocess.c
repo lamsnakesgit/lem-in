@@ -6,12 +6,11 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 16:27:36 by ddratini          #+#    #+#             */
-/*   Updated: 2020/01/16 23:34:19 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/09 17:12:51 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
-#define BS 16000
 
 char			**lines(char *buf)
 {
