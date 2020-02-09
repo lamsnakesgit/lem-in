@@ -1,4 +1,12 @@
 /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/ddratini/42_03_projests/DIRlem-in_rep
--- Configuring done
--- Generating done
--- Build files have been written to: /Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug
+CMake Error: Parse error in cache file /Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeCache.txt on line 136. Offending entry: <<<<<<< HEAD
+CMake Error: Parse error in cache file /Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeCache.txt on line 140. Offending entry: >>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
+CMake Error: Parse error in cache file /Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeCache.txt on line 201. Offending entry: <<<<<<< HEAD
+CMake Error: Parse error in cache file /Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeCache.txt on line 219. Offending entry: >>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
+CMake Error at CMakeLists.txt:2:
+  Parse error.  Expected a command name, got unquoted argument with text
+  "<<<<<<<".
+
+
+-- Configuring incomplete, errors occurred!
+See also "/Users/ddratini/42_03_projests/DIRlem-in_rep/cmake-build-debug/CMakeFiles/CMakeOutput.log".

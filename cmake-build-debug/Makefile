@@ -111,6 +111,7 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+<<<<<<< HEAD
 # Target rules for targets named leminleak
 
 # Build rule for target.
@@ -122,6 +123,19 @@ leminleak: cmake_check_build_system
 leminleak/fast:
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/build
 .PHONY : leminleak/fast
+=======
+# Target rules for targets named DIRlem_in_rep
+
+# Build rule for target.
+DIRlem_in_rep: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 DIRlem_in_rep
+.PHONY : DIRlem_in_rep
+
+# fast build rule for target.
+DIRlem_in_rep/fast:
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/build
+.PHONY : DIRlem_in_rep/fast
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 
 alg.o: alg.c.o
 
@@ -129,7 +143,11 @@ alg.o: alg.c.o
 
 # target to build an object file
 alg.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/alg.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/alg.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : alg.c.o
 
 alg.i: alg.c.i
@@ -138,7 +156,11 @@ alg.i: alg.c.i
 
 # target to preprocess a source file
 alg.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/alg.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/alg.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : alg.c.i
 
 alg.s: alg.c.s
@@ -147,6 +169,7 @@ alg.s: alg.c.s
 
 # target to generate assembly for a file
 alg.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/alg.c.s
 .PHONY : alg.c.s
 
@@ -177,13 +200,22 @@ alg2.c.s:
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/alg2.c.s
 .PHONY : alg2.c.s
 
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/alg.c.s
+.PHONY : alg.c.s
+
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 aux.o: aux.c.o
 
 .PHONY : aux.o
 
 # target to build an object file
 aux.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/aux.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/aux.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : aux.c.o
 
 aux.i: aux.c.i
@@ -192,7 +224,11 @@ aux.i: aux.c.i
 
 # target to preprocess a source file
 aux.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/aux.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/aux.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : aux.c.i
 
 aux.s: aux.c.s
@@ -201,7 +237,11 @@ aux.s: aux.c.s
 
 # target to generate assembly for a file
 aux.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/aux.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/aux.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : aux.c.s
 
 bft.o: bft.c.o
@@ -210,7 +250,11 @@ bft.o: bft.c.o
 
 # target to build an object file
 bft.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/bft.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/bft.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : bft.c.o
 
 bft.i: bft.c.i
@@ -219,7 +263,11 @@ bft.i: bft.c.i
 
 # target to preprocess a source file
 bft.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/bft.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/bft.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : bft.c.i
 
 bft.s: bft.c.s
@@ -228,7 +276,11 @@ bft.s: bft.c.s
 
 # target to generate assembly for a file
 bft.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/bft.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/bft.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : bft.c.s
 
 lem_in.o: lem_in.c.o
@@ -237,7 +289,11 @@ lem_in.o: lem_in.c.o
 
 # target to build an object file
 lem_in.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/lem_in.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/lem_in.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : lem_in.c.o
 
 lem_in.i: lem_in.c.i
@@ -246,7 +302,11 @@ lem_in.i: lem_in.c.i
 
 # target to preprocess a source file
 lem_in.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/lem_in.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/lem_in.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : lem_in.c.i
 
 lem_in.s: lem_in.c.s
@@ -255,7 +315,11 @@ lem_in.s: lem_in.c.s
 
 # target to generate assembly for a file
 lem_in.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/lem_in.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/lem_in.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : lem_in.c.s
 
 libft/STRSPLIT.o: libft/STRSPLIT.c.o
@@ -264,7 +328,11 @@ libft/STRSPLIT.o: libft/STRSPLIT.c.o
 
 # target to build an object file
 libft/STRSPLIT.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/STRSPLIT.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/STRSPLIT.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/STRSPLIT.c.o
 
 libft/STRSPLIT.i: libft/STRSPLIT.c.i
@@ -273,7 +341,11 @@ libft/STRSPLIT.i: libft/STRSPLIT.c.i
 
 # target to preprocess a source file
 libft/STRSPLIT.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/STRSPLIT.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/STRSPLIT.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/STRSPLIT.c.i
 
 libft/STRSPLIT.s: libft/STRSPLIT.c.s
@@ -282,7 +354,11 @@ libft/STRSPLIT.s: libft/STRSPLIT.c.s
 
 # target to generate assembly for a file
 libft/STRSPLIT.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/STRSPLIT.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/STRSPLIT.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/STRSPLIT.c.s
 
 libft/ft_atoi.o: libft/ft_atoi.c.o
@@ -291,7 +367,11 @@ libft/ft_atoi.o: libft/ft_atoi.c.o
 
 # target to build an object file
 libft/ft_atoi.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_atoi.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_atoi.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_atoi.c.o
 
 libft/ft_atoi.i: libft/ft_atoi.c.i
@@ -300,7 +380,11 @@ libft/ft_atoi.i: libft/ft_atoi.c.i
 
 # target to preprocess a source file
 libft/ft_atoi.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_atoi.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_atoi.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_atoi.c.i
 
 libft/ft_atoi.s: libft/ft_atoi.c.s
@@ -309,7 +393,11 @@ libft/ft_atoi.s: libft/ft_atoi.c.s
 
 # target to generate assembly for a file
 libft/ft_atoi.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_atoi.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_atoi.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_atoi.c.s
 
 libft/ft_bzero.o: libft/ft_bzero.c.o
@@ -318,7 +406,11 @@ libft/ft_bzero.o: libft/ft_bzero.c.o
 
 # target to build an object file
 libft/ft_bzero.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_bzero.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_bzero.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_bzero.c.o
 
 libft/ft_bzero.i: libft/ft_bzero.c.i
@@ -327,7 +419,11 @@ libft/ft_bzero.i: libft/ft_bzero.c.i
 
 # target to preprocess a source file
 libft/ft_bzero.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_bzero.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_bzero.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_bzero.c.i
 
 libft/ft_bzero.s: libft/ft_bzero.c.s
@@ -336,7 +432,11 @@ libft/ft_bzero.s: libft/ft_bzero.c.s
 
 # target to generate assembly for a file
 libft/ft_bzero.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_bzero.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_bzero.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_bzero.c.s
 
 libft/ft_cleanmem.o: libft/ft_cleanmem.c.o
@@ -345,7 +445,11 @@ libft/ft_cleanmem.o: libft/ft_cleanmem.c.o
 
 # target to build an object file
 libft/ft_cleanmem.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_cleanmem.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_cleanmem.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_cleanmem.c.o
 
 libft/ft_cleanmem.i: libft/ft_cleanmem.c.i
@@ -354,7 +458,11 @@ libft/ft_cleanmem.i: libft/ft_cleanmem.c.i
 
 # target to preprocess a source file
 libft/ft_cleanmem.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_cleanmem.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_cleanmem.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_cleanmem.c.i
 
 libft/ft_cleanmem.s: libft/ft_cleanmem.c.s
@@ -363,7 +471,11 @@ libft/ft_cleanmem.s: libft/ft_cleanmem.c.s
 
 # target to generate assembly for a file
 libft/ft_cleanmem.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_cleanmem.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_cleanmem.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_cleanmem.c.s
 
 libft/ft_isalnum.o: libft/ft_isalnum.c.o
@@ -372,7 +484,11 @@ libft/ft_isalnum.o: libft/ft_isalnum.c.o
 
 # target to build an object file
 libft/ft_isalnum.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_isalnum.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_isalnum.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_isalnum.c.o
 
 libft/ft_isalnum.i: libft/ft_isalnum.c.i
@@ -381,7 +497,11 @@ libft/ft_isalnum.i: libft/ft_isalnum.c.i
 
 # target to preprocess a source file
 libft/ft_isalnum.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_isalnum.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_isalnum.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_isalnum.c.i
 
 libft/ft_isalnum.s: libft/ft_isalnum.c.s
@@ -390,7 +510,11 @@ libft/ft_isalnum.s: libft/ft_isalnum.c.s
 
 # target to generate assembly for a file
 libft/ft_isalnum.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_isalnum.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_isalnum.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_isalnum.c.s
 
 libft/ft_isalpha.o: libft/ft_isalpha.c.o
@@ -399,7 +523,11 @@ libft/ft_isalpha.o: libft/ft_isalpha.c.o
 
 # target to build an object file
 libft/ft_isalpha.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_isalpha.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_isalpha.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_isalpha.c.o
 
 libft/ft_isalpha.i: libft/ft_isalpha.c.i
@@ -408,7 +536,11 @@ libft/ft_isalpha.i: libft/ft_isalpha.c.i
 
 # target to preprocess a source file
 libft/ft_isalpha.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_isalpha.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_isalpha.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_isalpha.c.i
 
 libft/ft_isalpha.s: libft/ft_isalpha.c.s
@@ -417,7 +549,11 @@ libft/ft_isalpha.s: libft/ft_isalpha.c.s
 
 # target to generate assembly for a file
 libft/ft_isalpha.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_isalpha.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_isalpha.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_isalpha.c.s
 
 libft/ft_isascii.o: libft/ft_isascii.c.o
@@ -426,7 +562,11 @@ libft/ft_isascii.o: libft/ft_isascii.c.o
 
 # target to build an object file
 libft/ft_isascii.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_isascii.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_isascii.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_isascii.c.o
 
 libft/ft_isascii.i: libft/ft_isascii.c.i
@@ -435,7 +575,11 @@ libft/ft_isascii.i: libft/ft_isascii.c.i
 
 # target to preprocess a source file
 libft/ft_isascii.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_isascii.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_isascii.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_isascii.c.i
 
 libft/ft_isascii.s: libft/ft_isascii.c.s
@@ -444,7 +588,11 @@ libft/ft_isascii.s: libft/ft_isascii.c.s
 
 # target to generate assembly for a file
 libft/ft_isascii.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_isascii.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_isascii.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_isascii.c.s
 
 libft/ft_isdigit.o: libft/ft_isdigit.c.o
@@ -453,7 +601,11 @@ libft/ft_isdigit.o: libft/ft_isdigit.c.o
 
 # target to build an object file
 libft/ft_isdigit.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_isdigit.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_isdigit.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_isdigit.c.o
 
 libft/ft_isdigit.i: libft/ft_isdigit.c.i
@@ -462,7 +614,11 @@ libft/ft_isdigit.i: libft/ft_isdigit.c.i
 
 # target to preprocess a source file
 libft/ft_isdigit.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_isdigit.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_isdigit.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_isdigit.c.i
 
 libft/ft_isdigit.s: libft/ft_isdigit.c.s
@@ -471,7 +627,11 @@ libft/ft_isdigit.s: libft/ft_isdigit.c.s
 
 # target to generate assembly for a file
 libft/ft_isdigit.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_isdigit.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_isdigit.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_isdigit.c.s
 
 libft/ft_isprint.o: libft/ft_isprint.c.o
@@ -480,7 +640,11 @@ libft/ft_isprint.o: libft/ft_isprint.c.o
 
 # target to build an object file
 libft/ft_isprint.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_isprint.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_isprint.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_isprint.c.o
 
 libft/ft_isprint.i: libft/ft_isprint.c.i
@@ -489,7 +653,11 @@ libft/ft_isprint.i: libft/ft_isprint.c.i
 
 # target to preprocess a source file
 libft/ft_isprint.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_isprint.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_isprint.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_isprint.c.i
 
 libft/ft_isprint.s: libft/ft_isprint.c.s
@@ -498,7 +666,11 @@ libft/ft_isprint.s: libft/ft_isprint.c.s
 
 # target to generate assembly for a file
 libft/ft_isprint.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_isprint.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_isprint.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_isprint.c.s
 
 libft/ft_itoa.o: libft/ft_itoa.c.o
@@ -507,7 +679,11 @@ libft/ft_itoa.o: libft/ft_itoa.c.o
 
 # target to build an object file
 libft/ft_itoa.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_itoa.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_itoa.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_itoa.c.o
 
 libft/ft_itoa.i: libft/ft_itoa.c.i
@@ -516,7 +692,11 @@ libft/ft_itoa.i: libft/ft_itoa.c.i
 
 # target to preprocess a source file
 libft/ft_itoa.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_itoa.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_itoa.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_itoa.c.i
 
 libft/ft_itoa.s: libft/ft_itoa.c.s
@@ -525,7 +705,11 @@ libft/ft_itoa.s: libft/ft_itoa.c.s
 
 # target to generate assembly for a file
 libft/ft_itoa.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_itoa.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_itoa.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_itoa.c.s
 
 libft/ft_lstadd.o: libft/ft_lstadd.c.o
@@ -534,7 +718,11 @@ libft/ft_lstadd.o: libft/ft_lstadd.c.o
 
 # target to build an object file
 libft/ft_lstadd.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_lstadd.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_lstadd.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_lstadd.c.o
 
 libft/ft_lstadd.i: libft/ft_lstadd.c.i
@@ -543,7 +731,11 @@ libft/ft_lstadd.i: libft/ft_lstadd.c.i
 
 # target to preprocess a source file
 libft/ft_lstadd.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_lstadd.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_lstadd.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_lstadd.c.i
 
 libft/ft_lstadd.s: libft/ft_lstadd.c.s
@@ -552,7 +744,11 @@ libft/ft_lstadd.s: libft/ft_lstadd.c.s
 
 # target to generate assembly for a file
 libft/ft_lstadd.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_lstadd.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_lstadd.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_lstadd.c.s
 
 libft/ft_lstdel.o: libft/ft_lstdel.c.o
@@ -561,7 +757,11 @@ libft/ft_lstdel.o: libft/ft_lstdel.c.o
 
 # target to build an object file
 libft/ft_lstdel.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_lstdel.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_lstdel.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_lstdel.c.o
 
 libft/ft_lstdel.i: libft/ft_lstdel.c.i
@@ -570,7 +770,11 @@ libft/ft_lstdel.i: libft/ft_lstdel.c.i
 
 # target to preprocess a source file
 libft/ft_lstdel.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_lstdel.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_lstdel.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_lstdel.c.i
 
 libft/ft_lstdel.s: libft/ft_lstdel.c.s
@@ -579,7 +783,11 @@ libft/ft_lstdel.s: libft/ft_lstdel.c.s
 
 # target to generate assembly for a file
 libft/ft_lstdel.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_lstdel.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_lstdel.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_lstdel.c.s
 
 libft/ft_lstdelone.o: libft/ft_lstdelone.c.o
@@ -588,7 +796,11 @@ libft/ft_lstdelone.o: libft/ft_lstdelone.c.o
 
 # target to build an object file
 libft/ft_lstdelone.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_lstdelone.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_lstdelone.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_lstdelone.c.o
 
 libft/ft_lstdelone.i: libft/ft_lstdelone.c.i
@@ -597,7 +809,11 @@ libft/ft_lstdelone.i: libft/ft_lstdelone.c.i
 
 # target to preprocess a source file
 libft/ft_lstdelone.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_lstdelone.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_lstdelone.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_lstdelone.c.i
 
 libft/ft_lstdelone.s: libft/ft_lstdelone.c.s
@@ -606,7 +822,11 @@ libft/ft_lstdelone.s: libft/ft_lstdelone.c.s
 
 # target to generate assembly for a file
 libft/ft_lstdelone.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_lstdelone.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_lstdelone.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_lstdelone.c.s
 
 libft/ft_lstiter.o: libft/ft_lstiter.c.o
@@ -615,7 +835,11 @@ libft/ft_lstiter.o: libft/ft_lstiter.c.o
 
 # target to build an object file
 libft/ft_lstiter.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_lstiter.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_lstiter.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_lstiter.c.o
 
 libft/ft_lstiter.i: libft/ft_lstiter.c.i
@@ -624,7 +848,11 @@ libft/ft_lstiter.i: libft/ft_lstiter.c.i
 
 # target to preprocess a source file
 libft/ft_lstiter.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_lstiter.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_lstiter.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_lstiter.c.i
 
 libft/ft_lstiter.s: libft/ft_lstiter.c.s
@@ -633,7 +861,11 @@ libft/ft_lstiter.s: libft/ft_lstiter.c.s
 
 # target to generate assembly for a file
 libft/ft_lstiter.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_lstiter.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_lstiter.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_lstiter.c.s
 
 libft/ft_lstmap.o: libft/ft_lstmap.c.o
@@ -642,7 +874,11 @@ libft/ft_lstmap.o: libft/ft_lstmap.c.o
 
 # target to build an object file
 libft/ft_lstmap.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_lstmap.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_lstmap.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_lstmap.c.o
 
 libft/ft_lstmap.i: libft/ft_lstmap.c.i
@@ -651,7 +887,11 @@ libft/ft_lstmap.i: libft/ft_lstmap.c.i
 
 # target to preprocess a source file
 libft/ft_lstmap.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_lstmap.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_lstmap.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_lstmap.c.i
 
 libft/ft_lstmap.s: libft/ft_lstmap.c.s
@@ -660,7 +900,11 @@ libft/ft_lstmap.s: libft/ft_lstmap.c.s
 
 # target to generate assembly for a file
 libft/ft_lstmap.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_lstmap.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_lstmap.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_lstmap.c.s
 
 libft/ft_lstnew.o: libft/ft_lstnew.c.o
@@ -669,7 +913,11 @@ libft/ft_lstnew.o: libft/ft_lstnew.c.o
 
 # target to build an object file
 libft/ft_lstnew.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_lstnew.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_lstnew.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_lstnew.c.o
 
 libft/ft_lstnew.i: libft/ft_lstnew.c.i
@@ -678,7 +926,11 @@ libft/ft_lstnew.i: libft/ft_lstnew.c.i
 
 # target to preprocess a source file
 libft/ft_lstnew.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_lstnew.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_lstnew.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_lstnew.c.i
 
 libft/ft_lstnew.s: libft/ft_lstnew.c.s
@@ -687,7 +939,11 @@ libft/ft_lstnew.s: libft/ft_lstnew.c.s
 
 # target to generate assembly for a file
 libft/ft_lstnew.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_lstnew.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_lstnew.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_lstnew.c.s
 
 libft/ft_memalloc.o: libft/ft_memalloc.c.o
@@ -696,7 +952,11 @@ libft/ft_memalloc.o: libft/ft_memalloc.c.o
 
 # target to build an object file
 libft/ft_memalloc.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memalloc.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memalloc.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memalloc.c.o
 
 libft/ft_memalloc.i: libft/ft_memalloc.c.i
@@ -705,7 +965,11 @@ libft/ft_memalloc.i: libft/ft_memalloc.c.i
 
 # target to preprocess a source file
 libft/ft_memalloc.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memalloc.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memalloc.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memalloc.c.i
 
 libft/ft_memalloc.s: libft/ft_memalloc.c.s
@@ -714,7 +978,11 @@ libft/ft_memalloc.s: libft/ft_memalloc.c.s
 
 # target to generate assembly for a file
 libft/ft_memalloc.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memalloc.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memalloc.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memalloc.c.s
 
 libft/ft_memccpy.o: libft/ft_memccpy.c.o
@@ -723,7 +991,11 @@ libft/ft_memccpy.o: libft/ft_memccpy.c.o
 
 # target to build an object file
 libft/ft_memccpy.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memccpy.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memccpy.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memccpy.c.o
 
 libft/ft_memccpy.i: libft/ft_memccpy.c.i
@@ -732,7 +1004,11 @@ libft/ft_memccpy.i: libft/ft_memccpy.c.i
 
 # target to preprocess a source file
 libft/ft_memccpy.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memccpy.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memccpy.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memccpy.c.i
 
 libft/ft_memccpy.s: libft/ft_memccpy.c.s
@@ -741,7 +1017,11 @@ libft/ft_memccpy.s: libft/ft_memccpy.c.s
 
 # target to generate assembly for a file
 libft/ft_memccpy.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memccpy.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memccpy.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memccpy.c.s
 
 libft/ft_memchr.o: libft/ft_memchr.c.o
@@ -750,7 +1030,11 @@ libft/ft_memchr.o: libft/ft_memchr.c.o
 
 # target to build an object file
 libft/ft_memchr.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memchr.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memchr.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memchr.c.o
 
 libft/ft_memchr.i: libft/ft_memchr.c.i
@@ -759,7 +1043,11 @@ libft/ft_memchr.i: libft/ft_memchr.c.i
 
 # target to preprocess a source file
 libft/ft_memchr.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memchr.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memchr.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memchr.c.i
 
 libft/ft_memchr.s: libft/ft_memchr.c.s
@@ -768,7 +1056,11 @@ libft/ft_memchr.s: libft/ft_memchr.c.s
 
 # target to generate assembly for a file
 libft/ft_memchr.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memchr.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memchr.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memchr.c.s
 
 libft/ft_memcmp.o: libft/ft_memcmp.c.o
@@ -777,7 +1069,11 @@ libft/ft_memcmp.o: libft/ft_memcmp.c.o
 
 # target to build an object file
 libft/ft_memcmp.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memcmp.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memcmp.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memcmp.c.o
 
 libft/ft_memcmp.i: libft/ft_memcmp.c.i
@@ -786,7 +1082,11 @@ libft/ft_memcmp.i: libft/ft_memcmp.c.i
 
 # target to preprocess a source file
 libft/ft_memcmp.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memcmp.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memcmp.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memcmp.c.i
 
 libft/ft_memcmp.s: libft/ft_memcmp.c.s
@@ -795,7 +1095,11 @@ libft/ft_memcmp.s: libft/ft_memcmp.c.s
 
 # target to generate assembly for a file
 libft/ft_memcmp.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memcmp.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memcmp.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memcmp.c.s
 
 libft/ft_memcpy.o: libft/ft_memcpy.c.o
@@ -804,7 +1108,11 @@ libft/ft_memcpy.o: libft/ft_memcpy.c.o
 
 # target to build an object file
 libft/ft_memcpy.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memcpy.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memcpy.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memcpy.c.o
 
 libft/ft_memcpy.i: libft/ft_memcpy.c.i
@@ -813,7 +1121,11 @@ libft/ft_memcpy.i: libft/ft_memcpy.c.i
 
 # target to preprocess a source file
 libft/ft_memcpy.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memcpy.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memcpy.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memcpy.c.i
 
 libft/ft_memcpy.s: libft/ft_memcpy.c.s
@@ -822,7 +1134,11 @@ libft/ft_memcpy.s: libft/ft_memcpy.c.s
 
 # target to generate assembly for a file
 libft/ft_memcpy.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memcpy.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memcpy.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memcpy.c.s
 
 libft/ft_memdel.o: libft/ft_memdel.c.o
@@ -831,7 +1147,11 @@ libft/ft_memdel.o: libft/ft_memdel.c.o
 
 # target to build an object file
 libft/ft_memdel.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memdel.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memdel.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memdel.c.o
 
 libft/ft_memdel.i: libft/ft_memdel.c.i
@@ -840,7 +1160,11 @@ libft/ft_memdel.i: libft/ft_memdel.c.i
 
 # target to preprocess a source file
 libft/ft_memdel.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memdel.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memdel.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memdel.c.i
 
 libft/ft_memdel.s: libft/ft_memdel.c.s
@@ -849,7 +1173,11 @@ libft/ft_memdel.s: libft/ft_memdel.c.s
 
 # target to generate assembly for a file
 libft/ft_memdel.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memdel.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memdel.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memdel.c.s
 
 libft/ft_memmove.o: libft/ft_memmove.c.o
@@ -858,7 +1186,11 @@ libft/ft_memmove.o: libft/ft_memmove.c.o
 
 # target to build an object file
 libft/ft_memmove.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memmove.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memmove.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memmove.c.o
 
 libft/ft_memmove.i: libft/ft_memmove.c.i
@@ -867,7 +1199,11 @@ libft/ft_memmove.i: libft/ft_memmove.c.i
 
 # target to preprocess a source file
 libft/ft_memmove.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memmove.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memmove.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memmove.c.i
 
 libft/ft_memmove.s: libft/ft_memmove.c.s
@@ -876,7 +1212,11 @@ libft/ft_memmove.s: libft/ft_memmove.c.s
 
 # target to generate assembly for a file
 libft/ft_memmove.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memmove.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memmove.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memmove.c.s
 
 libft/ft_memset.o: libft/ft_memset.c.o
@@ -885,7 +1225,11 @@ libft/ft_memset.o: libft/ft_memset.c.o
 
 # target to build an object file
 libft/ft_memset.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memset.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memset.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memset.c.o
 
 libft/ft_memset.i: libft/ft_memset.c.i
@@ -894,7 +1238,11 @@ libft/ft_memset.i: libft/ft_memset.c.i
 
 # target to preprocess a source file
 libft/ft_memset.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memset.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memset.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memset.c.i
 
 libft/ft_memset.s: libft/ft_memset.c.s
@@ -903,7 +1251,11 @@ libft/ft_memset.s: libft/ft_memset.c.s
 
 # target to generate assembly for a file
 libft/ft_memset.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_memset.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_memset.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_memset.c.s
 
 libft/ft_print_bits.o: libft/ft_print_bits.c.o
@@ -912,7 +1264,11 @@ libft/ft_print_bits.o: libft/ft_print_bits.c.o
 
 # target to build an object file
 libft/ft_print_bits.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_print_bits.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_print_bits.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_print_bits.c.o
 
 libft/ft_print_bits.i: libft/ft_print_bits.c.i
@@ -921,7 +1277,11 @@ libft/ft_print_bits.i: libft/ft_print_bits.c.i
 
 # target to preprocess a source file
 libft/ft_print_bits.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_print_bits.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_print_bits.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_print_bits.c.i
 
 libft/ft_print_bits.s: libft/ft_print_bits.c.s
@@ -930,7 +1290,11 @@ libft/ft_print_bits.s: libft/ft_print_bits.c.s
 
 # target to generate assembly for a file
 libft/ft_print_bits.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_print_bits.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_print_bits.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_print_bits.c.s
 
 libft/ft_putchar.o: libft/ft_putchar.c.o
@@ -939,7 +1303,11 @@ libft/ft_putchar.o: libft/ft_putchar.c.o
 
 # target to build an object file
 libft/ft_putchar.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putchar.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putchar.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putchar.c.o
 
 libft/ft_putchar.i: libft/ft_putchar.c.i
@@ -948,7 +1316,11 @@ libft/ft_putchar.i: libft/ft_putchar.c.i
 
 # target to preprocess a source file
 libft/ft_putchar.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putchar.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putchar.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putchar.c.i
 
 libft/ft_putchar.s: libft/ft_putchar.c.s
@@ -957,7 +1329,11 @@ libft/ft_putchar.s: libft/ft_putchar.c.s
 
 # target to generate assembly for a file
 libft/ft_putchar.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putchar.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putchar.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putchar.c.s
 
 libft/ft_putchar_fd.o: libft/ft_putchar_fd.c.o
@@ -966,7 +1342,11 @@ libft/ft_putchar_fd.o: libft/ft_putchar_fd.c.o
 
 # target to build an object file
 libft/ft_putchar_fd.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putchar_fd.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putchar_fd.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putchar_fd.c.o
 
 libft/ft_putchar_fd.i: libft/ft_putchar_fd.c.i
@@ -975,7 +1355,11 @@ libft/ft_putchar_fd.i: libft/ft_putchar_fd.c.i
 
 # target to preprocess a source file
 libft/ft_putchar_fd.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putchar_fd.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putchar_fd.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putchar_fd.c.i
 
 libft/ft_putchar_fd.s: libft/ft_putchar_fd.c.s
@@ -984,7 +1368,11 @@ libft/ft_putchar_fd.s: libft/ft_putchar_fd.c.s
 
 # target to generate assembly for a file
 libft/ft_putchar_fd.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putchar_fd.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putchar_fd.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putchar_fd.c.s
 
 libft/ft_putendl.o: libft/ft_putendl.c.o
@@ -993,7 +1381,11 @@ libft/ft_putendl.o: libft/ft_putendl.c.o
 
 # target to build an object file
 libft/ft_putendl.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putendl.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putendl.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putendl.c.o
 
 libft/ft_putendl.i: libft/ft_putendl.c.i
@@ -1002,7 +1394,11 @@ libft/ft_putendl.i: libft/ft_putendl.c.i
 
 # target to preprocess a source file
 libft/ft_putendl.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putendl.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putendl.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putendl.c.i
 
 libft/ft_putendl.s: libft/ft_putendl.c.s
@@ -1011,7 +1407,11 @@ libft/ft_putendl.s: libft/ft_putendl.c.s
 
 # target to generate assembly for a file
 libft/ft_putendl.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putendl.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putendl.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putendl.c.s
 
 libft/ft_putendl_fd.o: libft/ft_putendl_fd.c.o
@@ -1020,7 +1420,11 @@ libft/ft_putendl_fd.o: libft/ft_putendl_fd.c.o
 
 # target to build an object file
 libft/ft_putendl_fd.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putendl_fd.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putendl_fd.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putendl_fd.c.o
 
 libft/ft_putendl_fd.i: libft/ft_putendl_fd.c.i
@@ -1029,7 +1433,11 @@ libft/ft_putendl_fd.i: libft/ft_putendl_fd.c.i
 
 # target to preprocess a source file
 libft/ft_putendl_fd.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putendl_fd.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putendl_fd.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putendl_fd.c.i
 
 libft/ft_putendl_fd.s: libft/ft_putendl_fd.c.s
@@ -1038,7 +1446,11 @@ libft/ft_putendl_fd.s: libft/ft_putendl_fd.c.s
 
 # target to generate assembly for a file
 libft/ft_putendl_fd.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putendl_fd.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putendl_fd.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putendl_fd.c.s
 
 libft/ft_putnbr.o: libft/ft_putnbr.c.o
@@ -1047,7 +1459,11 @@ libft/ft_putnbr.o: libft/ft_putnbr.c.o
 
 # target to build an object file
 libft/ft_putnbr.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putnbr.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putnbr.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putnbr.c.o
 
 libft/ft_putnbr.i: libft/ft_putnbr.c.i
@@ -1056,7 +1472,11 @@ libft/ft_putnbr.i: libft/ft_putnbr.c.i
 
 # target to preprocess a source file
 libft/ft_putnbr.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putnbr.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putnbr.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putnbr.c.i
 
 libft/ft_putnbr.s: libft/ft_putnbr.c.s
@@ -1065,7 +1485,11 @@ libft/ft_putnbr.s: libft/ft_putnbr.c.s
 
 # target to generate assembly for a file
 libft/ft_putnbr.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putnbr.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putnbr.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putnbr.c.s
 
 libft/ft_putnbr_fd.o: libft/ft_putnbr_fd.c.o
@@ -1074,7 +1498,11 @@ libft/ft_putnbr_fd.o: libft/ft_putnbr_fd.c.o
 
 # target to build an object file
 libft/ft_putnbr_fd.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putnbr_fd.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putnbr_fd.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putnbr_fd.c.o
 
 libft/ft_putnbr_fd.i: libft/ft_putnbr_fd.c.i
@@ -1083,7 +1511,11 @@ libft/ft_putnbr_fd.i: libft/ft_putnbr_fd.c.i
 
 # target to preprocess a source file
 libft/ft_putnbr_fd.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putnbr_fd.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putnbr_fd.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putnbr_fd.c.i
 
 libft/ft_putnbr_fd.s: libft/ft_putnbr_fd.c.s
@@ -1092,7 +1524,11 @@ libft/ft_putnbr_fd.s: libft/ft_putnbr_fd.c.s
 
 # target to generate assembly for a file
 libft/ft_putnbr_fd.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putnbr_fd.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putnbr_fd.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putnbr_fd.c.s
 
 libft/ft_putstr.o: libft/ft_putstr.c.o
@@ -1101,7 +1537,11 @@ libft/ft_putstr.o: libft/ft_putstr.c.o
 
 # target to build an object file
 libft/ft_putstr.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putstr.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putstr.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putstr.c.o
 
 libft/ft_putstr.i: libft/ft_putstr.c.i
@@ -1110,7 +1550,11 @@ libft/ft_putstr.i: libft/ft_putstr.c.i
 
 # target to preprocess a source file
 libft/ft_putstr.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putstr.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putstr.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putstr.c.i
 
 libft/ft_putstr.s: libft/ft_putstr.c.s
@@ -1119,7 +1563,11 @@ libft/ft_putstr.s: libft/ft_putstr.c.s
 
 # target to generate assembly for a file
 libft/ft_putstr.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putstr.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putstr.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putstr.c.s
 
 libft/ft_putstr_fd.o: libft/ft_putstr_fd.c.o
@@ -1128,7 +1576,11 @@ libft/ft_putstr_fd.o: libft/ft_putstr_fd.c.o
 
 # target to build an object file
 libft/ft_putstr_fd.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putstr_fd.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putstr_fd.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putstr_fd.c.o
 
 libft/ft_putstr_fd.i: libft/ft_putstr_fd.c.i
@@ -1137,7 +1589,11 @@ libft/ft_putstr_fd.i: libft/ft_putstr_fd.c.i
 
 # target to preprocess a source file
 libft/ft_putstr_fd.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putstr_fd.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putstr_fd.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putstr_fd.c.i
 
 libft/ft_putstr_fd.s: libft/ft_putstr_fd.c.s
@@ -1146,7 +1602,11 @@ libft/ft_putstr_fd.s: libft/ft_putstr_fd.c.s
 
 # target to generate assembly for a file
 libft/ft_putstr_fd.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_putstr_fd.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_putstr_fd.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_putstr_fd.c.s
 
 libft/ft_strcat.o: libft/ft_strcat.c.o
@@ -1155,7 +1615,11 @@ libft/ft_strcat.o: libft/ft_strcat.c.o
 
 # target to build an object file
 libft/ft_strcat.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strcat.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strcat.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strcat.c.o
 
 libft/ft_strcat.i: libft/ft_strcat.c.i
@@ -1164,7 +1628,11 @@ libft/ft_strcat.i: libft/ft_strcat.c.i
 
 # target to preprocess a source file
 libft/ft_strcat.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strcat.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strcat.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strcat.c.i
 
 libft/ft_strcat.s: libft/ft_strcat.c.s
@@ -1173,7 +1641,11 @@ libft/ft_strcat.s: libft/ft_strcat.c.s
 
 # target to generate assembly for a file
 libft/ft_strcat.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strcat.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strcat.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strcat.c.s
 
 libft/ft_strchr.o: libft/ft_strchr.c.o
@@ -1182,7 +1654,11 @@ libft/ft_strchr.o: libft/ft_strchr.c.o
 
 # target to build an object file
 libft/ft_strchr.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strchr.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strchr.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strchr.c.o
 
 libft/ft_strchr.i: libft/ft_strchr.c.i
@@ -1191,7 +1667,11 @@ libft/ft_strchr.i: libft/ft_strchr.c.i
 
 # target to preprocess a source file
 libft/ft_strchr.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strchr.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strchr.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strchr.c.i
 
 libft/ft_strchr.s: libft/ft_strchr.c.s
@@ -1200,7 +1680,11 @@ libft/ft_strchr.s: libft/ft_strchr.c.s
 
 # target to generate assembly for a file
 libft/ft_strchr.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strchr.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strchr.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strchr.c.s
 
 libft/ft_strclr.o: libft/ft_strclr.c.o
@@ -1209,7 +1693,11 @@ libft/ft_strclr.o: libft/ft_strclr.c.o
 
 # target to build an object file
 libft/ft_strclr.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strclr.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strclr.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strclr.c.o
 
 libft/ft_strclr.i: libft/ft_strclr.c.i
@@ -1218,7 +1706,11 @@ libft/ft_strclr.i: libft/ft_strclr.c.i
 
 # target to preprocess a source file
 libft/ft_strclr.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strclr.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strclr.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strclr.c.i
 
 libft/ft_strclr.s: libft/ft_strclr.c.s
@@ -1227,7 +1719,11 @@ libft/ft_strclr.s: libft/ft_strclr.c.s
 
 # target to generate assembly for a file
 libft/ft_strclr.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strclr.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strclr.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strclr.c.s
 
 libft/ft_strcmp.o: libft/ft_strcmp.c.o
@@ -1236,7 +1732,11 @@ libft/ft_strcmp.o: libft/ft_strcmp.c.o
 
 # target to build an object file
 libft/ft_strcmp.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strcmp.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strcmp.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strcmp.c.o
 
 libft/ft_strcmp.i: libft/ft_strcmp.c.i
@@ -1245,7 +1745,11 @@ libft/ft_strcmp.i: libft/ft_strcmp.c.i
 
 # target to preprocess a source file
 libft/ft_strcmp.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strcmp.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strcmp.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strcmp.c.i
 
 libft/ft_strcmp.s: libft/ft_strcmp.c.s
@@ -1254,7 +1758,11 @@ libft/ft_strcmp.s: libft/ft_strcmp.c.s
 
 # target to generate assembly for a file
 libft/ft_strcmp.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strcmp.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strcmp.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strcmp.c.s
 
 libft/ft_strcpy.o: libft/ft_strcpy.c.o
@@ -1263,7 +1771,11 @@ libft/ft_strcpy.o: libft/ft_strcpy.c.o
 
 # target to build an object file
 libft/ft_strcpy.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strcpy.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strcpy.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strcpy.c.o
 
 libft/ft_strcpy.i: libft/ft_strcpy.c.i
@@ -1272,7 +1784,11 @@ libft/ft_strcpy.i: libft/ft_strcpy.c.i
 
 # target to preprocess a source file
 libft/ft_strcpy.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strcpy.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strcpy.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strcpy.c.i
 
 libft/ft_strcpy.s: libft/ft_strcpy.c.s
@@ -1281,7 +1797,11 @@ libft/ft_strcpy.s: libft/ft_strcpy.c.s
 
 # target to generate assembly for a file
 libft/ft_strcpy.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strcpy.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strcpy.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strcpy.c.s
 
 libft/ft_strdel.o: libft/ft_strdel.c.o
@@ -1290,7 +1810,11 @@ libft/ft_strdel.o: libft/ft_strdel.c.o
 
 # target to build an object file
 libft/ft_strdel.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strdel.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strdel.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strdel.c.o
 
 libft/ft_strdel.i: libft/ft_strdel.c.i
@@ -1299,7 +1823,11 @@ libft/ft_strdel.i: libft/ft_strdel.c.i
 
 # target to preprocess a source file
 libft/ft_strdel.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strdel.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strdel.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strdel.c.i
 
 libft/ft_strdel.s: libft/ft_strdel.c.s
@@ -1308,7 +1836,11 @@ libft/ft_strdel.s: libft/ft_strdel.c.s
 
 # target to generate assembly for a file
 libft/ft_strdel.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strdel.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strdel.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strdel.c.s
 
 libft/ft_strdup.o: libft/ft_strdup.c.o
@@ -1317,7 +1849,11 @@ libft/ft_strdup.o: libft/ft_strdup.c.o
 
 # target to build an object file
 libft/ft_strdup.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strdup.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strdup.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strdup.c.o
 
 libft/ft_strdup.i: libft/ft_strdup.c.i
@@ -1326,7 +1862,11 @@ libft/ft_strdup.i: libft/ft_strdup.c.i
 
 # target to preprocess a source file
 libft/ft_strdup.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strdup.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strdup.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strdup.c.i
 
 libft/ft_strdup.s: libft/ft_strdup.c.s
@@ -1335,7 +1875,11 @@ libft/ft_strdup.s: libft/ft_strdup.c.s
 
 # target to generate assembly for a file
 libft/ft_strdup.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strdup.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strdup.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strdup.c.s
 
 libft/ft_strequ.o: libft/ft_strequ.c.o
@@ -1344,7 +1888,11 @@ libft/ft_strequ.o: libft/ft_strequ.c.o
 
 # target to build an object file
 libft/ft_strequ.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strequ.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strequ.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strequ.c.o
 
 libft/ft_strequ.i: libft/ft_strequ.c.i
@@ -1353,7 +1901,11 @@ libft/ft_strequ.i: libft/ft_strequ.c.i
 
 # target to preprocess a source file
 libft/ft_strequ.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strequ.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strequ.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strequ.c.i
 
 libft/ft_strequ.s: libft/ft_strequ.c.s
@@ -1362,7 +1914,11 @@ libft/ft_strequ.s: libft/ft_strequ.c.s
 
 # target to generate assembly for a file
 libft/ft_strequ.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strequ.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strequ.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strequ.c.s
 
 libft/ft_striter.o: libft/ft_striter.c.o
@@ -1371,7 +1927,11 @@ libft/ft_striter.o: libft/ft_striter.c.o
 
 # target to build an object file
 libft/ft_striter.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_striter.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_striter.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_striter.c.o
 
 libft/ft_striter.i: libft/ft_striter.c.i
@@ -1380,7 +1940,11 @@ libft/ft_striter.i: libft/ft_striter.c.i
 
 # target to preprocess a source file
 libft/ft_striter.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_striter.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_striter.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_striter.c.i
 
 libft/ft_striter.s: libft/ft_striter.c.s
@@ -1389,7 +1953,11 @@ libft/ft_striter.s: libft/ft_striter.c.s
 
 # target to generate assembly for a file
 libft/ft_striter.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_striter.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_striter.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_striter.c.s
 
 libft/ft_striteri.o: libft/ft_striteri.c.o
@@ -1398,7 +1966,11 @@ libft/ft_striteri.o: libft/ft_striteri.c.o
 
 # target to build an object file
 libft/ft_striteri.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_striteri.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_striteri.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_striteri.c.o
 
 libft/ft_striteri.i: libft/ft_striteri.c.i
@@ -1407,7 +1979,11 @@ libft/ft_striteri.i: libft/ft_striteri.c.i
 
 # target to preprocess a source file
 libft/ft_striteri.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_striteri.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_striteri.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_striteri.c.i
 
 libft/ft_striteri.s: libft/ft_striteri.c.s
@@ -1416,7 +1992,11 @@ libft/ft_striteri.s: libft/ft_striteri.c.s
 
 # target to generate assembly for a file
 libft/ft_striteri.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_striteri.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_striteri.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_striteri.c.s
 
 libft/ft_strjoin.o: libft/ft_strjoin.c.o
@@ -1425,7 +2005,11 @@ libft/ft_strjoin.o: libft/ft_strjoin.c.o
 
 # target to build an object file
 libft/ft_strjoin.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strjoin.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strjoin.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strjoin.c.o
 
 libft/ft_strjoin.i: libft/ft_strjoin.c.i
@@ -1434,7 +2018,11 @@ libft/ft_strjoin.i: libft/ft_strjoin.c.i
 
 # target to preprocess a source file
 libft/ft_strjoin.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strjoin.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strjoin.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strjoin.c.i
 
 libft/ft_strjoin.s: libft/ft_strjoin.c.s
@@ -1443,7 +2031,11 @@ libft/ft_strjoin.s: libft/ft_strjoin.c.s
 
 # target to generate assembly for a file
 libft/ft_strjoin.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strjoin.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strjoin.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strjoin.c.s
 
 libft/ft_strlcat.o: libft/ft_strlcat.c.o
@@ -1452,7 +2044,11 @@ libft/ft_strlcat.o: libft/ft_strlcat.c.o
 
 # target to build an object file
 libft/ft_strlcat.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strlcat.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strlcat.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strlcat.c.o
 
 libft/ft_strlcat.i: libft/ft_strlcat.c.i
@@ -1461,7 +2057,11 @@ libft/ft_strlcat.i: libft/ft_strlcat.c.i
 
 # target to preprocess a source file
 libft/ft_strlcat.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strlcat.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strlcat.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strlcat.c.i
 
 libft/ft_strlcat.s: libft/ft_strlcat.c.s
@@ -1470,7 +2070,11 @@ libft/ft_strlcat.s: libft/ft_strlcat.c.s
 
 # target to generate assembly for a file
 libft/ft_strlcat.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strlcat.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strlcat.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strlcat.c.s
 
 libft/ft_strlen.o: libft/ft_strlen.c.o
@@ -1479,7 +2083,11 @@ libft/ft_strlen.o: libft/ft_strlen.c.o
 
 # target to build an object file
 libft/ft_strlen.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strlen.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strlen.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strlen.c.o
 
 libft/ft_strlen.i: libft/ft_strlen.c.i
@@ -1488,7 +2096,11 @@ libft/ft_strlen.i: libft/ft_strlen.c.i
 
 # target to preprocess a source file
 libft/ft_strlen.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strlen.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strlen.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strlen.c.i
 
 libft/ft_strlen.s: libft/ft_strlen.c.s
@@ -1497,7 +2109,11 @@ libft/ft_strlen.s: libft/ft_strlen.c.s
 
 # target to generate assembly for a file
 libft/ft_strlen.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strlen.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strlen.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strlen.c.s
 
 libft/ft_strmap.o: libft/ft_strmap.c.o
@@ -1506,7 +2122,11 @@ libft/ft_strmap.o: libft/ft_strmap.c.o
 
 # target to build an object file
 libft/ft_strmap.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strmap.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strmap.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strmap.c.o
 
 libft/ft_strmap.i: libft/ft_strmap.c.i
@@ -1515,7 +2135,11 @@ libft/ft_strmap.i: libft/ft_strmap.c.i
 
 # target to preprocess a source file
 libft/ft_strmap.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strmap.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strmap.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strmap.c.i
 
 libft/ft_strmap.s: libft/ft_strmap.c.s
@@ -1524,7 +2148,11 @@ libft/ft_strmap.s: libft/ft_strmap.c.s
 
 # target to generate assembly for a file
 libft/ft_strmap.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strmap.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strmap.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strmap.c.s
 
 libft/ft_strmapi.o: libft/ft_strmapi.c.o
@@ -1533,7 +2161,11 @@ libft/ft_strmapi.o: libft/ft_strmapi.c.o
 
 # target to build an object file
 libft/ft_strmapi.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strmapi.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strmapi.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strmapi.c.o
 
 libft/ft_strmapi.i: libft/ft_strmapi.c.i
@@ -1542,7 +2174,11 @@ libft/ft_strmapi.i: libft/ft_strmapi.c.i
 
 # target to preprocess a source file
 libft/ft_strmapi.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strmapi.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strmapi.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strmapi.c.i
 
 libft/ft_strmapi.s: libft/ft_strmapi.c.s
@@ -1551,7 +2187,11 @@ libft/ft_strmapi.s: libft/ft_strmapi.c.s
 
 # target to generate assembly for a file
 libft/ft_strmapi.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strmapi.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strmapi.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strmapi.c.s
 
 libft/ft_strncat.o: libft/ft_strncat.c.o
@@ -1560,7 +2200,11 @@ libft/ft_strncat.o: libft/ft_strncat.c.o
 
 # target to build an object file
 libft/ft_strncat.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strncat.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strncat.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strncat.c.o
 
 libft/ft_strncat.i: libft/ft_strncat.c.i
@@ -1569,7 +2213,11 @@ libft/ft_strncat.i: libft/ft_strncat.c.i
 
 # target to preprocess a source file
 libft/ft_strncat.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strncat.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strncat.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strncat.c.i
 
 libft/ft_strncat.s: libft/ft_strncat.c.s
@@ -1578,7 +2226,11 @@ libft/ft_strncat.s: libft/ft_strncat.c.s
 
 # target to generate assembly for a file
 libft/ft_strncat.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strncat.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strncat.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strncat.c.s
 
 libft/ft_strncmp.o: libft/ft_strncmp.c.o
@@ -1587,7 +2239,11 @@ libft/ft_strncmp.o: libft/ft_strncmp.c.o
 
 # target to build an object file
 libft/ft_strncmp.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strncmp.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strncmp.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strncmp.c.o
 
 libft/ft_strncmp.i: libft/ft_strncmp.c.i
@@ -1596,7 +2252,11 @@ libft/ft_strncmp.i: libft/ft_strncmp.c.i
 
 # target to preprocess a source file
 libft/ft_strncmp.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strncmp.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strncmp.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strncmp.c.i
 
 libft/ft_strncmp.s: libft/ft_strncmp.c.s
@@ -1605,7 +2265,11 @@ libft/ft_strncmp.s: libft/ft_strncmp.c.s
 
 # target to generate assembly for a file
 libft/ft_strncmp.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strncmp.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strncmp.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strncmp.c.s
 
 libft/ft_strncpy.o: libft/ft_strncpy.c.o
@@ -1614,7 +2278,11 @@ libft/ft_strncpy.o: libft/ft_strncpy.c.o
 
 # target to build an object file
 libft/ft_strncpy.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strncpy.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strncpy.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strncpy.c.o
 
 libft/ft_strncpy.i: libft/ft_strncpy.c.i
@@ -1623,7 +2291,11 @@ libft/ft_strncpy.i: libft/ft_strncpy.c.i
 
 # target to preprocess a source file
 libft/ft_strncpy.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strncpy.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strncpy.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strncpy.c.i
 
 libft/ft_strncpy.s: libft/ft_strncpy.c.s
@@ -1632,7 +2304,11 @@ libft/ft_strncpy.s: libft/ft_strncpy.c.s
 
 # target to generate assembly for a file
 libft/ft_strncpy.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strncpy.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strncpy.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strncpy.c.s
 
 libft/ft_strndup.o: libft/ft_strndup.c.o
@@ -1641,7 +2317,11 @@ libft/ft_strndup.o: libft/ft_strndup.c.o
 
 # target to build an object file
 libft/ft_strndup.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strndup.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strndup.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strndup.c.o
 
 libft/ft_strndup.i: libft/ft_strndup.c.i
@@ -1650,7 +2330,11 @@ libft/ft_strndup.i: libft/ft_strndup.c.i
 
 # target to preprocess a source file
 libft/ft_strndup.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strndup.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strndup.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strndup.c.i
 
 libft/ft_strndup.s: libft/ft_strndup.c.s
@@ -1659,7 +2343,11 @@ libft/ft_strndup.s: libft/ft_strndup.c.s
 
 # target to generate assembly for a file
 libft/ft_strndup.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strndup.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strndup.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strndup.c.s
 
 libft/ft_strnequ.o: libft/ft_strnequ.c.o
@@ -1668,7 +2356,11 @@ libft/ft_strnequ.o: libft/ft_strnequ.c.o
 
 # target to build an object file
 libft/ft_strnequ.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strnequ.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strnequ.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strnequ.c.o
 
 libft/ft_strnequ.i: libft/ft_strnequ.c.i
@@ -1677,7 +2369,11 @@ libft/ft_strnequ.i: libft/ft_strnequ.c.i
 
 # target to preprocess a source file
 libft/ft_strnequ.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strnequ.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strnequ.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strnequ.c.i
 
 libft/ft_strnequ.s: libft/ft_strnequ.c.s
@@ -1686,7 +2382,11 @@ libft/ft_strnequ.s: libft/ft_strnequ.c.s
 
 # target to generate assembly for a file
 libft/ft_strnequ.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strnequ.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strnequ.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strnequ.c.s
 
 libft/ft_strnew.o: libft/ft_strnew.c.o
@@ -1695,7 +2395,11 @@ libft/ft_strnew.o: libft/ft_strnew.c.o
 
 # target to build an object file
 libft/ft_strnew.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strnew.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strnew.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strnew.c.o
 
 libft/ft_strnew.i: libft/ft_strnew.c.i
@@ -1704,7 +2408,11 @@ libft/ft_strnew.i: libft/ft_strnew.c.i
 
 # target to preprocess a source file
 libft/ft_strnew.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strnew.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strnew.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strnew.c.i
 
 libft/ft_strnew.s: libft/ft_strnew.c.s
@@ -1713,7 +2421,11 @@ libft/ft_strnew.s: libft/ft_strnew.c.s
 
 # target to generate assembly for a file
 libft/ft_strnew.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strnew.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strnew.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strnew.c.s
 
 libft/ft_strnstr.o: libft/ft_strnstr.c.o
@@ -1722,7 +2434,11 @@ libft/ft_strnstr.o: libft/ft_strnstr.c.o
 
 # target to build an object file
 libft/ft_strnstr.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strnstr.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strnstr.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strnstr.c.o
 
 libft/ft_strnstr.i: libft/ft_strnstr.c.i
@@ -1731,7 +2447,11 @@ libft/ft_strnstr.i: libft/ft_strnstr.c.i
 
 # target to preprocess a source file
 libft/ft_strnstr.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strnstr.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strnstr.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strnstr.c.i
 
 libft/ft_strnstr.s: libft/ft_strnstr.c.s
@@ -1740,7 +2460,11 @@ libft/ft_strnstr.s: libft/ft_strnstr.c.s
 
 # target to generate assembly for a file
 libft/ft_strnstr.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strnstr.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strnstr.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strnstr.c.s
 
 libft/ft_strrchr.o: libft/ft_strrchr.c.o
@@ -1749,7 +2473,11 @@ libft/ft_strrchr.o: libft/ft_strrchr.c.o
 
 # target to build an object file
 libft/ft_strrchr.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strrchr.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strrchr.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strrchr.c.o
 
 libft/ft_strrchr.i: libft/ft_strrchr.c.i
@@ -1758,7 +2486,11 @@ libft/ft_strrchr.i: libft/ft_strrchr.c.i
 
 # target to preprocess a source file
 libft/ft_strrchr.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strrchr.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strrchr.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strrchr.c.i
 
 libft/ft_strrchr.s: libft/ft_strrchr.c.s
@@ -1767,7 +2499,11 @@ libft/ft_strrchr.s: libft/ft_strrchr.c.s
 
 # target to generate assembly for a file
 libft/ft_strrchr.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strrchr.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strrchr.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strrchr.c.s
 
 libft/ft_strsplit.o: libft/ft_strsplit.c.o
@@ -1776,7 +2512,11 @@ libft/ft_strsplit.o: libft/ft_strsplit.c.o
 
 # target to build an object file
 libft/ft_strsplit.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strsplit.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strsplit.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strsplit.c.o
 
 libft/ft_strsplit.i: libft/ft_strsplit.c.i
@@ -1785,7 +2525,11 @@ libft/ft_strsplit.i: libft/ft_strsplit.c.i
 
 # target to preprocess a source file
 libft/ft_strsplit.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strsplit.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strsplit.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strsplit.c.i
 
 libft/ft_strsplit.s: libft/ft_strsplit.c.s
@@ -1794,7 +2538,11 @@ libft/ft_strsplit.s: libft/ft_strsplit.c.s
 
 # target to generate assembly for a file
 libft/ft_strsplit.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strsplit.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strsplit.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strsplit.c.s
 
 libft/ft_strstr.o: libft/ft_strstr.c.o
@@ -1803,7 +2551,11 @@ libft/ft_strstr.o: libft/ft_strstr.c.o
 
 # target to build an object file
 libft/ft_strstr.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strstr.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strstr.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strstr.c.o
 
 libft/ft_strstr.i: libft/ft_strstr.c.i
@@ -1812,7 +2564,11 @@ libft/ft_strstr.i: libft/ft_strstr.c.i
 
 # target to preprocess a source file
 libft/ft_strstr.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strstr.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strstr.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strstr.c.i
 
 libft/ft_strstr.s: libft/ft_strstr.c.s
@@ -1821,7 +2577,11 @@ libft/ft_strstr.s: libft/ft_strstr.c.s
 
 # target to generate assembly for a file
 libft/ft_strstr.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strstr.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strstr.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strstr.c.s
 
 libft/ft_strsub.o: libft/ft_strsub.c.o
@@ -1830,7 +2590,11 @@ libft/ft_strsub.o: libft/ft_strsub.c.o
 
 # target to build an object file
 libft/ft_strsub.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strsub.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strsub.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strsub.c.o
 
 libft/ft_strsub.i: libft/ft_strsub.c.i
@@ -1839,7 +2603,11 @@ libft/ft_strsub.i: libft/ft_strsub.c.i
 
 # target to preprocess a source file
 libft/ft_strsub.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strsub.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strsub.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strsub.c.i
 
 libft/ft_strsub.s: libft/ft_strsub.c.s
@@ -1848,7 +2616,11 @@ libft/ft_strsub.s: libft/ft_strsub.c.s
 
 # target to generate assembly for a file
 libft/ft_strsub.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strsub.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strsub.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strsub.c.s
 
 libft/ft_strtrim.o: libft/ft_strtrim.c.o
@@ -1857,7 +2629,11 @@ libft/ft_strtrim.o: libft/ft_strtrim.c.o
 
 # target to build an object file
 libft/ft_strtrim.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strtrim.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strtrim.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strtrim.c.o
 
 libft/ft_strtrim.i: libft/ft_strtrim.c.i
@@ -1866,7 +2642,11 @@ libft/ft_strtrim.i: libft/ft_strtrim.c.i
 
 # target to preprocess a source file
 libft/ft_strtrim.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strtrim.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strtrim.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strtrim.c.i
 
 libft/ft_strtrim.s: libft/ft_strtrim.c.s
@@ -1875,7 +2655,11 @@ libft/ft_strtrim.s: libft/ft_strtrim.c.s
 
 # target to generate assembly for a file
 libft/ft_strtrim.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_strtrim.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_strtrim.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_strtrim.c.s
 
 libft/ft_swapstr.o: libft/ft_swapstr.c.o
@@ -1884,7 +2668,11 @@ libft/ft_swapstr.o: libft/ft_swapstr.c.o
 
 # target to build an object file
 libft/ft_swapstr.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_swapstr.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_swapstr.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_swapstr.c.o
 
 libft/ft_swapstr.i: libft/ft_swapstr.c.i
@@ -1893,7 +2681,11 @@ libft/ft_swapstr.i: libft/ft_swapstr.c.i
 
 # target to preprocess a source file
 libft/ft_swapstr.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_swapstr.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_swapstr.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_swapstr.c.i
 
 libft/ft_swapstr.s: libft/ft_swapstr.c.s
@@ -1902,7 +2694,11 @@ libft/ft_swapstr.s: libft/ft_swapstr.c.s
 
 # target to generate assembly for a file
 libft/ft_swapstr.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_swapstr.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_swapstr.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_swapstr.c.s
 
 libft/ft_tolower.o: libft/ft_tolower.c.o
@@ -1911,7 +2707,11 @@ libft/ft_tolower.o: libft/ft_tolower.c.o
 
 # target to build an object file
 libft/ft_tolower.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_tolower.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_tolower.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_tolower.c.o
 
 libft/ft_tolower.i: libft/ft_tolower.c.i
@@ -1920,7 +2720,11 @@ libft/ft_tolower.i: libft/ft_tolower.c.i
 
 # target to preprocess a source file
 libft/ft_tolower.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_tolower.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_tolower.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_tolower.c.i
 
 libft/ft_tolower.s: libft/ft_tolower.c.s
@@ -1929,7 +2733,11 @@ libft/ft_tolower.s: libft/ft_tolower.c.s
 
 # target to generate assembly for a file
 libft/ft_tolower.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_tolower.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_tolower.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_tolower.c.s
 
 libft/ft_toupper.o: libft/ft_toupper.c.o
@@ -1938,7 +2746,11 @@ libft/ft_toupper.o: libft/ft_toupper.c.o
 
 # target to build an object file
 libft/ft_toupper.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_toupper.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_toupper.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_toupper.c.o
 
 libft/ft_toupper.i: libft/ft_toupper.c.i
@@ -1947,7 +2759,11 @@ libft/ft_toupper.i: libft/ft_toupper.c.i
 
 # target to preprocess a source file
 libft/ft_toupper.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_toupper.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_toupper.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_toupper.c.i
 
 libft/ft_toupper.s: libft/ft_toupper.c.s
@@ -1956,7 +2772,11 @@ libft/ft_toupper.s: libft/ft_toupper.c.s
 
 # target to generate assembly for a file
 libft/ft_toupper.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/ft_toupper.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/ft_toupper.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/ft_toupper.c.s
 
 libft/get_next_line.o: libft/get_next_line.c.o
@@ -1965,7 +2785,11 @@ libft/get_next_line.o: libft/get_next_line.c.o
 
 # target to build an object file
 libft/get_next_line.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/get_next_line.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/get_next_line.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/get_next_line.c.o
 
 libft/get_next_line.i: libft/get_next_line.c.i
@@ -1974,7 +2798,11 @@ libft/get_next_line.i: libft/get_next_line.c.i
 
 # target to preprocess a source file
 libft/get_next_line.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/get_next_line.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/get_next_line.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/get_next_line.c.i
 
 libft/get_next_line.s: libft/get_next_line.c.s
@@ -1983,7 +2811,11 @@ libft/get_next_line.s: libft/get_next_line.c.s
 
 # target to generate assembly for a file
 libft/get_next_line.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/get_next_line.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/get_next_line.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/get_next_line.c.s
 
 libft/revstr.o: libft/revstr.c.o
@@ -1992,7 +2824,11 @@ libft/revstr.o: libft/revstr.c.o
 
 # target to build an object file
 libft/revstr.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/revstr.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/revstr.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/revstr.c.o
 
 libft/revstr.i: libft/revstr.c.i
@@ -2001,7 +2837,11 @@ libft/revstr.i: libft/revstr.c.i
 
 # target to preprocess a source file
 libft/revstr.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/revstr.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/revstr.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : libft/revstr.c.i
 
 libft/revstr.s: libft/revstr.c.s
@@ -2010,6 +2850,7 @@ libft/revstr.s: libft/revstr.c.s
 
 # target to generate assembly for a file
 libft/revstr.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/libft/revstr.c.s
 .PHONY : libft/revstr.c.s
 
@@ -2039,6 +2880,37 @@ surb2.s: surb2.c.s
 surb2.c.s:
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/surb2.c.s
 .PHONY : surb2.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/libft/revstr.c.s
+.PHONY : libft/revstr.c.s
+
+split.o: split.c.o
+
+.PHONY : split.o
+
+# target to build an object file
+split.c.o:
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/split.c.o
+.PHONY : split.c.o
+
+split.i: split.c.i
+
+.PHONY : split.i
+
+# target to preprocess a source file
+split.c.i:
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/split.c.i
+.PHONY : split.c.i
+
+split.s: split.c.s
+
+.PHONY : split.s
+
+# target to generate assembly for a file
+split.c.s:
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/split.c.s
+.PHONY : split.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 
 suurballe.o: suurballe.c.o
 
@@ -2046,7 +2918,11 @@ suurballe.o: suurballe.c.o
 
 # target to build an object file
 suurballe.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/suurballe.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/suurballe.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : suurballe.c.o
 
 suurballe.i: suurballe.c.i
@@ -2055,7 +2931,11 @@ suurballe.i: suurballe.c.i
 
 # target to preprocess a source file
 suurballe.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/suurballe.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/suurballe.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : suurballe.c.i
 
 suurballe.s: suurballe.c.s
@@ -2064,7 +2944,11 @@ suurballe.s: suurballe.c.s
 
 # target to generate assembly for a file
 suurballe.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/suurballe.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/suurballe.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : suurballe.c.s
 
 traverse.o: traverse.c.o
@@ -2073,7 +2957,11 @@ traverse.o: traverse.c.o
 
 # target to build an object file
 traverse.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/traverse.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/traverse.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : traverse.c.o
 
 traverse.i: traverse.c.i
@@ -2082,7 +2970,11 @@ traverse.i: traverse.c.i
 
 # target to preprocess a source file
 traverse.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/traverse.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/traverse.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : traverse.c.i
 
 traverse.s: traverse.c.s
@@ -2091,7 +2983,11 @@ traverse.s: traverse.c.s
 
 # target to generate assembly for a file
 traverse.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/traverse.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/traverse.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : traverse.c.s
 
 val_map.o: val_map.c.o
@@ -2100,7 +2996,11 @@ val_map.o: val_map.c.o
 
 # target to build an object file
 val_map.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/val_map.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/val_map.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : val_map.c.o
 
 val_map.i: val_map.c.i
@@ -2109,7 +3009,11 @@ val_map.i: val_map.c.i
 
 # target to preprocess a source file
 val_map.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/val_map.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/val_map.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : val_map.c.i
 
 val_map.s: val_map.c.s
@@ -2118,16 +3022,53 @@ val_map.s: val_map.c.s
 
 # target to generate assembly for a file
 val_map.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/val_map.c.s
 .PHONY : val_map.c.s
 
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/val_map.c.s
+.PHONY : val_map.c.s
+
+valen.o: valen.c.o
+
+.PHONY : valen.o
+
+# target to build an object file
+valen.c.o:
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/valen.c.o
+.PHONY : valen.c.o
+
+valen.i: valen.c.i
+
+.PHONY : valen.i
+
+# target to preprocess a source file
+valen.c.i:
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/valen.c.i
+.PHONY : valen.c.i
+
+valen.s: valen.c.s
+
+.PHONY : valen.s
+
+# target to generate assembly for a file
+valen.c.s:
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/valen.c.s
+.PHONY : valen.c.s
+
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 valink.o: valink.c.o
 
 .PHONY : valink.o
 
 # target to build an object file
 valink.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/valink.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/valink.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : valink.c.o
 
 valink.i: valink.c.i
@@ -2136,7 +3077,11 @@ valink.i: valink.c.i
 
 # target to preprocess a source file
 valink.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/valink.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/valink.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : valink.c.i
 
 valink.s: valink.c.s
@@ -2145,7 +3090,11 @@ valink.s: valink.c.s
 
 # target to generate assembly for a file
 valink.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/valink.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/valink.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : valink.c.s
 
 valprocess.o: valprocess.c.o
@@ -2154,7 +3103,11 @@ valprocess.o: valprocess.c.o
 
 # target to build an object file
 valprocess.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/valprocess.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/valprocess.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : valprocess.c.o
 
 valprocess.i: valprocess.c.i
@@ -2163,7 +3116,11 @@ valprocess.i: valprocess.c.i
 
 # target to preprocess a source file
 valprocess.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/valprocess.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/valprocess.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : valprocess.c.i
 
 valprocess.s: valprocess.c.s
@@ -2172,7 +3129,11 @@ valprocess.s: valprocess.c.s
 
 # target to generate assembly for a file
 valprocess.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/valprocess.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/valprocess.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : valprocess.c.s
 
 valroom.o: valroom.c.o
@@ -2181,7 +3142,11 @@ valroom.o: valroom.c.o
 
 # target to build an object file
 valroom.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/valroom.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/valroom.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : valroom.c.o
 
 valroom.i: valroom.c.i
@@ -2190,7 +3155,11 @@ valroom.i: valroom.c.i
 
 # target to preprocess a source file
 valroom.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/valroom.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/valroom.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : valroom.c.i
 
 valroom.s: valroom.c.s
@@ -2199,7 +3168,11 @@ valroom.s: valroom.c.s
 
 # target to generate assembly for a file
 valroom.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/valroom.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/valroom.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : valroom.c.s
 
 valroom1.o: valroom1.c.o
@@ -2208,7 +3181,11 @@ valroom1.o: valroom1.c.o
 
 # target to build an object file
 valroom1.c.o:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/valroom1.c.o
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/valroom1.c.o
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : valroom1.c.o
 
 valroom1.i: valroom1.c.i
@@ -2217,7 +3194,11 @@ valroom1.i: valroom1.c.i
 
 # target to preprocess a source file
 valroom1.c.i:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/valroom1.c.i
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/valroom1.c.i
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : valroom1.c.i
 
 valroom1.s: valroom1.c.s
@@ -2226,7 +3207,11 @@ valroom1.s: valroom1.c.s
 
 # target to generate assembly for a file
 valroom1.c.s:
+<<<<<<< HEAD
 	$(MAKE) -f CMakeFiles/leminleak.dir/build.make CMakeFiles/leminleak.dir/valroom1.c.s
+=======
+	$(MAKE) -f CMakeFiles/DIRlem_in_rep.dir/build.make CMakeFiles/DIRlem_in_rep.dir/valroom1.c.s
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 .PHONY : valroom1.c.s
 
 # Help Target
@@ -2237,6 +3222,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+<<<<<<< HEAD
 	@echo "... leminleak"
 	@echo "... alg.o"
 	@echo "... alg.i"
@@ -2244,6 +3230,12 @@ help:
 	@echo "... alg2.o"
 	@echo "... alg2.i"
 	@echo "... alg2.s"
+=======
+	@echo "... DIRlem_in_rep"
+	@echo "... alg.o"
+	@echo "... alg.i"
+	@echo "... alg.s"
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 	@echo "... aux.o"
 	@echo "... aux.i"
 	@echo "... aux.s"
@@ -2448,9 +3440,15 @@ help:
 	@echo "... libft/revstr.o"
 	@echo "... libft/revstr.i"
 	@echo "... libft/revstr.s"
+<<<<<<< HEAD
 	@echo "... surb2.o"
 	@echo "... surb2.i"
 	@echo "... surb2.s"
+=======
+	@echo "... split.o"
+	@echo "... split.i"
+	@echo "... split.s"
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 	@echo "... suurballe.o"
 	@echo "... suurballe.i"
 	@echo "... suurballe.s"
@@ -2460,6 +3458,12 @@ help:
 	@echo "... val_map.o"
 	@echo "... val_map.i"
 	@echo "... val_map.s"
+<<<<<<< HEAD
+=======
+	@echo "... valen.o"
+	@echo "... valen.i"
+	@echo "... valen.s"
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 	@echo "... valink.o"
 	@echo "... valink.i"
 	@echo "... valink.s"

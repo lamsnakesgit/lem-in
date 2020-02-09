@@ -12,23 +12,61 @@
 
 #include "lemin.h"
 
-int                 duplicheck(char **roomcor, t_llrc *lrc)
-{//if all val recd-> atoi cors n check
-	t_list *tmp;
-	int     cmp;
+/*
+** //if all val recd-> atoi cors n check
+*/
+
+int					duplicheck(char **roomcor, t_llrc *lrc)
+{
+	t_list	*tmp;
 
 	tmp = lrc->br;
-	//while (lrc->br)
 	while (tmp)
-	{//char * void*[0]*
-		//	if (!(ft_strcmp(((char**)(lrc->br->content))[0], roomcor[0])))
-		if (!(ft_strcmp(((char**)(tmp->content))[0], roomcor[0])))
+	{
+		if (!(ft_strcmp(((t_rooms *)(tmp->content))->name_r, roomcor[0])))
 			return (0);
-		cmp = ft_strcmp((((char**)(tmp->content))[1]), roomcor[1]);
-		if (!(ft_strcmp((((char**)(tmp->content))[2]), roomcor[2])) && !cmp)
-			return 0;
-		//	lrc->br = lrc->br->next;
-		tmp= tmp->next;
+		tmp = tmp->next;
 	}
 	return (1);
+}
+
+int					copyse(t_llrc *llrc)
+{
+	int i;
+
+	i = 0;
+	while (i < llrc->rmi)
+	{
+		if (!ft_strcmp(llrc->arrrm[i]->name_r, llrc->fr->name_r))
+			llrc->fr->ln = llrc->arrrm[i]->ln;
+		else if (!ft_strcmp(llrc->arrrm[i]->name_r, llrc->er->name_r))
+			llrc->er->ln = llrc->arrrm[i]->ln;
+		++i;
+	}
+	while (i < llrc->rmi)
+	{
+		if (llrc->arrrm[i]->nu == llrc->fr->nu)
+			llrc->fr->ln = llrc->arrrm[i]->ln;
+		else if (llrc->arrrm[i]->nu == llrc->er->nu)
+			llrc->er->ln = llrc->arrrm[i]->ln;
+	}
+	return (1);
+}
+
+int					ispresent(t_llrc *llrc, char *rs)
+{
+	int		i;
+
+	i = 0;
+	while (i < llrc->rmi)
+	{
+		if (ft_strcmp(llrc->arrrm[i]->name_r, rs) == 0)
+		{
+			free(rs);
+			return (i);
+		}
+		++i;
+	}
+	free(rs);
+	return (-1);
 }

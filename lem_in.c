@@ -1,4 +1,4 @@
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   lem-in.c                                           :+:      :+:    :+:   */
@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "lemin.h"
+
 /*
 ** amount of ants - ints?
 ** unsigned int
@@ -22,43 +23,26 @@ int				ft_err(void)
 	return (0);
 }
 
-/*char			**ft_split_room(char *line, char c)
-{
-	int i;
-}*/
-/*t_list			*ft_create_rooms(char *line)
-{   line+=0;
-	return (0);
-}*/
-
-t_rooms				*r_fill(t_rooms *r, char **roomcor)
-{
-	if (!r)//!roomcor)
-	{
-	//	r = ()
-		r->name_r = roomcor[0];
-		r->x = ft_atoi(roomcor[1]);
-		r->y = ft_atoi(roomcor[2]);
-	}
-	return (r);
-}
-
-t_llrc 			nullst(t_llrc llrc)
+t_llrc			nullst(t_llrc llrc)
 {
 	llrc.end = 0;
 	llrc.st = 0;
 	llrc.rmi = 0;
 	llrc.linkd = 0;
-	llrc.br = 0;//rl=0?
-//	llrc->br =0;//uninit||init somethin?	llrc.fr = 0;
+	llrc.br = 0;
 	llrc.er = 0;
 	llrc.arrrm = 0;
+<<<<<<< HEAD
 	llrc.plensum = 0;
 	llrc.psum = 0;
+=======
+	llrc.psum = 0;
+	llrc.plensum = 0;
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 	return (llrc);
 }
 
-void			freellrc(t_llrc *lrc)
+void			freearr(t_llrc *lrc)
 {
 	int i;
 
@@ -70,19 +54,20 @@ void			freellrc(t_llrc *lrc)
 	}
 	free(lrc->arrrm);
 }
+
 /*
-**{//extra dop otd for chech_room w own w gnl
-** //--check_roomspresence_validif
+** go through lst if f == x delete x; names/contents/links
+** when do we delete list of rooms?
+** first cycle = list of rooms
+** second array or fooms +- links
 */
 
-int				val_in(int fd, t_llrc *llrc)
+int				free_array_content(t_llrc *llrc, int f)
 {
-	char	*line;
-	char	*linkd;
-	char	**ls;
-	int 	i;
+	int		i;
+	t_list	*tmp;
 
-
+<<<<<<< HEAD
 	if (!(ls = processmap(fd, llrc)) || ! (1 + ls))
 		return (ft_err());
 	*llrc = nullst(*llrc);
@@ -97,52 +82,109 @@ int				val_in(int fd, t_llrc *llrc)
 			free(llrc->er);
 			free(llrc->fr);
 			return (ft_err());
-		}
-	}
-	else
+=======
+	i = 0;
+	while (++i < llrc->rmi)
 	{
-		ft_cleanmem(ls);
-		free(llrc->er);
-		free(llrc->fr);
-		freellrc(llrc);
-		ft_err();
+//		free(llrc->arrrm[i]->name_r);
+		while (llrc->arrrm[i]->ln)
+		{
+			tmp = llrc->arrrm[i]->ln->next;
+			free(llrc->arrrm[i]->ln);
+			llrc->arrrm[i]->ln = tmp;
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
+		}
+		free(llrc->arrrm[i]->name_r);
+		free(llrc->arrrm[i]);
 	}
-	int j = 0;
-	free(ls[0]);
-	free(ls);
+	free(llrc->arrrm);
+	return (0);
+}
+
+int				wrongroom(t_llrc *llrc, char **line, int f)
+{
+	int		i;
+	t_list	*tmp;
+
+	while (llrc->br)
+	{
+		tmp = llrc->br->next;
+		free(((t_rooms *)llrc->br->content)->name_r);
+		free((t_rooms *)llrc->br->content);
+		free(llrc->br);
+		llrc->br = tmp;
+	}
+	i = -1;
+	if (f == 2)
+	{
+		free_array_content(llrc, f);
+	}
+	free_map(line);
 	return (1);
 }
-/*
-int				iscomment(char *line)
-{
-	if (line[0] == '#')
-	{
-		if (line[1] != '#' && line[1])
-			return (0);
-		if (ft_strcmp(line + 2, "start"))
-			return (-1);
-		if (ft_strcmp(line + 2, "end"))
-			return (-2);
-		else
-			return -3;//
-	}
-	return (1);
-}*/
 
-int 			main(int ac, char **av)
+/*
+**{//extra dop otd for chech_room w own w gnl
+** //--check_roomspresence_validif
+** i == 0 -> no links or else error
+*/
+
+int				val_in(int fd, t_llrc *llrc)
 {
-	int fd;
-	t_llrc llrc;
+	char	**ls;
+	int		i;
+
+	if (!(ls = processmap(fd, llrc)) || !(1 + ls))
+		return (ft_err());
+	*llrc = nullst(*llrc);
+	i = roomlinkblock(ls + 1, llrc);
+	if (!llrc->rmi || llrc->end != 1 || llrc->st != 1 || !i)
+	{
+		wrongroom(llrc, ls, 1);
+		return (ft_err());
+	}
+	turninarr(llrc);
+	if (ls + i + 1)
+		if (!linkval(ls + i + 1, llrc))
+		{
+			wrongroom(llrc, ls, 2);
+			return (ft_err());
+		}
+	free_map(ls);
+	return (1);
+}
+
+int				main(void)//int ac, char **av)
+{
+	int		fd;
+	t_llrc	llrc;
+//	int					checkcor(t_rooms *rm, t_llrc *llrc)
 
 	fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big_sup/map_big_sup_1", O_RDONLY);
+<<<<<<< HEAD
 	//fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/map_39", O_RDONLY);
 	//fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big/map_big_1", O_RDONLY);
 	//fd = 0;
+=======
+	fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/map_39", O_RDONLY);
+	//fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big/map_big_1", O_RDONLY);invalid/ants_empty
+//	fd = open("/Users/ddratini/42_03_projests/lem-in/42_lem-in_tools/maps/valid/map_25" ,O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_25", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_simple", O_RDONLY);
+//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/map_42", O_RDONLY);
+	///Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools
+	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/empty_map", O_RDONLY);
+	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/room_name_duplicated", O_RDONLY);
+	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/ants_nbr_too_big", O_RDONLY);
+	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_invalidcommand1", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/nolinksb", O_RDONLY);
+	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/emptyline", O_RDONLY);
+//	fd = 0;
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 	if (val_in(fd, &llrc))//(ac, av);
 	{
-		printf("\n");
+		ft_putstr("\n");
 		alg(&llrc);
-		//delete_rooms(&llrc);
 	}
 	return (0);
 }

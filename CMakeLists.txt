@@ -1,12 +1,20 @@
 cmake_minimum_required(VERSION 3.15)
+<<<<<<< HEAD
 project(leminleak C)
+=======
+project(DIRlem_in_rep C)
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 
 set(CMAKE_C_STANDARD 11)
 
 include_directories(.)
 include_directories(libft)
 
+<<<<<<< HEAD
 add_executable(leminleak
+=======
+add_executable(DIRlem_in_rep
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
         libft/ft_atoi.c
         libft/ft_bzero.c
         libft/ft_cleanmem.c
@@ -84,4 +92,11 @@ add_executable(leminleak
         valink.c
         valprocess.c
         valroom.c
+<<<<<<< HEAD
         valroom1.c alg2.c surb2.c)
+=======
+        valroom1.c
+        valen.c
+        split.c
+        )
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f

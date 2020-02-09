@@ -20,13 +20,15 @@ char		*ft_strsub(char const *s, unsigned int start, size_t len)
 	i = 0;
 	if (s != 0)
 	{
-		newsub = (char *)malloc(sizeof(char) * (len + 1));
+		newsub = (char *)malloc(sizeof(char) * (len + 1 + 1));
 		if (!newsub)
 			return (0);
 		while (i < len)
 		{
 			newsub[i++] = s[start++];
+
 		}
+     //   newsub[i++] = s[start++];
 		newsub[i] = '\0';
 		return (newsub);
 	}

@@ -26,12 +26,23 @@ t_list			*ft_lstnew(void const *content, size_t content_size)
 	}
 	else
 	{
+<<<<<<< HEAD
 //		if (!(lstnew->content = malloc(sizeof(content_size))))
 //		{
 //			free(lstnew);
 //			return (0);
 //		}//
 //		ft_memcpy(lstnew->content, content, content_size);
+=======
+	/*	if (!(lstnew->content = malloc(sizeof(content_size))))
+		{
+			free(lstnew);
+			return (0);
+		}//
+		ft_memcpy(lstnew->content, content, content_size);
+	*/
+		lstnew->content = (void *)content;
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 		lstnew->content_size = content_size;
 		lstnew->content = (void*)content;
 	}

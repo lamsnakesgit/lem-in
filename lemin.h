@@ -67,19 +67,34 @@ t_list 			*findlist(t_list *ln, t_list *er);
 void            del_paths(t_list *path, t_llrc *llrc);
 int				rmorlink(char *line, t_llrc *llrc);
 int				comstend(char *line);
+<<<<<<< HEAD
 void		dellist(t_list *ln);
 char 			*linkval(char **line, t_llrc *lrc, int fd);
+=======
+
+char 			*linkval(char **line, t_llrc *lrc);
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 
 int         	corr_link(char **line, t_llrc *llrc, int *rn);
 int         	ispresent(t_llrc *llrc, char *rs);
 int			    comstend(char *line);
 
+<<<<<<< HEAD
 t_list          *valroom_fill1(t_list **br,  char **roomcor);
 int			    val_cord(char **roomcor);
 char		    **valrmc_s(char *line);
 int			    savemarg(t_llrc *lrc, int cm);
 int			    stcheck(char **line, t_llrc *lrc, int cm, int fd);
 int		    	roomlinkblock(char **line, t_llrc *lrc, int fd);
+=======
+t_list          *valroom_fill1(t_list **br, /*t_rooms *r,*/ char **roomcor, t_llrc *);
+int			    val_cord(char **roomcor);//ps related neg int?
+char		    **valrmc_s(char *line, t_llrc *llrc);
+int			    savemarg(t_llrc *lrc, int cm);//char *line,
+int			    stcheck(char **line, t_llrc *lrc, int cm);
+int             duplicheck(char **roomcor, t_llrc *lrc);
+int		    	roomlinkblock(char **line, t_llrc *lrc);
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 void            turninarr(t_llrc *llrc);
 int				ft_err(void);
 
@@ -114,7 +129,26 @@ void			print_ant(t_list **paths, t_llrc *llrc);
 
 void			print_ant2(t_list **paths, t_llrc *llrc);
 
+<<<<<<< HEAD
 void			delete_rooms(t_llrc *llrc);
+=======
+int 			quepush2(t_llrc *llrc, t_list **q, t_list *tr);//**tr)///push unvis nbrs
+
+void			delete_rooms(t_llrc *llrc, int i);
+
+char			*ft_nstrsub(char const *s, unsigned int start, size_t len);
+int 			issplitsp(char *s, char c);
+int				validate(int ac, char **av, int i, long);
+
+int				free_map(char **line);
+int 			wrongroom(t_llrc *llrc, char **line, int f);
+void			freermlst(t_llrc *llrc, t_rooms *rm);
+
+void				freelrm(t_llrc *llrc);
+//void				freermlst(t_llrc *llrc, t_rooms *rm);
+int					validate(int ac, char **av, int i, long fn);
+int					checkcor(t_rooms *rm, t_llrc *llrc);
+>>>>>>> bb03be1a31cda05c285ccaf42083e71a50f6041f
 
 
 
