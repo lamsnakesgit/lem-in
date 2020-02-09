@@ -6,7 +6,7 @@
 /*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 16:16:41 by ddratini          #+#    #+#             */
-/*   Updated: 2020/02/09 18:24:13 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/09 18:56:52 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int			ft_count_word(char const *s, char c)
 {
 	int i;
-	int word;
+	int	word;
 
 	i = 0;
 	while (s[i] && s[i] == c)
@@ -53,7 +53,6 @@ char		**ft_strsplit(const char *s, char c)
 	int		i;
 	int		m;
 	char	**spt;
-	int		words;
 	int		ff;
 
 	if (!s)

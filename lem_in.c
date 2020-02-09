@@ -89,10 +89,10 @@ int					main(void)
 	t_llrc	llrc;
 
 	fd = 0;
-	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa2", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa2", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa7", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/GBIGMAP", O_RDONLY);
 //	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/ants_empty", O_RDONLY);
-	fd = 0;
+	//fd = 0;
 	if (val_in(fd, &llrc))
 	{
 		printf("\n");
