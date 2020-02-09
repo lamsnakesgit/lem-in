@@ -25,7 +25,7 @@ t_list		*pullnode(t_list **q)
 	return (h);
 }
 
-int			quepush2(t_list **q, t_list *tr)
+int			quepush2(t_list **q, t_list *tr, t_llrc *llrc)
 {
 	t_list	*ln;
 	int		i;

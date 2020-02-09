@@ -93,7 +93,7 @@ void			ft_listup(t_list **alst, t_list *new);
 void			ft_lstadd_up(t_list **alst, t_list *new);
 
 int 			queadd(t_list **q, t_list *tr);
-int			quepush2(t_list **q, t_list *tr);
+int			quepush2(t_list **q, t_list *tr, t_llrc *llrc);
 t_list 			*pullnode(t_list **q);
 void			printflist(t_list *ln);
 
