@@ -6,5 +6,5 @@ C_FLAGS = -g   -std=gnu11
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/gusujio/leminleak/. -I/Users/gusujio/leminleak/libft 
+C_INCLUDES = -I/Users/ddratini/42_03_projests/DIRlem-in_rep/. -I/Users/ddratini/42_03_projests/DIRlem-in_rep/libft 
 
