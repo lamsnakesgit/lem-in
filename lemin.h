@@ -118,7 +118,7 @@ void			print_ant(t_list **paths, t_llrc *llrc);
 
 void			print_ant2(t_list **paths, t_llrc *llrc);
 
-void			delete_rooms(t_llrc *llrc, int fi);
+long			delete_rooms(t_llrc *llrc, int fi);
 
 /*
 ** //void			freermlst(t_llrc *llrc, t_rooms *rm);
@@ -131,7 +131,7 @@ int				validate(int ac, char **av, int i, long ifu);
 
 int				free_map(char **line);
 int				wrongroom(t_llrc *llrc, char **line, int f);
-void			freermlst(t_llrc *llrc, t_rooms *rm);
+int			freermlst(t_llrc *llrc, t_rooms *rm);
 
 int				freelrm(t_llrc *llrc);
 int				validate(int ac, char **av, int i, long fn);

@@ -53,6 +53,7 @@ void				freellrc(t_llrc *lrc)
 **{//extra dop otd for chech_room w own w gnl
 ** //--check_roomspresence_validif
 ** if roomlinknlock -> error; free listrooms, contents
+** if not valid links - free array of rooms, its contents, names, link lists
 */
 
 int					val_in(int fd, t_llrc *llrc)
@@ -74,9 +75,7 @@ int					val_in(int fd, t_llrc *llrc)
 	{
 		if (!linkval(ls + i + 1, llrc))
 		{
-			free(llrc->er);
-			free(llrc->fr);
-			return (ft_err());
+			return (/*freermlst(llrc) |*/ delete_rooms(llrc, 0) | free_map(ls) | ft_err());
 		}
 	}
 	free_map(ls);
@@ -89,10 +88,12 @@ int					main(void)
 	t_llrc	llrc;
 
 	fd = 0;
-	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa7", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/GBIGMAP", O_RDONLY);
-//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/ants_empty", O_RDONLY);
-	//fd = 0;
+    fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa6", O_RDONLY);
+    //fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa7", O_RDONLY);
+	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/GBIGMAP", O_RDONLY);
+	// fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/room_after_tube", O_RDONLY);
+//  fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/room_after_tube", O_RDONLY);//room_has_dash
+//    fd = 0;
 	if (val_in(fd, &llrc))
 	{
 		printf("\n");

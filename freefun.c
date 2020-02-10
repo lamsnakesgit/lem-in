@@ -12,7 +12,7 @@
 
 #include "lemin.h"
 
-void				freermlst(t_llrc *llrc, t_rooms *rm)
+int freermlst(t_llrc *llrc, t_rooms *rm)
 {
 	t_list *tmp;
 
@@ -27,6 +27,7 @@ void				freermlst(t_llrc *llrc, t_rooms *rm)
 	}
 	free(rm->name_r);
 	free(rm);
+    return (0);//
 }
 
 int					freelrm(t_llrc *llrc)
