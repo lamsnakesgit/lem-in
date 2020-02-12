@@ -12,6 +12,56 @@
 
 #include "lemin.h"
 
+/*
+** iterate through list of links to find out which link has a link to cur
+** aka has link with content_size -1
+** to go through that; lvl += cur lvl + 1; vis = 1; add to que particular room
+*/
+
+int			bft3(int *f, t_list *cur, t_list **q, t_llrc *llrc)
+{
+	t_list	*ln;
+	t_list	*tr;
+
+	ln = ((t_rooms *)cur->content)->ln;
+	while (ln)
+	{
+		if (ln->content == llrc->fr || ln->content == llrc->er)
+			*f = 1;
+		tr = ((t_rooms *)ln->content)->ln;
+		while (tr)// && tr->next != cur->content)
+		{
+			if (((t_rooms *)tr->content)->nu == ((t_rooms *)cur->content)->nu \
+			&& tr->content != llrc->fr \
+			&& ((t_rooms *)tr->content)->vis == 1 \
+			&& tr->content_size == (size_t)-1)
+			{
+				((t_rooms *)tr->content)->lvl = ((t_rooms *)cur->content)->lvl + 1;//tr or ln?
+				((t_rooms *)tr->content)->vis = 1;
+				queadd(q, ln);
+				*f = 1;
+				return (0);//break ;
+			}
+			tr = tr->next;
+		}
+	//	while (((t_rooms *)cur->content)->ln
+	/*	if (((t_rooms *)ln->content)->vis2 == 1
+			&& ln->content_size != (size_t)-1
+			&& ln->content != llrc->fr
+			&& ln->content != llrc->er && *f != 1)
+		{
+			((t_rooms *)ln->content)->lvl =
+					((t_rooms *)(cur)->content)->lvl + 1;
+			((t_rooms *)ln->content)->vis = 1;
+			queadd(q, ln);
+			*f = 1;
+			return (0);
+		}
+	*/	ln = ln->next;
+	}
+	return (1);
+}
+
 int			bft2(int *f, t_list *cur, t_list **q, t_llrc *llrc)
 {
 	t_list	*ln;
@@ -52,7 +102,7 @@ t_list		*bft(t_llrc *llrc)
 		if (((t_rooms *)cur->content)->vis2 == 1
 				&& ((t_rooms *)cur->content)->nu != llrc->er->nu
 				&& ((t_rooms *)cur->content)->nu != llrc->fr->nu)
-			bft2(&f, cur, &q, llrc);
+			bft3(&f, cur, &q, llrc);
 		if (ft_strcmp(((t_rooms *)cur->content)->name_r,
 				llrc->er->name_r) && f != 1)
 			quepush2(&q, cur);

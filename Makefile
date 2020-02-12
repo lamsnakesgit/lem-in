@@ -12,7 +12,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C ./libft
-	@gcc -o $(NAME)  $(SRC) -L ./libft -lft -Wall -Wextra -Werror
+	@gcc -o $(NAME)  $(SRC) -L ./libft -lft -Wall -Wextra -Werror -g
 
 clean:
 	@make -C ./libft fclean

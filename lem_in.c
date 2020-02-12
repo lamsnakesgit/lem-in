@@ -88,9 +88,9 @@ int					main(void)
 	t_llrc	llrc;
 
 	fd = 0;
-    fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa6", O_RDONLY);
+    fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa", O_RDONLY);
     //fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa7", O_RDONLY);
-	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/GBIGMAP", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/GBIGMAP", O_RDONLY);
 	// fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/room_after_tube", O_RDONLY);
 //  fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/room_after_tube", O_RDONLY);//room_has_dash
 //    fd = 0;
