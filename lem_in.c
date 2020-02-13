@@ -93,7 +93,7 @@ int					main(void)
 	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/GBIGMAP", O_RDONLY);
 	// fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/room_after_tube", O_RDONLY);
 //  fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/room_after_tube", O_RDONLY);//room_has_dash
-//    fd = 0;
+    fd = 0;
 	if (val_in(fd, &llrc))
 	{
 		printf("\n");

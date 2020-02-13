@@ -158,7 +158,11 @@ t_list 		*bfs(t_llrc *llrc)
 		if (((t_rooms*)cur->content)->nu != llrc->er->nu)// && ((t_rooms *)(cur->content))->vis2 != 1)//llrc->er->nu)
 			quepush3(&q, cur);
 		else
+		{
+		//	dellist(q);
 			last = cur;
+		}
+	//	free(cur);
 	}
 //	print_l(llrc);
 	return (last);
