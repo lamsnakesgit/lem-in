@@ -116,6 +116,54 @@ t_list		*bft(t_llrc *llrc)
 	}
 	return (NULL);
 }
+int 		clean2(t_llrc *llrc, t_list **q)
+{
+	int		i;
+	t_rooms	*fr;
+
+	fr = llrc->fr;
+	(*q) = ft_lstnew((const void *)fr, (size_t)(sizeof((void *)(fr))));
+	if (!(*q))
+		return (1);
+	i = -1;
+	while (++i < llrc->rmi)
+	{
+		llrc->arrrm[i]->vis = 0;
+	//	llrc->arrrm[i]->lvl = 0;
+	}
+	(*q)->content = (void *)llrc->fr;
+	((t_rooms *)(*q)->content)->vis = 1;
+	((t_rooms *)(*q)->content)->ant = 0;
+	llrc->er->vis2 = 0;//always?
+	return (0);
+}
+t_list 		*bfs(t_llrc *llrc)
+{
+	t_list	*q;
+	t_list	*cur;
+	t_list	*last;
+	int 	f;
+	int i = 0;
+
+	q = 0;
+	clean2(llrc, &q);
+	f = 0;
+	last = 0;
+	while (q != 0)
+	{
+		++i;
+		cur = pullnode(&q);
+//		if (f == 0 && ((t_rooms*)cur->content)->vis2 == 1 && cur->content != llrc->fr)
+//			bft2(&f, cur, &q, llrc);
+		if (((t_rooms*)cur->content)->nu != llrc->er->nu)// && ((t_rooms *)(cur->content))->vis2 != 1)//llrc->er->nu)
+			quepush3(&q, cur);
+		else
+			last = cur;
+	}
+//	print_l(llrc);
+	return (last);
+	return (0);
+}
 
 t_list		*buildpath(t_list *er)
 {
@@ -158,7 +206,7 @@ void		alg(t_llrc *llrc)
 	paths = NULL;
 	while (llrc->psum < maxw)
 	{
-		if (!(last = bft(llrc)))
+		if (!(last = bfs(llrc)))
 			break ;
 		path = buildpath(last);
 		printflist(path);
@@ -167,8 +215,12 @@ void		alg(t_llrc *llrc)
 		ft_listup(&paths, path);
 		if (!paths->next && llrc->psum < maxw)
 			continue;
-		if (surb(&paths, llrc))
-			break ;
+		if (path_cmp2(llrc, path->content_size))//if true it didnt get better
+		{
+			break ;//run ant
+		}
+	/*	if (surb(&paths, llrc))
+			break ;*/
 	}
 	if (paths)
 		print_ant(&paths, llrc);

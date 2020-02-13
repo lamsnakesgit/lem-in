@@ -131,10 +131,13 @@ int				validate(int ac, char **av, int i, long ifu);
 
 int				free_map(char **line);
 int				wrongroom(t_llrc *llrc, char **line, int f);
-int			freermlst(t_llrc *llrc, t_rooms *rm);
+int				freermlst(t_llrc *llrc, t_rooms *rm);
 
 int				freelrm(t_llrc *llrc);
 int				validate(int ac, char **av, int i, long fn);
 int				checkcor(t_rooms *rm, t_llrc *llrc);
+
+int				quepush(t_list **q, t_list *tr);
+int			quepush3(t_list **q, t_list *tr);
 
 #endif
