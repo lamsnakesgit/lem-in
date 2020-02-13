@@ -102,7 +102,7 @@ t_list		*bft(t_llrc *llrc)
 		if (((t_rooms *)cur->content)->vis2 == 1
 				&& ((t_rooms *)cur->content)->nu != llrc->er->nu
 				&& ((t_rooms *)cur->content)->nu != llrc->fr->nu)
-			bft3(&f, cur, &q, llrc);
+			bft2(&f, cur, &q, llrc);
 		if (ft_strcmp(((t_rooms *)cur->content)->name_r,
 				llrc->er->name_r) && f != 1)
 			quepush2(&q, cur);
