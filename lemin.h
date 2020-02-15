@@ -181,6 +181,7 @@ void			print_ant(t_list **paths, t_llrc *llrc);
 
 void			print_ant2(t_list **paths, t_llrc *llrc);
 
+int				alg_alt(t_llrc *llrc);
 
 
 

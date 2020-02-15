@@ -131,7 +131,7 @@ t_list 			*bfss(t_llrc *llrc)
 		cur = pullnode(&q);
 //		if (f == 0 && ((t_rooms*)cur->content)->vis2 == 1 && cur->content != llrc->fr)
 //			bft2(&f, cur, &q, llrc);
-		if (ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->er->name_r) && ((t_rooms *)(cur->content))->nu != llrc->er->nu)
+		if (/*ft_strcmp(((t_rooms*)cur->content)->name_r, llrc->er->name_r) && */((t_rooms *)(cur->content))->nu != llrc->er->nu)
 			quepush(llrc, &q, cur);
 		else
 			last = cur;

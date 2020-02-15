@@ -136,7 +136,7 @@ t_list 			*buildpath(t_list *er)
 			if (((t_rooms *) ln->content)->lvl ==
 			((t_rooms *) er->content)->lvl - 1)
 			{
-				cutpath(&ln, er);
+			//	cutpath(&ln, er);
 				tmp = ft_lstnew((void *)(ln->content),(size_t)(sizeof(er)));
 				tmp->content = (void *)ln->content;
 				ft_lstadd(&path, tmp);
