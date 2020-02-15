@@ -6,13 +6,13 @@
 /*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 14:29:41 by ddratini          #+#    #+#             */
-/*   Updated: 2020/02/09 14:29:49 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/15 18:06:40 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-int freermlst(t_llrc *llrc, t_rooms *rm)
+int					freermlst(t_llrc *llrc, t_rooms *rm)
 {
 	t_list *tmp;
 
@@ -27,7 +27,7 @@ int freermlst(t_llrc *llrc, t_rooms *rm)
 	}
 	free(rm->name_r);
 	free(rm);
-    return (0);//
+	return (0);
 }
 
 int					freelrm(t_llrc *llrc)

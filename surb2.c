@@ -6,7 +6,7 @@
 /*   By: gusujio <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:41:32 by gusujio           #+#    #+#             */
-/*   Updated: 2020/02/07 19:45:43 by gusujio          ###   ########.fr       */
+/*   Updated: 2020/02/15 18:34:49 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@ void	sur(t_mas *mas, t_llrc *llrc, t_list **paths)
 	{
 		(*mas).ln = lastpath(paths, 1);
 		delpath(paths, (*mas).ln->next);
-		//free((*mas).ln->next);
 		(*mas).ln->next = NULL;
 		(*mas).ln = lastpath(paths, 1);
 		delpath(paths, (*mas).ln->next);
-		//free((*mas).ln->next);
 		(*mas).ln->next = NULL;
 	}
 	else
