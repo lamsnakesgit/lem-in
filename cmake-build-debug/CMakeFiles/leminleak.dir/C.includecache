@@ -6,7 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/Users/ddratini/42_03_projests/DIRlem-in_rep/alg.c
+/Users/ddratini/42_03_projests/DIRlem-in_rep/freefun.c
+lemin.h
+/Users/ddratini/42_03_projests/DIRlem-in_rep/lemin.h
+
+/Users/ddratini/42_03_projests/DIRlem-in_rep/lem_in.c
 lemin.h
 /Users/ddratini/42_03_projests/DIRlem-in_rep/lemin.h
 
@@ -27,4 +31,8 @@ unistd.h
 -
 string.h
 -
+
+/Users/ddratini/42_03_projests/DIRlem-in_rep/surb2.c
+lemin.h
+/Users/ddratini/42_03_projests/DIRlem-in_rep/lemin.h
 
