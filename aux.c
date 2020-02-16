@@ -6,7 +6,7 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 15:19:14 by ddratini          #+#    #+#             */
-/*   Updated: 2020/02/09 18:02:41 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/16 17:25:18 by gusujio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int				count_way(t_llrc *llrc)
 
 	tf = llrc->fr->ln;
 	f = 0;
+	min = 0;
 	while (tf)
 	{
 		++f;

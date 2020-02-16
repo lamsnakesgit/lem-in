@@ -6,33 +6,25 @@
 
 #IncludeRegexTransform: 
 
-/Users/ddratini/42_03_projests/DIRlem-in_rep/freefun.c
+/Users/gusujio/lem-in/alg.c
 lemin.h
-/Users/ddratini/42_03_projests/DIRlem-in_rep/lemin.h
+/Users/gusujio/lem-in/lemin.h
 
-/Users/ddratini/42_03_projests/DIRlem-in_rep/lem_in.c
-lemin.h
-/Users/ddratini/42_03_projests/DIRlem-in_rep/lemin.h
-
-/Users/ddratini/42_03_projests/DIRlem-in_rep/lemin.h
+/Users/gusujio/lem-in/lemin.h
 unistd.h
 -
 stdio.h
 -
 libft/libft.h
-/Users/ddratini/42_03_projests/DIRlem-in_rep/libft/libft.h
+/Users/gusujio/lem-in/libft/libft.h
 fcntl.h
 -
 
-/Users/ddratini/42_03_projests/DIRlem-in_rep/libft/libft.h
+/Users/gusujio/lem-in/libft/libft.h
 stdlib.h
 -
 unistd.h
 -
 string.h
 -
-
-/Users/ddratini/42_03_projests/DIRlem-in_rep/surb2.c
-lemin.h
-/Users/ddratini/42_03_projests/DIRlem-in_rep/lemin.h
 

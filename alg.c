@@ -6,17 +6,11 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 18:19:18 by ddratini          #+#    #+#             */
-/*   Updated: 2020/02/15 18:34:21 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/16 17:26:07 by gusujio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
-
-/*
-** iterate through list of links to find out which link has a link to cur
-** aka has link with content_size -1
-** to go through that; lvl += cur lvl + 1; vis = 1; add to que particular room
-*/
 
 int			bft3(t_list *ln, t_list *cur, t_llrc *llrc)
 {
@@ -38,7 +32,7 @@ int			bft3(t_list *ln, t_list *cur, t_llrc *llrc)
 	return (0);
 }
 
-int			bft2(int *f, t_list *cur, t_list **q, t_llrc *llrc)
+int			bft2(int *f, t_list *cur, t_list **q, t_llrc *llrc, int *n)
 {
 	t_list *ln;
 
@@ -54,6 +48,7 @@ int			bft2(int *f, t_list *cur, t_list **q, t_llrc *llrc)
 			((t_rooms *)ln->content)->vis = 1;
 			queadd(q, ln);
 			*f = 1;
+			*n = 1;
 			return (0);
 		}
 		ln = ln->next;
@@ -66,16 +61,18 @@ t_list		*bft(t_llrc *llrc)
 	t_list	*q;
 	t_list	*cur;
 	int		f;
+	int     n;
 
 	if ((f = clean(llrc, &q)))
 		return (0);
+	n = 0;
 	while (q != 0)
 	{
 		cur = pullnode(&q);
-		if (((t_rooms *)cur->content)->vis2 == 1
+		if (((t_rooms *)cur->content)->vis2 == 1 && n == 0
 				&& ((t_rooms *)cur->content)->nu != llrc->er->nu
 				&& ((t_rooms *)cur->content)->nu != llrc->fr->nu)
-			bft2(&f, cur, &q, llrc);
+			bft2(&f, cur, &q, llrc, &n);
 		if (ft_strcmp(((t_rooms *)cur->content)->name_r,
 					llrc->er->name_r) && f != 1)
 			quepush2(&q, cur);
@@ -126,18 +123,18 @@ void		alg(t_llrc *llrc)
 	t_list	*path;
 	t_list	*paths;
 
-	if (!(maxw = count_way(llrc)))
-		return ;
+	maxw = count_way(llrc);
 	paths = NULL;
 	while (llrc->psum < maxw)
 	{
 		if (!(last = bft(llrc)))
 			break ;
 		path = buildpath(last);
-		printflist(path);
+		printf("\n");
 		llrc->plensum += path->content_size;
 		llrc->psum += 1;
 		ft_listup(&paths, path);
+		printallpaths(paths);
 		if (!paths->next && llrc->psum < maxw)
 			continue;
 		if (surb(&paths, llrc))
