@@ -6,7 +6,7 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:18 by ddratini          #+#    #+#             */
-/*   Updated: 2020/02/09 17:24:24 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/16 15:59:36 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdio.h>
 # include "libft/libft.h"
 # include <fcntl.h>
-# define BS 16000
+# define BS 1600
 
 typedef struct	s_rooms
 {
