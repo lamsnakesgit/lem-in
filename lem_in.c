@@ -6,7 +6,7 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:42:13 by ddratini          #+#    #+#             */
-/*   Updated: 2020/02/15 19:21:33 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/16 17:40:11 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int					main(void)
 	// fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/room_after_tube", O_RDONLY);
 	//  fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/room_after_tube", O_RDONLY);//room_has_dash
 	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/big02", O_RDONLY);//room_has_dash
-//	fd = 0;
+	fd = 0;
 	if (val_in(fd, &llrc))
 	{
 		printf("\n");
