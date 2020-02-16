@@ -6,7 +6,7 @@
 /*   By: ddratini <ddratini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 18:19:03 by gusujio           #+#    #+#             */
-/*   Updated: 2020/02/09 17:08:34 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/16 16:36:27 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,9 @@ void		del_paths(t_list **path, t_llrc *llrc)
 		}
 		free(*path);
 		(*path) = paths;
-	}
+	}llrc+=0;
 	delete_rooms(llrc, 0);
-	exit(0);
+//	sleep(20);
+	return;
+	//exit(0);
 }
