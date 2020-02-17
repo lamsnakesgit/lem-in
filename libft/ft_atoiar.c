@@ -1,41 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   revstr.c                                           :+:      :+:    :+:   */
+/*   ft_atoiar.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gusujio <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/19 23:54:39 by ddratini          #+#    #+#             */
-/*   Updated: 2019/05/17 19:42:15 by ddratini         ###   ########.fr       */
+/*   Created: 2019/12/01 17:31:41 by gusujio           #+#    #+#             */
+/*   Updated: 2020/01/17 21:44:49 by gusujio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*revstr(char *str)
+int		*ft_atoiar(char **ar)
 {
-	int		i;
-	char	tmp;
-	int		beg;
-	int		len;
+	int	*m;
+	int	i;
 
-	len = 0;
-	beg = 0;
 	i = 0;
-	while (str[i])
+	while (ar[i])
 		i++;
-	len = i;
-	i--;
-	len = len / 2;
-	while (len)
+	m = (int*)malloc(sizeof(int) * i);
+	i = 0;
+	while (ar[i])
 	{
-		tmp = str[beg];
-		str[beg] = str[i];
-		str[i] = tmp;
-		beg++;
-		i--;
-		len--;
+		m[i] = ft_atoi(ar[i]);
+		i++;
 	}
-	ft_putstr(str);
-	return (str);
+	return (m);
 }

@@ -101,8 +101,6 @@ int				path_cmp(int last, t_llrc *llrc, int x)
 
 long			delete_rooms(t_llrc *llrc, int i)
 {
-	t_list	*tmpbr;
-	t_list	*nextbr;
 	t_list	*tmp;
 
 	i = 0;
@@ -117,13 +115,6 @@ long			delete_rooms(t_llrc *llrc, int i)
 		}
 		free(llrc->arrrm[i]);
 		++i;
-	}
-	tmpbr = llrc->br;
-	while (tmpbr)
-	{
-		nextbr = tmpbr->next;
-		free(tmpbr);
-		tmpbr = nextbr;
 	}
 	free(llrc->arrrm);
 	return (0);

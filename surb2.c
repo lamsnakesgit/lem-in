@@ -49,7 +49,8 @@ int		sur2(t_mas *mas, t_llrc *llrc, t_list **paths)
 		{
 			llrc->psum -= 1;
 			llrc->plensum -= ((t_list *)(*mas).ln2->content)->content_size;
-			delpath(paths, (*mas).ln2);
+          // dellast(paths);
+            delpath(paths, (*mas).ln2);
 			return (1);
 		}
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gusujio <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/19 16:01:29 by ddratini          #+#    #+#             */
-/*   Updated: 2019/04/22 20:53:39 by ddratini         ###   ########.fr       */
+/*   Created: 2019/09/12 18:05:46 by gusujio           #+#    #+#             */
+/*   Updated: 2019/09/20 18:28:36 by gusujio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,28 @@
 
 char	*ft_strtrim(char const *s)
 {
-	char			*cop;
-	size_t			i;
-	unsigned int	start;
-	size_t			leng;
+	char	*s2;
+	size_t	i;
+	size_t	j;
+	size_t	l;
 
 	i = 0;
-	if (s == 0)
-		return (0);
-	while ((s[i]) && (s[i] == ' ' || s[i] == '\t' || s[i] == '\n'))
+	if (!s)
+		return (NULL);
+	j = ft_strlen(s);
+	while (s[i] && (s[i] == ' ' || s[i] == '\n' || s[i] == '\t'))
 		i++;
-	if (!s[i])
-		return (ft_strnew(0));
-	start = i;
-	i = ft_strlen(s) - 1;
-	while ((s[i]) && (s[i] == ' ' || s[i] == '\t' || s[i] == '\n'))
-		i--;
-	leng = i - start + 1;
-	if (!(cop = ft_strnew(i - start + 1)))
-		return (0);
-	i = 0;
-	while (i < leng)
-		cop[i++] = s[start++];
-	cop[i] = '\0';
-	return (cop);
+	while (j > 0 && (s[j - 1] == ' ' || s[j - 1] == '\n' || s[j - 1] == '\t'))
+		j--;
+	l = 0;
+	if (!(s2 = malloc((j > i ? j - i : 0) + 1)))
+		return (NULL);
+	while (i < j)
+	{
+		s2[l] = s[i];
+		i++;
+		l++;
+	}
+	s2[l] = 0;
+	return (s2);
 }

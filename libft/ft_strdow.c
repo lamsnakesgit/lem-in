@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_bits.c                                    :+:      :+:    :+:   */
+/*   ft_strdow.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gusujio <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 19:31:26 by ddratini          #+#    #+#             */
-/*   Updated: 2019/05/17 19:35:01 by ddratini         ###   ########.fr       */
+/*   Created: 2019/11/23 15:36:38 by gusujio           #+#    #+#             */
+/*   Updated: 2019/11/26 16:53:17 by gusujio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_print_bits(unsigned char octet)
+char	*ft_strdow(const char *s)
 {
-	int i;
-	int buf;
+	char	*s2;
+	int		i;
 
-	i = 128;
-	while (i != 0)
+	i = ft_strlen(s);
+	s2 = (char*)malloc(i);
+	s2[i] = 0;
+	while (--i >= 0)
 	{
-		buf = octet & i;
-		i /= 2;
-		if (buf > 0)
-		{
-			write(1, "1", 1);
-		}
-		else if (buf == 0)
-		{
-			write(1, "0", 1);
-		}
+		s2[i] = s[i];
+		s2[i] = (char)ft_tolower(s2[i]);
 	}
+	return (s2);
 }

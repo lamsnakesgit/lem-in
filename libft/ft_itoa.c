@@ -3,54 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gusujio <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/19 18:40:29 by ddratini          #+#    #+#             */
-/*   Updated: 2019/04/22 20:38:56 by ddratini         ###   ########.fr       */
+/*   Created: 2019/09/14 19:40:09 by gusujio           #+#    #+#             */
+/*   Updated: 2019/11/26 16:58:33 by gusujio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int			ft_dig_am(int nu)
+char	*ft_itoa(long long int nbr)
 {
-	int a;
+	char			*str;
+	long long int	nb;
+	long long int	index;
+	long long int	size;
 
-	a = 0;
-	if (nu == 0)
-		return (1);
-	while (nu)
-	{
-		nu /= 10;
-		a++;
-	}
-	return (a);
-}
-
-char				*ft_itoa(int n)
-{
-	char	*str;
-	int		sgn;
-	int		dig;
-
-	dig = ft_dig_am(n);
-	sgn = (n < 0) ? 1 : 0;
-	if (!(str = ft_strnew((size_t)(dig + sgn))))
+	nb = nbr < 0 ? nbr * -1 : nbr;
+	if (nbr == -9223372036854775807 - 1)
+		return (ft_strdup("-9223372036854775808"));
+	size = ft_lenint(nb);
+	index = 0;
+	if (!(str = (char*)malloc(sizeof(char) * (size + 1 + (nbr < 0 ? 1 : 0)))))
 		return (0);
-	if (sgn)
-		str[0] = '-';
-	else if (n >= 0)
-		dig--;
-	if (n == 0)
-		return (ft_strdup("0"));
-	str[dig] = '\0';
-	while (n)
+	if (nbr < 0 && (str[index] = '-'))
+		size++;
+	index = size - 1;
+	while (nb >= 10)
 	{
-		if (n > 0)
-			str[dig--] = '0' + n % 10;
-		else
-			str[dig--] = -(n % 10) + '0';
-		n /= 10;
+		str[index--] = (char)(nb % 10 + 48);
+		nb /= 10;
 	}
+	str[index] = (char)(nb % 10 + 48);
+	str[size] = '\0';
 	return (str);
 }

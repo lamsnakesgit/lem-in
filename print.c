@@ -6,7 +6,7 @@
 /*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 17:47:17 by ddratini          #+#    #+#             */
-/*   Updated: 2020/02/09 17:47:20 by ddratini         ###   ########.fr       */
+/*   Updated: 2020/02/17 16:05:21 by ddratini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void			print_l(t_llrc *lrc)
 	{
 		while (l)
 		{
-			printf("i=%4s|%6s=|%d\n", lrc->arrrm[i]->name_r,
+			ft_printf("i=%4s|%6s=|%d\n", lrc->arrrm[i]->name_r,
 				((t_rooms *)l->content)->name_r,
 				((t_rooms *)l->content)->lvl);
 			l = l->next;
 		}
-		printf("\n");
+		ft_printf("\n");
 		++i;
 		if (i == lrc->rmi)
 			break ;
@@ -45,10 +45,13 @@ void			printflist(t_list *ln)
 	path = ln;
 	while (path)
 	{
-		printf("%s ", ((t_rooms *)path->content)->name_r);
+		if (!path->content)
+			ft_printf("(!path->content)\n");
+		else
+			ft_printf("%s ", ((t_rooms *)path->content)->name_r);
 		path = path->next;
 	}
-	printf("\n");
+	ft_printf("\n");
 }
 
 void			printallpaths(t_list *ln)
@@ -61,7 +64,7 @@ void			printallpaths(t_list *ln)
 		printflist(path->content);
 		path = path->next;
 	}
-	printf("\n");
+	ft_printf("\n");
 }
 
 t_list			*lastpath(t_list **paths, int i)
@@ -103,12 +106,14 @@ void			delpath(t_list **paths, t_list *ln)
 			if (!tr2)
 			{
 				(*paths) = (*paths)->next;
-				free(tr);
+                dellist(tr->content);
+                free(tr);
 			}
 			else
 			{
 				tr2->next = ln->next;
-				free(ln);
+                dellist(ln->content);//(ln);
+                free(ln);
 			}
 			return ;
 		}

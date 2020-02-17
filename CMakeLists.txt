@@ -1,21 +1,27 @@
 cmake_minimum_required(VERSION 3.15)
-project(leminleak C)
+project(DIRlem_in_rep C)
 
 set(CMAKE_C_STANDARD 11)
 
 include_directories(.)
 include_directories(libft)
 
-add_executable(leminleak
+add_executable(DIRlem_in_rep
+        libft/bonus.c
         libft/ft_atoi.c
+        libft/ft_atoiar.c
         libft/ft_bzero.c
         libft/ft_cleanmem.c
+        libft/ft_degree.c
         libft/ft_isalnum.c
         libft/ft_isalpha.c
         libft/ft_isascii.c
         libft/ft_isdigit.c
         libft/ft_isprint.c
         libft/ft_itoa.c
+        libft/ft_itoa2.c
+        libft/ft_lenint.c
+        libft/ft_lenint2.c
         libft/ft_lstadd.c
         libft/ft_lstdel.c
         libft/ft_lstdelone.c
@@ -30,7 +36,10 @@ add_executable(leminleak
         libft/ft_memdel.c
         libft/ft_memmove.c
         libft/ft_memset.c
-        libft/ft_print_bits.c
+        libft/ft_mod.c
+        libft/ft_mult2.c
+        libft/ft_multi.c
+        libft/ft_printf.c
         libft/ft_putchar.c
         libft/ft_putchar_fd.c
         libft/ft_putendl.c
@@ -39,19 +48,29 @@ add_executable(leminleak
         libft/ft_putnbr_fd.c
         libft/ft_putstr.c
         libft/ft_putstr_fd.c
+        libft/ft_revers.c
+        libft/ft_root.c
+        libft/ft_splitt.c
         libft/ft_strcat.c
         libft/ft_strchr.c
         libft/ft_strclr.c
         libft/ft_strcmp.c
+        libft/ft_strcount.c
         libft/ft_strcpy.c
         libft/ft_strdel.c
+        libft/ft_strdow.c
         libft/ft_strdup.c
         libft/ft_strequ.c
         libft/ft_striter.c
         libft/ft_striteri.c
         libft/ft_strjoin.c
+        libft/ft_strjoin1.c
+        libft/ft_strjoin2.c
+        libft/ft_strjoin3.c
         libft/ft_strlcat.c
         libft/ft_strlen.c
+        libft/ft_strlen2.c
+        libft/ft_strlen3.c
         libft/ft_strmap.c
         libft/ft_strmapi.c
         libft/ft_strncat.c
@@ -66,27 +85,42 @@ add_executable(leminleak
         libft/ft_strstr.c
         libft/ft_strsub.c
         libft/ft_strtrim.c
-        libft/ft_swapstr.c
+        libft/ft_strup.c
         libft/ft_tolower.c
         libft/ft_toupper.c
+        libft/ft_unletter.c
         libft/get_next_line.c
         libft/libft.h
-        libft/revstr.c
+        libft/obr.c
+        libft/obr2.c
+        libft/obr3.c
+        libft/tip_f.c
+        libft/tip_ff.c
+        libft/tip_i_d.c
+        libft/tip_o.c
+        libft/tip_p.c
+        libft/tip_s_c.c
+        libft/tip_u.c
+        libft/tip_x.c
         alg.c
+        alg2.c
+       # algqq.c
         aux.c
+        aux2.c
         bft.c
+      #  bftcp.c
+        freefun.c
         lem_in.c
         lemin.h
+        print.c
+        split.c
+        surb2.c
         suurballe.c
         traverse.c
         val_map.c
+        valdi.c
         valink.c
         valprocess.c
         valroom.c
-        valroom1.c alg2.c surb2.c
-        aux2.c
-        freefun.c
-        split.c
-        valdi.c
-        print.c
-        )
+        valroom1.c
+        aux3.c)

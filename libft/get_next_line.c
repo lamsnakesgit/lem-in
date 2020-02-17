@@ -3,63 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gusujio <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/26 14:05:22 by ddratini          #+#    #+#             */
-/*   Updated: 2020/02/09 18:24:34 by ddratini         ###   ########.fr       */
+/*   Created: 2019/09/30 17:38:41 by gusujio           #+#    #+#             */
+/*   Updated: 2020/01/31 15:04:57 by gusujio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <fcntl.h>
 
-static int			ft_strchrdup(char **copyhfd, char **line)
+int		get_next_line(const int fd, char **line)
 {
-	char *sav;
+	static char	*s[10240] = {NULL};
+	char		*s2;
+	char		l[BUFF_SIZE + 1];
+	int			res;
 
-	if (ft_strchr(*copyhfd, '\n'))
-	{
-		*line = ft_strsub(*copyhfd, 0, ft_strchr(*copyhfd, '\n') - *copyhfd);
-		sav = ft_strdup(ft_strchr(*copyhfd, '\n') + 1);
-		ft_strdel(copyhfd);
-		*copyhfd = sav;
-		return (1);
-	}
-	else if (*copyhfd[0])
-	{
-		*line = ft_strdup(*copyhfd);
-		ft_strdel(copyhfd);
-		return (1);
-	}
-	else
-	{
-		ft_strdel(copyhfd);
-		return (0);
-	}
-}
-
-int					get_next_line(const int fd, char **line)
-{
-	char		buff[BUFF_SIZE + 1];
-	static char	*copy_here[MAX_FD];
-	int			rdretby;
-	char		*save;
-
-	if (BUFF_SIZE < 1 || fd < 0 || !line || fd >= MAX_FD)
+	if (fd < 0 || BUFF_SIZE < 0 || !line || fd > 10240)
 		return (-1);
-	if (copy_here[fd] == NULL)
-		copy_here[fd] = ft_strnew(0);
-	while ((rdretby = read(fd, buff, BUFF_SIZE)) > 0)
+	while (!ft_strchr(s[fd], '\n') && (res = read(fd, l, BUFF_SIZE)) > 0)
 	{
-		buff[rdretby] = '\0';
-		save = ft_strjoin(copy_here[fd], buff);
-		free(copy_here[fd]);
-		copy_here[fd] = save;
-		if (ft_strchr(copy_here[fd], '\n'))
-			break ;
+		l[res] = '\0';
+		s2 = ft_strjoin((s[fd] == NULL ? "" : s[fd]), l);
+		ft_strdel(&s[fd]);
+		s[fd] = s2;
 	}
-	if (rdretby < 0)
-		return (-1);
-	if (rdretby == 0 && copy_here[fd] == NULL)
+	s2 = s[fd];
+	if (res == 0 && s[0] == 0)
 		return (0);
-	return (ft_strchrdup(&copy_here[fd], &(*line)));
+	if (res < 0 || !(*line = (char *)malloc(ft_strlen2(s2, '\n') + 1)))
+		return (-1);
+	ft_memmove(*line, s2, (res = ft_strlen2(s2, '\n')));
+	s[fd] = ft_strjoin("", s2 + res + (s2[res] == 0 ? 0 : 1));
+	l[0] = (s2[res] == '\n');
+	ft_strdel(&s2);
+	(*line)[res] = '\0';
+	return (res || l[0]);
 }

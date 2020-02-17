@@ -3,39 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gusujio <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/10 21:58:57 by ddratini          #+#    #+#             */
-/*   Updated: 2019/04/24 15:00:37 by ddratini         ###   ########.fr       */
+/*   Created: 2019/09/09 13:47:49 by gusujio           #+#    #+#             */
+/*   Updated: 2019/09/18 14:08:52 by gusujio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void				*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char	*dp;
-	unsigned char	*sp;
-	size_t			i;
+	char *buf;
 
-	dp = (unsigned char *)dst;
-	sp = (unsigned char *)src;
-	if (!dst && !src)
-		return (NULL);
-	if (src == dst)
-		return (dst);
-	while (src < dst && len-- > 0)
+	if (dst != src)
 	{
-		dp[len] = sp[len];
-	}
-	if (src > dst)
-	{
-		i = 0;
-		while (i < len)
+		buf = (char*)malloc(len);
+		if (buf)
 		{
-			dp[i] = sp[i];
-			i++;
+			ft_memcpy(buf, src, len);
+			ft_memcpy(dst, buf, len);
+			free(buf);
 		}
 	}
-	return ((void *)dst);
+	return (dst);
 }

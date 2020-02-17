@@ -23,7 +23,7 @@ void	printway(t_list *tr, t_llrc *llrc, int *ant, size_t *ul)
 		llrc->er->vis += (((t_rooms *)tr->next->content)->nu == llrc->er->nu);
 		*ul -= 1;
 		(*ant)++;
-		printf("L%d-%s ", *ant, ((t_rooms *)tr->next->content)->name_r);
+		ft_printf("L%d-%s ", *ant, ((t_rooms *)tr->next->content)->name_r);
 		((t_rooms *)tr->next->content)->ant = *ant;
 	}
 	if ((((t_rooms *)tr->next->content)->ant == 0 ||
@@ -31,7 +31,7 @@ void	printway(t_list *tr, t_llrc *llrc, int *ant, size_t *ul)
 		((t_rooms *)tr->content)->ant != 0)
 	{
 		llrc->er->vis += (((t_rooms *)tr->next->content)->nu == llrc->er->nu);
-		printf("L%d-%s ", ((t_rooms *)tr->content)->ant,
+		ft_printf("L%d-%s ", ((t_rooms *)tr->content)->ant,
 				((t_rooms *)tr->next->content)->name_r);
 		((t_rooms *)tr->next->content)->ant = ((t_rooms *)tr->content)->ant;
 		((t_rooms *)tr->content)->ant = 0;
@@ -60,9 +60,9 @@ void	print_ant2(t_list **paths, t_llrc *llrc)
 			ln = ln->next;
 		}
 		++i;
-		printf("\n");
+		ft_printf("\n");
 	}
-	printf("I=%d\n", i);
+	ft_printf("I=%d\n", i);
 }
 
 void	print_ant(t_list **paths, t_llrc *llrc)
@@ -76,9 +76,9 @@ void	print_ant(t_list **paths, t_llrc *llrc)
 	s = 0;
 	while (ln)
 	{
-		printf("len = %d ", (int)((t_list *)ln->content)->content_size);
+	//	ft_printf("len = %d ", (int)((t_list *)ln->content)->content_size);
 		ln->content_size = i - ((t_list *)ln->content)->content_size;
-		printf("ant = %d\n", (int)ln->content_size);
+	//	ft_printf("ant = %d\n", (int)ln->content_size);
 		s += ln->content_size;
 		ln = ln->next;
 	}
@@ -89,7 +89,7 @@ void	print_ant(t_list **paths, t_llrc *llrc)
 		ln->content_size += 1;
 		ln = ln->next;
 	}
-	printf("%d\n", (int)(*paths)->content_size);
+	ft_printf("%d\n", (int)(*paths)->content_size);
 	print_ant2(paths, llrc);
 	del_paths(paths, llrc);
 }

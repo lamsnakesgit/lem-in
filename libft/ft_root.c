@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swapstr.c                                       :+:      :+:    :+:   */
+/*   ft_root.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gusujio <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 19:24:15 by ddratini          #+#    #+#             */
-/*   Updated: 2019/05/17 19:25:29 by ddratini         ###   ########.fr       */
+/*   Created: 2019/09/16 14:03:40 by gusujio           #+#    #+#             */
+/*   Updated: 2019/09/16 14:11:15 by gusujio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_swapstr(char **s1, char **s2)
+int	ft_root(int x)
 {
-	char *sbuff;
+	int z;
 
-	sbuff = 0;
-	sbuff = *s1;
-	*s1 = *s2;
-	*s2 = sbuff;
+	z = 0;
+	while (z * z < x)
+		z++;
+	return (z);
 }

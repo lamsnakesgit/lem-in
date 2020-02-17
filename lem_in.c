@@ -75,7 +75,7 @@ int					val_in(int fd, t_llrc *llrc)
 	{
 		if (!linkval(ls + i + 1, llrc))
 		{
-			return (/*freermlst(llrc) |*/ delete_rooms(llrc, 0) | free_map(ls) | ft_err());
+			return (delete_rooms(llrc, 0) | free_map(ls) | ft_err());
 		}
 	}
 	free_map(ls);
@@ -88,17 +88,19 @@ int					main(void)
 	t_llrc	llrc;
 
 	fd = 0;
-	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa", O_RDONLY);
-	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa7", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapaname", O_RDONLY);
+    fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa2_12", O_RDONLY);
+	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_pdf", O_RDONLY);
 	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/GBIGMAP", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_25", O_RDONLY);
+    fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/big_sup/map_big_sup_2", O_RDONLY);
+//    fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/big/map_big_1", O_RDONLY);
 	// fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/room_after_tube", O_RDONLY);
 	//  fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/room_after_tube", O_RDONLY);//room_has_dash
 	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/big02", O_RDONLY);//room_has_dash
-	fd = 0;
+	//fd = 0;
 	if (val_in(fd, &llrc))
 	{
-		printf("\n");
+		ft_printf("\n");
 		alg(&llrc);
 	}
 	return (0);

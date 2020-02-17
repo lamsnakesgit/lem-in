@@ -3,38 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gusujio <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/15 21:25:25 by ddratini          #+#    #+#             */
-/*   Updated: 2019/04/18 19:02:57 by ddratini         ###   ########.fr       */
+/*   Created: 2019/09/10 20:41:20 by gusujio           #+#    #+#             */
+/*   Updated: 2019/09/14 22:46:43 by gusujio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strstr(const char *haystack, const char *needle)
+char	*ft_strstr(const char *h, const char *n)
 {
-	unsigned char	*hayst;
-	unsigned char	*nee;
-	int				i;
-	int				j;
+	size_t	i;
+	size_t	j;
 
-	hayst = (unsigned char *)haystack;
-	nee = (unsigned char *)needle;
-	j = 0;
-	if (*nee == '\0')
-		return ((char *)haystack);
 	i = 0;
-	while (hayst[j])
+	if (ft_strlen(n) == 0)
+		return ((char*)h);
+	while (h[i])
 	{
-		i = 0;
-		while (nee[i] == hayst[j + i])
+		if (h[i] == n[0])
 		{
-			if (nee[i + 1] == '\0')
-				return ((char *)haystack + j);
-			i++;
+			j = 0;
+			while (n[j] == h[i + j] && n[j])
+				j++;
+			if (n[j] == '\0')
+				return ((char*)h + i);
 		}
-		j++;
+		i++;
 	}
 	return (NULL);
 }

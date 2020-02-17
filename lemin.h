@@ -94,7 +94,7 @@ char			**lines(char *buf);
 
 char			**processmap(int fd, t_llrc *llrc);
 
-void			ft_listup(t_list **alst, t_list *new);
+int				ft_listup(t_list **alst, t_list *new);
 void			ft_lstadd_up(t_list **alst, t_list *new);
 
 int				queadd(t_list **q, t_list *tr);
@@ -137,5 +137,8 @@ int			freermlst(t_llrc *llrc, t_rooms *rm);
 int				freelrm(t_llrc *llrc);
 int				validate(int ac, char **av, int i, long fn);
 int				checkcor(t_rooms *rm, t_llrc *llrc);
+
+void            dellast(t_list **paths);
+void		dellist(t_list *ln);
 
 #endif

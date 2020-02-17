@@ -3,38 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gusujio <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/19 14:48:40 by ddratini          #+#    #+#             */
-/*   Updated: 2019/04/19 16:00:49 by ddratini         ###   ########.fr       */
+/*   Created: 2019/09/12 15:58:21 by gusujio           #+#    #+#             */
+/*   Updated: 2019/09/24 18:10:43 by gusujio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	char			*concat2;
-	size_t			i;
-	unsigned char	*cu1;
-	unsigned char	*cu2;
-	size_t			j;
+	char	*l;
+	size_t	i;
 
-	j = 0;
-	cu1 = (unsigned char *)s1;
-	cu2 = (unsigned char *)s2;
-	i = -1;
-	if (s1 != 0 && s2 != 0)
+	i = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	if (!(l = (char*)malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
+		return (NULL);
+	while (*s1)
 	{
-		concat2 = ft_strnew(ft_strlen(s2) + ft_strlen(s1) + 1);
-		if (!concat2)
-			return (0);
-		while (cu1[++i])
-			concat2[i] = cu1[i];
-		while (cu2[j])
-			concat2[i++] = cu2[j++];
-		concat2[i] = '\0';
-		return (concat2);
+		l[i] = *s1;
+		s1++;
+		i++;
 	}
-	return (0);
+	while (*s2)
+	{
+		l[i] = *s2;
+		s2++;
+		i++;
+	}
+	l[i] = 0;
+	return (l);
 }

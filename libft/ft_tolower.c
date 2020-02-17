@@ -3,22 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddratini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gusujio <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/15 17:04:38 by ddratini          #+#    #+#             */
-/*   Updated: 2019/04/15 17:08:15 by ddratini         ###   ########.fr       */
+/*   Created: 2019/09/11 14:59:58 by gusujio           #+#    #+#             */
+/*   Updated: 2019/09/14 20:28:33 by gusujio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_tolower(int c)
+int	ft_tolower(int c)
 {
-	if (c >= 65 && c <= 90)
-	{
-		c += 32;
-		return (c);
-	}
-	else
-		return (c);
+	return (ft_isalpha(c) && c < 97 ? c + 32 : c);
 }

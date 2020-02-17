@@ -68,7 +68,8 @@ void		del_paths(t_list **path, t_llrc *llrc)
 	t_list	*ln;
 	t_list	*next;
 
-	while (*path)
+//	printallpaths(*path);
+    while (*path)
 	{
 		paths = (*path)->next;
 		ln = (t_list *)(*path)->content;
@@ -80,7 +81,7 @@ void		del_paths(t_list **path, t_llrc *llrc)
 		}
 		free(*path);
 		(*path) = paths;
-	}llrc+=0;
+	}llrc+=0;path +=0;
 	delete_rooms(llrc, 0);
 //	sleep(20);
 	return;
