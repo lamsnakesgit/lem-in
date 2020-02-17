@@ -53,6 +53,7 @@ int				clean(t_llrc *llrc, t_list **q)
 	{
 		llrc->arrrm[i]->vis = 0;
 		llrc->arrrm[i]->lvl = 0;
+		llrc->arrrm[i]->was = 0;
 	}
 	(*q)->content = (void *)llrc->fr;
 	((t_rooms *)(*q)->content)->vis = 1;

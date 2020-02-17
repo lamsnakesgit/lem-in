@@ -32,7 +32,7 @@ int			bft3(t_list *ln, t_list *cur, t_llrc *llrc)
 	return (0);
 }
 
-int			bft2(int *f, t_list *cur, t_list **q, t_llrc *llrc, int *n)
+int			bft2(int *f, t_list *cur, t_list **q, t_llrc *llrc)
 {
 	t_list *ln;
 
@@ -46,9 +46,10 @@ int			bft2(int *f, t_list *cur, t_list **q, t_llrc *llrc, int *n)
 			((t_rooms *)ln->content)->lvl =
 				((t_rooms *)(cur)->content)->lvl + 1;
 			((t_rooms *)ln->content)->vis = 1;
+			((t_rooms *)ln->content)->was = 1;
+			((t_rooms *)cur->content)->was = 0;
 			queadd(q, ln);
 			*f = 1;
-			*n = 1;
 			return (0);
 		}
 		ln = ln->next;
@@ -58,25 +59,23 @@ int			bft2(int *f, t_list *cur, t_list **q, t_llrc *llrc, int *n)
 
 t_list		*bft(t_llrc *llrc)
 {
-	t_list	*q;
-	t_list	*cur;
-	int		f;
-	int     n;
+	t_list *q;
+	t_list *cur;
+	int f;
 
 	if ((f = clean(llrc, &q)))
 		return (0);
-	n = 0;
 	while (q != 0)
 	{
 		cur = pullnode(&q);
-		if (((t_rooms *)cur->content)->vis2 == 1 && n == 0
-				&& ((t_rooms *)cur->content)->nu != llrc->er->nu
-				&& ((t_rooms *)cur->content)->nu != llrc->fr->nu)
-			bft2(&f, cur, &q, llrc, &n);
-		if (ft_strcmp(((t_rooms *)cur->content)->name_r,
-					llrc->er->name_r) && f != 1)
+		if (((t_rooms *) cur->content)->vis2 == 1 && ((t_rooms *) cur->content)->was == 0
+		    && ((t_rooms *) cur->content)->nu != llrc->er->nu
+		    && ((t_rooms *) cur->content)->nu != llrc->fr->nu)
+			bft2(&f, cur, &q, llrc);
+		if (ft_strcmp(((t_rooms *) cur->content)->name_r,
+		              llrc->er->name_r) && f != 1)
 			quepush2(&q, cur);
-		else if (((t_rooms *)cur->content)->nu == llrc->er->nu)
+		else if (((t_rooms *) cur->content)->nu == llrc->er->nu)
 		{
 			dellist(q);
 			return (cur);
@@ -130,11 +129,11 @@ void		alg(t_llrc *llrc)
 		if (!(last = bft(llrc)))
 			break ;
 		path = buildpath(last);
-		printf("\n");
 		llrc->plensum += path->content_size;
 		llrc->psum += 1;
 		ft_listup(&paths, path);
-		printallpaths(paths);
+//		printallpaths(paths);
+//        printf("\n");
 		if (!paths->next && llrc->psum < maxw)
 			continue;
 		if (surb(&paths, llrc))

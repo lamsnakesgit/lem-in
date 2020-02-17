@@ -29,6 +29,7 @@ typedef struct	s_rooms
 	int				lvl;
 	int				nu;
 	int				ant;
+	int             was;
 	t_list			*ln;
 }				t_rooms;
 
@@ -64,7 +65,7 @@ typedef	struct	s_mas
 
 int				surb2(t_list *ln, t_list *tr2, t_mas *mas);
 void			surb3(t_list *ln, t_list *tr2, t_mas *mas);
-int				cross_path(t_list **paths, t_list *ln, t_list *ln2, int f);
+int			cross_path(t_list **paths, t_list *ln, t_list *ln2, t_list *cur);
 void			dellist(t_list	*ln);
 void			cutpath(t_list **er, t_list *er2);
 t_list			*findlist(t_list *ln, t_list *er);

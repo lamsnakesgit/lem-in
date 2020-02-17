@@ -68,7 +68,7 @@ void		surb3(t_list *ln, t_list *tr2, t_mas *mas)
 	ln2->content_size = l;
 }
 
-int			cross_path(t_list **paths, t_list *ln, t_list *ln2, int f)
+int			cross_path(t_list **paths, t_list *ln, t_list *ln2, t_list *cur)
 {
 	t_list	*tr;
 	t_list	*path;
@@ -77,7 +77,7 @@ int			cross_path(t_list **paths, t_list *ln, t_list *ln2, int f)
 
 	i = 0;
 	main = NULL;
-	tr = f ? (*paths)->content : (*paths)->next->content;
+	tr = cur;
 	while (tr)
 	{
 		if (tr->content == ln->content)

@@ -87,9 +87,9 @@ int					main(void)
 	int		fd;
 	t_llrc	llrc;
 
-	fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big/map_big_4", O_RDONLY);
-	fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big_sup/map_big_sup_1", O_RDONLY);
-	//fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/map_25", O_RDONLY);
+	//fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big/map_big_4", O_RDONLY);
+	fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/big_sup/map_big_sup_", O_RDONLY);
+	//fd = open("/Users/gusujio/lem-in/42_lem-in_tools/maps/valid/map_slack", O_RDONLY);
 	//fd = 0;
 	if (val_in(fd, &llrc))
 	{

@@ -39,6 +39,8 @@ int			quepush2(t_list **q, t_list *tr)
 		{
 			((t_rooms *)ln->content)->lvl = ((t_rooms*)(tr)->content)->lvl + 1;
 			((t_rooms *)ln->content)->vis = 1;
+            ((t_rooms *)ln->content)->was = ((t_rooms *)((tr)->content))->vis2;
+			((t_rooms *)((tr)->content))->was = 0;
 			queadd(q, ln);
 		}
 		ln = ln->next;

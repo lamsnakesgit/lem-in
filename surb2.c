@@ -16,8 +16,8 @@ void	sur(t_mas *mas, t_llrc *llrc, t_list **paths)
 {
 	surb3(((t_list *)(*mas).tr->content)->next,
 			((t_list *)(*mas).ln->content)->next, mas);
-	(*mas).i += cross_path(paths, (t_list *)(*mas).m0, (t_list *)(*mas).m1, 0);
-	(*mas).i += cross_path(paths, (t_list *)(*mas).m2, (t_list *)(*mas).m3, 1);
+	(*mas).i += cross_path(paths, (t_list *)(*mas).m0, (t_list *)(*mas).m1, mas->ln->content);
+	(*mas).i += cross_path(paths, (t_list *)(*mas).m2, (t_list *)(*mas).m3, mas->tr->content);
 	llrc->plensum -= ((t_list *)(*mas).ln->content)->content_size;
 	llrc->psum -= 1;
 	delpath(paths, (*mas).ln);
@@ -56,6 +56,18 @@ int		sur2(t_mas *mas, t_llrc *llrc, t_list **paths)
 	return (0);
 }
 
+int compareway(t_list *ln, t_list *tr)
+{
+
+	while (ln)
+	{
+		if (((t_rooms *)ln->content)->nu != ((t_rooms *)tr->content)->nu)
+			return (1);
+		ln = ln->next;
+		tr = tr->next;
+	}
+	return (0);
+}
 int		surb(t_list **paths, t_llrc *llrc)
 {
 	t_mas mas;
@@ -68,13 +80,14 @@ int		surb(t_list **paths, t_llrc *llrc)
 		return (0);
 	while (mas.ln)
 	{
-		while (mas.tr->next && mas.tr != mas.ln)
+		while (mas.tr->next)
 		{
 			if (surb2(((t_list *)mas.ln->content)->next,
-						((t_list *)mas.tr->content)->next, &mas))
+						((t_list *)mas.tr->content)->next, &mas) && compareway(mas.ln->content, mas.tr->content))
 			{
 				mas.i = 0;
 				sur(&mas, llrc, paths);
+				//printallpaths(*paths);
 				break ;
 			}
 			mas.tr = mas.tr->next;
