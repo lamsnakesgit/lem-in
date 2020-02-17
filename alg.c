@@ -97,7 +97,7 @@ t_list		*buildpath(t_list *er, int i)
 	t_list	*tmp;
 
 	if (!(path = ft_lstnew((void *)er, (size_t)sizeof(path))))
-        return (0);
+		return (0);
 	path->content = er->content;
 	path->next = 0;
 	((t_rooms *)path->content)->vis2 = 1;
@@ -106,7 +106,7 @@ t_list		*buildpath(t_list *er, int i)
 		ln = findlist(((t_rooms *)er->content)->ln, er);
 		cutpath(&ln, er);
 		if (!(tmp = ft_lstnew((void *)(ln->content), (size_t)(sizeof(er)))))
-            return (0);
+			return (0);
 		ft_lstadd(&path, tmp);
 		i++;
 		path->content = (void *)ln->content;
@@ -126,20 +126,18 @@ void		alg(t_llrc *llrc)
 	t_list	*path;
 	t_list	*paths;
 
-	if (!(maxw = count_way(llrc)))
-		return ;
+	maxw = count_way(llrc);
 	paths = NULL;
 	while (llrc->psum < maxw)
 	{
 		if (!(last = bft(llrc)))
 			break ;
 		if (!(path = buildpath(last, 0)))
-            break ;
-	// 	printflist(path);
+			break ;
 		llrc->plensum += path->content_size;
 		llrc->psum += 1;
 		if (!(ft_listup(&paths, path)))
-            break ;
+			break ;
 		if (!paths->next && llrc->psum < maxw)
 			continue;
 		if (surb(&paths, llrc))

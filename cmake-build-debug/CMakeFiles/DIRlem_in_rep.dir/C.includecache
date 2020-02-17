@@ -6,6 +6,18 @@
 
 #IncludeRegexTransform: 
 
+../libft/libft.h
+string.h
+-
+stdlib.h
+-
+stdio.h
+-
+unistd.h
+-
+stdarg.h
+-
+
 /Users/ddratini/42_03_projests/DIRlem-in_rep/lemin.h
 unistd.h
 -
@@ -13,6 +25,8 @@ stdio.h
 -
 libft/libft.h
 /Users/ddratini/42_03_projests/DIRlem-in_rep/libft/libft.h
+libft.h
+/Users/ddratini/42_03_projests/DIRlem-in_rep/libft.h
 fcntl.h
 -
 
@@ -28,7 +42,7 @@ unistd.h
 stdarg.h
 -
 
-/Users/ddratini/42_03_projests/DIRlem-in_rep/print.c
+/Users/ddratini/42_03_projests/DIRlem-in_rep/surb2.c
 lemin.h
 /Users/ddratini/42_03_projests/DIRlem-in_rep/lemin.h
 

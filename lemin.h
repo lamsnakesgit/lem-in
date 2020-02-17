@@ -15,7 +15,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include "libft/libft.h"
-//#include "libft.h"
+# include "libft.h"
 # include <fcntl.h>
 # define BS 16000
 
@@ -49,6 +49,7 @@ typedef struct	s_llrc
 	int		ants;
 	long	plensum;
 	long	psum;
+	long	fl;
 }				t_llrc;
 
 typedef	struct	s_mas
@@ -69,7 +70,7 @@ int				cross_path(t_list **paths, t_list *ln, t_list *ln2, int f);
 void			dellist(t_list	*ln);
 void			cutpath(t_list **er, t_list *er2);
 t_list			*findlist(t_list *ln, t_list *er);
-void		del_paths(t_list **path, t_llrc *llrc);
+void			del_paths(t_list **path, t_llrc *llrc);
 int				rmorlink(char *line, t_llrc *llrc);
 int				comstend(char *line);
 void			dellist(t_list *ln);
@@ -113,13 +114,13 @@ int				surb(t_list **paths, t_llrc *llrc);
 t_list			*lastpath(t_list **paths, int i);
 int				path_cmp2(t_llrc *llrc, size_t len);
 int				path_cmp(int last, t_llrc *llrc, int x);
-void			delpath(t_list **paths, t_list *ln);
+void			delpath(t_list **paths, t_list *ln, t_list *tr2);
 
 void			print_ant(t_list **paths, t_llrc *llrc);
 
 void			print_ant2(t_list **paths, t_llrc *llrc);
 
-long			delete_rooms(t_llrc *llrc, int fi);
+int				delete_rooms(t_llrc *llrc, int fi);
 
 /*
 ** //void			freermlst(t_llrc *llrc, t_rooms *rm);
@@ -132,13 +133,16 @@ int				validate(int ac, char **av, int i, long ifu);
 
 int				free_map(char **line);
 int				wrongroom(t_llrc *llrc, char **line, int f);
-int			freermlst(t_llrc *llrc, t_rooms *rm);
+int				freermlst(t_llrc *llrc, t_rooms *rm);
 
 int				freelrm(t_llrc *llrc);
 int				validate(int ac, char **av, int i, long fn);
 int				checkcor(t_rooms *rm, t_llrc *llrc);
 
-void            dellast(t_list **paths);
-void		dellist(t_list *ln);
+void			dellast(t_list **paths);
+void			dellist(t_list *ln);
+
+void			ft_debug(char **av, t_llrc *llrc);
+int				compareway(t_list *ln, t_list *tr);
 
 #endif

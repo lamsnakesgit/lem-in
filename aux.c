@@ -99,7 +99,7 @@ int				path_cmp(int last, t_llrc *llrc, int x)
 ** free lst removed
 */
 
-long			delete_rooms(t_llrc *llrc, int i)
+int				delete_rooms(t_llrc *llrc, int i)
 {
 	t_list	*tmp;
 

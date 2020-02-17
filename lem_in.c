@@ -56,7 +56,7 @@ void				freellrc(t_llrc *lrc)
 ** if not valid links - free array of rooms, its contents, names, link lists
 */
 
-int					val_in(int fd, t_llrc *llrc)
+long int			val_in(int fd, t_llrc *llrc)
 {
 	char	**ls;
 	int		i;
@@ -70,7 +70,7 @@ int					val_in(int fd, t_llrc *llrc)
 		return (freelrm(llrc) | free_map(ls) | ft_err());
 	}
 	if (!turninarr(llrc))
-		return (0);//
+		return (0);
 	if (ls && ls + i + 1)
 	{
 		if (!linkval(ls + i + 1, llrc))
@@ -82,25 +82,21 @@ int					val_in(int fd, t_llrc *llrc)
 	return (1);
 }
 
-int					main(void)
+int					main(int ac, char **av)
 {
 	int		fd;
 	t_llrc	llrc;
 
 	fd = 0;
-	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapaname", O_RDONLY);
-    fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/mapa2_12", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_pdf", O_RDONLY);
-	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/GBIGMAP", O_RDONLY);
-    fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/big_sup/map_big_sup_2", O_RDONLY);
-//    fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/big/map_big_1", O_RDONLY);
-	// fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/room_after_tube", O_RDONLY);
-	//  fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/invalid/room_after_tube", O_RDONLY);//room_has_dash
-	//fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/big02", O_RDONLY);//room_has_dash
-	//fd = 0;
+//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_40", O_RDONLY);
 	if (val_in(fd, &llrc))
 	{
+		llrc.fl = 0;
 		ft_printf("\n");
+		if (ac > 1 && av[1])
+		{
+			ft_debug(av, &llrc);
+		}
 		alg(&llrc);
 	}
 	return (0);

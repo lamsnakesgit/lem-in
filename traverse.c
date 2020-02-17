@@ -62,10 +62,9 @@ void	print_ant2(t_list **paths, t_llrc *llrc)
 		++i;
 		ft_printf("\n");
 	}
-	ft_printf("I=%d\n", i);
 }
 
-void	print_ant(t_list **paths, t_llrc *llrc)
+void	ft_debug2(t_list **paths, t_llrc *llrc)
 {
 	t_list	*ln;
 	int		i;
@@ -76,9 +75,9 @@ void	print_ant(t_list **paths, t_llrc *llrc)
 	s = 0;
 	while (ln)
 	{
-	//	ft_printf("len = %d ", (int)((t_list *)ln->content)->content_size);
+		ft_printf("len = %d ", (int)((t_list *)ln->content)->content_size);
 		ln->content_size = i - ((t_list *)ln->content)->content_size;
-	//	ft_printf("ant = %d\n", (int)ln->content_size);
+		ft_printf("ant = %d\n", (int)ln->content_size);
 		s += ln->content_size;
 		ln = ln->next;
 	}
@@ -90,6 +89,33 @@ void	print_ant(t_list **paths, t_llrc *llrc)
 		ln = ln->next;
 	}
 	ft_printf("%d\n", (int)(*paths)->content_size);
+}
+
+void	print_ant(t_list **paths, t_llrc *llrc)
+{
+	t_list	*ln;
+	int		i;
+	int		s;
+
+	printallpaths(*paths);
+	ln = *paths;
+	i = ((float)(llrc->plensum + llrc->ants)) / ((float)llrc->psum);
+	s = 0;
+	if (llrc->fl == 1)
+		ft_debug2(paths, llrc);
+	while (ln)
+	{
+		ln->content_size = i - ((t_list *)ln->content)->content_size;
+		s += ln->content_size;
+		ln = ln->next;
+	}
+	i = (llrc->plensum + llrc->ants) - (i * llrc->psum);
+	ln = *paths;
+	while (i-- > 0)
+	{
+		ln->content_size += 1;
+		ln = ln->next;
+	}
 	print_ant2(paths, llrc);
 	del_paths(paths, llrc);
 }

@@ -20,14 +20,14 @@ void	sur(t_mas *mas, t_llrc *llrc, t_list **paths)
 	(*mas).i += cross_path(paths, (t_list *)(*mas).m2, (t_list *)(*mas).m3, 1);
 	llrc->plensum -= ((t_list *)(*mas).ln->content)->content_size;
 	llrc->psum -= 1;
-	delpath(paths, (*mas).ln);
+	delpath(paths, (*mas).ln, 0);
 	if (!path_cmp(((t_list *)(*mas).tr->content)->content_size, llrc, (*mas).i))
 	{
 		(*mas).ln = lastpath(paths, 1);
-		delpath(paths, (*mas).ln->next);
+		delpath(paths, (*mas).ln->next, 0);
 		(*mas).ln->next = NULL;
 		(*mas).ln = lastpath(paths, 1);
-		delpath(paths, (*mas).ln->next);
+		delpath(paths, (*mas).ln->next, 0);
 		(*mas).ln->next = NULL;
 	}
 	else
@@ -35,7 +35,7 @@ void	sur(t_mas *mas, t_llrc *llrc, t_list **paths)
 		llrc->plensum += (*mas).i -
 			((t_list *)(*mas).tr->content)->content_size;
 		llrc->psum += 1;
-		delpath(paths, (*mas).tr);
+		delpath(paths, (*mas).tr, 0);
 	}
 	(*mas).ln = lastpath(paths, 2);
 	(*mas).tr = (*paths);
@@ -49,8 +49,7 @@ int		sur2(t_mas *mas, t_llrc *llrc, t_list **paths)
 		{
 			llrc->psum -= 1;
 			llrc->plensum -= ((t_list *)(*mas).ln2->content)->content_size;
-          // dellast(paths);
-            delpath(paths, (*mas).ln2);
+			dellast(paths);
 			return (1);
 		}
 	}

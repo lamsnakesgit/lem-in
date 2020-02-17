@@ -37,7 +37,7 @@ void			ft_lstnadd(t_list *ln, t_list *new)
 	tmp->next = new;
 }
 
-int 			ft_listup(t_list **alst, t_list *new)
+int				ft_listup(t_list **alst, t_list *new)
 {
 	t_list *alst2;
 
@@ -47,17 +47,17 @@ int 			ft_listup(t_list **alst, t_list *new)
 		while ((alst2)->next)
 			alst2 = (alst2)->next;
 		if (!((alst2)->next = ft_lstnew((void *)new, (size_t)sizeof(new))))
-            return (0);
+			return (0);
 		(alst2)->next->content = new;
 	}
 	else
 	{
 		if (!(*alst = ft_lstnew((void *)new, (size_t)sizeof(new))))
-		    return (0);
+			return (0);
 		(*alst)->content = new;
 		(*alst)->next = NULL;
 	}
-    return (1);
+	return (1);
 }
 
 void			ft_lstadd_up(t_list **alst, t_list *new)

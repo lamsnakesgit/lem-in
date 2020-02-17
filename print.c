@@ -92,29 +92,22 @@ t_list			*lastpath(t_list **paths, int i)
 	return (ln);
 }
 
-void			delpath(t_list **paths, t_list *ln)
+void			delpath(t_list **paths, t_list *ln, t_list *tr2)
 {
 	t_list *tr;
-	t_list *tr2;
 
 	tr = *paths;
 	tr2 = NULL;
 	while (tr)
 	{
-		if (tr == ln)
+		if (tr == ln) //if (!compareway(tr->content, ln->content))
 		{
 			if (!tr2)
-			{
 				(*paths) = (*paths)->next;
-                dellist(tr->content);
-                free(tr);
-			}
 			else
-			{
 				tr2->next = ln->next;
-                dellist(ln->content);//(ln);
-                free(ln);
-			}
+			dellist(ln->content);
+			free(ln);
 			return ;
 		}
 		tr2 = tr;
