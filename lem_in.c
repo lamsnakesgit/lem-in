@@ -88,7 +88,6 @@ int					main(int ac, char **av)
 	t_llrc	llrc;
 
 	fd = 0;
-//	fd = open("/Users/ddratini/42_03_projests/DIRlem-in_rep/42_lem-in_tools/maps/valid/map_40", O_RDONLY);
 	if (val_in(fd, &llrc))
 	{
 		llrc.fl = 0;

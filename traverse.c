@@ -62,6 +62,7 @@ void	print_ant2(t_list **paths, t_llrc *llrc)
 		++i;
 		ft_printf("\n");
 	}
+	ft_printf("I=%d\n", i);
 }
 
 void	ft_debug2(t_list **paths, t_llrc *llrc)
@@ -70,6 +71,7 @@ void	ft_debug2(t_list **paths, t_llrc *llrc)
 	int		i;
 	int		s;
 
+	printallpaths(*paths);
 	ln = *paths;
 	i = ((float)(llrc->plensum + llrc->ants)) / ((float)llrc->psum);
 	s = 0;
@@ -97,7 +99,6 @@ void	print_ant(t_list **paths, t_llrc *llrc)
 	int		i;
 	int		s;
 
-	printallpaths(*paths);
 	ln = *paths;
 	i = ((float)(llrc->plensum + llrc->ants)) / ((float)llrc->psum);
 	s = 0;

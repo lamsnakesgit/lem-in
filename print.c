@@ -100,7 +100,7 @@ void			delpath(t_list **paths, t_list *ln, t_list *tr2)
 	tr2 = NULL;
 	while (tr)
 	{
-		if (tr == ln) //if (!compareway(tr->content, ln->content))
+		if (tr == ln)
 		{
 			if (!tr2)
 				(*paths) = (*paths)->next;
