@@ -1,0 +1,9 @@
+10
+##start
+s 0 0
+##start
+s2 -1 -1
+##end
+ok 9 9
+s-s2
+s-ok
